@@ -1,6 +1,7 @@
 <?php
 
 namespace Roots\Soil\JqueryCDN;
+use Roots\Sage\Assets;
 
 /**
  * Load jQuery from jQuery's CDN with a local fallback
@@ -9,7 +10,8 @@ namespace Roots\Soil\JqueryCDN;
  * add_theme_support('soil-jquery-cdn');
  */
 function register_jquery() {
-  $jquery_version = wp_scripts()->registered['jquery']->ver;
+  //$jquery_version = wp_scripts()->registered['jquery']->ver;
+  $jquery_version = '3.2.1';
 
   wp_deregister_script('jquery');
 
@@ -41,12 +43,14 @@ function jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>(window.jQuery && jQuery.noConflict()) || document.write(\'<script src="' . $add_jquery_fallback .'"><\/script>\')</script>' . "\n";
+    //echo '<script>(window.jQuery && jQuery.noConflict()) || document.write(\'<script src="' . $add_jquery_fallback .'"><\/script>\')</script>' . "\n";
+    echo '<script>(window.jQuery) || document.write(\'<script src="' . $add_jquery_fallback .'"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 
   if ($handle === 'jquery') {
-    $add_jquery_fallback = apply_filters('script_loader_src', \includes_url('/js/jquery/jquery.js'), 'jquery-fallback');
+    //$add_jquery_fallback = apply_filters('script_loader_src', \includes_url('/js/jquery/jquery.js'), 'jquery-fallback');
+    $add_jquery_fallback = apply_filters('script_loader_src', Assets\asset_path('scripts/jquery.js'), 'jquery-fallback');
   }
 
   return $src;

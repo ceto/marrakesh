@@ -10,3 +10,5 @@
 @include foundation-everything(true, false);
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@import "components/menu";

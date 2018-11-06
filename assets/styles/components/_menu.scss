@@ -1,0 +1,34 @@
+.menu {
+    text-transform: uppercase;
+    font-weight: $global-weight-light;
+}
+
+.menu a {
+    color: inherit;
+}
+
+
+.menu.vertical {
+    font-size: .875rem;
+    a {
+        position: relative;
+        padding: .5em 0;
+        &:before {
+            position: absolute;
+            //content:'';
+            display: block;
+            width:.5em;
+            height:.5em;
+            background-color: currentColor;
+            left:-.875em;
+            top:.75em;
+
+        }
+    }
+    
+    .active>a, .is-active>a {
+        &:before { 
+            content:'';
+        }
+    }
+} 

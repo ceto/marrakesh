@@ -44,11 +44,14 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
+  add_theme_support( 'woocommerce' );
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
+
+add_post_type_support( 'page', 'excerpt' );
 
 /**
  * Register sidebars
@@ -59,7 +62,16 @@ function widgets_init() {
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
+    'before_title'  => '<h3 class="widget__title">',
+    'after_title'   => '</h3>'
+  ]);
+
+  register_sidebar([
+    'name'          => __('Pages Sidebar', 'marrakesh'),
+    'id'            => 'sidebar-page',
+    'before_widget' => '<section class="widget widget--sidebar %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3 class="widget__title">',
     'after_title'   => '</h3>'
   ]);
 
@@ -68,7 +80,7 @@ function widgets_init() {
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
+    'before_title'  => '<h3 class="widget__title">',
     'after_title'   => '</h3>'
   ]);
 }
@@ -86,6 +98,7 @@ function display_sidebar() {
     is_404(),
     is_front_page(),
     is_page_template('template-custom.php'),
+    is_woocommerce()
   ]);
 
   return apply_filters('sage/display_sidebar', $display);

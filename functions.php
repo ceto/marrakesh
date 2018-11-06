@@ -17,7 +17,9 @@ $sage_includes = [
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php', // Theme customizer
+  'lib/customposts.php',     // Custom posts and taxanomies code by ceto
   'lib/custom.php'     // Custom code by ceto
+
 ];
 
 foreach ($sage_includes as $file) {

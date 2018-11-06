@@ -1,0 +1,8 @@
+.widget {
+    &:not(last-child) {
+        margin-bottom:2rem;
+    }
+}
+.widget__title {
+    font-size: 1.25rem; 
+}

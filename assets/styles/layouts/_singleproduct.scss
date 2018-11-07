@@ -1,0 +1,21 @@
+.singleproduct {
+    position: relative;
+    padding:10vh 0;
+}
+
+.singleproduct__bg {
+    position: absolute;
+    z-index: -1;
+    left:0;
+    top:0;
+    width:100%;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.singleproduct__main {
+    //position: relative;
+    background-color: $body-background;
+    min-height: 70vh;
+    margin-bottom:10vh;
+}

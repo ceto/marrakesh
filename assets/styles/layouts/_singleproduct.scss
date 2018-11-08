@@ -13,9 +13,41 @@
     overflow: hidden;
 }
 
-.singleproduct__main {
+.singleproduct__header {
     //position: relative;
+    padding:1em;
     background-color: $body-background;
     min-height: 70vh;
     margin-bottom:10vh;
+
+    .price {
+
+    }
+    .stock {
+
+    }
+}
+
+.singleproduct__attributes {
+    line-height: 1.2;
+    font-size:.875em;
+    dt {
+        float:left;
+        clear:both;
+        min-width: 30%;
+        padding-right: 1em;
+        margin-bottom:0;
+        font-weight: $global-weight-normal;
+    }
+
+    dd {
+        float:left;
+        width:70%;
+        margin-bottom:.5em;
+        font-weight: $global-weight-bold;
+        p {
+            line-height: inherit;
+            display: inline;
+        }
+    }
 }

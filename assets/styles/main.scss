@@ -14,3 +14,17 @@
 @import "extends";
 @import "components/components";
 @import "layouts/layouts";
+
+
+span.onsale {
+    display: inline-block;
+    background-color: $secondary-color;
+    line-height: 1;
+    font-weight: $global-weight-black;
+    padding:.125em .25em;
+    color:$white;
+    font-size:.875rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: default;
+}

@@ -56,9 +56,7 @@ if ( post_password_required() ) {
                         <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
                         <?php do_action( 'woocommerce_product_meta_end' ); ?>
                     </div>
-                    <h1 class="singleproduct_title entry-title"><?php the_title(); ?></h1>
-                    
-                    <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
+                    <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
                     
                     <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
 
@@ -67,14 +65,36 @@ if ( post_password_required() ) {
                         <?php echo $short_description; // WPCS: XSS ok. ?>
                     </div>
                     <?php endif; ?>
-                    
-                    <?php do_action( 'woocommerce_single_product_summary' ); ?>
-
-                    <?php if ( $heading = esc_html( apply_filters( 'woocommerce_product_additional_information_heading', __( 'Information', 'woocommerce' ) ) ) ) : ?>
-                            <h3><?php echo $heading; ?></h3>
-                    <?php endif; ?>
-
                     <dl class="singleproduct__attributes">
+                        <?php foreach ( $attributes as $attribute ) : ?>
+                            <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
+                            <dd><?php
+                                $values = array();
+
+                                if ( $attribute->is_taxonomy() ) {
+                                    $attribute_taxonomy = $attribute->get_taxonomy_object();
+                                    $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
+
+                                    foreach ( $attribute_values as $attribute_value ) {
+                                        $value_name = esc_html( $attribute_value->name );
+
+                                        if ( $attribute_taxonomy->attribute_public ) {
+                                            $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
+                                        } else {
+                                            $values[] = $value_name;
+                                        }
+                                    }
+                                } else {
+                                    $values = $attribute->get_options();
+
+                                    foreach ( $values as &$value ) {
+                                        $value = make_clickable( esc_html( $value ) );
+                                    }
+                                }
+
+                                echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                            ?></dd>
+                        <?php endforeach; ?>
                         <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
                             <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
                             <dd class="product_weight"><?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
@@ -84,40 +104,13 @@ if ( post_password_required() ) {
                             <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
                             <dd class="product_dimensions"><?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?></dd>
                         <?php endif; ?>
-                        <?php foreach ( $attributes as $attribute ) : ?>
-                            <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
-                                <dd><?php
-                                    $values = array();
-
-                                    if ( $attribute->is_taxonomy() ) {
-                                        $attribute_taxonomy = $attribute->get_taxonomy_object();
-                                        $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
-
-                                        foreach ( $attribute_values as $attribute_value ) {
-                                            $value_name = esc_html( $attribute_value->name );
-
-                                            if ( $attribute_taxonomy->attribute_public ) {
-                                                $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
-                                            } else {
-                                                $values[] = $value_name;
-                                            }
-                                        }
-                                    } else {
-                                        $values = $attribute->get_options();
-
-                                        foreach ( $values as &$value ) {
-                                            $value = make_clickable( esc_html( $value ) );
-                                        }
-                                    }
-
-                                    echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
-                                ?></dd>
-                        <?php endforeach; ?>
                     </dl>
 
-
-
-
+                    
+                    <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                    <hr>
+                    <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
+                    
 
                 </header>
            </div>            

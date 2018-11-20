@@ -1,4 +1,4 @@
-<?
+<?php
 // Remove each style one by one
 add_filter( 'woocommerce_enqueue_styles', 'marrakesh_dequeue_styles' );
 function marrakesh_dequeue_styles( $enqueue_styles ) {

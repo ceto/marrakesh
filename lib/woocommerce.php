@@ -29,7 +29,7 @@ add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-  $cols = 30;
+  $cols = 50;
   return $cols;
 }
 
@@ -77,3 +77,14 @@ function woocommerce_template_loop_product_title() {
     echo '<h2 class="prodcard__title">' . get_the_title() . '</h2>';
 }
 
+
+add_filter( 'woocommerce_shortcode_products_query', function( $query_args, $atts, $loop_name ){
+    if( $loop_name == 'products' ){
+        $query_args['meta_query'] = array( array(
+            'key'     => '_stock_status',
+            'value'   => 'instock',
+            'compare' => 'LIKE',
+        ) );
+    }
+    return $query_args;
+}, 10, 3);

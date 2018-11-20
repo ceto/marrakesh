@@ -24,7 +24,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 
 
 
-add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
+
 
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
@@ -32,6 +32,7 @@ function marrakesh_loop_shop_per_page( $cols ) {
   $cols = 50;
   return $cols;
 }
+add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 add_action( 'woocommerce_before_page_title', 'woocommerce_breadcrumb', 10 );

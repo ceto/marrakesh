@@ -103,9 +103,8 @@ function get_projfilter_class( $class = '', $post_id = null ) {
 }
 
 
-function marrakesh_modify_num_references($query)
-{
-    if ( ($query->is_main_query()) && ($query->is_archive('reference') || $query->is_tax('reference-type') ) && (!is_admin()) ) {
+function marrakesh_modify_num_references($query) {
+    if ( ($query->is_main_query()) && ( ($query->is_post_type_archive('reference')) || ($query->is_tax('reference-type')) ) && ( !is_admin() ) ) {
       $query->set('posts_per_page', -1);
       $query->set('orderby', 'menu_order');
       $query->set('order', 'ASC');

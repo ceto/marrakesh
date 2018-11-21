@@ -22,7 +22,15 @@
     }
 
 }
+.prodgrid--columns-6 {
+    @include breakpoint(large) {
+        @include xy-grid-layout(5, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
+    }
+    @include breakpoint(xlarge) {
+        @include xy-grid-layout(6, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
+    }
 
+}
 
 .prodgrid__item {
 

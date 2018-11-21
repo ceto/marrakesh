@@ -126,9 +126,125 @@ if ( post_password_required() ) {
                 <?php
                     woocommerce_upsell_display( $limit = '-1', $columns = 4, $orderby = 'rand', $order = 'desc' );
                     //woocommerce_output_related_products();
-                    woocommerce_related_products( 
-                        array( 'posts_per_page' => 12, 'columns' => 5, 'orderby'=> 'rand')
-                    );
+                ?>
+                <?php
+                    $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
+                    $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
+                    $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
+                    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids' ) );
+                    $reldesignproducts = wc_get_products(array(
+                        'post_status' => 'publish',
+                        'posts_per_page' => -1,
+                        'exclude' => array($product->id),
+                        'tax_query'      => array(
+                            'relation' => 'AND',
+                            array(
+                                'taxonomy'     => 'product_cat',
+                                'field'        => 'id',
+                                'terms'        => $cats,
+                                'operator'     => 'IN'
+                                    
+                            ),
+                            array(
+                                'taxonomy'     => 'pa_design',
+                                'field'        => 'id',
+                                'terms'        => $designs,
+                                'operator'     => 'IN'
+                            )
+                        )
+                    ) );
+                    $exclarr=array($product->id);
+                    foreach ($reldesignproducts as $tempprod) {
+                        $exclarr[]= $tempprod->id;
+                        
+                    }
+                    $relproducts = wc_get_products(array(
+                        'post_status' => 'publish',
+                        'posts_per_page' => 10,
+                        'post__not_in' => $exclarr,
+                        'tax_query'      => array(
+                            'relation' => 'AND',
+                            array(
+                                'taxonomy'     => 'pa_color',
+                                'field'        => 'id',
+                                'terms'        => $colors,
+                                'operator'     => 'IN'
+                            ),
+                            array(
+                                'taxonomy'     => 'pa_style',
+                                'field'        => 'id',
+                                'terms'        => $styles,
+                                'operator'     => 'IN'
+                            )
+                        )
+                    ) );
+                    ?>
+                    <ul class="tabs" data-tabs id="example-tabs">
+                        <?php if ( $reldesignproducts  ) : ?><li class="tabs-title is-active"><a data-tabs-target="panel1" href="#panel1" aria-selected="true"><?php esc_html_e( 'Color Variations', 'marrakesh' ); ?></a></li><?php endif;  ?>
+                        <?php if ( $relproducts ) : ?><li class="tabs-title"><a data-tabs-target="panel2" href="#panel2"><?php esc_html_e( 'Similar Products', 'marrakesh' ); ?></a></li><?php endif;  ?>
+                    </ul>
+                    
+                    <div class="tabs-content" data-tabs-content="example-tabs">
+
+                    <?php if ( $reldesignproducts ) : ?>
+                        <div class="tabs-panel is-active" id="panel1">
+
+                        <section class="related products">
+
+                            <ul class="prodgrid prodgrid--columns-6">
+
+                                <?php foreach ( $reldesignproducts as $related_product ) : ?>
+
+                                    <?php
+                                        $post_object = get_post( $related_product->get_id() );
+
+                                        setup_postdata( $GLOBALS['post'] =& $post_object );
+
+                                        wc_get_template_part( 'content', 'product' ); ?>
+
+                                <?php endforeach; wp_reset_postdata(); ?>
+
+                            </ul>
+
+                        </section>
+                        </div>
+
+                    <?php endif;  ?>
+
+                    <?php if ( $relproducts ) : ?>
+                        <div class="tabs-panel" id="panel2">
+
+                        <section class="related products">
+
+
+                            <ul class="prodgrid prodgrid--columns-6">
+
+                                <?php foreach ( $relproducts as $related_product ) : ?>
+
+                                    <?php
+                                        $post_object = get_post( $related_product->get_id() );
+
+                                        setup_postdata( $GLOBALS['post'] =& $post_object );
+
+                                        wc_get_template_part( 'content', 'product' ); ?>
+
+                                <?php endforeach; wp_reset_postdata(); ?>
+
+                            </ul>
+
+                        </section>
+                        </div>
+                    <?php endif;  ?>
+                    </div>
+                    <?php
+
+                    // woocommerce_related_products( 
+                    //     array( 
+                    //         'posts_per_page' => 12,
+                    //         'columns' => 5,
+                    //         'orderby'=> 'rand',
+                    //     )
+                    // );
 
                     do_action( 'woocommerce_after_single_product_summary' );
                 ?>

@@ -1,43 +1,69 @@
 .singleproduct {
     position: relative;
-    padding:10vh 0;
+    //padding:28vh 0 20vh;
 }
 
-.singleproduct__bg {
-    position: absolute;
-    z-index: -1;
-    left:0;
-    top:0;
+.singleproduct__top {
+    position: relative;
+    //margin-bottom:calc(2vw + 2rem);
+
+}
+.singleproduct__top__bg {
     width:100%;
-    height: 90vh;
-    overflow: hidden;
+    height: 33.333vw;
+    min-height: 26rem;
+    max-height: 40rem;
+    
+
+    
+    img {
+        width:100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: left center;
+    
+    
+    }
 }
 
+.singleproduct__top__content {
+    position: absolute;
+    left:0;
+    //bottom:0;
+    bottom: calc(2vw + 2rem);
+    width: 100%;
+}
 .singleproduct__header {
     position: relative;
-    padding:1rem;
-    background-color: $body-background;
-    min-height: 70vh;
-    margin-bottom:10vh;
+    padding:1rem 1rem;
+    background-color: rgba($body-background,1);
+    //border: .75rem solid $light-gray;
+    //box-shadow: 0 0 1rem 0 rgba(#000,.5);
+    font-size:.875rem;
+    display: inline-block;
+    @include breakpoint(large) {
+        font-size:1rem;
+        display: block;
+    }
 }
 
 .singleproduct__header {
     .onsale {
-        position: absolute;
-        
-        float: right;
-        right:1rem;
+        font-size:.875em;
+    }
+    hr {
+        margin:0;
     }
 }
-.singleproduct__meta {
-    font-size: .875rem;
-    text-transform: uppercase;
-}
+
 
 .singleproduct__title {
-    //font-weight: $global-weight-light;
+    font-size: 3em;
+    min-width: 7em;
+    font-weight: $global-weight-thin;
     text-transform: uppercase;
-    margin:0;
+    margin:0 0 0;
     line-height: 1;
 }
 .singleproduct__price {
@@ -45,6 +71,7 @@
     font-size:1.5em;
     line-height: $header-lineheight;
     color:$medium-gray;
+    margin:1.25em 0 .25em;
     del {
         font-size: 75%;
         font-weight: $global-weight-normal;
@@ -56,10 +83,18 @@
 }
 
 .singleproduct__header .stock {
+    font-size: .875em;
     line-height: $header-lineheight;
+    margin:0 0 .125em;
+    display: inline-block;
+    background-color: $xlight-gray;
+    border:1px solid $light-gray;
+    padding:.125em .333em;
+    //font-style: italic;
+    text-transform: uppercase;
+
 
     &.in-stock {
-        font-size: 1.25rem;
     }
     &.available-on-backorder {
 
@@ -69,23 +104,73 @@
 
     }
 }
+
+
+.singleproduct__prodimage {
+    position: relative;
+    border: 1px solid $light-gray;
+    padding: .75rem;
+    margin:0 1rem 0;
+    background-color: $xlight-gray;
+    //margin-right:4%;
+    img + img {
+        position: absolute;
+        right:-4%;
+        bottom:-4%;
+        border:.5rem solid $xlight-gray;
+        width: 45%;
+        box-shadow: 0 0 .75rem 0 rgba(#000,.5);
+    }
+}
+
+.singleproduct__details {
+
+}
+
+
 .singleproduct__attributes {
+    @include clearfix();
     line-height: $header-lineheight;
     font-size:.875em;
+    margin:.5em 0 0;
+    border-top: 1px solid $medium-gray;
+    padding-top: .5em;
     dt {
-        float:left;
-        clear:both;
-        min-width: 30%;
-        padding-right: 1em;
+        //float:left;
+        //clear:both;
+        //min-width: 30%;
+        display: inline;
+        //padding-right: .25em;
         margin-bottom:0;
         font-weight: $global-weight-normal;
+        &:after {
+            content:': ';
+        }
+        
+    }
+    dd + dt {
+        &:before {
+            //content: ' · ';
+            //content: ' ● ';
+            content: ' | ';
+            //color:$medium-gray;
+            //font-weight: $global-weight-bold;
+        }
     }
 
     dd {
-        float:left;
-        width:70%;
+        //float:left;
+        //width:70%;
+        display: inline;
         margin-bottom:.5em;
         font-weight: $global-weight-bold;
+        //color:$medium-gray;
+        a {
+            color:inherit;
+            &:hover, &:focus {
+                text-decoration: underline;
+            }
+        }
         p {
             line-height: inherit;
             display: inline;

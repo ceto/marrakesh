@@ -33,89 +33,152 @@ if ( post_password_required() ) {
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
-    <aside class="singleproduct__bg">
-        <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?>
-    </aside>
+    <div class="singleproduct__top">
+        <aside class="singleproduct__top__bg">
+            <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?>
+        </aside>
 
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-            <div class="cell medium-6 large-4">
-                <header class="summary entry-summary singleproduct__header">
-                    <?php do_action( 'woocommerce_before_single_product_summary' ); ?>
+        <div class="singleproduct__top__content">
+        
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell tablet-6 large-5 xxlarge-4">
+                        <header class="summary entry-summary singleproduct__header">
+                
+                            <?php do_action( 'woocommerce_before_single_product_summary' ); ?>
 
-                    <?php if ( $product->is_on_sale() ) : ?>
-                        <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
-                    <?php endif;?>
+                            <?php if ( $product->is_on_sale() ) : ?>
+                                <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+                            <?php endif;?>
 
-                    <div class="singleproduct__meta meta">
-                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
-                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                            <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-                        <?php endif; ?>
-                        <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
-                    </div>
-                    <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
-                    
-                    <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
 
-                    <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
-                    <div class="singleproduct__shortdesc woocommerce-product-details__short-description">
-                        <?php echo $short_description; // WPCS: XSS ok. ?>
-                    </div>
-                    <?php endif; ?>
-                    <dl class="singleproduct__attributes">
-                        <?php foreach ( $attributes as $attribute ) : ?>
-                            <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
-                            <dd><?php
-                                $values = array();
+                            
+                            <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
+                            <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                            <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>    
+ 
+                            <dl class="singleproduct__attributes">
+                            <dt><?php _e('Product Category', 'marrakesh');?></dt>
+                            <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?></dd>
+                            <?php foreach ( $attributes as $attribute ) : ?>
+                                    <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
+                                    <dd><?php
+                                        $values = array();
 
-                                if ( $attribute->is_taxonomy() ) {
-                                    $attribute_taxonomy = $attribute->get_taxonomy_object();
-                                    $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
+                                        if ( $attribute->is_taxonomy() ) {
+                                            $attribute_taxonomy = $attribute->get_taxonomy_object();
+                                            $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
 
-                                    foreach ( $attribute_values as $attribute_value ) {
-                                        $value_name = esc_html( $attribute_value->name );
+                                            foreach ( $attribute_values as $attribute_value ) {
+                                                $value_name = esc_html( $attribute_value->name );
 
-                                        if ( $attribute_taxonomy->attribute_public ) {
-                                            $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
+                                                if ( $attribute_taxonomy->attribute_public ) {
+                                                    $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
+                                                } else {
+                                                    $values[] = $value_name;
+                                                }
+                                            }
                                         } else {
-                                            $values[] = $value_name;
+                                            $values = $attribute->get_options();
+
+                                            foreach ( $values as &$value ) {
+                                                $value = make_clickable( esc_html( $value ) );
+                                            }
                                         }
-                                    }
-                                } else {
-                                    $values = $attribute->get_options();
 
-                                    foreach ( $values as &$value ) {
-                                        $value = make_clickable( esc_html( $value ) );
-                                    }
-                                }
+                                        echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                                    ?></dd>
+                                <?php endforeach; ?>
+                                <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
+                                    <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
+                                    <dd class="product_weight"><?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
+                                <?php endif; ?>
 
-                                echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
-                            ?></dd>
-                        <?php endforeach; ?>
-                        <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
-                            <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
-                            <dd class="product_weight"><?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
-                        <?php endif; ?>
+                                <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
+                                    <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
+                                    <dd class="product_dimensions"><?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?></dd>
+                                <?php endif; ?>
+                            </dl>
 
-                        <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
-                            <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
-                            <dd class="product_dimensions"><?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?></dd>
-                        <?php endif; ?>
-                    </dl>
+                
+                            
 
-                    
-                    <?php do_action( 'woocommerce_single_product_summary' ); ?>
-                    <hr>
-                    <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
-                    
-
-                </header>
-           </div>            
+                        </header>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="ps ps--bordered ps--narrow">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="cell tablet-6 ">
+                    <div class="grid-x grid-margin-x grid-margin-y small-up-4 medium-up-8">
+
+                                <div class="cell"><img src="http://placehold.it/480/320/2fc3bbe" alt=""></div>
+                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
+                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
+                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
+                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
+                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
+                                <div class="cell"><?php echo woocommerce_get_product_thumbnail('medium_large'); ?></div>
+                                <div class="cell"><?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?></div>
+
+                                <!-- <div class="cell"><img src="http://placehold.it/480/320/aec34be" alt=""></div> -->
+                    </div>
+                </div>
+                <div class="cell tablet-6 ">
+                    <div class="grid-x grid-margin-x grid-margin-y small-up-4 medium-up-8">
+
+                                <div class="cell"><img src="http://placehold.it/480/320/2fc3bbe" alt=""></div>
+                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
+                                <div class="cell"><?php echo woocommerce_get_product_thumbnail('medium_large'); ?></div>
+                                <div class="cell"><?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?></div>
+
+                                <!-- <div class="cell"><img src="http://placehold.it/480/320/aec34be" alt=""></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ps">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+
+        <div class="cell tablet-6">
+            <div class="singleproduct__details">
+                    <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
+                <h3><?php the_title(); _e(' - Product details', 'marrakesh');?></h3>
+                <div class="singleproduct__shortdesc woocommerce-product-details__short-description">
+                    <?php echo $short_description; // WPCS: XSS ok. ?>
+                </div>
+                <?php endif; ?>
+                <div class="singleproduct__meta meta">
+                            <?php do_action( 'woocommerce_product_meta_start' ); ?>
+                            <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+                                <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                            <?php endif; ?>
+                            <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                            <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                            <?php do_action( 'woocommerce_product_meta_end' ); ?>
+                </div>                    
+                <?php do_action( 'woocommerce_single_product_summary' ); ?>
+            </div>
+        </div>
+
+        <div class="cell tablet-6">
+            <!-- <figure class="singleproduct__prodimage">
+                <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
+                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+            </figure> -->
+            <h3><?php _e('Technical information', 'marrakesh');?></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore facilis, molestias odio dolor cumque, nisi quis reiciendis recusandae quod tempora, tenetur voluptatem corporis atque similique accusantium odit eum iste ipsum?</p>
+        </div>
+    </div>
+
+    </div>
+
 
 
     

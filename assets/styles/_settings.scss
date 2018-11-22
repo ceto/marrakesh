@@ -76,7 +76,7 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #cc4b37,
 );
-$light-gray: #e6e6e6;
+$light-gray: #e6e6e6; $xlight-gray: #fafafa;
 $medium-gray: #bababa;//#cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
@@ -115,7 +115,7 @@ $breakpoints: (
   xxlarge: 1440px,
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium tablet large xlarge);
+$breakpoint-classes: (small medium tablet large xlarge xxlarge);
 
 // 3. The Grid
 // -----------

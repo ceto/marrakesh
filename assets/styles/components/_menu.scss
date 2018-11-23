@@ -1,6 +1,8 @@
 .menu {
     text-transform: uppercase;
-    font-weight: $global-weight-light;
+    //font-weight: $global-weight-light;
+    font-variant: small-caps;
+    text-transform: uppercase;
 }
 
 .menu a {

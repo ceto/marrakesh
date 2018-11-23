@@ -796,17 +796,17 @@ $table-stack-breakpoint: medium;
 // --------
 
 $tab-margin: 0;
-$tab-background: $white;
-$tab-color: $primary-color;
-$tab-background-active: $light-gray;
-$tab-active-color: $primary-color;
-$tab-item-font-size: rem-calc(12);
-$tab-item-background-hover: $white;
-$tab-item-padding: 1.25rem 1.5rem;
-$tab-content-background: $white;
-$tab-content-border: $light-gray;
-$tab-content-color: $body-font-color;
-$tab-content-padding: 1rem;
+$tab-background: transparent;
+$tab-color: $medium-gray;
+$tab-background-active: transparent;
+$tab-active-color: inherit;
+$tab-item-font-size: rem-calc(14);
+$tab-item-background-hover: transparent;
+$tab-item-padding: .5em .666em;
+$tab-content-background: transparent;
+$tab-content-border: transparent;
+$tab-content-color: inherit;
+$tab-content-padding: 1rem 0;
 
 // 52. Thumbnail
 // -------------

@@ -68,9 +68,10 @@
 }
 
 .ps--bordered {
-	border-color: $light-gray;
+
 	border-top: 1px solid transparent;
-	border-bottom: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-color: $xlight-gray;
 }
 
 .ps--opaque {
@@ -84,6 +85,10 @@
 .ps--light {
 	border-color: scale-color($light-gray, $lightness: -5%);
 	background-color: $light-gray;
+}
+.ps--xlight {
+	border-color: scale-color($xlight-gray, $lightness: -5%);
+	background-color: $xlight-gray;
 }
 
 .ps--accent {

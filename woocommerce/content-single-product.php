@@ -42,19 +42,25 @@ if ( post_password_required() ) {
         
             <div class="grid-container">
                 <div class="grid-x grid-margin-x">
-                    <div class="cell tablet-6 large-5 xxlarge-4">
+                    <div class="cell">
                         <header class="summary entry-summary singleproduct__header">
                 
                             <?php do_action( 'woocommerce_before_single_product_summary' ); ?>
 
-                            <?php if ( $product->is_on_sale() ) : ?>
-                                <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
-                            <?php endif;?>
+                            <figure class="singleproduct__prodthumb">
+                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                            </figure>
+
+
 
 
                             
                             <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
+                            <?php if ( $product->is_on_sale() ) : ?>
+                                <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
+                            <?php endif;?>
                             <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                            
                             <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>    
  
                             <dl class="singleproduct__attributes">
@@ -142,53 +148,53 @@ if ( post_password_required() ) {
         </div>
 
     </div>
-    <div class="ps">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+    <div class="ps ps--bordered">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
 
-        <div class="cell tablet-6">
-            <div class="singleproduct__details">
-                    <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
-                <h3><?php the_title(); _e(' - Product details', 'marrakesh');?></h3>
-                <div class="singleproduct__shortdesc woocommerce-product-details__short-description">
-                    <?php echo $short_description; // WPCS: XSS ok. ?>
+                <div class="cell tablet-6">
+                    <div class="singleproduct__details">
+                            <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
+                        <h3><?php the_title(); _e(' - Product details', 'marrakesh');?></h3>
+                        <div class="singleproduct__shortdesc woocommerce-product-details__short-description">
+                            <?php echo $short_description; // WPCS: XSS ok. ?>
+                        </div>
+                        <?php endif; ?>
+                        <div class="singleproduct__meta meta">
+                                    <?php do_action( 'woocommerce_product_meta_start' ); ?>
+                                    <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+                                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                                    <?php endif; ?>
+                                    <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                                    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                                    <?php do_action( 'woocommerce_product_meta_end' ); ?>
+                        </div>                    
+                        <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                    </div>
                 </div>
-                <?php endif; ?>
-                <div class="singleproduct__meta meta">
-                            <?php do_action( 'woocommerce_product_meta_start' ); ?>
-                            <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                                <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-                            <?php endif; ?>
-                            <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                            <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                            <?php do_action( 'woocommerce_product_meta_end' ); ?>
-                </div>                    
-                <?php do_action( 'woocommerce_single_product_summary' ); ?>
+
+                <div class="cell tablet-6">
+                    <!-- <figure class="singleproduct__prodimage">
+                        <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
+                        <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                    </figure> -->
+                    <h3><?php _e('Technical information', 'marrakesh');?></h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore facilis, molestias odio dolor cumque, nisi quis reiciendis recusandae quod tempora, tenetur voluptatem corporis atque similique accusantium odit eum iste ipsum?</p>
+                </div>
             </div>
         </div>
-
-        <div class="cell tablet-6">
-            <!-- <figure class="singleproduct__prodimage">
-                <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
-                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
-            </figure> -->
-            <h3><?php _e('Technical information', 'marrakesh');?></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore facilis, molestias odio dolor cumque, nisi quis reiciendis recusandae quod tempora, tenetur voluptatem corporis atque similique accusantium odit eum iste ipsum?</p>
-        </div>
-    </div>
-
     </div>
 
 
 
-    
+    <div class="ps ps--xlight ps--bordered">
     
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell">
                 <?php
-                    woocommerce_upsell_display( $limit = '-1', $columns = 4, $orderby = 'rand', $order = 'desc' );
-                    //woocommerce_output_related_products();
+                    $upsells = wc_products_array_orderby( array_filter( array_map( 'wc_get_product', $product->get_upsell_ids() ), 'wc_products_array_filter_visible' ), 'rand', 'desc');
+                    $upsellproducts = $upsells;
                 ?>
                 <?php
                     $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
@@ -242,62 +248,63 @@ if ( post_password_required() ) {
                         )
                     ) );
                     ?>
-                    <ul class="tabs" data-tabs id="example-tabs">
-                        <?php if ( $reldesignproducts  ) : ?><li class="tabs-title is-active"><a data-tabs-target="panel1" href="#panel1" aria-selected="true"><?php esc_html_e( 'Color Variations', 'marrakesh' ); ?></a></li><?php endif;  ?>
-                        <?php if ( $relproducts ) : ?><li class="tabs-title"><a data-tabs-target="panel2" href="#panel2"><?php esc_html_e( 'Similar Products', 'marrakesh' ); ?></a></li><?php endif;  ?>
+                    <h3 class="atext-center"><?php esc_html_e( 'Products related', 'marrakesh' ); ?></h3>
+                    <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-tabs id="producttabs">
+                    <?php if ( $relproducts ) : ?><li class="tabs-title is-active"><a href="#similarpanel" aria-selected="true"><?php esc_html_e( 'Similar Products', 'marrakesh' ); ?></a></li><?php endif;  ?>
+                    <?php if ( $reldesignproducts  ) : ?><li class="tabs-title"><a href="#colvarpanel"><?php esc_html_e( 'Color Variations', 'marrakesh' ); ?></a></li><?php endif;  ?>
+                    <?php if ( $upsellproducts  ) : ?><li class="tabs-title"><a href="#upsellpanel"><?php esc_html_e( 'You may also like&hellip;', 'marrakesh' ) ?></a></li><?php endif;  ?>       
                     </ul>
                     
-                    <div class="tabs-content" data-tabs-content="example-tabs">
+                    <div class="tabs-content" data-tabs-content="producttabs">
 
-                    <?php if ( $reldesignproducts ) : ?>
-                        <div class="tabs-panel is-active" id="panel1">
+                        <?php if ( $relproducts ) : ?>
+                            <div class="tabs-panel is-active" id="similarpanel">
+                                <section class="related products">
+                                    <ul class="prodgrid prodgrid--columns-6">
+                                        <?php foreach ( $relproducts as $related_product ) : ?>
+                                            <?php
+                                                $post_object = get_post( $related_product->get_id() );
+                                                setup_postdata( $GLOBALS['post'] =& $post_object );
+                                                wc_get_template_part( 'content', 'product' ); ?>
+                                        <?php endforeach; wp_reset_postdata(); ?>
+                                    </ul>
+                                </section>
+                            </div>
+                        <?php endif;  ?>
 
-                        <section class="related products">
-
-                            <ul class="prodgrid prodgrid--columns-6">
-
-                                <?php foreach ( $reldesignproducts as $related_product ) : ?>
-
-                                    <?php
-                                        $post_object = get_post( $related_product->get_id() );
-
-                                        setup_postdata( $GLOBALS['post'] =& $post_object );
-
-                                        wc_get_template_part( 'content', 'product' ); ?>
-
-                                <?php endforeach; wp_reset_postdata(); ?>
-
-                            </ul>
-
-                        </section>
-                        </div>
-
-                    <?php endif;  ?>
-
-                    <?php if ( $relproducts ) : ?>
-                        <div class="tabs-panel" id="panel2">
-
-                        <section class="related products">
+                        <?php if ( $reldesignproducts ) : ?>
+                            <div class="tabs-panel" id="colvarpanel">
+                                <section class="related products">
+                                    <ul class="prodgrid prodgrid--columns-6">
+                                        <?php foreach ( $reldesignproducts as $related_product ) : ?>
+                                            <?php
+                                                $post_object = get_post( $related_product->get_id() );
+                                                setup_postdata( $GLOBALS['post'] =& $post_object );
+                                                wc_get_template_part( 'content', 'product' );
+                                            ?>
+                                        <?php endforeach; wp_reset_postdata(); ?>
+                                    </ul>
+                                </section>
+                            </div>
+                        <?php endif;  ?>
 
 
-                            <ul class="prodgrid prodgrid--columns-6">
+                        <?php if ( $upsellproducts ) : ?>
+                            <div class="tabs-panel" id="upsellpanel">
+                                <section class="up-sells upsells products">                                
+                                    <ul class="prodgrid prodgrid--columns-6">
+                                        <?php foreach ( $upsellproducts as $upsell ) : ?>
+                                            <?php
+                                                $post_object = get_post( $upsell->get_id() );
+                                                setup_postdata( $GLOBALS['post'] =& $post_object );
+                                                wc_get_template_part( 'content', 'product' );
+                                            ?>
+                                        <?php endforeach;  wp_reset_postdata(); ?>
+                                    </ul>                                
+                                </section>
+                            </div>
+                        <?php endif; ?>
 
-                                <?php foreach ( $relproducts as $related_product ) : ?>
-
-                                    <?php
-                                        $post_object = get_post( $related_product->get_id() );
-
-                                        setup_postdata( $GLOBALS['post'] =& $post_object );
-
-                                        wc_get_template_part( 'content', 'product' ); ?>
-
-                                <?php endforeach; wp_reset_postdata(); ?>
-
-                            </ul>
-
-                        </section>
-                        </div>
-                    <?php endif;  ?>
                     </div>
                     <?php
 

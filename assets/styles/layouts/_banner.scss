@@ -1,0 +1,44 @@
+
+.banner__toprow {
+   background-color: $xlight-gray; 
+   font-weight: $global-weight-bold;
+   border-bottom:1px solid rgba($light-gray,.25);
+   border-top:1px solid rgba($light-gray,.25);
+   
+   //color:$white;
+   padding-top:.2rem;
+   padding-bottom:.2rem;
+   font-size:.875rem;
+   
+   a {
+       color:inherit;
+   }
+
+}
+
+.banner {
+    z-index: 5;
+    position: relative;
+    padding-bottom:1rem;
+    @include breakpoint(medium) {
+        padding-bottom:0;
+    }
+}
+
+.banner__top {
+    border-bottom:1px solid transparent;
+    transition: top .4s ease-in;
+}
+
+.menutoggler {
+    @include hamburger($body-font-color, $primary-color, 26px, 18px, 2px, 4);
+    margin: .875rem 0 0 0;
+    outline: none;
+    
+    .page-has-light-banner & {
+		filter: invert(1) hue-rotate(180deg) contrast(3);
+    }
+    .page-has-light-banner .banner__top.is-stuck & {
+		filter: none;
+    }
+}

@@ -1,3 +1,27 @@
+html {
+    @media screen and (min-width: 110em) {
+        font-size: 105.625%;
+        //font-size: 112.5%;
+    }
+
+    @media screen and (min-width: 128em) {
+        //font-size: 112.5%;
+        font-size: 112.5%;
+    }
+    
+
+}
+
+.grid-container {
+    max-width: 96%;
+    & & {
+            max-width: $global-width;
+    }
+    @media screen and (min-width: 110em) {
+        max-width: $global-width;
+    } 
+}
+
 .ps {
 	@include breakpoint(large) {
 		padding-top: 8vh;

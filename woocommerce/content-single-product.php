@@ -260,7 +260,7 @@ if ( post_password_required() ) {
                         <?php if ( $relproducts ) : ?>
                             <div class="tabs-panel is-active" id="similarpanel">
                                 <section class="related products">
-                                    <ul class="prodgrid prodgrid--columns-6">
+                                    <ul class="prodgrid prodgrid--columns-7">
                                         <?php foreach ( $relproducts as $related_product ) : ?>
                                             <?php
                                                 $post_object = get_post( $related_product->get_id() );
@@ -275,7 +275,7 @@ if ( post_password_required() ) {
                         <?php if ( $reldesignproducts ) : ?>
                             <div class="tabs-panel" id="colvarpanel">
                                 <section class="related products">
-                                    <ul class="prodgrid prodgrid--columns-6">
+                                    <ul class="prodgrid prodgrid--columns-7">
                                         <?php foreach ( $reldesignproducts as $related_product ) : ?>
                                             <?php
                                                 $post_object = get_post( $related_product->get_id() );

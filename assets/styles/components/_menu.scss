@@ -1,13 +1,29 @@
 .menu {
     text-transform: uppercase;
     //font-weight: $global-weight-light;
-    font-variant: small-caps;
+    //font-variant: small-caps;
     text-transform: uppercase;
 }
 
 .menu a {
     color: inherit;
 }
+
+
+.menu.menu--topbar {
+    text-transform: none;
+    li {
+        &:not(:last-child()):after {
+            content:'|';
+        }
+    }
+
+    a {
+        padding:.333em .333em;
+        //font-size:inherit;
+    }
+}
+
 
 
 .menu.vertical {
@@ -34,3 +50,92 @@
         }
     }
 } 
+
+
+.menu.menu--main {
+    position: static;
+    font-size:1.125em;
+    > li {
+      display: inline-block;
+      &:first-child() {
+          > a {
+              padding-left:0;
+          }
+      }
+      &:last-child() {
+        > a {
+            padding-right:0;
+        }
+      }
+      &:hover {
+          ul {
+              display: block;
+          }
+      }
+      > a {
+        padding:.75em .5em 1em;
+        white-space: nowrap;
+        &:hover, &:focus {
+            //text-decoration: underline;
+            text-shadow: 0 0 .125em rgba(#000,.5);
+            color:#000;
+            & + ul {
+            display: block;
+          }
+        
+        }
+      }
+    }
+
+    .active > a, .is-active>a {
+        color:inherit;
+        font-weight: $global-weight-bold;
+    }
+
+
+  }
+
+
+  .menu.menu--main .sub-menu {
+    font-size:.875em;
+    display: none;
+    margin:0;
+    padding:0 2%;
+    @media screen and (min-width: 110em) {
+        padding: 0 calc(50vw - #{$global-width/2});
+    } 
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+    width:100vw;
+    border-top:1px solid $light-gray;
+    border-bottom:1px solid $light-gray;
+    background-color: rgba($white,.92);
+    box-shadow: 0 .125rem .25rem -.125rem rgba(#000,.05);
+
+    > li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      > a {
+        text-transform: none;
+        display: inline-block;
+
+        color:inherit;
+        font-weight: $global-weight-bold;
+        padding: .875em .875em;
+        &:hover, &:focus {
+          background-color: $light-gray;
+        }
+      }
+
+
+    }
+    // .active > a, .is-active>a {
+    //     background-color: $light-gray;
+    // }
+
+
+  }

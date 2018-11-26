@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="ps ps--black ps--narrow">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-right">
-            <div class="cell large-9 xlarge-10">
+            <div class="cell tablet-9 xlarge-10">
                 <header class="woocommerce-products-header">
                     <?php do_action( 'woocommerce_before_page_title' ); ?>
                     <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
@@ -62,7 +62,7 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
-        <div class="cell large-9 xlarge-10 large-order-2">
+        <div class="cell tablet-auto tablet-order-2">
             <div class="ps ps--narrow">
                 <?php
                     if ( woocommerce_product_loop() ) {
@@ -113,7 +113,7 @@ defined( 'ABSPATH' ) || exit;
             </div>
         </div>
         
-        <div class="cell large-3 xlarge-2 large-order-1">
+        <div class="cell tablet-3 xlarge-2 tablet-order-1">
             <div class="ps ps--narrow">
                 <aside class="sidebar sidebar--wcfilters">
                     <?php dynamic_sidebar('sidebar-primary'); ?>

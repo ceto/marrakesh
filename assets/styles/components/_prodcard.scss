@@ -25,13 +25,15 @@
 
 .prodcard__prodimage {
     position: relative;
+    box-shadow: 0 0 3px 0 rgba(#000,.125);
+    border:2px solid #fff;
     img + img {
         position: absolute;
         right:-4%;
         bottom:-4%;
         border:3px solid $body-background;
-        width: 45%;
-        box-shadow: 0 0 5px 0 currentColor;
+        width: 40%;
+        box-shadow: 0 0 5px 0 rgba(#000,.75);
     }
 }
 

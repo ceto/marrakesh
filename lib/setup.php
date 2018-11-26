@@ -29,6 +29,9 @@ function setup() {
   register_nav_menus([
     'primary_navigation' => __('Primary Navigation', 'marrakesh')
   ]);
+  register_nav_menus([
+    'secondary_navigation' => __('Secondary Navigation', 'marrakesh')
+  ]);
 
   // Enable post thumbnails
   // http://codex.wordpress.org/Post_Thumbnails

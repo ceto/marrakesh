@@ -64,6 +64,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="grid-x grid-margin-x">
         <div class="cell tablet-auto tablet-order-2">
             <div class="ps ps--narrow">
+                <a href="#sidebar--wcfilters" class="button expanded small hide-for-tablet">Show Filters</a>
                 <?php
                     if ( woocommerce_product_loop() ) {
 
@@ -115,8 +116,47 @@ defined( 'ABSPATH' ) || exit;
         
         <div class="cell tablet-3 xlarge-2 tablet-order-1">
             <div class="ps ps--narrow">
-                <aside class="sidebar sidebar--wcfilters">
-                    <?php dynamic_sidebar('sidebar-primary'); ?>
+                <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x small-up-2 tablet-up-1">
+                        <?php 
+                            $wargs = array(
+                                'before_widget' => '<section class="cell widget widget--sidebar %1$s">',
+                                'after_widget'  => '</section>',
+                                'before_title'  => '<h3 class="widget__title">',
+                                'after_title'   => '</h3>'
+                            );
+                        ?>
+                        <?php 
+                            	the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => 'Filter by Color',
+                                    'attribute' => 'color',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                                
+                        ?>
+                        <?php 
+                            	the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => 'Filter by Style',
+                                    'attribute' => 'style',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                        ?>
+                        <?php 
+                            	// the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                //     title => 'Active filters'
+                                // ), $wargs );
+                        ?>
+                        <?php 
+                            	// the_widget( 'WC_Widget_Product_Categories', array(
+                                //     title => 'Product categories',
+                                //     dropdown => 1,
+                                //     count => 1,
+                                //     hide_empty => 1,
+                                //     orderby => 'count',
+                                // ), $wargs );
+                        ?>
+                    <?php //dynamic_sidebar('sidebar-primary'); ?>
                     <?php
                         /**
                          * Hook: woocommerce_sidebar.

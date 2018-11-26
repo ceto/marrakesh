@@ -91,12 +91,16 @@ add_filter( 'woocommerce_shortcode_products_query', function( $query_args, $atts
     return $query_args;
 }, 10, 3);
 
-function marrakesh_product_categories_menu() {
+function marrakesh_product_cats_and_filters_menu() {
 	the_widget( 'WC_Widget_Product_Categories', array(
+        title => 'Product categories',
         dropdown => 1,
         count => 1,
         hide_empty => 1,
         orderby => 'count',
     ));
+    the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+        title => 'Active filters'
+    ));
 }
-add_action( 'woocommerce_before_shop_loop', 'marrakesh_product_categories_menu', 15 );
+//add_action( 'woocommerce_before_shop_loop', 'marrakesh_product_cats_and_filters_menu', 15 );

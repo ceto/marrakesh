@@ -76,6 +76,7 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #cc4b37,
 );
+
 $light-gray: #e6e6e6; $xlight-gray: #fafafa;
 $medium-gray: #bababa;//#cacaca;
 $dark-gray: #8a8a8a;
@@ -83,6 +84,14 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
+
+$button-palette: (
+  primary: $body-font-color,
+  secondary: $dark-gray,
+  inverse: $white,
+  accent: #ffae00,
+);
+
 $body-font-family: 'Alegreya Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -285,19 +294,19 @@ $button-font-family: inherit;
 $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
-$button-background: $primary-color;
+$button-background: map-get($button-palette, primary);
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;
 $button-sizes: (
-  tiny: 0.6rem,
-  small: 0.75rem,
-  default: 0.9rem,
+  tiny: 0.666rem,
+  small: 0.875rem,
+  default: 1rem,
   large: 1.25rem,
 );
-$button-palette: $foundation-palette;
+$button-palette: $button-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
@@ -541,7 +550,7 @@ $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
 $pagination-item-background-hover: $light-gray;
-$pagination-item-background-current: $primary-color;
+$pagination-item-background-current: map-get($button-palette, secondary );
 $pagination-item-color-current: $white;
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
@@ -732,7 +741,7 @@ $responsive-embed-ratios: (
 // ----------
 
 $reveal-background: $white;
-$reveal-width: 600px;
+$reveal-width: 768px;
 $reveal-max-width: $global-width;
 $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;

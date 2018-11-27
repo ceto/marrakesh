@@ -48,6 +48,8 @@ defined( 'ABSPATH' ) || exit;
 </div>
 
 
+
+
 <?php
     /**
      * Hook: woocommerce_before_main_content.
@@ -60,95 +62,49 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 
-<div class="grid-container">
+<div class="grid-container ps ps--narrow">
     <div class="grid-x grid-margin-x">
-        <div class="cell tablet-auto tablet-order-2">
-            <div class="ps ps--narrow">
-                <a href="#sidebar--wcfilters" class="button expanded small hide-for-tablet">Show Filters</a>
-                <?php
-                    if ( woocommerce_product_loop() ) {
-
-                        /**
-                         * Hook: woocommerce_before_shop_loop.
-                         *
-                         * @hooked woocommerce_output_all_notices - 10
-                         * @hooked woocommerce_result_count - 20
-                         * @hooked woocommerce_catalog_ordering - 30
-                         */
-                        do_action( 'woocommerce_before_shop_loop' );
-
-                        woocommerce_product_loop_start();
-
-                        if ( wc_get_loop_prop( 'total' ) ) {
-                            while ( have_posts() ) {
-                                the_post();
-
-                                /**
-                                 * Hook: woocommerce_shop_loop.
-                                 *
-                                 * @hooked WC_Structured_Data::generate_product_data() - 10
-                                 */
-                                do_action( 'woocommerce_shop_loop' );
-
-                                wc_get_template_part( 'content', 'product' );
-                            }
-                        }
-
-                        woocommerce_product_loop_end();
-
-                        /**
-                         * Hook: woocommerce_after_shop_loop.
-                         *
-                         * @hooked woocommerce_pagination - 10
-                         */
-                        do_action( 'woocommerce_after_shop_loop' );
-                    } else {
-                        /**
-                         * Hook: woocommerce_no_products_found.
-                         *
-                         * @hooked wc_no_products_found - 10
-                         */
-                        do_action( 'woocommerce_no_products_found' );
-                    }
+        <div class="cell show-for-tablet tablet-3 xlarge-2" data-sticky-container>
+            <div class="prarchive__sidebar" class="sticky" data-margin-top="2" data-sticky data-anchor="prarchive__main">
+                <p><?php woocommerce_result_count() ?></p>
+                <?php 
+                    $wargs = array(
+                        'before_widget' => '<section class="cell widget widget--sidebar %1$s">',
+                        'after_widget'  => '</section>',
+                        'before_title'  => '<h3 class="widget__title">',
+                        'after_title'   => '</h3>'
+                    );
                 ?>
-            </div>
-        </div>
-        
-        <div class="cell tablet-3 xlarge-2 tablet-order-1">
-            <div class="ps ps--narrow">
-                <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x small-up-2 tablet-up-1">
-                        <?php 
-                            $wargs = array(
-                                'before_widget' => '<section class="cell widget widget--sidebar %1$s">',
-                                'after_widget'  => '</section>',
-                                'before_title'  => '<h3 class="widget__title">',
-                                'after_title'   => '</h3>'
-                            );
-                        ?>
-                        <?php 
-                            	the_widget( 'WC_Widget_Layered_Nav', array(
+                <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
+
+                        <?php
+                            if (!is_tax('pa_color')) { 
+                                the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => 'Filter by Color',
                                     'attribute' => 'color',
                                     'query_type' => 'or',
 
                                 ), $wargs );
+                            }
                                 
                         ?>
-                        <?php 
-                            	the_widget( 'WC_Widget_Layered_Nav', array(
+                        <?php   
+                            if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => 'Filter by Style',
                                     'attribute' => 'style',
                                     'query_type' => 'or',
 
                                 ), $wargs );
+                            }
                         ?>
                         <?php 
-                            	// the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                // the_widget( 'WC_Widget_Layered_Nav_Filters', array(
                                 //     title => 'Active filters'
                                 // ), $wargs );
                         ?>
                         <?php 
-                            	// the_widget( 'WC_Widget_Product_Categories', array(
+                                // the_widget( 'WC_Widget_Product_Categories', array(
                                 //     title => 'Product categories',
                                 //     dropdown => 1,
                                 //     count => 1,
@@ -166,12 +122,58 @@ defined( 'ABSPATH' ) || exit;
                         do_action( 'woocommerce_sidebar' );
                     ?>
                 </aside>
-                
             </div>
+        </div>
+        <div id="prarchive__main" class="prarchive__main cell tablet-9 xlarge-10">
+            <?php
+                if ( woocommerce_product_loop() ) {
+
+                    /**
+                     * Hook: woocommerce_before_shop_loop.
+                     *
+                     * @hooked woocommerce_output_all_notices - 10
+                     * @hooked woocommerce_result_count - 20
+                     * @hooked woocommerce_catalog_ordering - 30
+                     */
+                    do_action( 'woocommerce_before_shop_loop' );
+
+                    woocommerce_product_loop_start();
+
+                    if ( wc_get_loop_prop( 'total' ) ) {
+                        while ( have_posts() ) {
+                            the_post();
+
+                            /**
+                             * Hook: woocommerce_shop_loop.
+                             *
+                             * @hooked WC_Structured_Data::generate_product_data() - 10
+                             */
+                            do_action( 'woocommerce_shop_loop' );
+
+                            wc_get_template_part( 'content', 'product' );
+                        }
+                    }
+
+                    woocommerce_product_loop_end();
+
+                    /**
+                     * Hook: woocommerce_after_shop_loop.
+                     *
+                     * @hooked woocommerce_pagination - 10
+                     */
+                    do_action( 'woocommerce_after_shop_loop' );
+                } else {
+                    /**
+                     * Hook: woocommerce_no_products_found.
+                     *
+                     * @hooked wc_no_products_found - 10
+                     */
+                    do_action( 'woocommerce_no_products_found' );
+                }
+            ?>
         </div>
     </div>
 </div>
-
 <?php
     /**
      * Hook: woocommerce_after_main_content.
@@ -181,5 +183,40 @@ defined( 'ABSPATH' ) || exit;
     do_action( 'woocommerce_after_main_content' );
 ?>
 
+
+<div data-sticky-container class="hide-for-tablet">
+    <div class="sticky sticky--toggler" data-sticky data-anchor="prarchive__main" data-sticky-on="small" data-stick-to="bottom" data-margin-bottom="0">
+        <div class="grid-container">
+                <button class="filtertoggler button small expanded hollow" data-toggle="prarchive__filtermodal"><?php woocommerce_result_count() ?></button>     
+        </div>
+    </div>
+</div>
+<div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal>
+    <div class="grid-container">
+        <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 align-center">
+        <?php
+                if (!is_tax('pa_color')) { 
+                    the_widget( 'WC_Widget_Layered_Nav', array(
+                        'title' => 'Filter by Color',
+                        'attribute' => 'color',
+                        'query_type' => 'or',
+
+                    ), $wargs );
+                }
+                    
+            ?>
+            <?php   
+                if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                    the_widget( 'WC_Widget_Layered_Nav', array(
+                        'title' => 'Filter by Style',
+                        'attribute' => 'style',
+                        'query_type' => 'or',
+
+                    ), $wargs );
+                }
+            ?>
+        </aside>
+    </div>
+</div>
 <?php
 //get_footer( 'shop' );

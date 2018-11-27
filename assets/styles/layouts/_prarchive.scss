@@ -1,0 +1,37 @@
+.prarchive__sidebar {
+}
+
+.sidebar--wcfilters {
+
+}
+
+.prarchive__main {
+    
+}
+.sticky--toggler {
+    background-color: $body-background;
+    padding-top:.75rem;
+    padding-bottom:.75rem;
+    border-top:1px  solid $xlight-gray;
+    box-shadow: 0 0 .666rem 0 rgba(#000,.25);
+    display:none;
+    &.is-stuck {
+        display:block;
+        z-index: #{$reveal-zindex+2};
+    }
+}
+.filtertoggler {
+    margin:0;
+    outline: none;
+}
+
+.prarchive__filtermodal {
+    padding: 2rem 0 4rem;
+    background-color: rgba(#fff,.95);
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    max-width: none;
+    top:0 !important;
+    border:none;
+}

@@ -28,7 +28,8 @@ if ( $total <= 1 ) {
 	return;
 }
 ?>
-<nav class="woocommerce-pagination" aria-label="Pagination">
+
+<nav class="ps ps--narrow woocommerce-pagination" aria-label="Pagination">
 	<?php
 		$pages = paginate_links( apply_filters( 'woocommerce_pagination_args', array( // WPCS: XSS ok.
 			'base'         => $base,

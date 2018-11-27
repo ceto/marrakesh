@@ -1,0 +1,19 @@
+.sitefooter {
+    background-color: $xlight-gray;
+    border-top: 1px solid $light-gray;
+}
+
+.sitefooter__top {
+    padding-top:calc(4vh + 2rem);
+    padding-bottom:calc(4vh + 2rem);
+}
+
+.sitefooter__bottom {
+    border-top: 1px solid $light-gray;
+    //background-color: $light-gray;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    p {
+        margin:0;
+    }
+}

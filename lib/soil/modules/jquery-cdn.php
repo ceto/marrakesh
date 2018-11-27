@@ -20,7 +20,7 @@ function register_jquery() {
     'https://code.jquery.com/jquery-' . $jquery_version . '.min.js',
     [],
     null,
-    true
+    false
   );
 
   add_filter('wp_resource_hints', function ($urls, $relation_type) {

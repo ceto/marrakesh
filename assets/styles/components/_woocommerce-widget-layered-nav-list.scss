@@ -34,9 +34,11 @@
        
         padding: .5em 0;
         color:inherit;
-        font-variant: small-caps;
-        text-transform: uppercase;
+        //font-variant: small-caps;
+        //text-transform: uppercase;
+        font-weight: $global-weight-bold;
         font-size:.875rem;
+        //color:$dark-gray;
         &:before {
             position: absolute;
             display: block;

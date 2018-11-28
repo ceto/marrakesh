@@ -6,9 +6,14 @@
    border-top:1px solid rgba($light-gray,.25);
    
    //color:$white;
-   padding-top:.2rem;
-   padding-bottom:.2rem;
-   font-size:.875rem;
+   padding-top:.125rem;
+   padding-bottom:.125rem;
+   font-size:.75rem;
+   @include breakpoint(large) {
+        font-size:.875rem;
+        padding-top:.2rem;
+        padding-bottom:.2rem;
+   }
    
    a {
        color:inherit;
@@ -32,13 +37,6 @@
 
 .menutoggler {
     @include hamburger($body-font-color, $primary-color, 26px, 18px, 2px, 4);
-    margin: .875rem 0 0 0;
+    margin: 1.125rem 0 0 0;
     outline: none;
-    
-    .page-has-light-banner & {
-		filter: invert(1) hue-rotate(180deg) contrast(3);
-    }
-    .page-has-light-banner .banner__top.is-stuck & {
-		filter: none;
-    }
 }

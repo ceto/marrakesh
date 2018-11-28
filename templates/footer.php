@@ -1,53 +1,61 @@
 <footer class="sitefooter">
     <div class="sitefooter__top">
         <div class="grid-container">
-            <div class="grid-x grid-margin-x small-up-2 large-up-4">
-                <div class="cell">
-                    <?php 
-                        the_widget( 'WC_Widget_Product_Categories', array(
-                            title => 'Products',
-                            dropdown => 0,
-                            count => 1,
-                            hide_empty => 1,
-                            orderby => 'count',
-                        ), array(
-                            'before_widget' => '<section class="widget widget--footer %1$s">',
-                            'after_widget'  => '</section>',
-                            'before_title'  => '<h3 class="widget__title">',
-                            'after_title'   => '</h3>'
-                        ));
-                    ?>
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-auto medium-6 large-3">
+                    <section class="widget">
+                        <h3 class="widget__title">Products</h3>
+                        <ul class="menu vertical">   
+                        <?php 
+                        	$the_prcats = get_terms( array(
+                                'taxonomy' => 'product_cat',
+                                'hide_empty' => true,
+                            ) );
+                            if ( !empty( $the_prcats ) && !is_wp_error( $the_prcats ) ){
+                                foreach ( $the_prcats as $design ) {
+                                    $archive_link = get_term_link( $design, 'pa_design' );
+                                    echo $full_line = '<li><a href="' . $archive_link . '">'. $design->name . '<span class="count">'.$design->count.'</span></a></li>';
+                                }
+                            }
+                            
+                        ?>
+                        </ul>
+                    </section>
                     
                 </div>
-                <div class="cell">
+                <div class="cell small-auto medium-6 large-3">
                   <section class="widget">
                         <h3 class="widget__title">Help & Info</h3>
                         <?php
                             if (has_nav_menu('secondary_navigation')) :
                             wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
                             endif;
-                            if (has_nav_menu('secondary_navigation')) :
-                                wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
-                                endif;
                         ?>
                     </section>
-                </div>
-                <div class="cell" >
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title">Contact</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum inventore nostrum harum vel aliquam.</p>
-                        <?php
-                            if (has_nav_menu('secondary_navigation')) :
-                                wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
-                                endif;
-                        ?>
                         
                     </section>
                 </div>
-                <div class="cell" >
-                    <section class="widget %1$s %2$s">
-                        <h3 class="widget__title">Lorem ipsum dolor sit amet</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum inventore nostrum harum vel aliquam, et numquam repellat excepturi, accusamus possimus dignissimos illum error eaque ipsam, assumenda enim ipsa repellendus.</p>
+                <div class="cell auto" >
+                    <section class="widget">
+                        <h3 class="widget__title">Tile Templates</h3>
+                        <ul class="menu menu--designlist">   
+                        <?php 
+                        	$the_designs = get_terms( array(
+                                'taxonomy' => 'pa_design',
+                                'hide_empty' => true,
+                            ) );
+                            if ( !empty( $the_designs ) && !is_wp_error( $the_designs ) ){
+                                foreach ( $the_designs as $design ) {
+                                    $archive_link = get_term_link( $design, 'pa_design' );
+                                    echo $full_line = '<li><a href="' . $archive_link . '">'. $design->name . '<span class="count">'.$design->count.'</span></a></li>';
+                                }
+                            }
+                            
+                        ?>
+                        </ul>
                     </section>
                 </div>
                 <?php dynamic_sidebar('sidebar-footer'); ?>   

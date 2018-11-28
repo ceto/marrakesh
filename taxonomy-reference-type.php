@@ -50,7 +50,7 @@
             <section id="referencegrid" class="referencegrid" itemscope itemtype="http://schema.org/ImageGallery">
                 <?php $piter=0; ?>
                 <?php while (have_posts()) : the_post(); ?>
-                    <div <?php projfilter_class('referencegrid__item'); ?>><?php get_template_part('templates/referencecard'); ?></div>
+                    <div <?php reffilter_class('referencegrid__item'); ?>><?php get_template_part('templates/referencecard'); ?></div>
                 <?php endwhile; ?>   
             </section>
             <!-- <nav id="referencegrid__next" class="masonrynext ps text-center">

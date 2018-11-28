@@ -191,7 +191,7 @@ defined( 'ABSPATH' ) || exit;
         </div>
     </div>
 </div>
-<div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal>
+<div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
     <div class="grid-container">
         <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 align-center">
         <?php
@@ -216,6 +216,9 @@ defined( 'ABSPATH' ) || exit;
                 }
             ?>
         </aside>
+        <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </div>
 <?php

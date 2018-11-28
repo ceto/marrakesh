@@ -40,12 +40,12 @@ $pages = paginate_links( array(
 }
     
 
-function projfilter_class( $class = '', $post_id = null ) {
-    echo 'class="' . join( ' ', get_projfilter_class( $class, $post_id ) ) . '"';
+function reffilter_class( $class = '', $post_id = null ) {
+    echo 'class="' . join( ' ', get_reffilter_class( $class, $post_id ) ) . '"';
 }
 
 
-function get_projfilter_class( $class = '', $post_id = null ) {
+function get_reffilter_class( $class = '', $post_id = null ) {
 	$post = get_post( $post_id );
 
 	$classes = array();

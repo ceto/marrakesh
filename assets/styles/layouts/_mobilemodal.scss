@@ -1,0 +1,72 @@
+.html.is-reveal-open, html.is-reveal-open body {
+    width:100%;
+}
+.mobilemodal {
+    padding: 0;
+    //position: relative;
+    //background-color: $primary-color;
+    //background-image: linear-gradient(135deg, $primary-color 50%, $secondary-color);
+    //color:$white;
+    z-index: $reveal-zindex + 3;
+    text-align: center;
+    height: 100%;
+    min-height: auto;
+    overflow: hidden;
+
+    p {
+        font-size: .875rem;
+    }
+
+
+
+    @include breakpoint(medium) {
+        width:auto;
+        max-width: none;
+    }
+
+}
+.mobilemodal__inner {
+    padding:calc(2rem + 4vh) 1rem 8rem;
+    position: absolute;
+    left:0; top:0;
+    right:0; bottom:0;
+    overflow: scroll;
+}
+.mobilemodal__brand {
+    display: block;
+    max-width:rem-calc(360);
+    margin:0 auto calc(1rem + 3vh);
+}
+.mobilemodal__mainnav {
+    margin: 0 0 1rem;
+}
+
+.mobilemodal__secondarynav {
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    margin: 0 0;
+    padding:1rem 1rem;
+    border-top:1px solid $xlight-gray;
+    background-color: $white;
+
+}
+
+.mobilemodal__close {
+    margin-top:1rem;
+    font-size: 2.25rem;
+    color: #fff;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    width:1em;
+    height:1em;
+    line-height: .5;
+    position: absolute;
+    top:-5rem;
+    left:50%;
+    transform: translateX(-50%);
+    background-color: rgba(#000,.25);
+    box-shadow: 0 0 .875rem 0 rgba(#000,.25);
+}
+

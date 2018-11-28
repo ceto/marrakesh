@@ -17,7 +17,7 @@
     display:none;
     &.is-stuck {
         display:block;
-        z-index: #{$reveal-zindex+2};
+        //z-index: #{$reveal-zindex+2};
     }
 }
 .filtertoggler {
@@ -34,4 +34,21 @@
     max-width: none;
     top:0 !important;
     border:none;
+}
+
+.filtermodal__close {
+    margin-top:1rem;
+    font-size: 2.25rem;
+    color: #fff;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    width:1em;
+    height:1em;
+    line-height: .5;
+    position: absolute;
+    bottom:2rem;
+    left:50%;
+    transform: translateX(-50%);
+    background-color: rgba(#000,.25);
+    box-shadow: 0 0 .875rem 0 rgba(#000,.25);
 }

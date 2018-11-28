@@ -97,14 +97,15 @@
     text-transform: uppercase;
 }
 .referencecard__title {
-	@include breakpoint(tablet) {
-        font-size: rem-calc(15);
-	}
+
 
 	font-size: .875rem;
     line-height: 1.125;
 
 	margin: 0 0 .0875em;
+	@include breakpoint(tablet) {
+        font-size: rem-calc(15);
+	}
 	a {
 		color: inherit;
 

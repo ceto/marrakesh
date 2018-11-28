@@ -6,15 +6,18 @@
     @include xy-grid-layout(2, '.referencegrid__item', true, map-get( $grid-margin-gutters, small));
     
     @include breakpoint(medium) {
-        @include xy-grid-layout(2, '.referencegrid__item', true, map-get( $grid-margin-gutters, medium ));
+        @include xy-grid-layout(2, '.referencegrid__item', true, map-get( $grid-margin-gutters, small ));
     }
 
-    @include breakpoint(large) {
-        @include xy-grid-layout(3, '.referencegrid__item', true, map-get( $grid-margin-gutters, medium ));
+    @include breakpoint(tablet) {
+        @include xy-grid-layout(3, '.referencegrid__item', true, map-get( $grid-margin-gutters, small ));
     }
 
-    @include breakpoint(xxlarge) {
+    @include breakpoint(xlarge) {
         @include xy-grid-layout(4, '.referencegrid__item', true, map-get( $grid-margin-gutters, medium ));
+    }
+    @include breakpoint(xxlarge) {
+        @include xy-grid-layout(5, '.referencegrid__item', true, map-get( $grid-margin-gutters, medium ));
     }
 
     margin-bottom: 2rem;
@@ -22,7 +25,8 @@
 }
 
 
-.portiwrap {
+.refiwrap {
     min-height: 100vh;
-    //padding-top: 5vh;   
+    //padding-top: 5vh;
+    margin-bottom:4rem;   
 }

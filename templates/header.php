@@ -1,5 +1,5 @@
 <header class="banner">
-    <div class="banner__toprow show-for-tablet">
+    <div class="banner__toprow">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="shrink cell">
@@ -8,7 +8,7 @@
                         <li class="menu-item"><a href="mailto:info@marrakesh.hu">info@marrakesh.hu</a></li>
                     </ul>
                 </div>
-                <div class="auto cell">
+                <div class="auto cell show-for-tablet">
 
                 <?php
                     if (has_nav_menu('secondary_navigation')) :
@@ -37,7 +37,7 @@
                 ?>
                 </nav>
             </div>
-            <div class="shrink cell hide-for-medium">
+            <div class="shrink cell hide-for-tablet">
                 <button class="menutoggler" type="button" data-toggle="mobilemodal"></button>
             </div>
         </div>

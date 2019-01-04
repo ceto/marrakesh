@@ -20,6 +20,29 @@ defined( 'ABSPATH' ) || exit;
 //get_header( 'shop' );
 ?>
 
+<?php 
+    if ( is_shop()) {
+        $theterm = get_term_by('id', 39, 'product_cat' );
+        $ctax = get_taxonomy($theterm->taxonomy);
+        $theterm->name = 'All Products';
+        $ctaxname = 'All Products';
+        $reltaxes = get_terms( array(
+            'taxonomy' => $ctax->name,
+        ) );
+
+    } else {
+        $theterm = get_queried_object();
+        $ctax = get_taxonomy($theterm->taxonomy);
+        $ctaxname = $ctax->labels->singular_name;
+        $reltaxes = get_terms( array(
+            'taxonomy' => $ctax->name,
+            'exclude' => array($theterm->term_id)
+        ) );
+    }
+    //var_dump($theterm);
+
+    
+?>
 
 
 <div class="ps ps--black ps--narrow">
@@ -27,9 +50,34 @@ defined( 'ABSPATH' ) || exit;
         <div class="grid-x grid-margin-x align-right">
             <div class="cell tablet-9 xlarge-10">
                 <header class="woocommerce-products-header">
-                    <?php do_action( 'woocommerce_before_page_title' ); ?>
+                    <?php //do_action( 'woocommerce_before_page_title' ); ?>
                     <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-                        <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+
+                        <select class="taxchooser" name="taxchooser" id="taxchooser" onChange="window.location.href=this.value;">
+                                <option value="<?= get_term_link( $theterm->term_id) ?>"><?= $theterm->name ?></option>
+                                <?php foreach( $reltaxes as $reltax ): ?>
+                                <option value="<?= get_term_link( $reltax->term_id) ?>"><?= $reltax->name ?></option>
+                                <?php endforeach; ?>
+                                <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Show All</option>
+                        </select>
+
+                        <h1 class="woocommerce-products-header__title page-title">
+                            <small class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</small>
+                            <?php woocommerce_page_title(); ?>
+                        </h1>
+                        <?php 
+                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                        title => 'Active filters'
+                                    ),
+                                    array(
+                                        'before_widget' => '<section class="hide-for-tablet woocommerce-products-header__filters %1$s">',
+                                        'after_widget'  => '</section>',
+                                        'before_title'  => '<h3>',
+                                        'after_title'   => '</h3>'
+                                    )
+                                );
+                        ?>
+                        <p class="woocommerce-products-header__count"><?php woocommerce_result_count() ?></p>
                     <?php endif; ?>
 
                     <?php
@@ -66,7 +114,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="grid-x grid-margin-x">
         <div class="cell show-for-tablet tablet-3 xlarge-2" data-sticky-container>
             <div class="prarchive__sidebar" class="sticky" data-margin-top="2" data-sticky data-anchor="prarchive__main">
-                <p><?php woocommerce_result_count() ?></p>
+                <!-- <p><?php woocommerce_result_count() ?></p> -->
                 <?php 
                     $wargs = array(
                         'before_widget' => '<section class="cell widget widget--sidebar %1$s">',
@@ -76,6 +124,11 @@ defined( 'ABSPATH' ) || exit;
                     );
                 ?>
                 <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
+                        <?php 
+                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                    title => 'Active filters'
+                                ), $wargs );
+                        ?>
 
                         <?php
                             if (!is_tax('pa_color')) { 
@@ -98,11 +151,7 @@ defined( 'ABSPATH' ) || exit;
                                 ), $wargs );
                             }
                         ?>
-                        <?php 
-                                // the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                //     title => 'Active filters'
-                                // ), $wargs );
-                        ?>
+
                         <?php 
                                 // the_widget( 'WC_Widget_Product_Categories', array(
                                 //     title => 'Product categories',
@@ -187,7 +236,7 @@ defined( 'ABSPATH' ) || exit;
 <div data-sticky-container class="hide-for-tablet">
     <div class="sticky sticky--toggler" data-sticky data-anchor="prarchive__main" data-sticky-on="small" data-stick-to="bottom" data-margin-bottom="0">
         <div class="grid-container">
-                <button class="filtertoggler button small expanded hollow" data-toggle="prarchive__filtermodal"><?php woocommerce_result_count() ?></button>     
+                <button class="filtertoggler button small expanded hollow" data-toggle="prarchive__filtermodal"><?php _e('Color and style filters&hellip;','marrakesh'); //woocommerce_result_count() ?></button>     
         </div>
     </div>
 </div>

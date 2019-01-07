@@ -142,10 +142,15 @@
     }
 }
 
+
 .singleproduct__details {
 
 }
 
+
+.singleproduct__shortdesc {
+    
+}
 
 .singleproduct__attributes {
     @include clearfix();
@@ -197,7 +202,31 @@
     }
 }
 
-
+.singleproduct__catattributes {
+    @extend .singleproduct__attributes;
+    font-size:1rem;
+    padding-top:1.5em;
+    dt {
+        clear:left;
+        display: inline-block;
+        float:left;
+        margin-right: .25em;
+        min-width: 9em;
+    }
+    dd {
+        display: inline-block;
+        float:left;
+    }
+    dd + dt {
+        &:before {
+            //content: ' · ';
+            //content: ' ● ';
+            content: '';
+            //color:$medium-gray;
+            //font-weight: $global-weight-bold;
+        }
+    }
+}
 .tabs--singleproduct {
     //text-align: center;
     font-variant: small-caps;

@@ -45,7 +45,15 @@ if ( post_password_required() ) {
                     <div class="cell">
                         <header class="summary entry-summary singleproduct__header">
                 
-                            <?php do_action( 'woocommerce_before_single_product_summary' ); ?>
+                            <?php
+                                /**
+                                 * Hook: woocommerce_before_single_product_summary.
+                                 *
+                                 * @hooked woocommerce_show_product_sale_flash - 10
+                                 * @hooked woocommerce_show_product_images - 20
+                                 */
+                                do_action( 'woocommerce_before_single_product_summary' );
+                            ?>
 
                             <figure class="singleproduct__prodthumb">
                                 <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
@@ -118,30 +126,38 @@ if ( post_password_required() ) {
     <div class="ps ps--bordered ps--narrow">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
-                <div class="cell tablet-6 ">
-                    <div class="grid-x grid-margin-x grid-margin-y small-up-4 medium-up-8">
+                <div class="cell">
+                    <div class="psgallery grid-x grid-margin-x grid-margin-y small-up-4 medium-up-6 tablet-up-8 xlarge-up-12">
+                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg',false,false),'full'); echo $targimg[0];?>" data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), $gallery_thumbnail ); ?>
+                            </a>
+                        </figure>
+                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id(),'full'); echo $targimg[0];?>" data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo woocommerce_get_product_thumbnail($gallery_thumbnail); ?>
+                            </a>
+                        </figure>
+                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg',false,false),'full'); echo $targimg[0];?>" data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo wp_get_attachment_image( get_field('wallimg',false,false), $gallery_thumbnail ); ?>
+                            </a>
+                        </figure>
+                        <?php
+                            $attachment_ids = $product->get_gallery_image_ids();
+                            $gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
 
-                                <div class="cell"><img src="http://placehold.it/480/320/2fc3bbe" alt=""></div>
-                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
-                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
-                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
-                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
-                                <div class="cell"><?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?></div>
-                                <div class="cell"><?php echo woocommerce_get_product_thumbnail('medium_large'); ?></div>
-                                <div class="cell"><?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?></div>
-
-                                <!-- <div class="cell"><img src="http://placehold.it/480/320/aec34be" alt=""></div> -->
-                    </div>
-                </div>
-                <div class="cell tablet-6 ">
-                    <div class="grid-x grid-margin-x grid-margin-y small-up-4 medium-up-8">
-
-                                <div class="cell"><img src="http://placehold.it/480/320/2fc3bbe" alt=""></div>
-                                <div class="cell"><img src="http://placehold.it/480/320/2fc34be" alt=""></div>
-                                <div class="cell"><?php echo woocommerce_get_product_thumbnail('medium_large'); ?></div>
-                                <div class="cell"><?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?></div>
-
-                                <!-- <div class="cell"><img src="http://placehold.it/480/320/aec34be" alt=""></div> -->
+                            if ( $attachment_ids && $product->get_image_id() ) {
+                                foreach ( $attachment_ids as $attachment_id ) : ?>
+                                    <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>" data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                            <?php echo wp_get_attachment_image( $attachment_id, $gallery_thumbnail ); ?>
+                                        </a>
+                                    </figure>
+                                <?php endforeach;
+                            }
+                            
+                        ?>
                     </div>
                 </div>
             </div>
@@ -150,16 +166,30 @@ if ( post_password_required() ) {
     </div>
     <div class="ps ps--bordered">
         <div class="grid-container">
-            <div class="grid-x grid-margin-x">
+            <div class="grid-x grid-margin-x align-justify">
 
                 <div class="cell tablet-6">
                     <div class="singleproduct__details">
-                            <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
-                        <h3><?php the_title(); _e(' - Product details', 'marrakesh');?></h3>
+                        <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
+                        <h3><?php _e('Product details', 'marrakesh');?></h3>
                         <div class="singleproduct__shortdesc woocommerce-product-details__short-description">
                             <?php echo $short_description; // WPCS: XSS ok. ?>
                         </div>
                         <?php endif; ?>
+                        <?php the_content(); ?>
+                        <?php 
+                                $catids = $product->get_category_ids();
+                                $catatts = array();
+                                foreach ($catids as $categoryid) {
+                                    $cat=get_term_by('id', $categoryid, 'product_cat' );
+                                    $catatts = array_merge($catatts, get_field('attributes', 'product_cat_' . $categoryid));
+                                    //print_r(get_field('attributes', 'product_cat_' . $categoryid));
+                                    //echo '<h4>'.$cat->name.'</h4>';
+                                    echo term_description( $categoryid, 'product_cat' );
+                                }
+                            ?>
+
+                        
                         <div class="singleproduct__meta meta">
                                     <?php do_action( 'woocommerce_product_meta_start' ); ?>
                                     <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
@@ -169,18 +199,45 @@ if ( post_password_required() ) {
                                     <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
                                     <?php do_action( 'woocommerce_product_meta_end' ); ?>
                         </div>                    
-                        <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                        <?php
+                            /**
+                            * Hook: woocommerce_single_product_summary.
+                            *
+                            * @hooked woocommerce_template_single_title - 5
+                            * @hooked woocommerce_template_single_rating - 10
+                            * @hooked woocommerce_template_single_price - 10
+                            * @hooked woocommerce_template_single_excerpt - 20
+                            * @hooked woocommerce_template_single_add_to_cart - 30
+                            * @hooked woocommerce_template_single_meta - 40
+                            * @hooked woocommerce_template_single_sharing - 50
+                            * @hooked WC_Structured_Data::generate_product_data() - 60
+                            */
+                            do_action( 'woocommerce_single_product_summary' );
+                        ?>
                     </div>
                 </div>
 
-                <div class="cell tablet-6">
+
+                <div class="cell tablet-6 large-3">
+                <h3><?php _e('Technical information', 'marrakesh');?></h3>
                     <!-- <figure class="singleproduct__prodimage">
-                        <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
-                        <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
-                    </figure> -->
-                    <h3><?php _e('Technical information', 'marrakesh');?></h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore facilis, molestias odio dolor cumque, nisi quis reiciendis recusandae quod tempora, tenetur voluptatem corporis atque similique accusantium odit eum iste ipsum?</p>
+                    <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
+                            <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                        </figure> -->
+                       
+
+                        <dl class="singleproduct__catattributes">
+                            <?php 
+                            //var_dump($catatts);
+                            foreach ($catatts as $pairs) : ?>
+                                <dt><?= $pairs['label'] ?></dt>
+                                <dd><?= $pairs['value']?></dd>  
+                            <?php endforeach; ?>
+                        </dl>
+                
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -307,17 +364,15 @@ if ( post_password_required() ) {
 
                     </div>
                     <?php
-
-                    // woocommerce_related_products( 
-                    //     array( 
-                    //         'posts_per_page' => 12,
-                    //         'columns' => 5,
-                    //         'orderby'=> 'rand',
-                    //     )
-                    // );
-
-                    do_action( 'woocommerce_after_single_product_summary' );
-                ?>
+                        /**
+                         * Hook: woocommerce_after_single_product_summary.
+                         *
+                         * @hooked woocommerce_output_product_data_tabs - 10
+                         * @hooked woocommerce_upsell_display - 15
+                         * @hooked woocommerce_output_related_products - 20
+                         */
+                        do_action( 'woocommerce_after_single_product_summary' );
+                    ?>
             </div>
         </div>
     </div>
@@ -326,3 +381,4 @@ if ( post_password_required() ) {
 </div>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
+<?php get_template_part('templates/photoswipedom');

@@ -112,3 +112,67 @@ function marrakesh_modify_num_references($query) {
     }
 }
 add_action('pre_get_posts', 'marrakesh_modify_num_references');
+
+
+
+
+
+
+
+	/**
+	 * Widget rating filter class.
+	 */
+	class WC_Widget_Status_Filter extends WC_Widget {
+		/**
+		 * Constructor.
+		 */
+		public function __construct() {
+			$this->widget_cssclass    = 'woocommerce widget_status_filter';
+			$this->widget_description = __( 'Display a list of additional options to filter products in your store.', 'woocommerce' );
+			$this->widget_id          = 'woocommerce_status_filter';
+			$this->widget_name        = __( 'Filter Products by Status', 'woocommerce' );
+			$this->settings           = array(
+				'title' => array(
+					'type'  => 'text',
+					'std'   => __( 'Show', 'woocommerce' ),
+					'label' => __( 'Title', 'woocommerce' ),
+				),
+			);
+			parent::__construct();
+		}
+
+		/**
+		 * Output widget.
+		 *
+		 * @see WP_Widget
+		 * @param array $args     Arguments.
+		 * @param array $instance Widget instance.
+		 */
+		public function widget( $args, $instance ) {
+			if ( ! is_shop() && ! is_product_taxonomy() ) {
+				return;
+			}
+
+			$availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+      //print_r($availability_filter);
+			$this->widget_start( $args, $instance );
+
+			echo '<ul class="woocommerce-widget-layered-nav-list">';
+
+			$class       = $availability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
+			$link        = apply_filters( 'woocommerce_availability_filter_link', ! $availability_filter ? add_query_arg( 'filter_availability', 'in_stock' ) : remove_query_arg( 'filter_availability' ) );
+			$rating_html = 'Hide out of stock items';
+			$count_html  = ''; ////////// ADD COUNT LATER
+
+			printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
+
+			echo '</ul>';
+
+			$this->widget_end( $args );
+		}
+	} // end class WC_Widget_Status_Filter extends WC_Widget
+
+
+  add_action( 'widgets_init', function(){
+    register_widget( 'WC_Widget_Status_Filter' );
+  });

@@ -105,5 +105,15 @@ add_action( 'pre_get_posts', function ( $query ) {
     if (   !is_admin() && $query->is_main_query() && is_woocommerce() && ($query->is_post_type_archive('product') || $query->is_tax()) ) {
         $query->set( 'meta_key', '_stock' );
         $query->set( 'orderby',  array('meta_value_num' => 'DESC', 'menu_order' => 'ASC') );
+
+        $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        if ($availability_filter === 'in_stock') {
+          $query->set('meta_query', array(
+            'key' => '_stock_status',
+            'value' => 'instock',
+            'compare' => '=',
+          ));
+        }
     }
 }, PHP_INT_MAX );
+

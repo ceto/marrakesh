@@ -124,9 +124,15 @@ defined( 'ABSPATH' ) || exit;
                     );
                 ?>
                 <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
+                        <?php   
+                                the_widget( 'WC_Widget_Status_Filter', array(
+                                    'title' => ''
+
+                                ), $wargs );
+                        ?>
                         <?php 
                                 the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                    title => 'Active filters'
+                                    'title' => 'Active filters'
                                 ), $wargs );
                         ?>
 
@@ -243,7 +249,10 @@ defined( 'ABSPATH' ) || exit;
 <div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
     <div class="grid-container">
         <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 align-center">
-        <?php
+            <?php
+              the_widget('WC_Widget_Status_Filter');
+            ?>
+            <?php
                 if (!is_tax('pa_color')) { 
                     the_widget( 'WC_Widget_Layered_Nav', array(
                         'title' => 'Filter by Color',

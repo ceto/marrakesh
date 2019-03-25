@@ -1,5 +1,6 @@
 .sitefooter {
-    background-color: $xlight-gray;
+    background-color: $body-font-color;
+    color:$white;
     border-top: 1px solid $light-gray;
 }
 
@@ -9,8 +10,9 @@
 }
 
 .sitefooter__bottom {
-    border-top: 1px solid $light-gray;
-    //background-color: $light-gray;
+    border-top: 1px solid $xlight-gray;
+    background-color: $body-background;
+    color:$body-font-color;
     padding-top:1rem;
     padding-bottom:1rem;
     p {

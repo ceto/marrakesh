@@ -117,3 +117,8 @@ add_action( 'pre_get_posts', function ( $query ) {
     }
 }, PHP_INT_MAX );
 
+
+
+add_filter( 'woocommerce_before_widget_product_list', function(){
+    return '<ul class="prodswipe">';
+});

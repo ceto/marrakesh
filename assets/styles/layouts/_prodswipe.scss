@@ -1,0 +1,38 @@
+.prodswipe {
+    list-style: none;
+    margin:0;
+    padding:1rem 0 1rem 2%;
+    //max-width: 110em;
+    //max-width: calc(#{$global-width} + 2%);
+    //margin: 0 auto;
+    //padding-left:calc(2% + .9375rem);
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media screen and (min-width: 110em) {
+        padding-left:calc(50vw - #{$global-width/2} );
+    }
+}
+.prodswipe__item {
+    flex: 0 0 auto;
+    margin-left: .625rem;
+    margin-right: map-get( $grid-margin-gutters, small );
+    width: 12rem;
+    @include breakpoint(medium) {
+        margin-left: .9375rem;
+        //margin-left: map-get( $grid-margin-gutters, medium );
+        margin-right: map-get( $grid-margin-gutters, medium );
+    }
+    @media screen and (min-width: 110em) {
+        margin-left: .4688rem;
+        margin-right: map-get( $grid-margin-gutters, medium );
+    }
+}

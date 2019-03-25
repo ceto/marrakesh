@@ -127,62 +127,56 @@ if ( post_password_required() ) {
             </div>
         </div>
     </div>
-    <div class="ps ps--xlight ps--bordered ps--narrow">
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-                <div class="cell">
-                    <div
-                        class="psgallery grid-x grid-margin-x grid-margin-y small-up-4 medium-up-6 tablet-up-8 xlarge-up-12">
-                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope
-                            itemtype="http://schema.org/ImageObject">
-                            <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg',false,false),'full'); echo $targimg[0];?>"
-                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), $gallery_thumbnail ); ?>
-                            </a>
-                        </figure>
-                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope
-                            itemtype="http://schema.org/ImageObject">
-                            <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id(),'full'); echo $targimg[0];?>"
-                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                                <?php echo woocommerce_get_product_thumbnail($gallery_thumbnail); ?>
-                            </a>
-                        </figure>
-                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope
-                            itemtype="http://schema.org/ImageObject">
-                            <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg',false,false),'full'); echo $targimg[0];?>"
-                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                                <?php echo wp_get_attachment_image( get_field('wallimg',false,false), $gallery_thumbnail ); ?>
-                            </a>
-                        </figure>
-                        <?php
-                            $attachment_ids = $product->get_gallery_image_ids();
-                            $gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
 
-                            if ( $attachment_ids && $product->get_image_id() ) {
-                                foreach ( $attachment_ids as $attachment_id ) : ?>
-                        <figure class="cell psgallery__item" itemprop="associatedMedia" itemscope
+    <div class="aps--xlight ps--bordered">
+        <div class="psgallery thumbswipe">
+            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                itemtype="http://schema.org/ImageObject">
+                <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg',false,false),'full'); echo $targimg[0];?>"
+                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                    <?php echo wp_get_attachment_image( get_field('singleimg',false,false), $gallery_thumbnail ); ?>
+                </a>
+            </figure>
+            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                itemtype="http://schema.org/ImageObject">
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id(),'full'); echo $targimg[0];?>"
+                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                    <?php echo woocommerce_get_product_thumbnail($gallery_thumbnail); ?>
+                </a>
+            </figure>
+            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                itemtype="http://schema.org/ImageObject">
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg',false,false),'full'); echo $targimg[0];?>"
+                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                    <?php echo wp_get_attachment_image( get_field('wallimg',false,false), $gallery_thumbnail ); ?>
+                </a>
+            </figure>
+            <?php
+                $attachment_ids = $product->get_gallery_image_ids();
+                $gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
+
+                if ( $attachment_ids && $product->get_image_id() ) {
+                    foreach ( $attachment_ids as $attachment_id ) : ?>
+                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                             itemtype="http://schema.org/ImageObject">
                             <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
                                 data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
                                 <?php echo wp_get_attachment_image( $attachment_id, $gallery_thumbnail ); ?>
                             </a>
                         </figure>
-                        <?php endforeach;
-                            }
+                    <?php endforeach;
+                }
 
-                        ?>
-                    </div>
-                </div>
-            </div>
+            ?>
         </div>
-
     </div>
-    <div class="ps ps--bordered">
+
+    <div class="ps aps--xlight ps--bordered">
         <div class="grid-container">
             <div class="grid-x grid-margin-x align-justify">
 
-                <div class="cell large-6">
-                    <h3><?php _e('Product information', 'marrakesh');?></h3>
+                <div class="cell large-8 xxlarge-7">
+                    <!-- <h3><?php _e('Product information', 'marrakesh');?></h3> -->
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-deep-link="true"
                         data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500"
                         data-tabs id="productinfotabs">
@@ -210,6 +204,7 @@ if ( post_password_required() ) {
                     <div class="tabs-content" data-tabs-content="productinfotabs">
                         <div class="tabs-panel is-active" id="prodinfopanel">
                             <div class="singleproduct__details">
+                            <h3><?php _e('Product information', 'marrakesh');?></h3>
                                 <?php if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
                                 <div
                                     class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
@@ -217,9 +212,9 @@ if ( post_password_required() ) {
                                 </div>
                                 <?php endif; ?>
                                 <?php the_content(); ?>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat nobis cumque
+                                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat nobis cumque
                                     adipisci quasi dicta dolore, quas quam est sapiente eligendi nemo repellendus quis
-                                    natus impedit quos necessitatibus debitis officia officiis!</p>
+                                    natus impedit quos necessitatibus debitis officia officiis!</p> -->
                                 <?php
                                 $catids = $product->get_category_ids();
                                 $catatts = array();
@@ -261,7 +256,10 @@ if ( post_password_required() ) {
                             </div>
                         </div>
                         <div class="tabs-panel" id="techinfopanel">
-                            <!-- <h3><?php _e('Technical information', 'marrakesh');?></h3> -->
+                            <h3><?php _e('Technical information', 'marrakesh');?></h3>
+                            <div class="lead">
+                                <p>Consectetur adipisicing elit. Nostrum facilis fuga repellat perspiciatis minus hic, reiciendis ad distinctio maxime dicta optio. Iste tenetur illo id explicabo enim nisi voluptas quibusdam!</p>
+                            </div>
                             <!-- <figure class="singleproduct__prodimage">
                                 <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
                                 <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
@@ -276,6 +274,7 @@ if ( post_password_required() ) {
                             </dl>
                         </div>
                         <div class="tabs-panel" id="shipmentpanel">
+                            <h3><?php _e('Shipping information', 'marrakesh');?></h3>
                             <div class="lead">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt odit cumque
                                     molestiae necessitatibus asperiores accusamus voluptas non. Reiciendis mollitia
@@ -287,6 +286,7 @@ if ( post_password_required() ) {
                                 omnis sint maiores ratione accusamus iusto!</p>
                         </div>
                         <div class="tabs-panel" id="installpanel">
+                            <h3><?php _e('Application & Installation', 'marrakesh');?></h3>
                             <div class="lead">
                                 <p>Amet consectetur adipisicing elit. Nesciunt odit cumque
                                     molestiae necessitatibus asperiores accusamus voluptas non. Reiciendis mollitia
@@ -307,10 +307,14 @@ if ( post_password_required() ) {
                 </div>
 
 
-                <div class="cell tablet-6 large-3">
-
-
-                </div>
+                <!-- <div class="cell tablet-6 large-4">
+                    <div class="callout">
+                        <h3>Add to cart section</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe!</p>
+                        <select name="" id=""></select>
+                        <a href="#" class="button">Add to Cart</a>
+                    </div>
+                </div> -->
 
 
             </div>

@@ -67,6 +67,31 @@
     </div>
 </div>
 <div class="ps ps--narrow ps--xlight ps--bordered">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell">
+                <h3><?php _e('Featured Products', 'marrakesh');?></h3>
+                <ul id="featprodtabs" class="tabs tabs--singleproduct" data-active-collapse="true" data-deep-link="true"
+                    data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-tabs>
+                    <li class="tabs-title is-active">
+                        <a href="#fpfeatpanel" aria-selected="true">
+                            <?php esc_html_e( 'Featured Tiles', 'marrakesh' ); ?>
+                        </a>
+                    </li>
+                    <li class="tabs-title">
+                        <a href="#fpinstockpanel">
+                            <?php esc_html_e( 'In Stock', 'marrakesh' ) ?>
+                        </a>
+                    </li>
+                    <li class="tabs-title">
+                        <a href="#fpsalepanel">
+                            <?php esc_html_e( 'Sale', 'marrakesh' ); ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <?php
         $wargs = array(
             'before_widget' => '',
@@ -75,16 +100,43 @@
             'after_title'   => ''
         );
     ?>
-    <?php
-        the_widget( 'WC_Widget_Products', array(
-            'title' => '',
-            'number' => 25,
-            'show' => '',
-            'orderby' => 'rand'
+    <div class="tabs-content" data-tabs-content="featprodtabs">
+        <div class="tabs-panel is-active" id="fpfeatpanel">
+            <?php
+                the_widget( 'WC_Widget_Products', array(
+                    'title' => '',
+                    'number' => 12,
+                    'show' => '',
+                    'orderby' => 'rand',
+                    'order' => 'ASC'
 
-        ), $wargs );
-    ?>
+                ), $wargs );
+                wp_cache_flush();
+                ?>
+        </div>
+        <div class="tabs-panel" id="fpinstockpanel">
+            <?php
+                the_widget( 'WC_Widget_Products', array(
+                    'title' => '',
+                    'number' => 10,
+                    'show' => '',
+                    'orderby' => 'date',
+                    'order' => 'DESC'
 
+                ), $wargs );
+                wp_cache_flush();
+            ?>
+        </div>
+        <div class="tabs-panel" id="fpsalepanel">
+            <?php
+                the_widget( 'WC_Widget_Products', array(
+                        'title' => '',
+                        'number' => '15',
+                        'show' => 'onsale'
+                    ), $wargs );
+                ?>
+        </div>
+    </div>
 </div>
 
 <div class="grid-container">
@@ -96,13 +148,16 @@
                 <?php endif; ?>
                 <div class="lead">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sit eaque architecto
-                        molestiae rem dolor quis temporibus sequi atque odio possimus dolores, consequatur a nesciunt
+                        molestiae rem dolor quis temporibus sequi atque odio possimus dolores, consequatur a
+                        nesciunt
                         maxime. Earum illum excepturi optio.</p>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio, vel tempore unde omnis nemo ullam,
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio, vel tempore unde omnis nemo
+                    ullam,
                     illum, quos eius voluptatem quidem rem. Maxime excepturi aliquid eum voluptatibus harum!
                     Repudiandae, nisi eaque?</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto voluptates, error ipsum quis nostrum
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto voluptates, error ipsum quis
+                    nostrum
                     culpa odio. Corrupti quasi magni officiis consequatur ipsam magnam odit, nesciunt quidem minima
                     tempore iste expedita?</p>
                 <?php the_content(); ?>

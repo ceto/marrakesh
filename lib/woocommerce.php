@@ -122,3 +122,24 @@ add_action( 'pre_get_posts', function ( $query ) {
 add_filter( 'woocommerce_before_widget_product_list', function(){
     return '<ul class="prodswipe">';
 });
+
+
+add_filter( 'woocommerce_products_widget_query_args', function( $query_args ){
+    $product_visibility_term_ids = wc_get_product_visibility_term_ids();
+    $query_args['tax_query'][] = array(
+        array(
+            'taxonomy' => 'product_visibility',
+            'field'    => 'term_taxonomy_id',
+            'terms'    => $product_visibility_term_ids['outofstock'],
+            'operator' => 'NOT IN',
+        ),
+    );
+    $query_args['meta_query'][] = array(
+        array(
+            'key' => '_stock_status',
+            'value' => 'instock',
+            'compare' => '='
+        ),
+    );
+    return $query_args;
+},  PHP_INT_MAX);

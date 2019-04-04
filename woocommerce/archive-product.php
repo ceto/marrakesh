@@ -28,6 +28,7 @@ defined( 'ABSPATH' ) || exit;
         $ctaxname = 'All Products';
         $reltaxes = get_terms( array(
             'taxonomy' => $ctax->name,
+            'parent' => 0,
         ) );
 
     } else {
@@ -36,7 +37,8 @@ defined( 'ABSPATH' ) || exit;
         $ctaxname = $ctax->labels->singular_name;
         $reltaxes = get_terms( array(
             'taxonomy' => $ctax->name,
-            'exclude' => array($theterm->term_id)
+            'exclude' => array($theterm->term_id),
+            'parent' => 0,
         ) );
     }
     //var_dump($theterm);

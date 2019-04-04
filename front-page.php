@@ -32,40 +32,99 @@
 </div>
 <div class="ps">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x medium-up-2 large-up-3">
+        <div class="grid-x grid-margin-x grid-margin-y medium-up-2 large-up-4">
             <div class="cell">
-                <h3>Lorem ipsum dolor sit.</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis animi aliquam, inventore pariatur
-                    odit
-                    dolores quae at molestiae, commodi, sint amet provident illum expedita aperiam quasi molestias
-                    ducimus
-                    veniam tenetur?</p>
-                <a href="#" class="button small">Learn more</a>
+                <div class="squarepromo">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/600x800/?interior,tiles,marrakesh,arab" alt="">
+                    </a>
+                    <div class="squarepromo__content">
+                        <h3 class="squarepromo__caption">Cement Tiles</h3>
+                        <p class="squarepromo__subcaption">Lorem ipsum</p>
+                    </div>
+                </div>
             </div>
             <div class="cell">
-                <h3>Isum dolor sit.</h3>
-                <p>
-                    Amet consectetur adipisicing elit. Omnis animi aliquam, inventore pariatur
-                    odit
-                    dolores quae at molestiae, commodi, sint amet provident illum expedita aperiam quasi molestias
-                    ducimus
-                    veniam tenetur?</p>
-                <a href="#" class="button small">Browse in-stock tiles</a>
+                <div class="squarepromo">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/600x800/?interior,marrakesh,arab" alt="">
+                    </a>
+                    <div class="squarepromo__content">
+                        <h3 class="squarepromo__caption">Terracotta</h3>
+                        <p class="squarepromo__subcaption">Dolor sit amet</p>
+                    </div>
+                </div>
             </div>
             <div class="cell">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis animi aliquam, inventore pariatur
-                    odit
-                    dolores quae at molestiae, commodi, sint amet provident illum expedita aperiam quasi molestias
-                    ducimus
-                    veniam tenetur?</p>
-                <a href="#" class="button small">Go to collection</a>
+                <div class="squarepromo">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/600x800/?tiles,marrakesh,arab" alt="">
+                    </a>
+                    <div class="squarepromo__content">
+                        <h3 class="squarepromo__caption">See special form tiles</h3>
+                        <p class="squarepromo__subcaption">Lorem ipsum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="squarepromo">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/600x800/?marrakesh,arab" alt="">
+                    </a>
+                    <div class="squarepromo__content">
+                        <h3 class="squarepromo__caption">April's Favourite</h3>
+                        <p class="squarepromo__subcaption">See geometric collection</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="ps ps--black">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x aalign-center atext-center">
+            <div class="cell tablet-8 large-6">
+                <h4>Lorem ipsum dolor doloribus archi sit amet. doloribus architecto repudiandae consectetur dolore,
+                    corporis amet abidu cement eius totam magnam minima nobis suscipit delectus</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ps aps--xlight">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell tablet-8 large-6">
+                <h2>Lorem ipsum dolor sit amet.</h2>
+                <div class="lead">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere voluptas fuga voluptatem
+                        fugiat aspernatur cupiditate doloribus architecto repudiandae consectetur dolore, corporis amet
+                        eius totam magnam minima nobis suscipit delectus!</p>
+                </div>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis animi aliquam, inventore
+                    pariatur
+                    odit
+                    dolores quae at molestiae, commodi, sint amet provident illum expedita aperiam quasi
+                    molestias
+                    ducimus
+                    veniam tenetur?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim excepturi error explicabo
+                    nesciunt, magni aut sint animi quia reprehenderit iure libero illum similique ipsam,
+                    praesentium veniam deleniti optio facilis eius.</p>
+                <a href="#" class="button small">Learn more</a>
+            </div>
+            <div class="cell tablet-4 large-6">
+                <img src="https://source.unsplash.com/1200x800/?tiles,marrakesh,arab" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="ps ps--narrow ps--xlight ps--bordered">
     <div class="grid-container">
         <div class="grid-x grid-margin-x">

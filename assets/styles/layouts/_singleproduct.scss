@@ -44,11 +44,16 @@
     position: relative;
     padding:1rem 1rem;
     background-color: rgba($body-background,1);
-    max-width: 32em;
-    //border: .75rem solid $light-gray;
-    //box-shadow: 0 0 1rem 0 rgba(#000,.5);
+
+
+    //min-width: max-content;
+    //max-width: 32em;
+    max-width: min-content;
+
+    border: 1px solid $medium-gray;
+    box-shadow: 0 0 2rem 0 rgba(#000,.25);
     font-size:.875rem;
-    display: inline-block;
+    //display: inline-block;
     @include breakpoint(large) {
         font-size:1rem;
         //display: block;
@@ -83,14 +88,21 @@
     text-transform: uppercase;
     margin:0 0 0;
     line-height: 1;
+    //white-space: nowrap;
+    width: max-content;
+    max-width: 100%;
+    .singleproduct__callout & {
+        font-size: 2.75em;
+        width: 100%;
+    }
 }
 .singleproduct__price {
-    clear:both;
+    //clear:both;
     font-weight: $global-weight-black;
     font-size:1.5em;
     line-height: $header-lineheight;
     color:$medium-gray;
-    margin:1.25em 0 .25em;
+    margin:0.25em 0 .25em;
     del {
         font-size: 75%;
         font-weight: $global-weight-normal;
@@ -101,7 +113,8 @@
     }
 }
 
-.singleproduct__header .stock {
+.singleproduct__header .stock,
+.singleproduct__callout .stock  {
     font-size: .875em;
     line-height: $header-lineheight;
     margin:0 0 .125em;
@@ -142,6 +155,11 @@
     }
 }
 
+.singleproduct__images {
+    // margin-top:-5.666rem;
+    // background-color: rgba(#000,.75);
+    // position: relative;
+}
 
 .singleproduct__details {
 
@@ -152,13 +170,25 @@
 
 }
 
+.singleproduct__callout {
+    margin-bottom:2rem;
+    background-color: $xlight-gray;
+    border-color: scale-color($xlight-gray, $lightness: -5%);
+    padding:2rem 5%;
+}
+
+
+.attrheader {
+    margin:0;
+}
 .singleproduct__attributes {
     @include clearfix();
     line-height: $header-lineheight;
     font-size:.875em;
-    margin:.5em 0 0;
+    margin:1.5em 0 0;
     border-top: 1px solid $medium-gray;
     padding-top: .5em;
+    //max-width: 30rem;
     dt {
         //float:left;
         //clear:both;
@@ -207,12 +237,13 @@
     border-top: none;
     font-size:1rem;
     padding-top:1.5em;
+    //max-width: 100%;
     dt {
         clear:left;
         display: inline-block;
         float:left;
         margin-right: .25em;
-        min-width: 9em;
+        min-width: 10em;
     }
     dd {
         display: inline-block;

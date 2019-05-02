@@ -21,7 +21,7 @@
         color:inherit;
         text-transform: uppercase;
         line-height: 1;
-        
+
         &:hover {
             //color: $secondary-color;
         }
@@ -37,7 +37,12 @@
         font-size: 1rem;
     }
 }
-
+.js-taxchooserstart {
+    text-transform: uppercase;
+    font-weight: $global-weight-bold;
+    color:inherit;
+    pointer-events: none;
+}
 select.taxchooser {
     position: absolute;
     //visibility: hidden;
@@ -75,7 +80,7 @@ select.taxchooser {
 
 .woocommerce-products-header__filters {
     margin:0 0;
- 
+
 
     h3 {
         font-size:.875rem;
@@ -89,7 +94,7 @@ select.taxchooser {
             content:': ';
         }
     }
-    
+
     &.widget_layered_nav_filters ul {
         flex-direction: row;
         li {

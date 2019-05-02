@@ -303,3 +303,8 @@
     }
 
 }
+
+.tabs-title.is-active > a {
+    background: transparent;
+    color: inherit;
+}

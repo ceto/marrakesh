@@ -71,7 +71,7 @@ class NavWalker extends \Walker_Nav_Menu {
     }
 
     // Remove most core classes
-    $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+    $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'is-active', $classes);
     $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
 
     // Re-add core `menu-item` class

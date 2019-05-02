@@ -63,9 +63,9 @@ defined( 'ABSPATH' ) || exit;
                         <?php endforeach; ?>
                         <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Show All</option>
                     </select>
+                    <a class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</a>
 
                     <h1 class="woocommerce-products-header__title page-title">
-                        <small class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</small>
                         <?php woocommerce_page_title(); ?>
                     </h1>
                     <?php

@@ -277,6 +277,35 @@ if ( post_password_required() ) {
                             <?php endif; ?>
                         </dl>
                     </div>
+                    <!-- <hr> -->
+                    <div class="callout singleproduct__callout">
+                        <h5><?php _e('Buy Online - Set up Your Order', 'marrakesh'); ?></h5>
+                        <?php
+                            /**
+                            * Hook: woocommerce_single_product_summary.
+                            *
+                            * @hooked woocommerce_template_single_title - 5
+                            * @hooked woocommerce_template_single_rating - 10
+                            * @hooked woocommerce_template_single_price - 10
+                            * @hooked woocommerce_template_single_excerpt - 20
+                            * @hooked woocommerce_template_single_add_to_cart - 30
+                            * @hooked woocommerce_template_single_meta - 40
+                            * @hooked woocommerce_template_single_sharing - 50
+                            * @hooked WC_Structured_Data::generate_product_data() - 60
+                            */
+                            do_action( 'woocommerce_single_product_summary' );
+                        ?>
+                    </div>
+                    <div class="singleproduct__meta meta">
+                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
+                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
+                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                        <?php endif; ?>
+                        <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
+                    </div>
                 </div>
 
                 <div class="cell large-7 xxlarge-6 large-order-1">
@@ -316,33 +345,6 @@ if ( post_password_required() ) {
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromcat['productinfo']) ); ?>
                                 </div>
                                 <?php echo apply_filters('the_content', get_post_field('post_content', $datafromcat['productinfo'])); ?>
-
-
-                                <div class="singleproduct__meta meta">
-                                    <?php do_action( 'woocommerce_product_meta_start' ); ?>
-                                    <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                                    <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
-                                            class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-                                    <?php endif; ?>
-                                    <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                                    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                                    <?php do_action( 'woocommerce_product_meta_end' ); ?>
-                                </div>
-                                <?php
-                                    /**
-                                    * Hook: woocommerce_single_product_summary.
-                                    *
-                                    * @hooked woocommerce_template_single_title - 5
-                                    * @hooked woocommerce_template_single_rating - 10
-                                    * @hooked woocommerce_template_single_price - 10
-                                    * @hooked woocommerce_template_single_excerpt - 20
-                                    * @hooked woocommerce_template_single_add_to_cart - 30
-                                    * @hooked woocommerce_template_single_meta - 40
-                                    * @hooked woocommerce_template_single_sharing - 50
-                                    * @hooked WC_Structured_Data::generate_product_data() - 60
-                                    */
-                                    do_action( 'woocommerce_single_product_summary' );
-                                ?>
                             </div>
                         </div>
                         <div class="tabs-panel" id="obspanel">

@@ -198,7 +198,7 @@
     </div>
 </div>
 
-<div class="grid-container">
+<!-- <div class="grid-container">
     <div class="grid-x grid-margin-x">
         <div class="cell large-auto large-order-2">
             <div class="ps ps--narrow">
@@ -231,7 +231,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?php
     $args = array(
         'post_type' => array('reference'),

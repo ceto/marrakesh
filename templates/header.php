@@ -10,7 +10,7 @@
                 </div>
                 <div class="auto cell show-for-tablet">
 
-                <?php
+                    <?php
                     if (has_nav_menu('secondary_navigation')) :
                 wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu menu--topbar align-right', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
                 endif;
@@ -26,7 +26,9 @@
                 <div class="banner__branding">
                     <a class="brand" href="<?= esc_url(home_url('/')); ?>">
                         <!-- <img class="brand__logo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/lofo_hu_small.svg" alt="<?php bloginfo('name'); ?>"> -->
-                        <img class="brand__fulllogo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo_hu.png" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                        <img class="brand__fulllogo"
+                            src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo_hu.png"
+                            alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                     </a>
                 </div>
                 <nav class="banner__nav show-for-medium">
@@ -36,6 +38,12 @@
                 endif;
                 ?>
                 </nav>
+            </div>
+            <div class="cell shrink show-for-tablet banner__ctacell">
+                <div class="banner__cta">
+                    <p class="show-for-large">Design Your Own Tiles</p>
+                    <a href="#" class="btn">Start Simulator</a>
+                </div>
             </div>
             <div class="shrink cell hide-for-tablet">
                 <button class="menutoggler" type="button" data-toggle="mobilemodal"></button>

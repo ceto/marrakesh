@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post;
+global $product, $post, $datafromcat;
 $attributes = $product->get_attributes();
 
 /**

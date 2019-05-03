@@ -11,83 +11,75 @@
  * ======================================================================== */
 
 (function($) {
+    // Use this variable to set up the common and page specific functions. If you
+    // rename this variable, you will also need to rename the namespace below.
+    var Sage = {
+        // All pages
+        common: {
+            init: function() {
+                // JavaScript to be fired on all pages
+            },
+            finalize: function() {
+                // JavaScript to be fired on all pages, after page specific JS is fired
+            }
+        },
+        // Home page
+        home: {
+            init: function() {
+                // JavaScript to be fired on the home page
+            },
+            finalize: function() {
+                // JavaScript to be fired on the home page, after the init JS
+            }
+        },
+        // About us page, note the change from about-us to about_us.
+        about_us: {
+            init: function() {
+                // JavaScript to be fired on the about us page
+            }
+        }
+    };
 
-  // Use this variable to set up the common and page specific functions. If you
-  // rename this variable, you will also need to rename the namespace below.
-  var Sage = {
-    // All pages
-    'common': {
-      init: function() {
-        // JavaScript to be fired on all pages
-      },
-      finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
-      }
-    },
-    // Home page
-    'home': {
-      init: function() {
-        // JavaScript to be fired on the home page
-      },
-      finalize: function() {
-        // JavaScript to be fired on the home page, after the init JS
-      }
-    },
-    // About us page, note the change from about-us to about_us.
-    'about_us': {
-      init: function() {
-        // JavaScript to be fired on the about us page
-      }
-    }
-  };
+    // The routing fires all common scripts, followed by the page specific scripts.
+    // Add additional events for more control over timing e.g. a finalize event
+    var UTIL = {
+        fire: function(func, funcname, args) {
+            var fire;
+            var namespace = Sage;
+            funcname = funcname === undefined ? "init" : funcname;
+            fire = func !== "";
+            fire = fire && namespace[func];
+            fire = fire && typeof namespace[func][funcname] === "function";
 
-  // The routing fires all common scripts, followed by the page specific scripts.
-  // Add additional events for more control over timing e.g. a finalize event
-  var UTIL = {
-    fire: function(func, funcname, args) {
-      var fire;
-      var namespace = Sage;
-      funcname = (funcname === undefined) ? 'init' : funcname;
-      fire = func !== '';
-      fire = fire && namespace[func];
-      fire = fire && typeof namespace[func][funcname] === 'function';
+            if (fire) {
+                namespace[func][funcname](args);
+            }
+        },
+        loadEvents: function() {
+            // Fire common init JS
+            UTIL.fire("common");
 
-      if (fire) {
-        namespace[func][funcname](args);
-      }
-    },
-    loadEvents: function() {
-      // Fire common init JS
-      UTIL.fire('common');
+            // Fire page-specific init JS, and then finalize JS
+            $.each(document.body.className.replace(/-/g, "_").split(/\s+/), function(i, classnm) {
+                UTIL.fire(classnm);
+                UTIL.fire(classnm, "finalize");
+            });
 
-      // Fire page-specific init JS, and then finalize JS
-      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
-        UTIL.fire(classnm);
-        UTIL.fire(classnm, 'finalize');
-      });
+            // Fire common finalize JS
+            UTIL.fire("common", "finalize");
+        }
+    };
 
-      // Fire common finalize JS
-      UTIL.fire('common', 'finalize');
-    }
-  };
-
-  // Load Events
-  $(document).ready(UTIL.loadEvents);
-
+    // Load Events
+    $(document).ready(UTIL.loadEvents);
 })(jQuery); // Fully reference jQuery after this point.
-
 
 $(document).foundation();
 
-
-$(document).ready(function(){
-
-
-});
+$(document).ready(function() {});
 
 //photoswipe things
 var initPhotoSwipeFromDOM = function(gallerySelector) {
-
     // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
     var parseThumbnailElements = function(el) {
@@ -99,42 +91,39 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             size,
             item;
 
-        for(var i = 0; i < numNodes; i++) {
-
+        for (var i = 0; i < numNodes; i++) {
             figureEl = thumbElements[i]; // <figure> element
 
             // include only element nodes
-            if(figureEl.nodeType !== 1) {
+            if (figureEl.nodeType !== 1) {
                 continue;
             }
 
             linkEl = figureEl.children[0]; // <a> element
 
-            size = linkEl.getAttribute('data-size').split('x');
+            size = linkEl.getAttribute("data-size").split("x");
 
             // create slide object
             item = {
-                src: linkEl.getAttribute('href'),
+                src: linkEl.getAttribute("href"),
                 w: parseInt(size[0], 10),
                 h: parseInt(size[1], 10)
             };
 
-            if( linkEl.getAttribute('data-title') ) {
-                item.title = '<h3>' + linkEl.getAttribute('data-title') + '</h3>';
-                item.caption = linkEl.getAttribute('data-caption');
+            if (linkEl.getAttribute("data-title")) {
+                item.title = "<h3>" + linkEl.getAttribute("data-title") + "</h3>";
+                item.caption = linkEl.getAttribute("data-caption");
             } else {
-                item.title='';
+                item.title = "";
             }
 
-            if(figureEl.children.length > 1) {
-                item.title = '<h3>' + figureEl.children[1].innerHTML + '</h3>';
+            if (figureEl.children.length > 1) {
+                item.title = "<h3>" + figureEl.children[1].innerHTML + "</h3>";
             }
 
-            
-
-            if(linkEl.children.length > 0) {
+            if (linkEl.children.length > 0) {
                 // <img> thumbnail element, retrieving thumbnail url
-                item.msrc = linkEl.children[0].getAttribute('src');
+                item.msrc = linkEl.children[0].getAttribute("src");
             }
 
             item.el = figureEl; // save link to element for getThumbBoundsFn
@@ -146,11 +135,11 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
     // find nearest parent element
     var closest = function closest(el, fn) {
-        return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        return el && (fn(el) ? el : closest(el.parentNode, fn));
     };
 
     var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-        var pswpElement = document.querySelectorAll('.pswp')[0],
+        var pswpElement = document.querySelectorAll(".pswp")[0],
             gallery,
             options,
             items;
@@ -160,27 +149,27 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         // define options (if needed)
         options = {
             history: false,
-            
+
             // define gallery index (for URL)
-            galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+            galleryUID: galleryElement.getAttribute("data-pswp-uid"),
 
             getThumbBoundsFn: function(index) {
                 // See Options -> getThumbBoundsFn section of documentation for more info
-                var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                var thumbnail = items[index].el.getElementsByTagName("img")[0], // find thumbnail
                     pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
                     rect = thumbnail.getBoundingClientRect();
 
-                return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
             }
         };
 
         // PhotoSwipe opened from URL
-        if(fromURL) {
-            if(options.galleryPIDs) {
+        if (fromURL) {
+            if (options.galleryPIDs) {
                 // parse real index when custom PIDs are used
                 // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
-                for(var j = 0; j < items.length; j++) {
-                    if(items[j].pid === index) {
+                for (var j = 0; j < items.length; j++) {
+                    if (items[j].pid === index) {
                         options.index = j;
                         break;
                     }
@@ -194,16 +183,16 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         }
 
         // exit if index not found
-        if( isNaN(options.index) ) {
+        if (isNaN(options.index)) {
             return;
         }
 
-        if(disableAnimation) {
+        if (disableAnimation) {
             options.showAnimationDuration = 0;
         }
 
         // Pass data to PhotoSwipe and initialize it
-        gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
     };
 
@@ -220,10 +209,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
         // find root element of slide
         var clickedListItem = closest(eTarget, function(el) {
-            return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+            return el.tagName && el.tagName.toUpperCase() === "FIGURE";
         });
 
-        if(!clickedListItem) {
+        if (!clickedListItem) {
             return;
         }
 
@@ -236,22 +225,20 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             index;
 
         for (var i = 0; i < numChildNodes; i++) {
-            if(childNodes[i].nodeType !== 1) {
+            if (childNodes[i].nodeType !== 1) {
                 continue;
             }
 
-            if(childNodes[i] === clickedListItem) {
+            if (childNodes[i] === clickedListItem) {
                 index = nodeIndex;
                 break;
             }
             nodeIndex++;
         }
 
-
-
-        if(index >= 0) {
+        if (index >= 0) {
             // open PhotoSwipe if valid index found
-            openPhotoSwipe( index, clickedGallery );
+            openPhotoSwipe(index, clickedGallery);
         }
         return false;
     };
@@ -259,50 +246,124 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     // parse picture index and gallery index from URL (#&pid=1&gid=2)
     var photoswipeParseHash = function() {
         var hash = window.location.hash.substring(1),
-        params = {};
+            params = {};
 
-        if(hash.length < 5) {
+        if (hash.length < 5) {
             return params;
         }
 
-        var vars = hash.split('&');
+        var vars = hash.split("&");
         for (var i = 0; i < vars.length; i++) {
-            if(!vars[i]) {
+            if (!vars[i]) {
                 continue;
             }
-            var pair = vars[i].split('=');
-            if(pair.length < 2) {
+            var pair = vars[i].split("=");
+            if (pair.length < 2) {
                 continue;
             }
             params[pair[0]] = pair[1];
         }
 
-        if(params.gid) {
+        if (params.gid) {
             params.gid = parseInt(params.gid, 10);
         }
 
         return params;
     };
 
-
-
     // loop through all gallery elements and bind events
-    var galleryElements = document.querySelectorAll( gallerySelector );
+    var galleryElements = document.querySelectorAll(gallerySelector);
 
-    for(var i = 0, l = galleryElements.length; i < l; i++) {
-        galleryElements[i].setAttribute('data-pswp-uid', i+1);
+    for (var i = 0, l = galleryElements.length; i < l; i++) {
+        galleryElements[i].setAttribute("data-pswp-uid", i + 1);
         galleryElements[i].onclick = onThumbnailsClick;
     }
 
     // Parse URL and open gallery if it contains #&pid=3&gid=1
     var hashData = photoswipeParseHash();
-    if(hashData.pid && hashData.gid) {
-        openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+    if (hashData.pid && hashData.gid) {
+        openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
     }
 };
 
-
 // execute above function
-if  ($('.psgallery').length) {
-    initPhotoSwipeFromDOM('.psgallery');
+if ($(".psgallery").length) {
+    initPhotoSwipeFromDOM(".psgallery");
+}
+
+///////////////////////////////////////////////////////
+// Order Box functions on single product detail pages
+//////////////////////////////////////////////////////
+
+var $form = $("form.order");
+var origForm = $form.serialize();
+
+$("form.order :input").on("change input", function() {
+    if ($form.serialize() !== origForm && $(this).attr("id") !== "yith-wcwtl-email") {
+        origForm = $form.serialize();
+        updateOrderBox($(this));
+    }
+});
+
+function updateOrderBox($changed) {
+    var $boxes = $("#boxes");
+    var $sqft = $("#sqft");
+    var $boxesInput = $boxes.val();
+    var $sqftInput = $sqft.val();
+    var $totalSqftText = $(".sqft-total strong");
+    var $priceText = $(".order-submit__price .price");
+    var $orderButton = $(".order-submit__actions .order-button");
+    var $buttonCount = $(".order-submit__actions .order-button strong");
+    var pricePerBox = $(".pricePerBox").val();
+    var sqftPerBox = $(".sqftPerBox").val();
+    var pricePerSqft = $(".pricePerSqft").val();
+    var orderQuantity = $(".orderQuantity");
+    var numberOfBoxes;
+
+    //if change happened on tile order box
+    if ($changed.is("#sqft") || $changed.is("#boxes")) {
+        if ($changed.is("#sqft")) {
+            numberOfBoxes = Math.ceil($sqftInput / sqftPerBox); //sqft multiplier
+        } else if ($changed.is("#boxes")) {
+            numberOfBoxes = Math.ceil($boxesInput);
+        }
+
+        var sqftText = numberOfBoxes * sqftPerBox;
+        $totalSqftText.text(sqftText.toFixed(2));
+
+        //update price
+        var newPrice = numberOfBoxes * pricePerBox;
+        var priceText = newPrice.toFixed(2);
+        $priceText.text("€ " + priceText);
+
+        //update button text
+        $buttonCount.html(numberOfBoxes * sqftPerBox + " m<sup>2</sup>");
+
+        //update button url
+        orderQuantity.val(numberOfBoxes);
+
+        if ($changed.is("#sqft")) {
+            //update the boxes value
+            $boxes.val(numberOfBoxes);
+        } else if ($changed.is("#boxes")) {
+            //update sqft value
+            $sqft.val(sqftText.toFixed(2));
+        }
+    } /*else if ($changed.is("#quantity")) {
+        //else if other order box changed
+        var $qty = $("#quantity");
+        var $qtyInput = $qty.val();
+        numberOfProduct = Math.ceil($qtyInput);
+
+        //update price
+        var newPrice = numberOfProduct * sqftPerBox;
+        var priceText = newPrice.toFixed(2);
+        $priceText.text("€ " + priceText);
+
+        //update button text
+        $buttonCount.text(numberOfProduct);
+
+        //update button url
+        orderQuantity.val(numberOfProduct);
+    }*/
 }

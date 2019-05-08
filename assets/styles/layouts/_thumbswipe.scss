@@ -30,4 +30,18 @@
         margin-left: .4688rem;
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
+
+    .thumbswipe--medium & {
+        width: 7rem;
+    }
 }
+
+
+.thumbswipe--nopadding {
+    padding:1rem 0 1rem 0;
+    margin-left: -.625rem;
+    @media screen and (min-width: 110em) {
+        padding-left:0;
+    }
+}
+

@@ -17,11 +17,23 @@
         padding-left:calc(50vw - #{$global-width/2} );
     }
 }
+.thumbswipe--noleftpad {
+    padding:1rem 0 1rem 0;
+    margin-left: -.625rem;
+    @include breakpoint(medium) {
+        margin-left: -.9375rem;
+    }
+    @media screen and (min-width: 110em) {
+        margin-left: -.4688rem;
+        padding-left:0;
+    }
+}
+
 .thumbswipe__item {
     flex: 0 0 auto;
     margin-left: .625rem;
     //margin-right: map-get( $grid-margin-gutters, small );
-    width: 3.5rem;
+    //width: 3.5rem;
     @include breakpoint(medium) {
         margin-left: .9375rem;
         //margin-right: map-get( $grid-margin-gutters, medium );
@@ -31,8 +43,16 @@
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
 
-    .thumbswipe--medium & {
-        width: 7rem;
+
+    img {
+        display: block;
+        height: 16.666vw;
+        max-height: 4.5rem;
+        width: auto;
+        max-width: none;
+        .thumbswipe--medium & {
+            max-height: 7rem;
+        }
     }
 }
 

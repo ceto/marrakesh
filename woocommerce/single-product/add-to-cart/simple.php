@@ -87,7 +87,7 @@ if ( FALSE && $product->is_in_stock() ) : ?>
 
         <div class="order-box__input">
             <label for="boxes">Number Of Boxes Needed</label>
-            <input type="number" name="boxes" id="boxes" value="1" min="1">
+            <input type="number" name="boxes" disabled id="boxes" value="1" min="1">
         </div>
 
         <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>

@@ -3,6 +3,20 @@
 
 }
 
+.woocommerce-products-header__thumb {
+    max-width: 5.125rem;
+    @include breakpoint('tablet') {
+        max-width: 5.875rem;
+    }
+
+    img {
+        padding:.25rem;
+        border: 1px solid $dark-gray;
+
+    }
+
+}
+
 .woocommerce-products-header__title {
     font-size: 2rem;
     margin:0 0 .333em;

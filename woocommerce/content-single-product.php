@@ -20,6 +20,9 @@ defined( 'ABSPATH' ) || exit;
 global $product, $post, $datafromcat;
 $attributes = $product->get_attributes();
 
+$designterm = get_term_by('id', $attributes['pa_design']['options'][0],'pa_design');
+$linkeddesigngallery = get_field('linkedgallery', $designterm);
+//var_dump($linkeddesigngallery);
 /**
  * Hook: woocommerce_before_single_product.
  *
@@ -138,46 +141,54 @@ if ( post_password_required() ) {
         </div>
     </div>
 
+
     <div class="ps--xlight ps--bordered singleproduct__images">
         <div class="psgallery thumbswipe">
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
                 <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg',false,false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('singleimg',false,false), $gallery_thumbnail ); ?>
+                    <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'medium' ); ?>
                 </a>
             </figure>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
                 <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id(),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo woocommerce_get_product_thumbnail($gallery_thumbnail); ?>
+                    <?php echo woocommerce_get_product_thumbnail('medium'); ?>
                 </a>
             </figure>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
                 <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg',false,false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('wallimg',false,false), $gallery_thumbnail ); ?>
+                    <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'medium' ); ?>
                 </a>
             </figure>
-            <?php
-                $attachment_ids = $product->get_gallery_image_ids();
-                $gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
-
-                if ( $attachment_ids && $product->get_image_id() ) {
-                    foreach ( $attachment_ids as $attachment_id ) : ?>
+            <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
+            <?php if ( $attachment_ids && $product->get_image_id() ) : ?>
+            <?php foreach ( $attachment_ids as $attachment_id ) : ?>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
                 <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( $attachment_id, $gallery_thumbnail ); ?>
+                    <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
                 </a>
             </figure>
-            <?php endforeach;
-                }
+            <?php endforeach; ?>
+            <?php endif; ?>
 
-            ?>
+            <?php if ( $gallery = get_field('gallery', $linkeddesigngallery) ) : ?>
+            <?php foreach ( $gallery as $attachment_id ) : ?>
+            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                itemtype="http://schema.org/ImageObject">
+                <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
+                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                    <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
+                </a>
+            </figure>
+            <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -527,4 +538,4 @@ if ( post_password_required() ) {
     </div>
 
     <?php do_action( 'woocommerce_after_single_product' ); ?>
-    <?php get_template_part('templates/photoswipedom');
+    <?php get_template_part('templates/photoswipedom'); ?>

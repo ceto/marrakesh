@@ -39,6 +39,20 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
 
+  update_option( 'thumbnail_size_w', 320 );
+  update_option( 'thumbnail_size_h', 320 );
+  update_option( 'thumbnail_crop', true );
+  update_option( 'medium_size_w', 480 );
+  update_option( 'medium_size_h', 999 );
+  update_option( 'large_size_w', 1280 );
+  update_option( 'large_size_h', 9999 );
+  //   set_post_thumbnail_size( get_option( 'thumbnail_size_w' ), get_option( 'thumbnail_size_h' ), get_option( 'thumbnail_crop' ) );
+  add_image_size( 'medium', get_option( 'medium_size_w' ), get_option( 'medium_size_h' ), false );
+  add_image_size( 'large', get_option( 'large_size_w' ), get_option( 'large_size_h' ), false );
+  add_image_size( 'xlarge', 1920, 9999, false );
+
+  add_image_size( 'thumbwide', 320, 180, true );
+
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
   add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);

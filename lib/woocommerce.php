@@ -159,15 +159,15 @@ add_filter( 'woocommerce_product_data_tabs', 'marrakesh_custom_product_tab', 10,
 
 add_action( 'woocommerce_product_data_panels', 'marrakesh_boxing_tab_data' );
 function marrakesh_boxing_tab_data() {
-    global $thepostid, $post;
+    global $woocommerce, $post;
     echo '<div id="boxing_product_data" class="panel woocommerce_options_panel">';
     echo '<div class="options_group">';
     woocommerce_wp_checkbox( array(
         'label' => 'Sold in box?', // Text in the editor label
-        'class' => '',
-        'style' => '',
+        // 'class' => '',
+        // 'style' => '',
         'wrapper_class' => '', // custom CSS class for styling
-        //'value' => get_post_meta( $thepostid, '_isboxed', true ), // meta_value where the id serves as meta_key
+        //'value' => get_post_meta( $post->ID, '_isboxed', true ), // meta_value where the id serves as meta_key
         'id' => '_isboxed', // required, it's the meta_key for storing the value (is checked or not)
         'name' => '_isboxed',
         'cbvalue' => 'yes', // "value" attribute for the checkbox
@@ -176,17 +176,37 @@ function marrakesh_boxing_tab_data() {
         'description' => 'Check this if the item can be bought in box only' // provide something useful here
         )
     );
+    woocommerce_wp_text_input( array(
+        'label' => 'One box covers (m<sup>2</sup>)', // Text in the label in the editor.
+        'placeholder' => 'eg. 0.59', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_sizeperbox', // required, will be used as meta_key
+        'name' => '_sizeperbox', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => 'Leave empty if it\'s sold by pieces'
+        )
+    );
     echo '</div>';
     echo '</div>';
-
 }
 
-
-function marrakesh_save_wc_custom_fields( $post_id ) {
-    $isboxed = isset( $_POST[ '_isboxed' ] ) ? sanitize_text_field( $_POST[ '_isboxed' ] ) : '';
+add_action('woocommerce_process_product_meta', 'marrakesh_save_wc_custom_boxingfields');
+function marrakesh_save_wc_custom_boxingfields( $post_id ) {
     $product = wc_get_product( $post_id );
+
+    $isboxed = isset( $_POST[ '_isboxed' ] ) ? sanitize_text_field( $_POST[ '_isboxed' ] ) : 'no';
+    $sizeperbox = isset( $_POST[ '_sizeperbox' ] ) ? sanitize_text_field( $_POST[ '_sizeperbox' ] ) : '';
+
     $product->update_meta_data( '_isboxed', $isboxed );
+    $product->update_meta_data( '_sizeperbox', $sizeperbox );
+
     $product->save();
 }
 
-add_action( ‘woocommerce_process_product_meta’, ‘marrakesh_save_wc_custom_fields’ );
+

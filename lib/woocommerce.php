@@ -143,3 +143,50 @@ add_filter( 'woocommerce_products_widget_query_args', function( $query_args ){
     );
     return $query_args;
 },  PHP_INT_MAX);
+
+
+function marrakesh_custom_product_tab( $default_tabs ) {
+    $default_tabs['boxing'] = array(
+        'label'   =>  __( 'Boxing', 'domain' ),
+        'target'  =>  'boxing_product_data',
+        'priority' => 25,
+        'class'   => array('show_if_simple', 'show_if_variable')
+    );
+    return $default_tabs;
+}
+add_filter( 'woocommerce_product_data_tabs', 'marrakesh_custom_product_tab', 10, 1 );
+
+
+add_action( 'woocommerce_product_data_panels', 'marrakesh_boxing_tab_data' );
+function marrakesh_boxing_tab_data() {
+    global $thepostid, $post;
+    echo '<div id="boxing_product_data" class="panel woocommerce_options_panel">';
+    echo '<div class="options_group">';
+    woocommerce_wp_checkbox( array(
+        'label' => 'Sold in box?', // Text in the editor label
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '', // custom CSS class for styling
+        //'value' => get_post_meta( $thepostid, '_isboxed', true ), // meta_value where the id serves as meta_key
+        'id' => '_isboxed', // required, it's the meta_key for storing the value (is checked or not)
+        'name' => '_isboxed',
+        'cbvalue' => 'yes', // "value" attribute for the checkbox
+        'desc_tip' => false, // true or false, show description directly or as tooltip
+        'custom_attributes' => '', // array of attributes
+        'description' => 'Check this if the item can be bought in box only' // provide something useful here
+        )
+    );
+    echo '</div>';
+    echo '</div>';
+
+}
+
+
+function marrakesh_save_wc_custom_fields( $post_id ) {
+    $isboxed = isset( $_POST[ '_isboxed' ] ) ? sanitize_text_field( $_POST[ '_isboxed' ] ) : '';
+    $product = wc_get_product( $post_id );
+    $product->update_meta_data( '_isboxed', $isboxed );
+    $product->save();
+}
+
+add_action( ‘woocommerce_process_product_meta’, ‘marrakesh_save_wc_custom_fields’ );

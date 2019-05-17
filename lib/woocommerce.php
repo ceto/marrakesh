@@ -29,7 +29,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-  $cols = 50;
+  $cols = 150;
   return $cols;
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
@@ -177,7 +177,7 @@ function marrakesh_boxing_tab_data() {
         )
     );
     woocommerce_wp_text_input( array(
-        'label' => 'One box covers (m<sup>2</sup>)', // Text in the label in the editor.
+        'label' => 'Box covers (m<sup>2</sup>)', // Text in the label in the editor.
         'placeholder' => 'eg. 0.59', // Give examples or suggestions as placeholder
         'class' => '',
         'style' => '',
@@ -192,6 +192,90 @@ function marrakesh_boxing_tab_data() {
         'description' => 'Leave empty if it\'s sold by pieces'
         )
     );
+    woocommerce_wp_text_input( array(
+        'label' => 'Tiles in box (pcs.)', // Text in the label in the editor.
+        'placeholder' => 'eg. 13', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_tilesperbox', // required, will be used as meta_key
+        'name' => '_tilesperbox', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => ''
+        )
+    );
+    echo '</div>';
+    echo '<h4 style="padding:0 12px;">Single Tile Size</h4><div class="options_group">';
+    woocommerce_wp_text_input( array(
+        'label' => 'Weight (kg)', // Text in the label in the editor.
+        'placeholder' => 'eg. 1.5', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_tileweight', // required, will be used as meta_key
+        'name' => '_tileweight', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => ''
+        )
+    );
+    woocommerce_wp_text_input( array(
+        'label' => 'Width (cm)', // Text in the label in the editor.
+        'placeholder' => 'eg. 20', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_tilewidth', // required, will be used as meta_key
+        'name' => '_tilewidth', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => ''
+        )
+    );
+    woocommerce_wp_text_input( array(
+        'label' => 'Height (cm)', // Text in the label in the editor.
+        'placeholder' => 'eg. 20', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_tileheight', // required, will be used as meta_key
+        'name' => '_tileheight', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => ''
+        )
+    );
+    woocommerce_wp_text_input( array(
+        'label' => 'Thickness (cm)', // Text in the label in the editor.
+        'placeholder' => 'eg. 1.5', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_tilethickness', // required, will be used as meta_key
+        'name' => '_tilethickness', // name will be set automatically from id if empty
+        //'type' => '',
+        'desc_tip' => true,
+        'data_type' => '',
+        'custom_attributes' => '', // array of attributes you want to pass
+        'description' => ''
+        )
+    );
+
+
     echo '</div>';
     echo '</div>';
 }
@@ -202,9 +286,21 @@ function marrakesh_save_wc_custom_boxingfields( $post_id ) {
 
     $isboxed = isset( $_POST[ '_isboxed' ] ) ? sanitize_text_field( $_POST[ '_isboxed' ] ) : 'no';
     $sizeperbox = isset( $_POST[ '_sizeperbox' ] ) ? sanitize_text_field( $_POST[ '_sizeperbox' ] ) : '';
+    $tilesperbox = isset( $_POST[ '_tilesperbox' ] ) ? sanitize_text_field( $_POST[ '_tilesperbox' ] ) : '';
+
+    $tileweight = isset( $_POST[ '_tileweight' ] ) ? sanitize_text_field( $_POST[ '_tileweight' ] ) : '';
+    $tilewidth = isset( $_POST[ '_tilewidth' ] ) ? sanitize_text_field( $_POST[ '_tilewidth' ] ) : '';
+    $tileheight = isset( $_POST[ '_tileheight' ] ) ? sanitize_text_field( $_POST[ '_tileheight' ] ) : '';
+    $tilethickness = isset( $_POST[ '_tilethickness' ] ) ? sanitize_text_field( $_POST[ '_tilethickness' ] ) : '';
 
     $product->update_meta_data( '_isboxed', $isboxed );
     $product->update_meta_data( '_sizeperbox', $sizeperbox );
+    $product->update_meta_data( '_tilesperbox', $tilesperbox );
+
+    $product->update_meta_data( '_tileweight', $tileweight );
+    $product->update_meta_data( '_tilewidth', $tilewidth );
+    $product->update_meta_data( '_tileheight', $tileheight );
+    $product->update_meta_data( '_tilethickness', $tilethickness );
 
     $product->save();
 }

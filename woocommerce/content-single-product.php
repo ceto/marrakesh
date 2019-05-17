@@ -84,15 +84,9 @@ if ( post_password_required() ) {
         if ($hvar = get_field('application', 'product_cat_' . $categoryid)) {
             $datafromcat['application'] = $hvar;
         }
-
-        //$cat=get_term_by('id', $categoryid, 'product_cat' );
-        //echo '<h4>'.$cat->name.'</h4>';
-        //print_r(get_field('productinfo', 'product_cat_' . $categoryid));
-        //echo term_description( $categoryid, 'product_cat' );
     }
     //echo '<hr>';
     //var_dump($datafromcat);
-
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
     <div class="singleproduct__top">

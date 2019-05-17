@@ -305,4 +305,22 @@ function marrakesh_save_wc_custom_boxingfields( $post_id ) {
     $product->save();
 }
 
+add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
+function marrakesh_price_html( $price, $product ){
+    if (get_post_meta($product->get_id(), '_isboxed', true )=='yes') {
+        return $price.'/box';
+    } else {return $price.'/pcs.';}
 
+}
+
+
+//add_filter( 'woocommerce_product_get_price', 'marrakesh_united_price', 10, 2 );
+//add_filter( 'woocommerce_product_variation_get_price', 'marrakesh_united_price', 10, 2 );
+//add_filter( 'woocommerce_product_get_regular_price', 'marrakesh_united_price', 10, 2 );
+//add_filter( 'woocommerce_product_get_sale_price', 'marrakesh_united_price', 10, 2 );
+// function marrakesh_united_price( $price, $product ) {
+//     if ( (get_post_meta($product->get_id(), '_isboxed', true )=='yes') && ($sizeperbox=get_post_meta($product->get_id(), '_sizeperbox', true )) )  {
+//         $price=$price/$sizeperbox;
+//     }
+//     return $price;
+//  }

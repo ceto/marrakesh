@@ -87,6 +87,16 @@ if ( post_password_required() ) {
     }
     //echo '<hr>';
     //var_dump($datafromcat);
+
+
+    $datafromprod['_isboxed'] = get_post_meta($product->get_id(), '_isboxed', true );
+    $datafromprod['_sizeperbox'] = get_post_meta($product->get_id(), '_sizeperbox', true );
+    $datafromprod['_tilesperbox'] = get_post_meta($product->get_id(), '_tilesperbox', true );
+    $datafromprod['_tileweight'] = get_post_meta($product->get_id(), '_tileweight', true );
+    $datafromprod['_tilewidth'] = get_post_meta($product->get_id(), '_tilewidth', true );
+    $datafromprod['_tileheight'] = get_post_meta($product->get_id(), '_tileheight', true );
+    $datafromprod['_tilethickness'] = get_post_meta($product->get_id(), '_tilethickness', true );
+    //var_dump($datafromprod);
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
     <div class="singleproduct__top">
@@ -216,20 +226,21 @@ if ( post_password_required() ) {
                         <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
 
                         <dl class="singleproduct__catattributes">
-                            <dt><?= __('Single Weight','marrakesh'); ?></dt>
-                            <dd><?= $datafromcat['weight']; ?>&nbsp;kg</dd>
-                            <dt><?= __('Single Size','marrakesh'); ?></dt>
-                            <dd><?= $datafromcat['width']; ?>&nbsp;&times;&nbsp;<?= $datafromcat['length']; ?>&nbsp;&times;&nbsp;<?= $datafromcat['height']; ?>&nbsp;cm</sup>
-                            </dd>
-                            <?php if ($datafromcat['isboxed']) : ?>
+                            <dt><?= __('Single Tile Weight','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
+                            <dt><?= __('Width &times; Height','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm</dd>
+                            <dt><?= __('Thickness','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
+                            <?php if ($datafromprod['_isboxed']=='yes') : ?>
                             <dt><?= __('Can be bought','marrakesh'); ?></dt>
-                            <dd><?= __('in box','marrakesh'); ?></dd>
-                            <dt><?= __('Tiles needed for 1m<sup>2</sup>','marrakesh'); ?></dt>
-                            <dd><?= $datafromcat['pcs_per_sqm']; ?>&nbsp;tiles/m<sup>2</sup></dd>
+                            <dd><?= __('in box only','marrakesh'); ?></dd>
+                            <dt><?= __('Price per m<sup>2</sup>','marrakesh'); ?></dt>
+                            <dd><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox']); ?>&nbsp;/m<sup>2</sup></dd>
                             <dt><?= __('Tiles per Box','marrakesh'); ?></dt>
-                            <dd><?= $datafromcat['pcs_per_box']; ?>&nbsp;tiles/box</dd>
-                            <dt><?= __('Cover Size per Box','marrakesh'); ?></dt>
-                            <dd><?= $datafromcat['size_per_box']; ?>&nbsp;m<sup>2</sup>/box</dd>
+                            <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;tiles/box</dd>
+                            <dt><?= __('Cover per Box','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/box</dd>
                             <?php else: ?>
                             <dt><?= __('Can be bought','marrakesh'); ?></dt>
                             <dd><?= __('by pieces','marrakesh'); ?></dd>

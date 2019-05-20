@@ -1,9 +1,9 @@
 <div class="reveal mobilemodal" id="mobilemodal" data-reveal data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
-    
+
 <div class="mobilemodal__inner">
         <nav class="mobilemodal__mainnav">
             <a class="mobilemodal__brand" href="<?= esc_url(home_url('/')); ?>">
-                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo_hu.png" alt="<?php bloginfo('name'); ?>">
+                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/orientdekor-logo.svg" alt="<?php bloginfo('name'); ?>">
             </a>
             <?php
                 if (has_nav_menu('primary_navigation')) :
@@ -23,5 +23,5 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </nav>
-    
+
 </div>

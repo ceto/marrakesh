@@ -64,42 +64,47 @@ if ( FALSE && $product->is_in_stock() ) : ?>
 <!-- ezt tesztelem    -->
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
-<form class="order cart"
+<p class="waste-warning text-center"><small>*Make sure to order an additional 10-15% for overage/waste</small></p>
+
+<form class="order cart text-center"
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
     enctype="multipart/form-data" method="post" novalidate="novalidate">
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
     <section class="order-box">
 
-        <div class="order-box__input">
-            <label for="sqft">Total Square Meters needed<em>*</em></label>
-            <input type="number" name="sqft" id="sqft" value="<?= $datafromcat['size_per_box'] ?>" min="4">
+        <div class="grid-x grid-margin-x align-center text-center">
+            <div class="cell amedium-6">
+                <label for="sqft">Total Square Meters needed<em>*</em></label>
+                <div class="input-group"  style="margin:0 auto; max-width:10rem;">
+                    <input class="input-group-field" type="number" name="sqft" id="sqft" value="<?= $datafromcat['size_per_box'] ?>" min="4">
+                    <span class="input-group-label">m<sup>2</sup></span>
+                </div>
+                <small>Total size: <span class="sqft-total"><?= $datafromcat['size_per_box'] ?></span> m<sup>2</sup> ≈ <span class="box-total">1</span> boxes</small>
+            </div>
         </div>
+        <!-- <p class="strike text-center">- or add the number of boxxes -</p>
+        <div class="grid-x grid-margin-x">
+            <div class="cell small-6 text-right">
+                <label for="boxes">No. Boxes</label>
+            </div>
+            <div class="cell auto">
+                <input type="number" name="boxes" disabled id="boxes" value="1" min="1">
+            </div>
+        </div> -->
 
-        <div class="sqft-total">
-            <p>Total size in full boxes: <strong><?= $datafromcat['size_per_box'] ?> </strong>m<sup>2</sup></p>
-            <p class="waste-warning"><small>*Make sure to order an additional 10-15% for overage/waste</small></p>
-        </div>
 
-        <div class="strike">
-            <span>or</span>
-        </div>
-
-        <div class="order-box__input">
-            <label for="boxes">Number Of Boxes Needed</label>
-            <input type="number" name="boxes" disabled id="boxes" value="1" min="1">
-        </div>
-
-        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+        <?php if ( false && wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
         <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
                 class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
         <?php endif; ?>
-        <?php echo wc_get_stock_html( $product ); ?>
+        <?php // echo wc_get_stock_html( $product ); ?>
 
     </section>
 
     <section class="order-submit">
         <div class="order-submit__price">
+
             <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
         </div>
         <div class="order-submit__actions">

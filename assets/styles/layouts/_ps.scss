@@ -8,8 +8,12 @@ html {
         //font-size: 112.5%;
         font-size: 112.5%;
     }
-    
 
+
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .grid-container {
@@ -19,7 +23,7 @@ html {
     }
     @media screen and (min-width: 110em) {
         max-width: $global-width;
-    } 
+    }
 }
 
 .ps {

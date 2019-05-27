@@ -34,6 +34,22 @@ function marrakesh_loop_shop_per_page( $cols ) {
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
 
+remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 10);
+add_action( 'marrakesh_after_banner', 'wc_print_notices', 10 );
+
+
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10);
+add_action( 'marrakesh_after_banner', 'woocommerce_output_all_notices', 10 );
+
+
+// remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
+// add_action( 'marrakesh_after_banner', 'woocommerce_output_all_notices', 10 );
+
+
+
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+add_action( 'woocommerce_before_page_title', 'woocommerce_breadcrumb', 10 );
+
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 add_action( 'woocommerce_before_page_title', 'woocommerce_breadcrumb', 10 );
 

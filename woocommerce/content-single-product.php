@@ -223,7 +223,13 @@ if ( post_password_required() ) {
                         <?php endif;?>
                         <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
 
-                        <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
+                        <p class="singleproduct__price">
+                            <?php if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
+                                <span class="price"><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
+                            <?php elseif ( $price_html = $product->get_price_html() ) : ?>
+                                <span class="price"><?php echo $price_html; ?></span>
+                            <?php endif; ?>
+                        </p>
 
                         <dl class="singleproduct__catattributes">
                             <dt><?= __('Single Tile Weight','marrakesh'); ?></dt>
@@ -235,8 +241,8 @@ if ( post_password_required() ) {
                             <?php if ($datafromprod['_isboxed']=='yes') : ?>
                             <dt><?= __('Can be bought','marrakesh'); ?></dt>
                             <dd><?= __('in box only','marrakesh'); ?></dd>
-                            <dt><?= __('Price per m<sup>2</sup>','marrakesh'); ?></dt>
-                            <dd><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox']); ?>&nbsp;/m<sup>2</sup></dd>
+                            <dt><?= __('Price per box','marrakesh'); ?></dt>
+                            <dd><?= $product->get_price_html() ?></dd>
                             <dt><?= __('Tiles per Box','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;tiles/box</dd>
                             <dt><?= __('Cover per Box','marrakesh'); ?></dt>

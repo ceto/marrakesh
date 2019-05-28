@@ -24,17 +24,17 @@
 .prodswipe__item {
     flex: 0 0 auto;
     margin-left: .625rem;
-    margin-right: .625rem;
+    margin-right: 1rem;
     width: 11.5rem;
     @include breakpoint(medium) {
         margin-left: .9375rem;
-        margin-right: .9375rem;
+        margin-right: 1rem;
         //margin-left: map-get( $grid-margin-gutters, medium );
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
     @media screen and (min-width: 110em) {
         margin-left: .4688rem;
-        margin-right: 1.25rem;;
+        margin-right: 1.875rem;
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
 }

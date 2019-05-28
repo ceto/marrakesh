@@ -46,10 +46,9 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 
-<div class="ps ps--black ps--narrow">
+<div class="masthead">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-right">
-
             <?php if ($archthumb = get_field('template', $theterm) ) : ?>
             <div class="cell small-3 xlarge-2">
                 <figure class="woocommerce-products-header__thumb">
@@ -57,16 +56,13 @@ defined( 'ABSPATH' ) || exit;
                 </figure>
             </div>
             <div class="cell small-9 tablet-9 xlarge-10">
-                <?php else:  ?>
+                <?php else: ?>
                 <div class="cell tablet-9 xlarge-10">
                     <?php endif;  ?>
 
-
-                    <!-- <div class="cell tablet-9 xlarge-10"> -->
                     <header class="woocommerce-products-header">
                         <?php //do_action( 'woocommerce_before_page_title' ); ?>
                         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
                         <select class="taxchooser" name="taxchooser" id="taxchooser"
                             onChange="window.location.href=this.value;">
                             <option value="<?= get_term_link( $theterm->term_id) ?>"><?= $theterm->name ?></option>
@@ -79,19 +75,29 @@ defined( 'ABSPATH' ) || exit;
 
                         <h1 class="woocommerce-products-header__title page-title">
                             <?php woocommerce_page_title(); ?>
+                            <?php
+                            $termdecr=wp_strip_all_tags(term_description());
+                            if ($termdecr!=='') :
+                        ?>
+                            <span class="page-title__tip" data-tooltip tabindex="1" title='<?= $termdecr; ?>'>
+                                <svg class="icon">
+                                    <use xlink:href="#icon-info-outline"></use>
+                                </svg>
+                            </span>
+                            <?php endif; ?>
                         </h1>
                         <?php
-                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                        title => 'Active filters'
-                                    ),
-                                    array(
-                                        'before_widget' => '<section class="hide-for-tablet woocommerce-products-header__filters %1$s">',
-                                        'after_widget'  => '</section>',
-                                        'before_title'  => '<h3>',
-                                        'after_title'   => '</h3>'
-                                    )
-                                );
-                        ?>
+                                    the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                            title => 'Active filters'
+                                        ),
+                                        array(
+                                            'before_widget' => '<section class="hide-for-tablet woocommerce-products-header__filters %1$s">',
+                                            'after_widget'  => '</section>',
+                                            'before_title'  => '<h3>',
+                                            'after_title'   => '</h3>'
+                                        )
+                                    );
+                            ?>
                         <p class="woocommerce-products-header__count"><?php woocommerce_result_count() ?></p>
                         <?php endif; ?>
 
@@ -102,13 +108,25 @@ defined( 'ABSPATH' ) || exit;
                          * @hooked woocommerce_taxonomy_archive_description - 10
                          * @hooked woocommerce_product_archive_description - 10
                          */
-                        do_action( 'woocommerce_archive_description' );
+                        //do_action( 'woocommerce_archive_description' );
                     ?>
                     </header>
                 </div>
             </div>
         </div>
+
+        <?php if ($termthumb = get_field('thumbnail', $theterm, true) ) : ?>
+        <figure class="masthead__bg">
+            <?php echo wp_get_attachment_image( $termthumb['ID'], 'full' ); ?>
+        </figure>
+        <?php else: ?>
+        <figure class="masthead__bg">
+            <img src="https://source.unsplash.com/1600x400/?interior,marrakesh,arab" alt="">
+        </figure>
+        <?php endif;  ?>
+
     </div>
+
 
     <?php
     /**

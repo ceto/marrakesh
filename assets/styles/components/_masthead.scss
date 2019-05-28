@@ -1,0 +1,45 @@
+.masthead {
+    position: relative;
+    z-index: 0;
+    color: $white;
+	background-color: #000;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    @include breakpoint(large) {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
+
+}
+
+.masthead__bg {
+    position: absolute;
+    z-index: -1;
+    right:0;
+    top:0;
+    width:66.666%;
+    height:100%;
+    background-color: inherit;
+    background-image: linear-gradient(-90deg, #fff 25%, #000 100%);
+    overflow: hidden;
+    img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        //object-position: bottom center;
+        //mix-blend-mode: hard-light;
+        mix-blend-mode: multiply;
+        //opacity: .125;
+        //filter: brightness(0.85) blur(0);
+        //filter: grayscale(1);
+    }
+
+    //display: none;
+}
+
+
+.page-title__tip {
+    border:none;
+    transform: translateY(-16.666%);
+    font-size:.75em;
+}

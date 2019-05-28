@@ -146,7 +146,7 @@ if ( post_password_required() ) {
     </div>
 
 
-    <div class="ps--xlight ps--bordered singleproduct__images">
+    <div class="aps--xlight aps--bordered singleproduct__images">
         <div class="psgallery thumbswipe">
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
@@ -225,9 +225,10 @@ if ( post_password_required() ) {
 
                         <p class="singleproduct__price">
                             <?php if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
-                                <span class="price"><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
+                            <span
+                                class="price"><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
                             <?php elseif ( $price_html = $product->get_price_html() ) : ?>
-                                <span class="price"><?php echo $price_html; ?></span>
+                            <span class="price"><?php echo $price_html; ?></span>
                             <?php endif; ?>
                         </p>
 
@@ -235,7 +236,8 @@ if ( post_password_required() ) {
                             <dt><?= __('Single Tile Weight','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
                             <dt><?= __('Width &times; Height','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm</dd>
+                            <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
+                            </dd>
                             <dt><?= __('Thickness','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
                             <?php if ($datafromprod['_isboxed']=='yes') : ?>
@@ -398,7 +400,7 @@ if ( post_password_required() ) {
 
 
 
-    <div class="ps ps--xlight ps--bordered">
+    <div class="ps ps--narrow aps--xlight ps--bordered">
 
         <div class="grid-container">
             <div class="grid-x grid-margin-x">

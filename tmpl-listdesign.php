@@ -1,4 +1,22 @@
+<?php
+/**
+ * Template Name: Template Lister Page
+ */
+?>
 <?php use Roots\Sage\Titles; ?>
+
+
+
+<?php
+  $allstylegroups = get_terms(array(
+    'taxonomy' => 'pa_design',
+    'hide_empty' => false,
+  ));
+//   var_dump($allstylegroups);
+  $child_terms = get_terms( 'pa_design', array(/*'child_of' => $parent_term->term_id */) );
+//var_dump($child_terms);
+
+?>
 <?php while (have_posts()) : the_post(); ?>
 <div class="masthead">
     <div class="grid-container">
@@ -30,13 +48,33 @@
 
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
-        <div class="cell tablet-9 xlarge-7 xxlarge-6 tablet-order-2">
+        <div class="cell tablet-9 tablet-order-2">
             <div class="ps ps--narrow">
                 <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
                 <?php the_content(); ?>
-                <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
+                <section class="grid-x grid-margin-x grid-margin-y small-up-2 large-up-3">
+                    <?php foreach ( $child_terms as $child ) : ?>
+                    <div class="cell">
+                        <div class="tmplcard">
+                            <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
+                                <?php if ($designthumb = get_field('thumbnail', $child) ) : ?>
+                                <?= wp_get_attachment_image( $designthumb['id'], 'medium169', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
+                                <?php else : ?>
+                                <img class="tmplcard__img"
+                                    src="//placehold.it/640x360/cecece/333333/?text=<?= $child->name;?>"
+                                    class="tmplcard__thumb" alt="<?= $child->name;?>">
+                                <?php endif; ?>
+                                <h3 class="tmplcard__name"><?= $child->name;?></h3>
+                                <?php if ($designtmpl = get_field( 'template', $child) ) : ?>
+                                <?= wp_get_attachment_image( $designtmpl['id'], 'tiny11', false, array('class'=>'tmplcard__tmpl', 'alt'=>$child->name.' template') ); ?>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </section>
             </div>
         </div>
         <div class="cell tablet-3 xxlarge-3 tablet-order-1">

@@ -5,7 +5,7 @@
                 <div class="shrink cell">
                     <ul class="menu menu--topbar align-right">
                         <li class="menu-item"><a href="tel:+36305822377">(+36) 30 582 2377</a></li>
-                        <li class="menu-item"><a href="mailto:info@marrakesh.hu">info@marrakesh.hu</a></li>
+                        <li class="menu-item"><a href="mailto:info@orientdekor.sk">info@orientdekor.sk</a></li>
                     </ul>
                 </div>
                 <div class="auto cell show-for-tablet">

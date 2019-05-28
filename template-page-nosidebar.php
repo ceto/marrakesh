@@ -5,15 +5,17 @@
 ?>
 <?php use Roots\Sage\Titles; ?>
 <?php while (have_posts()) : the_post(); ?>
-<div class="ps ps--black ps--narrow">
+<div class="masthead">
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell">
                 <h1 class="page__title"><?= Titles\title(); ?></h1>
-
             </div>
         </div>
     </div>
+    <figure class="masthead__bg">
+        <img src="https://source.unsplash.com/1600x400/?interior,marrakesh,arab" alt="">
+    </figure>
 </div>
 
 <div class="grid-container ps ps--narrow">

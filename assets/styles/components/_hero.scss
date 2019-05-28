@@ -9,12 +9,15 @@
     top:0;
     width: 100%;
     height: 100%;
+    background-color: #000;
+    background-image: linear-gradient(45deg, #000 0%, #fff 50% );
 
 	img {
         width:100%;
         height: 100%;
         max-width: none;
         object-fit: cover;
+        mix-blend-mode: multiply;
     }
 }
 .hero__content {
@@ -36,16 +39,22 @@
 
 	max-width: 24em;
     margin: 0 0;
-
-
+    &:after {
+        content: '';
+        display: block;
+        width:2em;
+        height:1px;
+        border-top:1px solid currentColor;
+        margin:.333em 0;
+    }
 }
 .hero__precapt {
     font-weight: $global-weight-bold;
 	font-size: 1.25rem;
     line-height: 1.2;
-    max-width: 42em;;
+    max-width: 35em;;
 
-    margin: .25em 0 0;
+    margin: .25em 0;
 }
 .hero__postcapt {
     @extend .hero__precapt;
@@ -53,25 +62,28 @@
 .hero__action {
     //@include button(false,#fff, #fff, #fff, hollow);
     margin:1rem 0 0;
-    font-size:1rem;
+    font-size:.9375rem;
     line-height: 1;
     display: inline-block;
     padding: .666em .75em;
     border: 1px solid currentColor;
-    color:#000;
+    color:#fff;
     font-weight: $global-weight-bold;
-    background-color:rgba(#fff,.25);
+    background-color:#000;
     min-width: 10em;
     text-align: center;
     &:hover, &:focus {
-        color:#000;
-        filter:invert(1);
+        background-color:$secondary-color;
+        color:#fff;
+        border-color: $secondary-color;
+        //filter:invert(1);
     }
 
 
     &.hollow {
         color:#fff;
-        background-color: rgba(#000,.125);
+        background-color: rgba(#000,1);
+        border-color: transparent;
     }
     & + & {
         margin-left: .5em;

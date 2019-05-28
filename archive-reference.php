@@ -1,5 +1,5 @@
 <?php use Roots\Sage\Titles; ?>
-<div class="ps ps--black ps--narrow">
+<div class="masthead">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-center text-center">
             <div class="cell large-9">
@@ -8,6 +8,9 @@
             </div>
         </div>
     </div>
+    <figure class="masthead__bg">
+        <img src="https://source.unsplash.com/1600x400/?interior,marrakesh,arab" alt="">
+    </figure>
 </div>
 <?php
     $refcats = get_terms( array(

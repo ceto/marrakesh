@@ -70,7 +70,7 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
-//remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
 remove_action('woocommerce_single_product_summary', 'WC_Structured_Data::generate_product_data()', 60);
@@ -321,6 +321,7 @@ function marrakesh_save_wc_custom_boxingfields( $post_id ) {
     $product->save();
 }
 
+/****** Price unit Display Tricks */
 add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
 function marrakesh_price_html( $price, $product ){
     if (get_post_meta($product->get_id(), '_isboxed', true )=='yes') {
@@ -330,23 +331,8 @@ function marrakesh_price_html( $price, $product ){
     return $price;
 }
 
-
-//add_filter( 'woocommerce_product_get_price', 'marrakesh_united_price', 10, 2 );
-//add_filter( 'woocommerce_product_variation_get_price', 'marrakesh_united_price', 10, 2 );
-//add_filter( 'woocommerce_product_get_regular_price', 'marrakesh_united_price', 10, 2 );
-//add_filter( 'woocommerce_product_get_sale_price', 'marrakesh_united_price', 10, 2 );
-
-// woocommerce_cart_product_price
-function marrakesh_united_price( $price, $product ) {
-    if ( (get_post_meta($product->get_id(), '_isboxed', true )=='yes') && ($sizeperbox=get_post_meta($product->get_id(), '_sizeperbox', true )) )  {
-        $price=$price/$sizeperbox;
-    }
-    return $price;
- }
-
-
- add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
- function marrakesh_united_cartitem_price( $price, $cart_item) {
+add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
+function marrakesh_united_cartitem_price( $price, $cart_item) {
     if (get_post_meta($cart_item[data]->get_id(), '_isboxed', true )=='yes') {
         $price.='/box';
     }
@@ -355,8 +341,7 @@ function marrakesh_united_price( $price, $product ) {
 }
 
 
-/****** Stock Quntity unit Display Tricks */
-
+/****** Stock Quantity unit Display Tricks */
 function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
     if ( get_post_meta($product->get_id(), '_isboxed', true ) && ($sizeperbox = get_post_meta($product->get_id(), '_sizeperbox', true ) ) ) {
         $stock_quantity=number_format($stock_quantity/$sizeperbox,1);
@@ -366,3 +351,56 @@ function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
 };
 
 add_filter( 'woocommerce_format_stock_quantity', 'marrakesh_add_stock_quantity_unit', 10, 2 );
+
+
+
+
+
+
+// define the woocommerce_get_availability_text callback
+function marrakesh_change_get_availability_text( $availability, $instance ) {
+    if ( ! $instance->is_in_stock() ) {
+        $availability = __( 'Out of stock', 'woocommerce' );
+        $availability.=' <span data-tooltip title="'.__( 'Production on order only. Est. shipping time: 8-10 weeks', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+    } elseif ( $instance->managing_stock() && $instance->is_on_backorder( 1 ) ) {
+        //$availability = $instance->backorders_require_notification() ? __( 'Coming soon', 'marrakesh' ) : '';
+        if ( $instance->backorders_require_notification() ) {
+            $availability = __( 'Coming soon', 'marrakesh' );
+            $availability.=' <span data-tooltip title="'.__( '42.5 m2 arrive at 2019.08.12.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+        } else {
+            $availability = '';
+        }
+    
+    } elseif ( $instance->managing_stock() ) {
+        //$availability = wc_format_stock_for_display( $instance );
+        /*---------*/
+        $availability      = __( 'In stock', 'woocommerce' );
+        $stock_amount = $instance->get_stock_quantity();
+
+        switch ( get_option( 'woocommerce_stock_format' ) ) {
+            case 'low_amount':
+                if ( $stock_amount <= get_option( 'woocommerce_notify_low_stock_amount' ) ) {
+                    /* translators: %s: stock amount */
+                    $availability = sprintf( __( 'Only %s left in stock', 'woocommerce' ), wc_format_stock_quantity_for_display( $stock_amount, $instance ) );
+                }
+                break;
+            case '':
+                /* translators: %s: stock amount */
+                $availability = sprintf( __( '%s in stock', 'woocommerce' ), wc_format_stock_quantity_for_display( $stock_amount, $instance ) );
+                break;
+        }
+
+        if ( $instance->backorders_allowed() && $instance->backorders_require_notification() ) {
+            $availability .= ' &<br> ' . __( 'also coming soon', 'marrakesh' );
+            $availability.=' <span data-tooltip title="'.__( '42.5 m2 arrive at 2019.08.12.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+        }
+
+
+
+        /*---------*/
+    } else {
+        $availability = '';
+    }
+    return $availability;
+};
+add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availability_text', 10, 2 );

@@ -301,9 +301,7 @@ if ( post_password_required() ) {
                             <?php endif; ?>
                         </dl>
                     </div>
-                    <!-- <hr> -->
-                    <div class="callout singleproduct__callout">
-                        <h5><?php _e('Buy Online - Set up Your Order', 'marrakesh'); ?></h5>
+
                         <?php
                             /**
                             * Hook: woocommerce_single_product_summary.
@@ -319,7 +317,7 @@ if ( post_password_required() ) {
                             */
                             do_action( 'woocommerce_single_product_summary' );
                         ?>
-                    </div>
+
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>
                         <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>

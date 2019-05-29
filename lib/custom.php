@@ -252,3 +252,19 @@ add_action('pre_get_posts', 'marrakesh_modify_num_references');
       return array_filter($classes);
     }
   }
+
+
+
+
+// define the wp_kses_allowed_html callback
+function marrakesh_add_tags_to_wp_kses_allowed_html( $array ) {
+    $svg_args = array(
+        'svg' => array('class' => true),
+        'use' => array( 'xlink:href' => true )
+    );
+    $array = array_merge( $array, $svg_args );
+    return $array;
+};
+
+// add the filter
+add_filter( 'wp_kses_allowed_html', 'marrakesh_add_tags_to_wp_kses_allowed_html', 10, 1 );

@@ -115,7 +115,7 @@
 
 .singleproduct__header .stock,
 .singleproduct__callout .stock  {
-    font-size: .875em;
+    font-size: 1em;
     line-height: $header-lineheight;
     margin:0 0 .125em;
     display: inline-block;
@@ -123,7 +123,7 @@
     border:1px solid $light-gray;
     padding:.125em .333em;
     //font-style: italic;
-    text-transform: uppercase;
+    //text-transform: uppercase;
 
 
     &.in-stock {
@@ -134,6 +134,17 @@
 
     &.out-of-stock {
 
+    }
+
+
+    .has-tip {
+        border-bottom: none;
+        svg.icon {
+            width:1em;
+            height:1em;
+            //fill: $medium-gray;
+            transform: translateY(.2em);
+        }
     }
 }
 

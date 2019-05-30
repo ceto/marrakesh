@@ -48,6 +48,7 @@
         "gulp-svgmin": "^1.2.4",
         "gulp-svgstore": "^6.1.1",
         "gulp-uglify": "^2.0.0",
+        "gulp-wp-pot": "^2.3.5",
         "imagemin-pngcrush": "^5.0.0",
         "jshint": "^2.9.3",
         "jshint-stylish": "^2.0.1",

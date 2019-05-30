@@ -27,10 +27,10 @@ function setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
-    'primary_navigation' => __('Primary Navigation', 'marrakesh')
+    'primary_navigation' => __('Primary Navigation', 'marrakeshadmin')
   ]);
   register_nav_menus([
-    'secondary_navigation' => __('Secondary Navigation', 'marrakesh')
+    'secondary_navigation' => __('Secondary Navigation', 'marrakeshadmin')
   ]);
 
   // Enable post thumbnails
@@ -75,7 +75,7 @@ add_post_type_support( 'page', 'excerpt' );
  */
 function widgets_init() {
   register_sidebar([
-    'name'          => __('Primary', 'marrakesh'),
+    'name'          => __('Primary', 'marrakeshadmin'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
@@ -84,7 +84,7 @@ function widgets_init() {
   ]);
 
   register_sidebar([
-    'name'          => __('Pages Sidebar', 'marrakesh'),
+    'name'          => __('Pages Sidebar', 'marrakeshadmin'),
     'id'            => 'sidebar-page',
     'before_widget' => '<section class="widget widget--sidebar %1$s %2$s">',
     'after_widget'  => '</section>',
@@ -93,7 +93,7 @@ function widgets_init() {
   ]);
 
   register_sidebar([
-    'name'          => __('Footer', 'marrakesh'),
+    'name'          => __('Footer', 'marrakeshadmin'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget widget--footer %1$s %2$s">',
     'after_widget'  => '</section>',

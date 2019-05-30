@@ -4,7 +4,7 @@
         <div class="grid-x grid-margin-x align-center text-center">
             <div class="cell large-9">
                 <h1 class="page__title"><?= __('References','marrakesh') ?></h1>
-                <!-- <div class="lead"><p><?= __('Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.','marrakesh') ?></p></div> -->
+                <!-- <div class="lead"><p></p></div> -->
             </div>
         </div>
     </div>

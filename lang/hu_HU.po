@@ -1,0 +1,182 @@
+# Copyright (C) 2019 Marrakesh Theme
+# This file is distributed under the same license as the Marrakesh Theme package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Marrakesh Theme\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
+"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-30 16:24+0000\n"
+"PO-Revision-Date: 2019-05-30 16:24+0000\n"
+"Last-Translator: ceto <szabogabi@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu_HU\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.2; wp-5.2.1"
+
+#: archive-reference.php:6
+msgid "References"
+msgstr ""
+
+#: front-page.php:131
+msgid "Products Recommended"
+msgstr ""
+
+#: front-page.php:136
+msgid "Featured Tiles"
+msgstr ""
+
+#: front-page.php:141
+msgid "In Stock"
+msgstr ""
+
+#: front-page.php:146
+msgid "Sale"
+msgstr ""
+
+#: front-page.php:254
+msgid "Cement Tiles in Action"
+msgstr ""
+
+#: taxonomy-reference-type.php:12
+msgid "Cement Tiles"
+msgstr ""
+
+#: template-page-nosidebar.php:3
+msgid "The Original Full Width Page With No Sidebar"
+msgstr ""
+
+#: tmpl-faq.php:3
+msgid "Help/FAQ Template"
+msgstr ""
+
+#: tmpl-listdesign.php:3
+msgid "Template Lister Page"
+msgstr ""
+
+#: tmpl-narrowpage.php:3
+msgid "Narrow Page With No Sidebar"
+msgstr ""
+
+#: tmpl-nosidebarpage.php:3
+msgid "Full Width Page With No Sidebar"
+msgstr ""
+
+#: lib/extras.php:31
+msgid "Continued"
+msgstr ""
+
+#: lib/woocommerce.php:348
+msgid "m<sup>2</sup>"
+msgstr ""
+
+#: lib/woocommerce.php:364
+msgid "Production on order only. Est. shipping time: 8-10 weeks"
+msgstr ""
+
+#: lib/woocommerce.php:368
+msgid "Coming soon"
+msgstr ""
+
+#: lib/woocommerce.php:369, lib/woocommerce.php:395
+msgid "42.5 m2 arrive at 2019.08.12."
+msgstr ""
+
+#: lib/woocommerce.php:394
+msgid "also coming soon"
+msgstr ""
+
+#: woocommerce/archive-product.php:295
+msgid "Color and style filters&hellip;"
+msgstr ""
+
+#: woocommerce/content-single-product.php:236
+msgid "Single Tile Weight"
+msgstr ""
+
+#: woocommerce/content-single-product.php:238
+msgid "Width &times; Height"
+msgstr ""
+
+#: woocommerce/content-single-product.php:241
+msgid "Thickness"
+msgstr ""
+
+#: woocommerce/content-single-product.php:244,
+#: woocommerce/content-single-product.php:253
+msgid "Can be bought"
+msgstr ""
+
+#: woocommerce/content-single-product.php:245
+msgid "in box only"
+msgstr ""
+
+#: woocommerce/content-single-product.php:246
+msgid "Price per box"
+msgstr ""
+
+#: woocommerce/content-single-product.php:248
+msgid "Tiles per Box"
+msgstr ""
+
+#: woocommerce/content-single-product.php:250
+msgid "Cover per Box"
+msgstr ""
+
+#: woocommerce/content-single-product.php:254
+msgid "by pieces"
+msgstr ""
+
+#: woocommerce/content-single-product.php:258
+msgid "Product Category"
+msgstr ""
+
+#: woocommerce/content-single-product.php:334,
+#: woocommerce/content-single-product.php:357
+msgid "Product Information"
+msgstr ""
+
+#: woocommerce/content-single-product.php:340
+msgid "Info & Description"
+msgstr ""
+
+#: woocommerce/content-single-product.php:345
+msgid "Order & Buying"
+msgstr ""
+
+#: woocommerce/content-single-product.php:350
+msgid "Installation"
+msgstr ""
+
+#: woocommerce/content-single-product.php:373
+msgid "How to Order"
+msgstr ""
+
+#: woocommerce/content-single-product.php:380
+msgid "Installation &amp; Application Guide"
+msgstr ""
+
+#: woocommerce/content-single-product.php:462
+msgid "Products related"
+msgstr ""
+
+#: woocommerce/content-single-product.php:467
+msgid "Similar Products"
+msgstr ""
+
+#: woocommerce/content-single-product.php:470
+msgid "Color Variations"
+msgstr ""
+
+#: woocommerce/content-single-product.php:473
+msgid "You may also like&hellip;"
+msgstr ""

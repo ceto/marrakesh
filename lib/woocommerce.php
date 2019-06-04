@@ -160,17 +160,67 @@ add_filter( 'woocommerce_products_widget_query_args', function( $query_args ){
     return $query_args;
 },  PHP_INT_MAX);
 
+add_action( 'woocommerce_product_options_inventory_product_data', 'marrakesh_add_custom_fields' );
+function marrakesh_add_custom_fields() {
+    $field = array(
+        'id' => '_csstock',
+        'label' => __( 'Coming soon quantity', 'marrakeshadmin' ),
+        'data_type' => 'stock',
+        'description' => 'Leave empty or set to 0 if no planned transport available',
+        'desc_tip' => true
+    );
+    woocommerce_wp_text_input( $field );
+    $field = array(
+        'id' => '_csarrival',
+        'label' => __( 'Arrival', 'marrakeshadmin' ),
+        'class' => 'short hasDatepicker',
+        'custom_attributes' => array('pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])'),
+        //'data_type' => 'date',
+        'placeholder' => 'YYYY-MM-DD',
+        'description' => 'Leave empty if no planned transport available',
+        'desc_tip' => true
+    );
+    woocommerce_wp_text_input( $field );
+}
 
-function marrakesh_custom_product_tab( $default_tabs ) {
+/* Boxing Tab on WC product admin */
+function marrakesh_custom_product_tabs( $default_tabs ) {
     $default_tabs['boxing'] = array(
-        'label'   =>  __( 'Boxing', 'domain' ),
+        'label'   =>  __( 'Boxing', 'marrakeshadmin' ),
         'target'  =>  'boxing_product_data',
         'priority' => 25,
         'class'   => array('show_if_simple', 'show_if_variable')
     );
+    $default_tabs['linkedinfopages'] = array(
+        'label'   =>  __( 'Info Pages', 'marrakeshadmin' ),
+        'target'  =>  'linkedinfopages_product_data',
+        'priority' => 26,
+        'class'   => array()
+    );
     return $default_tabs;
 }
-add_filter( 'woocommerce_product_data_tabs', 'marrakesh_custom_product_tab', 10, 1 );
+add_filter( 'woocommerce_product_data_tabs', 'marrakesh_custom_product_tabs', 10, 1 );
+
+
+/**
+ * Add a bit of style.
+ */
+function marrakesh_custom_style() { ?>
+<style>
+#woocommerce-coupon-data ul.wc-tabs li.linkedinfopages_options a::before,
+#woocommerce-product-data ul.wc-tabs li.linkedinfopages_options a::before,
+.woocommerce ul.wc-tabs li.linkedinfopages_options a::before {
+    content: "\f123"
+}
+
+#woocommerce-coupon-data ul.wc-tabs li.boxing_options a::before,
+#woocommerce-product-data ul.wc-tabs li.boxing_options a::before,
+.woocommerce ul.wc-tabs li.boxing_options a::before {
+    content: "\f480"
+}
+</style>
+<?php }
+add_action( 'admin_head', 'marrakesh_custom_style' );
 
 
 add_action( 'woocommerce_product_data_panels', 'marrakesh_boxing_tab_data' );
@@ -296,9 +346,86 @@ function marrakesh_boxing_tab_data() {
     echo '</div>';
 }
 
-add_action('woocommerce_process_product_meta', 'marrakesh_save_wc_custom_boxingfields');
-function marrakesh_save_wc_custom_boxingfields( $post_id ) {
+
+
+
+
+
+
+
+
+
+add_action( 'woocommerce_product_data_panels', 'marrakesh_linkedinfopages_tab_data' );
+function marrakesh_linkedinfopages_tab_data() {
+    echo '<div id="linkedinfopages_product_data" class="panel woocommerce_options_panel">';
+    echo '<div class="options_group">';
+    woocommerce_wp_text_input( array(
+        'label' => 'Product Information', // Text in the label in the editor.
+        'placeholder' => '', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_linfopage', // required, will be used as meta_key
+        'name' => '_linfopage', // name will be set automatically from id if empty
+        )
+    );
+    woocommerce_wp_text_input( array(
+        'label' => 'Installation & Maintance', // Text in the label in the editor.
+        'placeholder' => '', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_linstallpage', // required, will be used as meta_key
+        'name' => '_linstallpage', // name will be set automatically from id if empty
+        )
+    );
+
+    woocommerce_wp_text_input( array(
+        'label' => 'How to Order & Buy', // Text in the label in the editor.
+        'placeholder' => '', // Give examples or suggestions as placeholder
+        'class' => '',
+        'style' => '',
+        'wrapper_class' => '',
+        //'value' => '', // if empty, retrieved from post_meta
+        'id' => '_lhowtopage', // required, will be used as meta_key
+        'name' => '_lhowtopage', // name will be set automatically from id if empty
+        )
+    );
+
+    woocommerce_wp_select( array(
+        'id' => 'newoptions',
+        'class' => '',
+        'label' => __('Testing Select', 'woocommerce'),
+        'options' => array(
+            '1' => 'User1',
+            '2' => 'User2',
+            '3' => 'User3',
+        )
+        )
+    );
+
+    echo '</div>';
+    echo '</div>';
+}
+
+
+
+
+
+
+function marrakesh_validDate($date, $format = 'Y-m-d') {
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) === $date;
+}
+
+add_action('woocommerce_process_product_meta', 'marrakesh_save_wc_custom_fields');
+function marrakesh_save_wc_custom_fields( $post_id ) {
     $product = wc_get_product( $post_id );
+
+    $csstock = isset( $_POST[ '_csstock' ] ) ? sanitize_text_field( $_POST[ '_csstock' ] ) : '';
+    $csarrival = (isset( $_POST[ '_csarrival' ] ) && marrakesh_validDate( $_POST[ '_csarrival' ]) ) ? sanitize_text_field( date('Y-m-d', strtotime($_POST[ '_csarrival' ]) ) ) : '';
 
     $isboxed = isset( $_POST[ '_isboxed' ] ) ? sanitize_text_field( $_POST[ '_isboxed' ] ) : 'no';
     $sizeperbox = isset( $_POST[ '_sizeperbox' ] ) ? sanitize_text_field( $_POST[ '_sizeperbox' ] ) : '';
@@ -309,6 +436,13 @@ function marrakesh_save_wc_custom_boxingfields( $post_id ) {
     $tileheight = isset( $_POST[ '_tileheight' ] ) ? sanitize_text_field( $_POST[ '_tileheight' ] ) : '';
     $tilethickness = isset( $_POST[ '_tilethickness' ] ) ? sanitize_text_field( $_POST[ '_tilethickness' ] ) : '';
 
+    $linfopage = isset( $_POST[ '_linfopage' ] ) ? sanitize_text_field( $_POST[ '_linfopage' ] ) : '';
+    $linstallpage = isset( $_POST[ '_linstallpage' ] ) ? sanitize_text_field( $_POST[ '_linstallpage' ] ) : '';
+    $lhowtopage = isset( $_POST[ '_lhowtopage' ] ) ? sanitize_text_field( $_POST[ '_lhowtopage' ] ) : '';
+
+    $product->update_meta_data( '_csstock', $csstock );
+    $product->update_meta_data( '_csarrival', $csarrival );
+
     $product->update_meta_data( '_isboxed', $isboxed );
     $product->update_meta_data( '_sizeperbox', $sizeperbox );
     $product->update_meta_data( '_tilesperbox', $tilesperbox );
@@ -317,6 +451,10 @@ function marrakesh_save_wc_custom_boxingfields( $post_id ) {
     $product->update_meta_data( '_tilewidth', $tilewidth );
     $product->update_meta_data( '_tileheight', $tileheight );
     $product->update_meta_data( '_tilethickness', $tilethickness );
+
+    $product->update_meta_data( '_linfopage', $linfopage );
+    $product->update_meta_data( '_linstallpage', $linstallpage );
+    $product->update_meta_data( '_lhowtopage', $lhowtopage );
 
     $product->save();
 }
@@ -370,7 +508,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
         } else {
             $availability = '';
         }
-    
+
     } elseif ( $instance->managing_stock() ) {
         //$availability = wc_format_stock_for_display( $instance );
         /*---------*/

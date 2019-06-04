@@ -39,8 +39,12 @@
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title">Contact</h3>
                         <ul class="menu vertical">
-                            <li><a href="#">+360707705653</a></li>
-                            <li><a href="#">info@orintdekor.sk</a></li>
+                            <li><a
+                                    href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
+                            </li>
+                            <li><a
+                                    href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a>
+                            </li>
                         </ul>
 
 

@@ -11,6 +11,21 @@ function marrakesh_menu_widget_args($args) {
 }
 
 
+/** Create Options Pages */
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+		'page_title' 	=> 'Globals',
+		'menu_title'	=> 'Globals',
+        'menu_slug' 	=> 'globals',
+//        'parent_slug'	=> 'edit.php?post_type=team_member',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+}
+
+
 function marrakesh_foundation_pagination() {
 global $wp_query;
 $big = 999999999; // need an unlikely integer

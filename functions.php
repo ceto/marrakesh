@@ -19,6 +19,7 @@ $sage_includes = [
   'lib/customizer.php',   // Theme customizer
   'lib/woocommerce.php',  // Woocommerce stuff by ceto
   'lib/customposts.php',  // Custom posts and taxanomies code by ceto
+  'lib/acf.php',        // ACF stuff by ceto
   'lib/custom.php'        // Custom code by ceto
 
 ];

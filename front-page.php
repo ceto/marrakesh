@@ -1,89 +1,54 @@
 <?php use Roots\Sage\Titles; ?>
 <?php while (have_posts()) : the_post(); ?>
-<div class="agrid-container">
-    <aside class="hero">
-        <figure class="hero__fig">
-            <?php if ( get_field('heroimg') ) :?>
-            <?php $image =  get_field('heroimg'); s?>
-            <?= wp_get_attachment_image( $image[ID], 'full' ) ?>
-            <?php else: ?>
 
-            <img class="hero__img"
-                src="https://riad-dbe0.kxcdn.com/wp-content/uploads/2019/01/home-banner-jan-2019-1.jpg"
-                alt="<?php the_title(); ?>">
+<?php if( have_rows('hero') ): ?>
+<?php while( have_rows('hero') ): the_row(); ?>
+<aside class="hero">
+    <figure class="hero__fig">
+        <?php if ( !($bgimage = get_sub_field('bgimage')) ) {
+            $bgimage = get_field('mhbg', 'option');
+        } ?>
+        <?= wp_get_attachment_image( $bgimage[ID], 'full' ) ?>
+    </figure>
+    <div class="hero__content grid-container">
+        <p class="hero__precapt"><?php the_sub_field('precapt'); ?></p>
+        <h3 class="hero__caption"><?php the_sub_field('caption'); ?></h3>
+        <p class="hero__postcapt"><?php the_sub_field('postcapt'); ?></p>
+        <a href="<?php the_sub_field('ctatarget'); ?>" class="hero__action"><?php the_sub_field('ctatext'); ?></a>
+    </div>
+</aside>
+<?php endwhile; ?>
+<?php endif; ?>
 
-            <!-- <img class="hero__img" src="https://source.unsplash.com/1600x900/?interior,tiles,marrakesh,arab"
-            alt="<?php the_title(); ?>"> -->
-            <?php endif; ?>
-        </figure>
 
-        <div class="hero__content grid-container">
-            <p class="hero__precapt">Orient Dekor Presents</p>
-            <h3 class="hero__caption">Handmade Cement Tiles</h3>
-            <p class="hero__postcapt">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum ttis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ) ?>" class="hero__action">Browse
-                Collection</a>
-        </div>
-
-    </aside>
-</div>
+<?php if( have_rows('promotions') ): ?>
 <div class="ps">
     <div class="grid-container">
         <div class="grid-x grid-margin-x grid-margin-y medium-up-2 large-up-3">
+            <?php while( have_rows('promotions') ): the_row(); ?>
             <div class="cell">
                 <div class="squarepromo">
                     <figure class="squarepromo__thumb">
-                        <a href="#">
+                        <a href="<?php the_sub_field('btntarget'); ?>">
                             <img src="https://source.unsplash.com/800x250/?interior,tiles,marrakesh,arab" alt="">
                         </a>
                     </figure>
                     <div class="squarepromo__content">
-                        <h3 class="squarepromo__caption">Product guides &amp; Installation Manuals</h3>
-                        <p>Doloribus voluptatem praesentium quasi. Lorem ipsum dolor sit
-                            amet consectetur adipisicing elit.
-                            Iure, qui.</p>
-                        <a href="<?php the_permalink(19116); ?>" class="button small">Learn more</a>
+                        <h3 class="squarepromo__caption">
+                            <a href="<?php the_sub_field('btntarget'); ?>">
+                                <?php the_sub_field('title'); ?>
+                            </a>
+                        </h3>
+                        <?php the_sub_field('text'); ?>
+                        <a href="<?php the_sub_field('btntarget'); ?>" class="squarepromo__readmore button small"><?php the_sub_field('btntext'); ?></a>
                     </div>
                 </div>
             </div>
-            <div class="cell">
-                <div class="squarepromo">
-                    <figure class="squarepromo__thumb">
-                        <a href="#">
-                            <img src="https://source.unsplash.com/800x250/?interior,marrakesh,arab" alt="">
-                        </a>
-                    </figure>
-
-                    <div class="squarepromo__content">
-                        <h3 class="squarepromo__caption">Special products - Tearazzo, relief &amp; more</h3>
-                        <p>Accusamus ea ipsa consectetur aperiam quidem accusantium,
-                            error eligendi in officiis cupiditate aspernatur tenetur aliquid incidunt tempora
-                            praesentium repellendus possimus. Doloribus voluptatem praesentium quasi.</p>
-                        <a href="#" class="button small">See products</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="squarepromo">
-                    <figure class="squarepromo__thumb">
-                        <a href="#">
-                            <img src="https://source.unsplash.com/800x250/?marrakesh,arab" alt="">
-                        </a>
-                    </figure>
-
-                    <div class="squarepromo__content">
-                        <h3 class="squarepromo__caption">Products in Stock - Buy Immediately</h3>
-                        <p>Saccusantium, error eligendi in officiis cupiditate aspernatur tenetur aliquid
-                            inciduntcollection</p>
-                        <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ) ?>?filter_availability=in_stock"
-                            class="button small">Product in stock</a>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 
 <div class="ps ps--xlight ps--bordered">

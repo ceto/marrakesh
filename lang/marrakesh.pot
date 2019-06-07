@@ -17,23 +17,23 @@ msgstr ""
 msgid "References"
 msgstr ""
 
-#: front-page.php:131
+#: front-page.php:96
 msgid "Products Recommended"
 msgstr ""
 
-#: front-page.php:136
+#: front-page.php:101
 msgid "Featured Tiles"
 msgstr ""
 
-#: front-page.php:141
+#: front-page.php:106
 msgid "In Stock"
 msgstr ""
 
-#: front-page.php:146
+#: front-page.php:111
 msgid "Sale"
 msgstr ""
 
-#: front-page.php:254
+#: front-page.php:219
 msgid "Cement Tiles in Action"
 msgstr ""
 
@@ -65,23 +65,23 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:348
+#: lib/woocommerce.php:486
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:364
+#: lib/woocommerce.php:502
 msgid "Production on order only. Est. shipping time: 8-10 weeks"
 msgstr ""
 
-#: lib/woocommerce.php:368
+#: lib/woocommerce.php:506
 msgid "Coming soon"
 msgstr ""
 
-#: lib/woocommerce.php:369, lib/woocommerce.php:395
+#: lib/woocommerce.php:507, lib/woocommerce.php:533
 msgid "42.5 m2 arrive at 2019.08.12."
 msgstr ""
 
-#: lib/woocommerce.php:394
+#: lib/woocommerce.php:532
 msgid "also coming soon"
 msgstr ""
 

@@ -1,34 +1,18 @@
 .squarepromo {
     position: relative;
-    //border:1px solid $light-gray;
-    //border:1px solid $light-gray;
-    //background-color: $xlight-gray;
-    //color:$white;
-    //padding:5%;
-    @include clearfix();
-    //display: flex;
-    //border:5px solid #fff;
-    //box-shadow: 0 0 2px 0 rgba(#000,.2);
+    height:100%;
+    padding-bottom: 4rem;
 }
 
 
 .squarepromo__thumb {
     margin:0 0 0 0;
 
-
-    //max-width: 33.333%;
-    //border-right: 5px solid #fff;
-
-    //background-color: #000;
-
     img {
         border:5px solid #fff;
         box-shadow: 0 0 2px 0 rgba(#000,.2);
 
-        //height:100%;
-
     }
-    //display: none;
 
 }
 
@@ -55,9 +39,18 @@
         margin:.333em 0;
     }
 
+    a {
+        color:inherit;
+    }
+
 }
 .squarepromo__subcaption {
     padding-bottom:2.5%;
     //font-size:1.125rem;
 
+}
+
+.squarepromo__readmore {
+    position:absolute;
+    bottom:0;
 }

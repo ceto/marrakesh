@@ -301,7 +301,7 @@ if ( post_password_required() ) {
                             <?php endif; ?>
                         </dl>
                     </div>
-
+                    <div class="callout">
                         <?php
                             /**
                             * Hook: woocommerce_single_product_summary.
@@ -317,7 +317,7 @@ if ( post_password_required() ) {
                             */
                             do_action( 'woocommerce_single_product_summary' );
                         ?>
-
+                    </div>
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>
                         <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>

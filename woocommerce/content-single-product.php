@@ -96,6 +96,9 @@ if ( post_password_required() ) {
     $datafromprod['_tilewidth'] = get_post_meta($product->get_id(), '_tilewidth', true );
     $datafromprod['_tileheight'] = get_post_meta($product->get_id(), '_tileheight', true );
     $datafromprod['_tilethickness'] = get_post_meta($product->get_id(), '_tilethickness', true );
+    $datafromprod['_linfopage'] = get_post_meta($product->get_id(), '_linfopage', true );
+    $datafromprod['_linstallpage'] = get_post_meta($product->get_id(), '_linstallpage', true );
+    $datafromprod['_lhowtopage'] = get_post_meta($product->get_id(), '_lhowtopage', true );
     //var_dump($datafromprod);
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
@@ -364,24 +367,24 @@ if ( post_password_required() ) {
                                 <?php the_content(); ?>
                                 <div
                                     class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
-                                    <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromcat['productinfo']) ); ?>
+                                    <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
                                 </div>
-                                <?php echo apply_filters('the_content', get_post_field('post_content', $datafromcat['productinfo'])); ?>
+                                <?php echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
                             </div>
                         </div>
                         <div class="tabs-panel" id="obspanel">
                             <h3><?php _e('How to Order', 'marrakesh');?></h3>
                             <div class="lead">
-                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromcat['order']) ); ?>
+                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_lhowtopage']) ); ?>
                             </div>
-                            <?php echo apply_filters('the_content', get_post_field('post_content', $datafromcat['order'])); ?>
+                            <?php echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_lhowtopage'])); ?>
                         </div>
                         <div class="tabs-panel" id="installpanel">
                             <h3><?php _e('Installation &amp; Application Guide', 'marrakesh');?></h3>
                             <div class="lead">
-                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromcat['application']) ); ?>
+                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linstallpage']) ); ?>
                             </div>
-                            <?php echo apply_filters('the_content', get_post_field('post_content', $datafromcat['application'])); ?>
+                            <?php echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linstallpage'])); ?>
                         </div>
                     </div>
 

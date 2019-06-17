@@ -18,9 +18,9 @@
 }
 
 .prodcard__productlink {
-    
 
-    
+
+
 }
 
 .prodcard__prodimage {
@@ -38,6 +38,11 @@
 }
 
 .prodcard {
+
+    .cs {
+        font-size:93.75%;
+        display: block;
+    }
     .onsale {
         position: absolute;
         z-index: 1;
@@ -49,8 +54,6 @@
         font-size:.875rem;
         line-height:1.2;
         margin:0 0 .25em;
-
-
     }
 
     .price {

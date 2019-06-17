@@ -131,7 +131,9 @@ if ( post_password_required() ) {
                             </figure> -->
 
 
-
+                            <figure class="singleproduct__prodthumb">
+                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                            </figure>
 
                             <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
                             <?php if ( $product->is_on_sale() ) : ?>
@@ -139,7 +141,23 @@ if ( post_password_required() ) {
                             <?php endif;?>
                             <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
 
-                            <!-- <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p> -->
+                            <p class="singleproduct__price">
+                                <?php if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
+                                <span
+                                    class="price"><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
+                                <?php elseif ( $price_html = $product->get_price_html() ) : ?>
+                                <span class="price"><?php echo $price_html; ?></span>
+                                <?php endif; ?>
+                            </p>
+
+
+                            <br>
+                            <div class="singleproduct__headeractions">
+
+                                <a href="#" class="button medium ahollow expanded">Calculate Shipping
+                                    &amp; Start Order</a>
+                            </div>
+
 
                         </header>
                     </div>
@@ -205,6 +223,36 @@ if ( post_password_required() ) {
 
                 <div class="cell tablet-6 large-5 xxlarge-4 large-order-2">
                     <div class="callout singleproduct__callout">
+                        <h3>Set Up Your Order</h3>
+                        <p>Get exact shipping time and costs by adding quantity you need.</p>
+                        <?php
+                            /**
+                            * Hook: woocommerce_single_product_summary.
+                            *
+                            * @hooked woocommerce_template_single_title - 5
+                            * @hooked woocommerce_template_single_rating - 10
+                            * @hooked woocommerce_template_single_price - 10
+                            * @hooked woocommerce_template_single_excerpt - 20
+                            * @hooked woocommerce_template_single_add_to_cart - 30
+                            * @hooked woocommerce_template_single_meta - 40
+                            * @hooked woocommerce_template_single_sharing - 50
+                            * @hooked WC_Structured_Data::generate_product_data() - 60
+                            */
+                            do_action( 'woocommerce_single_product_summary' );
+                        ?>
+                    </div>
+                    <div class="singleproduct__meta meta">
+                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
+                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
+                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                        <?php endif; ?>
+                        <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
+                    </div>
+
+                    <div class="callout singleproduct__callout">
 
                         <?php
                                 /**
@@ -216,26 +264,15 @@ if ( post_password_required() ) {
                                 do_action( 'woocommerce_before_single_product_summary' );
                             ?>
 
-                        <figure class="singleproduct__prodthumb">
+                        <!-- <figure class="singleproduct__prodthumb">
                             <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
-                        </figure>
+                        </figure> -->
 
-                        <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
-                        <?php if ( $product->is_on_sale() ) : ?>
-                        <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
-                        <?php endif;?>
-                        <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
-
-                        <p class="singleproduct__price">
-                            <?php if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
-                            <span
-                                class="price"><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
-                            <?php elseif ( $price_html = $product->get_price_html() ) : ?>
-                            <span class="price"><?php echo $price_html; ?></span>
-                            <?php endif; ?>
-                        </p>
-
+                        <h3 class="asingleproduct__title entry-title">Product Data Sheet</h3>
                         <dl class="singleproduct__catattributes">
+                            <dt><?= __('Price', 'marrakesh'); ?></dt>
+                            <dd><?php echo wc_price($product->get_price()/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup>
+                            </dd>
                             <dt><?= __('Single Tile Weight','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
                             <dt><?= __('Width &times; Height','marrakesh'); ?></dt>
@@ -304,33 +341,7 @@ if ( post_password_required() ) {
                             <?php endif; ?>
                         </dl>
                     </div>
-                    <div class="callout">
-                        <?php
-                            /**
-                            * Hook: woocommerce_single_product_summary.
-                            *
-                            * @hooked woocommerce_template_single_title - 5
-                            * @hooked woocommerce_template_single_rating - 10
-                            * @hooked woocommerce_template_single_price - 10
-                            * @hooked woocommerce_template_single_excerpt - 20
-                            * @hooked woocommerce_template_single_add_to_cart - 30
-                            * @hooked woocommerce_template_single_meta - 40
-                            * @hooked woocommerce_template_single_sharing - 50
-                            * @hooked WC_Structured_Data::generate_product_data() - 60
-                            */
-                            do_action( 'woocommerce_single_product_summary' );
-                        ?>
-                    </div>
-                    <div class="singleproduct__meta meta">
-                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
-                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
-                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-                        <?php endif; ?>
-                        <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
-                    </div>
+
                 </div>
 
                 <div class="cell large-7 xxlarge-6 large-order-1">

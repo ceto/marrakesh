@@ -64,23 +64,38 @@ if ( FALSE && $product->is_in_stock() ) : ?>
 <!-- ezt tesztelem    -->
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
-<p class="waste-warning text-center"><small>*Make sure to order an additional 10-15% for overage/waste</small></p>
 
-<form class="order cart text-center"
+
+<form class="order cart atext-center"
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
     enctype="multipart/form-data" method="post" novalidate="novalidate">
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
     <section class="order-box">
 
-        <div class="grid-x grid-margin-x align-center text-center">
+        <div class="grid-x grid-margin-x aalign-center atext-center">
             <div class="cell amedium-6">
                 <label for="sqft">Total Square Meters needed<em>*</em></label>
-                <div class="input-group"  style="margin:0 auto; max-width:10rem;">
-                    <input class="input-group-field" type="number" name="sqft" id="sqft" value="<?= $datafromcat['size_per_box'] ?>" min="4">
+                <div class="input-group" style="margin:0 0; amax-width:20rem;">
+                    <input class="input-group-field" type="number" name="sqft" id="sqft" value="" placeholder="E.g.: 20"
+                        min="4">
                     <span class="input-group-label">m<sup>2</sup></span>
                 </div>
-                <small>Total size: <span class="sqft-total"><?= $datafromcat['size_per_box'] ?></span> m<sup>2</sup> ≈ <span class="box-total">1</span> boxes</small>
+                <p class="waste-warning atext-center"><small>*Make sure to order an additional 10-15% for overage/waste.
+                        Prices are
+                        rounded to full boxes.</small></p>
+                <div class="calculatedsizewrap">
+                    <p class="calculatedsizes">
+                        <small>Boxes needed:</small>
+                        <span class="box-total">0</span> boxes</p>
+                    <p class="calculatedsizes">
+                        <small>Total size:</small>
+                        <span class="sqft-total">0</span>m<sup>2</sup>
+                    </p>
+                    <p class="calculatedsizes">
+                        <small>Est. shipping:</small>
+                        <span class="est-shipping"><?= date('M. j.');?></span></p>
+                </div>
             </div>
         </div>
         <!-- <p class="strike text-center">- or add the number of boxxes -</p>
@@ -105,19 +120,18 @@ if ( FALSE && $product->is_in_stock() ) : ?>
     <section class="order-submit">
         <div class="order-submit__price">
 
-            <p class="singleproduct__price price"><?php echo $product->get_price_html(); ?></p>
+            <p class="price text-center"><small>Total price:</small>&euro; 0</p>
         </div>
         <div class="order-submit__actions">
             <input class="pricePerBox" type="hidden" value="<?= $product->get_price() ?>">
             <input class="sqftPerBox" type="hidden" value="<?= $datafromcat['size_per_box'] ?>">
             <input class="pricePerSqft" type="hidden" value="<?= $product->get_price()/$datafromcat['size_per_box'] ?>">
 
-            <input class="orderQuantity" type="hidden" name="quantity" value="1">
+            <input class="orderQuantity" type="hidden" name="quantity" value="0">
 
             <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
-                class="single_add_to_cart_button button alt order-button">
-                <?php echo esc_html( $product->single_add_to_cart_text() ); ?>
-                <strong><?= $datafromcat['size_per_box'] ?> m<sup>2</sup></strong>
+                class="single_add_to_cart_button button expanded alt order-button">
+                <?= sprintf( __( 'Add %s to Cart', 'marrakesh' ), '<strong>0 m<sup>2</sup></strong>' ); ?>
             </button>
 
         </div>

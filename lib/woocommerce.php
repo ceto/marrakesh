@@ -505,14 +505,25 @@ add_filter( 'woocommerce_format_stock_quantity', 'marrakesh_add_stock_quantity_u
 
 // define the woocommerce_get_availability_text callback
 function marrakesh_change_get_availability_text( $availability, $instance ) {
+    $csstock = get_post_meta($instance->get_id(), '_csstock', true );
+    $csdate = get_post_meta($instance->get_id(), '_csarrival', true );
+
+
+
     if ( ! $instance->is_in_stock() ) {
         $availability = __( 'Out of stock', 'woocommerce' );
-        $availability.=' <span data-tooltip title="'.__( 'Production on order only. Est. shipping time: 8-10 weeks', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
     } elseif ( $instance->managing_stock() && $instance->is_on_backorder( 1 ) ) {
         //$availability = $instance->backorders_require_notification() ? __( 'Coming soon', 'marrakesh' ) : '';
         if ( $instance->backorders_require_notification() ) {
-            $availability = __( 'Coming soon', 'marrakesh' );
-            $availability.=' <span data-tooltip title="'.__( '42.5 m2 arrive at 2019.08.12.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+
+            if ( $csstock && $csdate ) {
+                $availability = __( 'Coming soon', 'marrakesh' );
+            } else {
+
+                $availability = __( 'Production on Order', 'marrakesh' );
+                $availability.=' <span data-tooltip title="'.__( 'Est. shipping time: 10-12 weeks.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+            }
+
         } else {
             $availability = '';
         }
@@ -536,17 +547,16 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
                 break;
         }
 
-        if ( $instance->backorders_allowed() && $instance->backorders_require_notification() ) {
-            $availability .= ' &<br> ' . __( 'also coming soon', 'marrakesh' );
-            $availability.=' <span data-tooltip title="'.__( '42.5 m2 arrive at 2019.08.12.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
-        }
-
-
-
         /*---------*/
     } else {
         $availability = '';
     }
+
+    if ( $csstock && $csdate ) {
+        $availability .= '<span class="cs">' . __( 'Arrival', 'marrakesh' ).': '.date('M. j.',strtotime($csdate)).' <strong>'.wc_format_stock_quantity_for_display( $csstock, $instance ).'</strong></span>';
+    }
+
+
     return $availability;
 };
 add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availability_text', 10, 2 );

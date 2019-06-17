@@ -312,6 +312,7 @@ function updateOrderBox($changed) {
     var $sqftInput = $sqft.val();
     var $totalSqftText = $(".sqft-total");
     var $totalBoxText = $(".box-total");
+    var $submitbtn = $(".order-submit button");
     var $priceText = $(".order-submit__price .price");
     var $orderButton = $(".order-submit__actions .order-button");
     var $buttonCount = $(".order-submit__actions .order-button strong");
@@ -336,13 +337,18 @@ function updateOrderBox($changed) {
         //update price
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(2);
-        $priceText.text("€ " + priceText);
+        $priceText.html("<small>Total price:</small> € " + priceText);
 
         //update button text
         $buttonCount.html(sqftText.toFixed(2) + " m<sup>2</sup>");
 
         //update button url
         orderQuantity.val(numberOfBoxes);
+        // if (numberOfBoxes > 0) {
+        //     $submitbtn.removeAttr("disabled");
+        // } else {
+        //     $submitbtn.setAttribute("disabled");
+        // }
 
         if ($changed.is("#sqft")) {
             //update the boxes value

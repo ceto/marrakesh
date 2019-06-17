@@ -55,8 +55,9 @@
 
 
     //min-width: max-content;
-    //max-width: 32em;
-    max-width: min-content;
+    max-width: 28em;
+
+    //max-width: min-content;
 
     border: 1px solid $medium-gray;
     box-shadow: 0 0 2rem 0 rgba(#000,.25);
@@ -81,8 +82,8 @@
 
     width:4.5em;
     min-height: 4.333em;
-    float:left;
-    margin:0 1em 3.25em 0;
+    float:right;
+    margin:0 0 3.25em 1em;
     background-color: $light-gray;
     border:3px solid #fff;
     box-shadow: 0 0 3px 0 rgba(#000,.5);
@@ -97,7 +98,7 @@
     margin:0 0 0;
     line-height: 1;
     //white-space: nowrap;
-    width: max-content;
+    //width: max-content;
     max-width: 100%;
     .singleproduct__callout & {
         font-size: 2.75em;
@@ -109,7 +110,7 @@
     font-weight: $global-weight-black;
     font-size:1.5em;
     line-height: $header-lineheight;
-    color:$medium-gray;
+    color:$dark-gray;
     margin:0.25em 0 .25em;
     del {
         font-size: 75%;
@@ -133,6 +134,8 @@
     //font-style: italic;
     //text-transform: uppercase;
 
+    //width: max-content;
+
 
     &.in-stock {
     }
@@ -152,6 +155,14 @@
             height:1em;
             //fill: $medium-gray;
             transform: translateY(.2em);
+        }
+    }
+
+    .cs {
+        //display: inline;
+        //font-size:93.75%;
+        &:before {
+            content:' | ';
         }
     }
 }
@@ -326,4 +337,54 @@
 .tabs-title.is-active > a {
     background: transparent;
     color: inherit;
+}
+
+
+.order-box {
+    .calculatedsizewrap {
+        display: flex;
+        margin:2rem 0 1rem;
+        border:1px solid $light-gray;
+        background-color: $xlight-gray;
+        //padding:1rem;
+        text-align: center;
+        justify-content: center;
+    }
+    .calculatedsizes {
+        line-height: 1;
+        font-size: 1.25em;
+        font-weight: $global-weight-bold;
+        min-height:1em;
+        padding:.666em .875em;
+        //border:1px solid $light-gray;
+        margin:0;
+        //color:$dark-gray;
+
+        small {
+            font-size: 66.666%;
+            //color: $body-font-color;
+            display: block;
+            font-weight: $global-weight-black;
+        }
+    }
+}
+
+.order-submit {
+    .price {
+        line-height: 1;
+        font-size: 1.875em;
+        font-weight: $global-weight-black;
+        min-height:1em;
+        margin:1rem 0 2rem;
+        color:$dark-gray;
+        small {
+            font-size: 50%;
+            color: $body-font-color;
+            display: block;
+            //font-weight: $global-weight-bold;
+        }
+    }
+    .button {
+        margin:0;
+    }
 }

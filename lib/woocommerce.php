@@ -357,54 +357,59 @@ function marrakesh_boxing_tab_data() {
 
 add_action( 'woocommerce_product_data_panels', 'marrakesh_linkedinfopages_tab_data' );
 function marrakesh_linkedinfopages_tab_data() {
+    global $post;
     echo '<div id="linkedinfopages_product_data" class="panel woocommerce_options_panel">';
     echo '<div class="options_group">';
-    woocommerce_wp_text_input( array(
-        'label' => 'Product Information', // Text in the label in the editor.
-        'placeholder' => '', // Give examples or suggestions as placeholder
-        'class' => '',
-        'style' => '',
-        'wrapper_class' => '',
-        //'value' => '', // if empty, retrieved from post_meta
-        'id' => '_linfopage', // required, will be used as meta_key
-        'name' => '_linfopage', // name will be set automatically from id if empty
-        )
-    );
-    woocommerce_wp_text_input( array(
-        'label' => 'Installation & Maintance', // Text in the label in the editor.
-        'placeholder' => '', // Give examples or suggestions as placeholder
-        'class' => '',
-        'style' => '',
-        'wrapper_class' => '',
-        //'value' => '', // if empty, retrieved from post_meta
-        'id' => '_linstallpage', // required, will be used as meta_key
-        'name' => '_linstallpage', // name will be set automatically from id if empty
-        )
-    );
 
-    woocommerce_wp_text_input( array(
-        'label' => 'How to Order & Buy', // Text in the label in the editor.
-        'placeholder' => '', // Give examples or suggestions as placeholder
-        'class' => '',
-        'style' => '',
-        'wrapper_class' => '',
-        //'value' => '', // if empty, retrieved from post_meta
-        'id' => '_lhowtopage', // required, will be used as meta_key
-        'name' => '_lhowtopage', // name will be set automatically from id if empty
+    $linfopagevalue = get_post_meta( $post->ID, '_linfopage', true );
+    if( empty( $linfopagevalue ) ) $linfopagevalue = '';
+
+    $linstallpagevalue = get_post_meta( $post->ID, '_linstallpage', true );
+    if( empty( $linstallpagevalue ) ) $linstallpagevalue = '';
+
+    $lhowtopagevalue = get_post_meta( $post->ID, '_lhowtopage', true );
+    if( empty( $lhowtopagevalue ) ) $lhowtopagevalue = '';
+
+
+    $thepages= new WP_Query( array(
+        'post_type' => array('page'),
+        'posts_per_page' => -1
+    ));
+
+    $options[''] = __( 'Select a page', 'marrakeshadmin'); // default value
+    while ($thepages->have_posts()) {
+        $thepages->the_post();
+        $options[get_the_id()] = get_the_title();
+    }
+    wp_reset_query();
+    wp_reset_postdata();
+
+
+    //var_dump($options);
+    woocommerce_wp_select( array(
+        'id' => '_linfopage', // required, will be used as meta_key
+        'label' => __('Product Information', 'marrakeshadmin' ), // Text in the label in the editor.
+        'options' =>  $options,
+        'value' => $linfopagevalue // if empty, retrieved from post_meta
         )
     );
 
     woocommerce_wp_select( array(
-        'id' => 'newoptions',
-        'class' => '',
-        'label' => __('Testing Select', 'woocommerce'),
-        'options' => array(
-            '1' => 'User1',
-            '2' => 'User2',
-            '3' => 'User3',
-        )
+        'id' => '_linstallpage', // required, will be used as meta_key
+        'label' => __('Installation & Maintance', 'marrakeshadmin' ), // Text in the label in the editor.
+        'options' =>  $options,
+        'value' => $linstallpagevalue // if empty, retrieved from post_meta
         )
     );
+
+    woocommerce_wp_select( array(
+        'id' => '_lhowtopage', // required, will be used as meta_key
+        'label' => __('How to Order & Buy', 'marrakeshadmin' ), // Text in the label in the editor.
+        'options' =>  $options,
+        'value' => $lhowtopagevalue // if empty, retrieved from post_meta
+        )
+    );
+
 
     echo '</div>';
     echo '</div>';
@@ -436,9 +441,12 @@ function marrakesh_save_wc_custom_fields( $post_id ) {
     $tileheight = isset( $_POST[ '_tileheight' ] ) ? sanitize_text_field( $_POST[ '_tileheight' ] ) : '';
     $tilethickness = isset( $_POST[ '_tilethickness' ] ) ? sanitize_text_field( $_POST[ '_tilethickness' ] ) : '';
 
-    $linfopage = isset( $_POST[ '_linfopage' ] ) ? sanitize_text_field( $_POST[ '_linfopage' ] ) : '';
-    $linstallpage = isset( $_POST[ '_linstallpage' ] ) ? sanitize_text_field( $_POST[ '_linstallpage' ] ) : '';
-    $lhowtopage = isset( $_POST[ '_lhowtopage' ] ) ? sanitize_text_field( $_POST[ '_lhowtopage' ] ) : '';
+    $linfopage = isset( $_POST[ '_linfopage' ] ) ? esc_attr( $_POST[ '_linfopage' ] ) : '';
+    $linstallpage = isset( $_POST[ '_linstallpage' ] ) ? esc_attr( $_POST[ '_linstallpage' ] ) : '';
+    $lhowtopage = isset( $_POST[ '_lhowtopage' ] ) ? esc_attr( $_POST[ '_lhowtopage' ] ) : '';
+
+
+    $testselect = isset( $_POST[ '_testselect' ] ) ?  esc_attr( $_POST[ '_testselect' ] ) : '';
 
     $product->update_meta_data( '_csstock', $csstock );
     $product->update_meta_data( '_csarrival', $csarrival );

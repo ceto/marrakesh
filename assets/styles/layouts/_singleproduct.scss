@@ -6,12 +6,18 @@
 .singleproduct__top {
     position: relative;
     //margin-bottom:calc(2vw + 2rem);
+    background-color: #000;
 
 }
 .singleproduct__top__bg {
+    // width:80%;
+    // margin-left:20%;
+
     width:100%;
     height: 50vh;
     min-height: 22rem;
+
+    //background-image: linear-gradient(90deg, #000 0, #fff 33%);
 
 
     @include breakpoint(tablet) {
@@ -28,6 +34,8 @@
         display: block;
         object-fit: cover;
         object-position: left center;
+        //opacity: .5;
+        //mix-blend-mode: multiply;
 
 
     }

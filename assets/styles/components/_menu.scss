@@ -55,13 +55,13 @@
 
         }
     }
-    
+
     .active>a, .is-active>a {
-        &:before { 
+        &:before {
             content:'';
         }
     }
-} 
+}
 
 
 .menu.menu--main {
@@ -94,7 +94,7 @@
             & + ul {
             display: block;
           }
-        
+
         }
       }
     }
@@ -115,7 +115,7 @@
     padding:0 2%;
     @media screen and (min-width: 110em) {
         padding: 0 calc(50vw - #{$global-width/2});
-    } 
+    }
 
     position: absolute;
     left: 0;
@@ -126,6 +126,17 @@
     border-bottom:1px solid $light-gray;
     background-color: rgba($white,.92);
     box-shadow: 0 .125rem .25rem -.125rem rgba(#000,.05);
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left:0;
+        top:-50%;
+        width:100%;
+        height:250%;
+        z-index: -1;
+    }
 
     > li {
       display: inline-block;
@@ -156,14 +167,14 @@
   .menu.menu--mobilemain {
     font-size:1.25rem;
     li {
-        
+
     }
     li > a {
         padding:.75em 1.875em;
         display: inline-block;
         &:hover, &:focus {
             text-shadow: 0 0 .125em rgba(#000,.5);
-            color:#000;            
+            color:#000;
         }
     }
     ul {
@@ -174,7 +185,7 @@
         margin:0 0 1.5rem 0;
         padding:0;
         li > a {
-       
+
         }
 
     }
@@ -206,14 +217,14 @@
         padding: .25em 0;
         //margin:.125em 0;
         //display: inline-block;
-        
+
         //color:$dark-gray;
         &:hover, &:focus {
             //color:$warning-color;
         }
     }
 
-    .active > a, .is-active>a { 
+    .active > a, .is-active>a {
             color: #000;
             text-shadow: 0 0 .25em rgba(#000,.333);
             // background-color: transparent;
@@ -225,7 +236,7 @@
     font-size:.875rem;
     text-transform: capitalize;
     //font-weight: $global-weight-bold;
-    
+
     > li {
         display: inline-block;
         &:not(:last-child()):after {
@@ -274,14 +285,14 @@
         font-size:1rem;
     }
     a {
-        
+
         padding-left:calc(.75em + .25vw);
         padding-right:calc(.75em + .25vw);
 
 
     }
 
-    .active > a, .is-active>a { 
+    .active > a, .is-active>a {
         color: #000;
         text-shadow: 0 0 .25em rgba(#000,.333);
         // background-color: transparent;

@@ -31,7 +31,7 @@
                     <a class="brand" href="<?= esc_url(home_url('/')); ?>">
                         <!-- <img class="brand__logo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/lofo_hu_small.svg" alt="<?php bloginfo('name'); ?>"> -->
                         <img class="brand__fulllogo"
-                            src="<?= get_stylesheet_directory_uri(); ?>/dist/images/orientdekor-logo.svg"
+                            src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg"
                             alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                     </a>
                 </div>

@@ -65,106 +65,114 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:486
+#: lib/woocommerce.php:494
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:502
-msgid "Production on order only. Est. shipping time: 8-10 weeks"
-msgstr ""
-
-#: lib/woocommerce.php:506
+#: lib/woocommerce.php:520
 msgid "Coming soon"
 msgstr ""
 
-#: lib/woocommerce.php:507, lib/woocommerce.php:533
-msgid "42.5 m2 arrive at 2019.08.12."
+#: lib/woocommerce.php:523
+msgid "Production on Order"
 msgstr ""
 
-#: lib/woocommerce.php:532
-msgid "also coming soon"
+#: lib/woocommerce.php:524
+msgid "Est. shipping time: 10-12 weeks."
+msgstr ""
+
+#: lib/woocommerce.php:556
+msgid "Arrival"
 msgstr ""
 
 #: woocommerce/archive-product.php:295
 msgid "Color and style filters&hellip;"
 msgstr ""
 
-#: woocommerce/content-single-product.php:236
+#: woocommerce/content-single-product.php:273
+msgid "Price"
+msgstr ""
+
+#: woocommerce/content-single-product.php:276
 msgid "Single Tile Weight"
 msgstr ""
 
-#: woocommerce/content-single-product.php:238
+#: woocommerce/content-single-product.php:278
 msgid "Width &times; Height"
 msgstr ""
 
-#: woocommerce/content-single-product.php:241
+#: woocommerce/content-single-product.php:281
 msgid "Thickness"
 msgstr ""
 
-#: woocommerce/content-single-product.php:244, woocommerce/content-single-product.php:253
+#: woocommerce/content-single-product.php:284, woocommerce/content-single-product.php:293
 msgid "Can be bought"
 msgstr ""
 
-#: woocommerce/content-single-product.php:245
+#: woocommerce/content-single-product.php:285
 msgid "in box only"
 msgstr ""
 
-#: woocommerce/content-single-product.php:246
+#: woocommerce/content-single-product.php:286
 msgid "Price per box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:248
+#: woocommerce/content-single-product.php:288
 msgid "Tiles per Box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:250
+#: woocommerce/content-single-product.php:290
 msgid "Cover per Box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:254
+#: woocommerce/content-single-product.php:294
 msgid "by pieces"
 msgstr ""
 
-#: woocommerce/content-single-product.php:258
+#: woocommerce/content-single-product.php:298
 msgid "Product Category"
 msgstr ""
 
-#: woocommerce/content-single-product.php:334, woocommerce/content-single-product.php:357
+#: woocommerce/content-single-product.php:348, woocommerce/content-single-product.php:371
 msgid "Product Information"
 msgstr ""
 
-#: woocommerce/content-single-product.php:340
+#: woocommerce/content-single-product.php:354
 msgid "Info & Description"
 msgstr ""
 
-#: woocommerce/content-single-product.php:345
+#: woocommerce/content-single-product.php:359
 msgid "Order & Buying"
 msgstr ""
 
-#: woocommerce/content-single-product.php:350
+#: woocommerce/content-single-product.php:364
 msgid "Installation"
 msgstr ""
 
-#: woocommerce/content-single-product.php:373
+#: woocommerce/content-single-product.php:387
 msgid "How to Order"
 msgstr ""
 
-#: woocommerce/content-single-product.php:380
+#: woocommerce/content-single-product.php:394
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:462
+#: woocommerce/content-single-product.php:476
 msgid "Products related"
 msgstr ""
 
-#: woocommerce/content-single-product.php:467
+#: woocommerce/content-single-product.php:481
 msgid "Similar Products"
 msgstr ""
 
-#: woocommerce/content-single-product.php:470
+#: woocommerce/content-single-product.php:484
 msgid "Color Variations"
 msgstr ""
 
-#: woocommerce/content-single-product.php:473
+#: woocommerce/content-single-product.php:487
 msgid "You may also like&hellip;"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/simple.php:134
+msgid "Add %s to Cart"
 msgstr ""

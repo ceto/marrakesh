@@ -490,7 +490,7 @@ function marrakesh_united_cartitem_price( $price, $cart_item) {
 /****** Stock Quantity unit Display Tricks */
 function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
     if ( get_post_meta($product->get_id(), '_isboxed', true ) && ($sizeperbox = get_post_meta($product->get_id(), '_sizeperbox', true ) ) ) {
-        $stock_quantity=number_format($stock_quantity/$sizeperbox,1);
+        $stock_quantity=number_format($stock_quantity*$sizeperbox,1);
         $stock_quantity.=__('m<sup>2</sup>','marrakesh');
     }
     return '<strong>'.$stock_quantity.'</strong>';

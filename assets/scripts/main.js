@@ -295,15 +295,12 @@ if ($(".psgallery").length) {
 // Order Box functions on single product detail pages
 //////////////////////////////////////////////////////
 
+
+
+
 var $form = $("form.order");
 var origForm = $form.serialize();
 
-$("form.order :input").on("change input", function() {
-    if ($form.serialize() !== origForm && $(this).attr("id") !== "yith-wcwtl-email") {
-        origForm = $form.serialize();
-        updateOrderBox($(this));
-    }
-});
 
 function updateOrderBox($changed) {
     var $boxes = $("#boxes");
@@ -375,3 +372,12 @@ function updateOrderBox($changed) {
         orderQuantity.val(numberOfProduct);
     }*/
 }
+
+$("form.order :input").on("change input", function() {
+    if ($form.serialize() !== origForm && $(this).attr("id") !== "yith-wcwtl-email") {
+        origForm = $form.serialize();
+        updateOrderBox($(this));
+    }
+});
+
+

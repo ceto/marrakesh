@@ -30,6 +30,7 @@ defined( 'ABSPATH' ) || exit;
             'taxonomy' => $ctax->name,
             'parent' => 0,
         ) );
+        $mastheadbg = get_field('mhbg', 'option');
 
     } else {
         $theterm = get_queried_object();
@@ -40,10 +41,15 @@ defined( 'ABSPATH' ) || exit;
             'exclude' => array($theterm->term_id),
             'parent' => 0,
         ) );
+
+        if ( !( $mastheadbg = get_field('masthead-bg', $theterm, true) ) )  {
+            if ( !( $mastheadbg = get_field('thumbnail', $theterm, true) ) )  {
+                $mastheadbg = get_field('mhbg', 'option');
+            }
+        };
+
     }
     // var_dump($theterm);
-
-
 ?>
 
 <div class="masthead">
@@ -115,15 +121,9 @@ defined( 'ABSPATH' ) || exit;
             </div>
         </div>
 
-        <?php if ($termthumb = get_field('thumbnail', $theterm, true) ) : ?>
         <figure class="masthead__bg">
-            <?php echo wp_get_attachment_image( $termthumb['ID'], 'full' ); ?>
+            <?php echo wp_get_attachment_image( $mastheadbg['ID'], 'xlarge' ); ?>
         </figure>
-        <?php else: ?>
-        <figure class="masthead__bg">
-            <img src="https://source.unsplash.com/1600x400/?interior,marrakesh,arab" alt="">
-        </figure>
-        <?php endif;  ?>
 
     </div>
 

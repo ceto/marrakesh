@@ -27,7 +27,7 @@
                 </div>
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget">
-                        <h3 class="widget__title">Help & Info</h3>
+                        <h3 class="widget__title"><?php _e('Help & Info', 'marrakesh'); ?></h3>
                         <?php
                             if (has_nav_menu('secondary_navigation')) :
                             wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
@@ -58,7 +58,7 @@
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell auto">
-                    <p>&copy; <?= date('Y') ?> &middot; Orient Dekor Ltd. &middot; All rights reserved</p>
+                    <p>&copy; <?= date('Y') ?> &middot; <?php bloginfo('name'); ?> &middot; All rights reserved</p>
                 </div>
                 <div class="cell shrink">
                     <p>Site by <a target="_blank" href="http://hydrogene.hu">Hydrogene</a></p>

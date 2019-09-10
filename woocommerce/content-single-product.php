@@ -37,6 +37,12 @@ if ( post_password_required() ) {
 ?>
 
 <?php
+
+    $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
+    $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
+    $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
+    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids' ) );
+
     $catids = $product->get_category_ids();
     $datafromcat = array(
         'isboxed' => false,
@@ -381,6 +387,14 @@ if ( post_password_required() ) {
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
                                 </div>
                                 <?php echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
+                                <?php $designdescr=term_description($designs['0']); ?>
+                                <?php if ($designdescr!=='') : ?>
+                                <div class="callout">
+                                    <h6><?= sprintf(__('About %s','marrakesh'), get_term($designs['0'])->name); ?>
+                                    </h6>
+                                    <?= $designdescr; ?>
+                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="tabs-panel" id="obspanel">
@@ -422,10 +436,6 @@ if ( post_password_required() ) {
                     $upsellproducts = $upsells;
                     ?>
                     <?php
-                    $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
-                    $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
-                    $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
-                    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids' ) );
                     $reldesignproducts = wc_get_products(array(
                         'post_status' => 'publish',
                         'posts_per_page' => -1,

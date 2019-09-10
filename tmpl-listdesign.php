@@ -42,7 +42,12 @@
         </div>
     </div>
     <figure class="masthead__bg">
-        <img src="https://source.unsplash.com/1600x400/?interior,marrakesh,arab" alt="">
+        <?php
+        if ( !( $mastheadbg = get_field('masthead-bg') ) )  {
+            $mastheadbg = get_field('mhbg', 'option');
+        };
+            echo wp_get_attachment_image( $mastheadbg['ID'], 'xlarge' );
+         ?>
     </figure>
 </div>
 

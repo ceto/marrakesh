@@ -85,91 +85,99 @@ msgstr ""
 msgid "Arrival"
 msgstr ""
 
+#: templates/footer.php:30
+msgid "Help & Info"
+msgstr ""
+
 #: woocommerce/archive-product.php:295
 msgid "Color and style filters&hellip;"
 msgstr ""
 
-#: woocommerce/content-single-product.php:273
+#: woocommerce/content-single-product.php:279
 msgid "Price"
 msgstr ""
 
-#: woocommerce/content-single-product.php:276
+#: woocommerce/content-single-product.php:282
 msgid "Single Tile Weight"
 msgstr ""
 
-#: woocommerce/content-single-product.php:278
+#: woocommerce/content-single-product.php:284
 msgid "Width &times; Height"
 msgstr ""
 
-#: woocommerce/content-single-product.php:281
+#: woocommerce/content-single-product.php:287
 msgid "Thickness"
 msgstr ""
 
-#: woocommerce/content-single-product.php:284, woocommerce/content-single-product.php:293
+#: woocommerce/content-single-product.php:290, woocommerce/content-single-product.php:299
 msgid "Can be bought"
 msgstr ""
 
-#: woocommerce/content-single-product.php:285
+#: woocommerce/content-single-product.php:291
 msgid "in box only"
 msgstr ""
 
-#: woocommerce/content-single-product.php:286
+#: woocommerce/content-single-product.php:292
 msgid "Price per box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:288
+#: woocommerce/content-single-product.php:294
 msgid "Tiles per Box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:290
+#: woocommerce/content-single-product.php:296
 msgid "Cover per Box"
 msgstr ""
 
-#: woocommerce/content-single-product.php:294
+#: woocommerce/content-single-product.php:300
 msgid "by pieces"
 msgstr ""
 
-#: woocommerce/content-single-product.php:298
+#: woocommerce/content-single-product.php:304
 msgid "Product Category"
 msgstr ""
 
-#: woocommerce/content-single-product.php:348, woocommerce/content-single-product.php:371
+#: woocommerce/content-single-product.php:354, woocommerce/content-single-product.php:377
 msgid "Product Information"
 msgstr ""
 
-#: woocommerce/content-single-product.php:354
+#: woocommerce/content-single-product.php:360
 msgid "Info & Description"
 msgstr ""
 
-#: woocommerce/content-single-product.php:359
+#: woocommerce/content-single-product.php:365
 msgid "Order & Buying"
 msgstr ""
 
-#: woocommerce/content-single-product.php:364
+#: woocommerce/content-single-product.php:370
 msgid "Installation"
 msgstr ""
 
-#: woocommerce/content-single-product.php:387
+#: woocommerce/content-single-product.php:393
+msgid "About %s"
+msgstr ""
+
+#: woocommerce/content-single-product.php:401
 msgid "How to Order"
 msgstr ""
 
-#: woocommerce/content-single-product.php:394
+#: woocommerce/content-single-product.php:408
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:476
+#: woocommerce/content-single-product.php:486
 msgid "Products related"
 msgstr ""
 
-#: woocommerce/content-single-product.php:481
+#: woocommerce/content-single-product.php:491
 msgid "Similar Products"
 msgstr ""
 
-#: woocommerce/content-single-product.php:484
+#: woocommerce/content-single-product.php:494
 msgid "Color Variations"
 msgstr ""
 
-#: woocommerce/content-single-product.php:487
+#: woocommerce/content-single-product.php:497
 msgid "You may also like&hellip;"
 msgstr ""
 

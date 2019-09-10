@@ -1,21 +1,25 @@
 .brand {
 	display: block;
-
-    margin: 1rem 0 0;
-    @include breakpoint(medium) {
-        //margin-top:.75rem;
-    }
+    margin: 0 0;
 }
 .brand__fulllogo {
     display: block;
-    width: 13em;
-    max-width: 100%;
-    //transform: translateY(5%);
-
+    width: auto;
+    max-height: 2rem;
+    margin:.5rem 0 .75rem;
     @include breakpoint(medium) {
-        width:23em;
-        max-width: 23em;
+        max-height: 2.5rem;
+        margin:.666rem 0 0;
 
-	}
+    }
 
+    .brand.sk_SK & {
+        margin:.5rem 0 .5rem;
+        @include breakpoint(medium) {
+            margin:.75rem 0 -.25rem;
+
+        }
+    }
 }
+
+

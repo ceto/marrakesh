@@ -24,9 +24,9 @@
 .banner {
     z-index: 5;
     position: relative;
-    padding-bottom:1rem;
+    //padding-bottom:1rem;
     @include breakpoint(medium) {
-        padding-bottom:0;
+        //padding-bottom:0;
     }
 }
 
@@ -34,12 +34,16 @@
     border-bottom:1px solid transparent;
     transition: top .4s ease-in;
 }
+
+.banner__branding {
+
+}
 .banner__nav {
     //@includemargin-top:-.25rem;
 }
 .menutoggler {
     @include hamburger($body-font-color, $primary-color, 26px, 18px, 2px, 4);
-    margin: 1.125rem 0 0 0;
+    margin: 0 0 0 0;
     outline: none;
 }
 .banner__ctacell {

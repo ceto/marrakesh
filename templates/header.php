@@ -25,14 +25,19 @@
     </div>
 
     <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x align-middle">
             <div class="auto cell">
                 <div class="banner__branding">
-                    <a class="brand" href="<?= esc_url(home_url('/')); ?>">
-                        <!-- <img class="brand__logo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/lofo_hu_small.svg" alt="<?php bloginfo('name'); ?>"> -->
+                    <a class="brand <?= get_locale(); ?>" href="<?= esc_url(home_url('/')); ?>">
+                        <?php switch( get_locale() ) {
+                        case 'sk_SK' : ?>
                         <img class="brand__fulllogo"
-                            src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg"
+                            src="<?= get_stylesheet_directory_uri(); ?>/dist/images/orientdecor.svg"
                             alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                        <?php break; default: ?>
+                        <img class="brand__fulllogo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg"
+                            alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                        <?php } ?>
                     </a>
                 </div>
                 <nav class="banner__nav show-for-medium">

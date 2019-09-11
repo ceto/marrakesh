@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Design Lister Page
+ * Template Name: Transport Calendar
  */
 ?>
 <?php use Roots\Sage\Titles; ?>
@@ -55,31 +55,51 @@
     <div class="grid-x grid-margin-x">
         <div class="cell tablet-9 tablet-order-2">
             <div class="ps ps--narrow">
-                <?php if (has_excerpt()) : ?>
-                <div class="lead"><?php the_excerpt(); ?></div>
-                <?php endif; ?>
-                <?php the_content(); ?>
-                <section class="grid-x grid-margin-x grid-margin-y small-up-2 large-up-3">
-                    <?php foreach ( $child_terms as $child ) : ?>
-                    <div class="cell">
-                        <div class="tmplcard">
-                            <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
-                                <?php if ($designthumb = get_field('thumbnail', $child) ) : ?>
-                                <?= wp_get_attachment_image( $designthumb['id'], 'medium169', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
-                                <?php else : ?>
-                                <img class="tmplcard__img"
-                                    src="//placehold.it/640x360/cecece/333333/?text=<?= $child->name;?>"
-                                    class="tmplcard__thumb" alt="<?= $child->name;?>">
-                                <?php endif; ?>
-                                <h3 class="tmplcard__name"><?= $child->name;?></h3>
-                                <?php if ($designtmpl = get_field( 'template', $child) ) : ?>
-                                <?= wp_get_attachment_image( $designtmpl['id'], 'tiny11', false, array('class'=>'tmplcard__tmpl', 'alt'=>$child->name.' template') ); ?>
-                                <?php endif; ?>
-                            </a>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
+                <div class="bodycopy">
+                    <?php if (has_excerpt()) : ?>
+                    <div class="lead"><?php the_excerpt(); ?></div>
+                    <?php endif; ?>
+                    <?php the_content(); ?>
+                </div>
+
+                <section>
+                    <?php $thetranspquery = new WP_Query(array(
+                        'post_status' => 'publish',
+                        'post_type' => array('product'),
+                        'posts_per_page' => -1,
+                        'orderby' => 'meta_value',
+                        'meta_key' => '_csarrival',
+                        'order' => 'ASC',
+                        'meta_query' => array(
+                            'relation'		=> 'AND',
+                            array(
+                                'key'	 	=> '_csarrival',
+                                'value'	  	=> '',
+                                'compare' 	=> '!=',
+                            ),
+                            array(
+                                'key'	 	=> '_csstock',
+                                'value'	  	=> 0,
+                                'compare' 	=> '>',
+                            )
+                        )
+                    ));
+                    $products = $thetranspquery->get_posts();
+                    ?>
+                    <?php if ($products) :?>
+                    <ul class="prodgrid prodgrid--narrow">
+                        <?php foreach ( $products as $related_product ) : ?>
+                        <?php
+                            $post_object = get_post( $related_product );
+                            setup_postdata( $GLOBALS['post'] =& $post_object );
+                            wc_get_template_part( 'content', 'product' );
+                        ?>
+                        <?php endforeach; wp_reset_postdata(); ?>
+                    </ul>
+                    <?php endif; ?>
+
                 </section>
+
             </div>
         </div>
         <div class="cell tablet-3 xxlarge-3 tablet-order-1">

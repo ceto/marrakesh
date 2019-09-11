@@ -50,7 +50,7 @@ msgid "Help/FAQ Template"
 msgstr ""
 
 #: tmpl-listdesign.php:3
-msgid "Template Lister Page"
+msgid "Design Lister Page"
 msgstr ""
 
 #: tmpl-narrowpage.php:3
@@ -59,6 +59,14 @@ msgstr ""
 
 #: tmpl-nosidebarpage.php:3
 msgid "Full Width Page With No Sidebar"
+msgstr ""
+
+#: tmpl-sale.php:3
+msgid "Sale Products List"
+msgstr ""
+
+#: tmpl-transportcal.php:3
+msgid "Transport Calendar"
 msgstr ""
 
 #: lib/extras.php:31
@@ -83,6 +91,14 @@ msgstr ""
 
 #: lib/woocommerce.php:556
 msgid "Arrival"
+msgstr ""
+
+#: templates/dlcage.php:2
+msgid "Downloads"
+msgstr ""
+
+#: templates/dlcage.php:18
+msgid "Download"
 msgstr ""
 
 #: templates/footer.php:30

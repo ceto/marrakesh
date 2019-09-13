@@ -30,7 +30,7 @@
                 <div class="squarepromo">
                     <figure class="squarepromo__thumb">
                         <a href="<?php the_sub_field('btntarget'); ?>">
-                            <img src="https://source.unsplash.com/800x250/?interior,tiles,marrakesh,arab" alt="">
+                            <?php the_post_thumbnail('medium_large'); ?>
                         </a>
                     </figure>
                     <div class="squarepromo__content">

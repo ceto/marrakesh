@@ -62,10 +62,10 @@
 		transition-duration: .333s;
 		transition-property: transform;
         transform-origin: left bottom;
-        height: 75vw;
-        max-height:30rem;
-        width: auto;
+        height: 100%;
+        width: 100%;
         max-width: none;
+        object-fit: cover;
 	}
 	.icon {
 		font-size: 3.5rem;

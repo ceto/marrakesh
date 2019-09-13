@@ -17,23 +17,23 @@ msgstr ""
 msgid "References"
 msgstr ""
 
-#: front-page.php:96
+#: front-page.php:101
 msgid "Products Recommended"
 msgstr ""
 
-#: front-page.php:101
+#: front-page.php:106
 msgid "Featured Tiles"
 msgstr ""
 
-#: front-page.php:106
+#: front-page.php:111
 msgid "In Stock"
 msgstr ""
 
-#: front-page.php:111
+#: front-page.php:116
 msgid "Sale"
 msgstr ""
 
-#: front-page.php:219
+#: front-page.php:224
 msgid "Cement Tiles in Action"
 msgstr ""
 

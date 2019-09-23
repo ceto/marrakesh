@@ -39,6 +39,7 @@
         padding-bottom: 0;
         margin:0;
         height:auto;
+        //max-height: 12rem;
     }
 
 
@@ -66,6 +67,11 @@
         width: 100%;
         max-width: none;
         object-fit: cover;
+        .referencecard--fixheight & {
+            height:calc(15rem + 15vw);
+            width:auto;
+
+        }
 	}
 	.icon {
 		font-size: 3.5rem;

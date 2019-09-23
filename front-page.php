@@ -30,7 +30,7 @@
                 <div class="squarepromo">
                     <figure class="squarepromo__thumb">
                         <a href="<?php the_sub_field('btntarget'); ?>">
-                         <?php
+                            <?php
                             if ( !( $image = get_sub_field('image') ) )  {
                                 $image = get_field('mhbg', 'option');
                             };
@@ -45,7 +45,8 @@
                             </a>
                         </h3>
                         <?php the_sub_field('text'); ?>
-                        <a href="<?php the_sub_field('btntarget'); ?>" class="squarepromo__readmore button small"><?php the_sub_field('btntext'); ?></a>
+                        <a href="<?php the_sub_field('btntarget'); ?>"
+                            class="squarepromo__readmore button small"><?php the_sub_field('btntext'); ?></a>
                     </div>
                 </div>
             </div>
@@ -102,13 +103,13 @@
                 <ul id="featprodtabs" class="tabs tabs--singleproduct" data-active-collapse="true" data-deep-link="true"
                     data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-tabs>
                     <li class="tabs-title is-active">
-                        <a href="#fpfeatpanel" aria-selected="true">
-                            <?php esc_html_e( 'Featured Tiles', 'marrakesh' ); ?>
+                        <a href="#fpinstockpanel">
+                            <?php esc_html_e( 'In Stock', 'marrakesh' ) ?>
                         </a>
                     </li>
                     <li class="tabs-title">
-                        <a href="#fpinstockpanel">
-                            <?php esc_html_e( 'In Stock', 'marrakesh' ) ?>
+                        <a href="#fpfeatpanel" aria-selected="true">
+                            <?php esc_html_e( 'Featured Tiles', 'marrakesh' ); ?>
                         </a>
                     </li>
                     <li class="tabs-title">
@@ -129,20 +130,7 @@
         );
     ?>
     <div class="tabs-content" data-tabs-content="featprodtabs">
-        <div class="tabs-panel is-active" id="fpfeatpanel">
-            <?php
-                the_widget( 'WC_Widget_Products', array(
-                    'title' => '',
-                    'number' => 12,
-                    'show' => '',
-                    'orderby' => 'rand',
-                    'order' => 'ASC'
-
-                ), $wargs );
-                wp_cache_flush();
-                ?>
-        </div>
-        <div class="tabs-panel" id="fpinstockpanel">
+        <div class="tabs-panel is-active" id="fpinstockpanel">
             <?php
                 the_widget( 'WC_Widget_Products', array(
                     'title' => '',
@@ -154,6 +142,19 @@
                 ), $wargs );
                 wp_cache_flush();
             ?>
+        </div>
+        <div class="tabs-panel" id="fpfeatpanel">
+            <?php
+                the_widget( 'WC_Widget_Products', array(
+                    'title' => '',
+                    'number' => 12,
+                    'show' => '',
+                    'orderby' => 'rand',
+                    'order' => 'ASC'
+
+                ), $wargs );
+                wp_cache_flush();
+                ?>
         </div>
         <div class="tabs-panel" id="fpsalepanel">
             <?php
@@ -222,7 +223,7 @@
         <div class="grid-x grid-margin-x text-center">
             <div class="cell">
                 <h2><?php _e('Cement Tiles in Action', 'marrakesh');?></h2>
-                <p class="lead">See our engaging reference</p>
+                <p class="lead"><?php _e('See our engaging reference', 'marrakesh');?></p>
                 <br>
             </div>
         </div>

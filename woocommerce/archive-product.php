@@ -157,7 +157,6 @@ defined( 'ABSPATH' ) || exit;
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
                         <?php
                                 the_widget( 'WC_Widget_Status_Filter', array(
-                                    'title' => ''
 
                                 ), $wargs );
                         ?>

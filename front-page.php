@@ -208,13 +208,13 @@
         'order'               => 'ASC',
         'orderby'             => 'menu_order',
         'posts_per_page'         => 10,
-        // 'tax_query' => array(
-        //     array(
-        //         'taxonomy' => 'department',
-        //         'field'    => 'term_id',
-        //         'terms'    => $department->term_id,
-        //     ),
-        // ),
+        'meta_query' => array(
+            array(
+                'key' => 'featured',
+                'value'    => 1,
+                'compare'    => '=',
+            ),
+        ),
     );
     $the_featrefs = new WP_Query( $args );
 ?>

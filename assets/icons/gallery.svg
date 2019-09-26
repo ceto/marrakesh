@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>gallery</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-1" transform="translate(-214.000000, -75.000000)" fill="#1E1E1E">
+            <g id="gallery" transform="translate(214.000000, 75.000000)">
+                <path d="M12.4053688,19 L1.5946312,19 C0.713705209,19 0,18.2862948 0,17.4053688 L0,6.5946312 C0,5.71370521 0.713705209,5 1.5946312,5 L12.4053688,5 C13.2862948,5 14,5.71370521 14,6.5946312 L14,17.4053688 C14,18.2862948 13.2862948,19 12.4053688,19" id="Fill-2"></path>
+                <path d="M17.4053688,0 L6.5946312,0 C5.71370521,0 5,0.713617336 5,1.59443487 L5,2.99581384 L14.4091861,2.99581384 C15.2901121,2.99581384 16.0038173,3.70943117 16.0038173,4.59024871 L16.0038173,14 L17.4053688,14 C18.2862948,14 19,13.284659 19,12.4038414 L19,1.59443487 C19,0.713617336 18.2862948,0 17.4053688,0" id="Fill-3"></path>
+            </g>
+        </g>
+    </g>
+</svg>

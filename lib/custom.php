@@ -73,7 +73,11 @@ function get_reffilter_class( $class = '', $post_id = null ) {
 	} else {
 		// Ensure that we always coerce class to being an array.
 		$class = array();
-	}
+    }
+
+    if ( get_field('largethumb', $post ) == 1 ) {
+        $classes[]='referencegrid__item--large';
+    }
 
 	if ( ! $post ) {
 		return $classes;

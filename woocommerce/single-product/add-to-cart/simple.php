@@ -123,9 +123,10 @@ if ( FALSE && $product->is_in_stock() ) : ?>
             <p class="price text-center"><small>Total price:</small>&euro; 0</p>
         </div>
         <div class="order-submit__actions">
-            <input class="pricePerBox" type="hidden" value="<?= $product->get_price() ?>">
+            <input class="pricePerBox" type="hidden" value="<?= wc_get_price_to_display($product) ?>">
             <input class="sqftPerBox" type="hidden" value="<?= $datafromcat['size_per_box'] ?>">
-            <input class="pricePerSqft" type="hidden" value="<?= $product->get_price()/$datafromcat['size_per_box'] ?>">
+            <input class="pricePerSqft" type="hidden"
+                value="<?= wc_get_price_to_display($product)/$datafromcat['size_per_box'] ?>">
 
             <input class="orderQuantity" type="hidden" name="quantity" value="0">
 

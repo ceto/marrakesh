@@ -50,8 +50,8 @@
             </div>
             <div class="cell shrink show-for-tablet banner__ctacell">
                 <div class="banner__cta">
-                    <p class="show-for-large">Design Your Own Tiles</p>
-                    <a href="#" class="btn">Start Simulator</a>
+                    <p class="show-for-large">Egyedi színeket szeretnél?</p>
+                    <a href="#" class="btn">Tervező indítása</a>
                 </div>
             </div>
             <div class="shrink cell hide-for-tablet">

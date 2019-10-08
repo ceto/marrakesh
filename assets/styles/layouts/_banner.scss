@@ -74,7 +74,7 @@
         display: block;
         color: $white;
         //background-color: $dark-gray;
-        background-color: $body-font-color;
+        background-color: $primary-color;
         padding:.875em 1.25em;
         //font-size:1.125rem;
         font-size: .875rem;
@@ -82,7 +82,7 @@
         font-weight: $global-weight-bold;
         text-transform: uppercase;
         &:hover, &:focus {
-            background-color: $secondary-color;
+            background-color: $body-font-color;
             //color: $body-font-color;
         }
 

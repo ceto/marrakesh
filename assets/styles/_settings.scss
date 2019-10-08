@@ -70,8 +70,8 @@ $global-font-size: 100%;
 $global-width: rem-calc(1600);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #0066ff, // #1779ba,
-  secondary: #FF9900, //#767676,
+  secondary: #0066ff, // #1779ba,
+  primary: #DF542A, //#FF9900,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
@@ -89,7 +89,7 @@ $button-palette: (
   primary: $body-font-color,
   secondary: $dark-gray,
   inverse: $white,
-  accent: #ffae00,
+  accent: #DF542A,
 );
 
 $body-font-family: 'Alegreya Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;

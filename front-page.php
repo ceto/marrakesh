@@ -99,22 +99,21 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell text-center">
-                <h2><?php _e('Products Recommended', 'marrakesh');?></h2>
-                <ul id="featprodtabs" class="tabs tabs--singleproduct" data-active-collapse="true" data-deep-link="true"
-                    data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500" data-tabs>
+                <h2><?php _e('A kínálatunkból', 'marrakesh');?>&hellip;</h2>
+                <ul id="featprodtabs" class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs>
                     <li class="tabs-title is-active">
                         <a href="#fpinstockpanel">
-                            <?php esc_html_e( 'In Stock', 'marrakesh' ) ?>
+                            <?php esc_html_e( 'Raktárról azonnal', 'marrakesh' ) ?>
                         </a>
                     </li>
                     <li class="tabs-title">
                         <a href="#fpfeatpanel" aria-selected="true">
-                            <?php esc_html_e( 'Featured Tiles', 'marrakesh' ); ?>
+                            <?php esc_html_e( 'Kiemelt lapok', 'marrakesh' ); ?>
                         </a>
                     </li>
                     <li class="tabs-title">
                         <a href="#fpsalepanel">
-                            <?php esc_html_e( 'Sale', 'marrakesh' ); ?>
+                            <?php esc_html_e( 'Akciós', 'marrakesh' ); ?>
                         </a>
                     </li>
                 </ul>
@@ -239,7 +238,7 @@
         <div class="grid-x grid-margin-x text-center">
             <div class="cell">
                 <br><br>
-                <a href="<?= get_post_type_archive_link( 'reference' ); ?>" class="button">Show all references</a>
+                <a href="<?= get_post_type_archive_link( 'reference' ); ?>" class="button"><?php _e('Tovább a galériákhoz', 'marrakesh'); ?></a>
             </div>
         </div>
 

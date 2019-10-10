@@ -14,31 +14,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: archive-reference.php:6
-msgid "References"
+msgid "Galériák"
+msgstr ""
+
+#: archive-reference.php:8
+msgid "Quibusdam harum neque corrupti cupiditate aliquid deserunt."
+msgstr ""
+
+#: archive-reference.php:37
+msgid "Összes mutatása"
 msgstr ""
 
 #: front-page.php:102
-msgid "Products Recommended"
+msgid "A kínálatunkból"
 msgstr ""
 
-#: front-page.php:107
-msgid "In Stock"
+#: front-page.php:106
+msgid "Raktárról azonnal"
 msgstr ""
 
-#: front-page.php:112
-msgid "Featured Tiles"
+#: front-page.php:111
+msgid "Kiemelt lapok"
 msgstr ""
 
-#: front-page.php:117
-msgid "Sale"
+#: front-page.php:116
+msgid "Akciós"
 msgstr ""
 
-#: front-page.php:225
+#: front-page.php:224
 msgid "Cement Tiles in Action"
 msgstr ""
 
-#: front-page.php:226
+#: front-page.php:225
 msgid "See our engaging reference"
+msgstr ""
+
+#: front-page.php:241
+msgid "Tovább a galériákhoz"
 msgstr ""
 
 #: taxonomy-reference-type.php:12
@@ -109,103 +121,143 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#: templates/footer.php:7
+msgid "Termékek"
+msgstr ""
+
 #: templates/footer.php:30
-msgid "Help & Info"
+msgid "Infó & Segítség"
+msgstr ""
+
+#: templates/footer.php:40
+msgid "Kapcsolat"
+msgstr ""
+
+#: woocommerce/archive-product.php:78
+msgid "Teljes kínálat"
+msgstr ""
+
+#: woocommerce/archive-product.php:97, woocommerce/archive-product.php:165
+msgid "Bekapcsolt szűrők"
+msgstr ""
+
+#: woocommerce/archive-product.php:172
+msgid "Színek szerint"
+msgstr ""
+
+#: woocommerce/archive-product.php:183
+msgid "Lapok stílusa"
 msgstr ""
 
 #: woocommerce/archive-product.php:294
 msgid "Color and style filters&hellip;"
 msgstr ""
 
-#: woocommerce/content-single-product.php:249
+#: woocommerce/content-single-product.php:165
+msgid "Várható szállítás & Rendelés"
+msgstr ""
+
+#: woocommerce/content-single-product.php:248
 msgid "Termék adatlap"
 msgstr ""
 
-#: woocommerce/content-single-product.php:252
-msgid "Price"
+#: woocommerce/content-single-product.php:251
+msgid "Bruttó ár"
 msgstr ""
 
-#: woocommerce/content-single-product.php:255
-msgid "Single Tile Weight"
+#: woocommerce/content-single-product.php:254
+msgid "Súly (1db lap)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:257
-msgid "Width &times; Height"
+#: woocommerce/content-single-product.php:256
+msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/content-single-product.php:260
-msgid "Thickness"
+#: woocommerce/content-single-product.php:259
+msgid "Vastagság"
 msgstr ""
 
-#: woocommerce/content-single-product.php:263, woocommerce/content-single-product.php:272
-msgid "Can be bought"
+#: woocommerce/content-single-product.php:262
+msgid "Kiszerelés"
+msgstr ""
+
+#: woocommerce/content-single-product.php:263
+msgid "dobozban"
 msgstr ""
 
 #: woocommerce/content-single-product.php:264
-msgid "in box only"
+msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:265
-msgid "Price per box"
+#: woocommerce/content-single-product.php:266
+msgid "Lapok a dobozban"
 msgstr ""
 
 #: woocommerce/content-single-product.php:267
-msgid "Tiles per Box"
+msgid "lap/doboz"
+msgstr ""
+
+#: woocommerce/content-single-product.php:268
+msgid "Doboz terítve"
 msgstr ""
 
 #: woocommerce/content-single-product.php:269
-msgid "Cover per Box"
+msgid "doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:273
+#: woocommerce/content-single-product.php:271
+msgid "Can be bought"
+msgstr ""
+
+#: woocommerce/content-single-product.php:272
 msgid "by pieces"
 msgstr ""
 
-#: woocommerce/content-single-product.php:277
-msgid "Product Category"
+#: woocommerce/content-single-product.php:276
+msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/content-single-product.php:357, woocommerce/content-single-product.php:378
+#: woocommerce/content-single-product.php:356, woocommerce/content-single-product.php:377
 msgid "Product Information"
 msgstr ""
 
-#: woocommerce/content-single-product.php:361
-msgid "Info & Description"
+#: woocommerce/content-single-product.php:360
+msgid "Termék leírás"
 msgstr ""
 
-#: woocommerce/content-single-product.php:366
-msgid "Order & Buying"
+#: woocommerce/content-single-product.php:365
+msgid "Vásárlás menete"
 msgstr ""
 
-#: woocommerce/content-single-product.php:371
-msgid "Installation"
+#: woocommerce/content-single-product.php:370
+msgid "Lerakás"
 msgstr ""
 
-#: woocommerce/content-single-product.php:401
+#: woocommerce/content-single-product.php:400
 msgid "About %s"
 msgstr ""
 
-#: woocommerce/content-single-product.php:410
+#: woocommerce/content-single-product.php:409
 msgid "How to Order"
 msgstr ""
 
-#: woocommerce/content-single-product.php:417
+#: woocommerce/content-single-product.php:416
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:495
+#: woocommerce/content-single-product.php:494
 msgid "Products related"
 msgstr ""
 
-#: woocommerce/content-single-product.php:498
+#: woocommerce/content-single-product.php:497
 msgid "Similar Products"
 msgstr ""
 
-#: woocommerce/content-single-product.php:501
+#: woocommerce/content-single-product.php:500
 msgid "Color Variations"
 msgstr ""
 
-#: woocommerce/content-single-product.php:504
+#: woocommerce/content-single-product.php:503
 msgid "You may also like&hellip;"
 msgstr ""
 

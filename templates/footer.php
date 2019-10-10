@@ -4,7 +4,7 @@
             <div class="grid-x grid-margin-x">
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget">
-                        <h3 class="widget__title">Products</h3>
+                        <h3 class="widget__title"><?= __('Termékek', 'marrakesh'); ?></h3>
                         <ul class="menu vertical">
                             <?php
                         	$the_prcats = get_terms( array(
@@ -27,7 +27,7 @@
                 </div>
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget">
-                        <h3 class="widget__title"><?php _e('Help & Info', 'marrakesh'); ?></h3>
+                        <h3 class="widget__title"><?php _e('Infó & Segítség', 'marrakesh'); ?></h3>
                         <?php
                             if (has_nav_menu('secondary_navigation')) :
                             wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
@@ -37,7 +37,7 @@
                 </div>
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget %1$s %2$s">
-                        <h3 class="widget__title">Contact</h3>
+                        <h3 class="widget__title"><?php _e('Kapcsolat', 'marrakesh'); ?></h3>
                         <ul class="menu vertical">
                             <li><a
                                     href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>

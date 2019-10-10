@@ -75,7 +75,7 @@ defined( 'ABSPATH' ) || exit;
                             <?php foreach( $reltaxes as $reltax ): ?>
                             <option value="<?= get_term_link( $reltax->term_id) ?>"><?= $reltax->name ?></option>
                             <?php endforeach; ?>
-                            <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Show All</option>
+                            <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?= __('Teljes kínálat', 'marrakesh') ?></option>
                         </select>
                         <a class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</a>
 
@@ -94,7 +94,7 @@ defined( 'ABSPATH' ) || exit;
                         </h1>
                         <?php
                                     the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                            title => 'Active filters'
+                                        'title' => __('Bekapcsolt szűrők', 'marrakesh')
                                         ),
                                         array(
                                             'before_widget' => '<section class="hide-for-tablet woocommerce-products-header__filters %1$s">',
@@ -162,14 +162,14 @@ defined( 'ABSPATH' ) || exit;
                         ?>
                         <?php
                                 the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                    'title' => 'Active filters'
+                                    'title' => __('Bekapcsolt szűrők', 'marrakesh')
                                 ), $wargs );
                         ?>
 
                         <?php
                             if (!is_tax('pa_color')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => 'Filter by Color',
+                                    'title' => __('Színek szerint', 'marrakesh'),
                                     'attribute' => 'color',
                                     'query_type' => 'or',
 
@@ -180,7 +180,7 @@ defined( 'ABSPATH' ) || exit;
                         <?php
                             if (!is_tax('pa_design') && !is_tax('pa_style')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => 'Filter by Style',
+                                    'title' => __('Lapok stílusa', 'marrakesh'),
                                     'attribute' => 'style',
                                     'query_type' => 'or',
 

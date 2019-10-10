@@ -3,8 +3,10 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-center text-center">
             <div class="cell large-9">
-                <h1 class="page__title"><?= __('References','marrakesh') ?></h1>
-                <!-- <div class="lead"><p></p></div> -->
+                <h1 class="page__title"><?= __('Galériák','marrakesh') ?></h1>
+                <div class="lead">
+                <p><?= __('Quibusdam harum neque corrupti cupiditate aliquid deserunt.','marrakesh') ?></p>
+                </div>
             </div>
         </div>
     </div>
@@ -32,7 +34,7 @@
                     <nav class="portfolionav">
                         <ul class="menu menu--portfolio js-activate-filter menu--local align-center">
                             <li class="menu-all is-active"><a
-                                    href="<?= get_post_type_archive_link( 'reference' )?>">All</a></li>
+                                    href="<?= get_post_type_archive_link( 'reference' )?>"><?= __('Összes mutatása','marrakesh') ?></a></li>
                             <?php foreach( $refcats as $refcat ): ?>
                             <li><a href="<?= get_term_link( $refcat->term_id) ?>"><?= $refcat->name ?></a></li>
                             <?php endforeach; ?>

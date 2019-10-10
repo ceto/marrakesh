@@ -162,8 +162,7 @@ if ( post_password_required() ) {
                             <br>
                             <div class="singleproduct__headeractions">
 
-                                <a href="#" class="button medium ahollow expanded">Calculate Shipping
-                                    &amp; Start Order</a>
+                                <a href="#" class="button medium ahollow expanded"><?= __('Várható szállítás & Rendelés', 'marrakesh') ?></a>
                             </div>
 
 
@@ -249,32 +248,32 @@ if ( post_password_required() ) {
                         <h3 class="asingleproduct__title entry-title"><?= __('Termék adatlap', 'marrakesh'); ?>
                         </h3>
                         <dl class="singleproduct__catattributes">
-                            <dt><?= __('Price', 'marrakesh'); ?></dt>
+                            <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
                             <dd><?php echo wc_price(wc_get_price_to_display($product)/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup>
                             </dd>
-                            <dt><?= __('Single Tile Weight','marrakesh'); ?></dt>
+                            <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
-                            <dt><?= __('Width &times; Height','marrakesh'); ?></dt>
+                            <dt><?= __('Lapméret','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
                             </dd>
-                            <dt><?= __('Thickness','marrakesh'); ?></dt>
+                            <dt><?= __('Vastagság','marrakesh'); ?></dt>
                             <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
                             <?php if ($datafromprod['_isboxed']=='yes') : ?>
-                            <dt><?= __('Can be bought','marrakesh'); ?></dt>
-                            <dd><?= __('in box only','marrakesh'); ?></dd>
-                            <dt><?= __('Price per box','marrakesh'); ?></dt>
+                            <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
+                            <dd><?= __('dobozban','marrakesh'); ?></dd>
+                            <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
                             <dd><?= $product->get_price_html() ?></dd>
-                            <dt><?= __('Tiles per Box','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;tiles/box</dd>
-                            <dt><?= __('Cover per Box','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/box</dd>
+                            <dt><?= __('Lapok a dobozban','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?></dd>
+                            <dt><?= __('Doboz terítve','marrakesh'); ?></dt>
+                            <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?></dd>
                             <?php else: ?>
                             <dt><?= __('Can be bought','marrakesh'); ?></dt>
                             <dd><?= __('by pieces','marrakesh'); ?></dd>
                             <?php endif; ?>
                         </dl>
                         <dl class="singleproduct__attributes">
-                            <dt><?php _e('Product Category', 'marrakesh');?></dt>
+                            <dt><?php _e('Termékcsoport', 'marrakesh');?></dt>
                             <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
                             </dd>
                             <?php foreach ( $attributes as $attribute ) : ?>
@@ -322,7 +321,7 @@ if ( post_password_required() ) {
                     </div>
 
                     <div class="callout singleproduct__callout">
-                        <h3>Set Up Your Order</h3>
+                        <h3>Állítsd össze rendelésed</h3>
                         <p>Get exact shipping time and costs by adding quantity you need.</p>
                         <?php
                             /**
@@ -358,17 +357,17 @@ if ( post_password_required() ) {
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="productinfotabs">
                         <li class="tabs-title is-active">
                             <a href="#prodinfopanel" aria-selected="true">
-                                <?php esc_html_e( 'Info & Description', 'marrakesh' ); ?>
+                                <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
                             </a>
                         </li>
                         <li class="tabs-title">
                             <a href="#obspanel">
-                                <?php esc_html_e( 'Order & Buying', 'marrakesh' ); ?>
+                                <?php esc_html_e( 'Vásárlás menete', 'marrakesh' ); ?>
                             </a>
                         </li>
                         <li class="tabs-title">
                             <a href="#installpanel">
-                                <?php esc_html_e( 'Installation', 'marrakesh' ) ?>
+                                <?php esc_html_e( 'Lerakás', 'marrakesh' ) ?>
                             </a>
                         </li>
                     </ul>

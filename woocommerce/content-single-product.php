@@ -162,7 +162,7 @@ if ( post_password_required() ) {
                             <br>
                             <div class="singleproduct__headeractions">
 
-                                <a href="#" class="button medium ahollow expanded"><?= __('Várható szállítás & Rendelés', 'marrakesh') ?></a>
+                                <a href="#buycallout" class="button medium hollow expanded"><?= __('Várható szállítás & Rendelés', 'marrakesh') ?></a>
                             </div>
 
 
@@ -228,129 +228,7 @@ if ( post_password_required() ) {
         <div class="grid-container">
             <div class="grid-x grid-margin-x align-justify">
 
-                <div class="cell tablet-6 large-5 xxlarge-4 large-order-2">
-                    <div class="callout singleproduct__callout">
 
-                        <?php
-                                /**
-                                 * Hook: woocommerce_before_single_product_summary.
-                                 *
-                                 * @hooked woocommerce_show_product_sale_flash - 10
-                                 * @hooked woocommerce_show_product_images - 20
-                                 */
-                                do_action( 'woocommerce_before_single_product_summary' );
-                            ?>
-
-                        <!-- <figure class="singleproduct__prodthumb">
-                            <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
-                        </figure> -->
-
-                        <h3 class="asingleproduct__title entry-title"><?= __('Termék adatlap', 'marrakesh'); ?>
-                        </h3>
-                        <dl class="singleproduct__catattributes">
-                            <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
-                            <dd><?php echo wc_price(wc_get_price_to_display($product)/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup>
-                            </dd>
-                            <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
-                            <dt><?= __('Lapméret','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
-                            </dd>
-                            <dt><?= __('Vastagság','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
-                            <?php if ($datafromprod['_isboxed']=='yes') : ?>
-                            <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
-                            <dd><?= __('dobozban','marrakesh'); ?></dd>
-                            <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
-                            <dd><?= $product->get_price_html() ?></dd>
-                            <dt><?= __('Lapok a dobozban','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?></dd>
-                            <dt><?= __('Doboz terítve','marrakesh'); ?></dt>
-                            <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?></dd>
-                            <?php else: ?>
-                            <dt><?= __('Can be bought','marrakesh'); ?></dt>
-                            <dd><?= __('by pieces','marrakesh'); ?></dd>
-                            <?php endif; ?>
-                        </dl>
-                        <dl class="singleproduct__attributes">
-                            <dt><?php _e('Termékcsoport', 'marrakesh');?></dt>
-                            <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                            </dd>
-                            <?php foreach ( $attributes as $attribute ) : ?>
-                            <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
-                            <dd><?php
-                                        $values = array();
-
-                                        if ( $attribute->is_taxonomy() ) {
-                                            $attribute_taxonomy = $attribute->get_taxonomy_object();
-                                            $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
-
-                                            foreach ( $attribute_values as $attribute_value ) {
-                                                $value_name = esc_html( $attribute_value->name );
-
-                                                if ( $attribute_taxonomy->attribute_public ) {
-                                                    $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
-                                                } else {
-                                                    $values[] = $value_name;
-                                                }
-                                            }
-                                        } else {
-                                            $values = $attribute->get_options();
-
-                                            foreach ( $values as &$value ) {
-                                                $value = make_clickable( esc_html( $value ) );
-                                            }
-                                        }
-
-                                        echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
-                                    ?></dd>
-                            <?php endforeach; ?>
-                            <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
-                            <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
-                            <dd class="product_weight">
-                                <?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
-                            <?php endif; ?>
-
-                            <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
-                            <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
-                            <dd class="product_dimensions">
-                                <?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?>
-                            </dd>
-                            <?php endif; ?>
-                        </dl>
-                    </div>
-
-                    <div class="callout singleproduct__callout">
-                        <h3>Állítsd össze rendelésed</h3>
-                        <p>Get exact shipping time and costs by adding quantity you need.</p>
-                        <?php
-                            /**
-                            * Hook: woocommerce_single_product_summary.
-                            *
-                            * @hooked woocommerce_template_single_title - 5
-                            * @hooked woocommerce_template_single_rating - 10
-                            * @hooked woocommerce_template_single_price - 10
-                            * @hooked woocommerce_template_single_excerpt - 20
-                            * @hooked woocommerce_template_single_add_to_cart - 30
-                            * @hooked woocommerce_template_single_meta - 40
-                            * @hooked woocommerce_template_single_sharing - 50
-                            * @hooked WC_Structured_Data::generate_product_data() - 60
-                            */
-                            do_action( 'woocommerce_single_product_summary' );
-                        ?>
-                    </div>
-                    <div class="singleproduct__meta meta">
-                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
-                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
-                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-                        <?php endif; ?>
-                        <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
-                    </div>
-
-                </div>
 
                 <div class="cell large-7 xxlarge-6 large-order-1">
                     <!-- <h3><?php _e('Product Information', 'marrakesh');?></h3> -->
@@ -358,6 +236,11 @@ if ( post_password_required() ) {
                         <li class="tabs-title is-active">
                             <a href="#prodinfopanel" aria-selected="true">
                                 <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
+                            </a>
+                        </li>
+                        <li class="tabs-title">
+                            <a href="#datapanel" aria-selected="true">
+                                <?php esc_html_e( 'Adatlap', 'marrakesh' ); ?>
                             </a>
                         </li>
                         <li class="tabs-title">
@@ -397,13 +280,107 @@ if ( post_password_required() ) {
                                 <?php $designdescr=term_description($designs['0']); ?>
                                 <?php if ($designdescr!=='') : ?>
                                 <div class="callout">
-                                    <h6><?= sprintf(__('About %s','marrakesh'), get_term($designs['0'])->name); ?>
+                                    <h6><?= sprintf(__('%s mintáról','marrakesh'), get_term($designs['0'])->name); ?>
                                     </h6>
                                     <?= $designdescr; ?>
                                 </div>
                                 <?php endif; ?>
 
                             </div>
+                        </div>
+                        <div class="tabs-panel" id="datapanel">
+                        <div class="acallout asingleproduct__callout">
+
+                            <?php
+                                    /**
+                                     * Hook: woocommerce_before_single_product_summary.
+                                     *
+                                     * @hooked woocommerce_show_product_sale_flash - 10
+                                     * @hooked woocommerce_show_product_images - 20
+                                     */
+                                    do_action( 'woocommerce_before_single_product_summary' );
+                                ?>
+
+                            <!-- <figure class="singleproduct__prodthumb">
+                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                            </figure> -->
+                            
+                            <h3 class=""><?= __('Termék adatlap', 'marrakesh'); ?></h3>
+                            <dl class="singleproduct__catattributes">
+                                <dt><?= __('Azonosító', 'marrakesh'); ?></dt>
+                                <dd><?php the_title(); ?></dd>
+                                <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
+                                <dd><?php echo wc_price(wc_get_price_to_display($product)/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup>
+                                </dd>
+                                <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
+                                <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
+                                <dt><?= __('Lapméret','marrakesh'); ?></dt>
+                                <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
+                                </dd>
+                                <dt><?= __('Vastagság','marrakesh'); ?></dt>
+                                <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
+                                <?php if ($datafromprod['_isboxed']=='yes') : ?>
+                                <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
+                                <dd><?= __('dobozban','marrakesh'); ?></dd>
+                                <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
+                                <dd><?= $product->get_price_html() ?></dd>
+                                <dt><?= __('Lapok a dobozban','marrakesh'); ?></dt>
+                                <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?></dd>
+                                <dt><?= __('Doboz terítve','marrakesh'); ?></dt>
+                                <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?></dd>
+                                <?php else: ?>
+                                <dt><?= __('Can be bought','marrakesh'); ?></dt>
+                                <dd><?= __('by pieces','marrakesh'); ?></dd>
+                                <?php endif; ?>
+                            </dl>
+                            <dl class="singleproduct__attributes">
+                                <dt><?php _e('Termékcsoport', 'marrakesh');?></dt>
+                                <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                                </dd>
+                                <?php foreach ( $attributes as $attribute ) : ?>
+                                <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
+                                <dd><?php
+                                            $values = array();
+
+                                            if ( $attribute->is_taxonomy() ) {
+                                                $attribute_taxonomy = $attribute->get_taxonomy_object();
+                                                $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
+
+                                                foreach ( $attribute_values as $attribute_value ) {
+                                                    $value_name = esc_html( $attribute_value->name );
+
+                                                    if ( $attribute_taxonomy->attribute_public ) {
+                                                        $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
+                                                    } else {
+                                                        $values[] = $value_name;
+                                                    }
+                                                }
+                                            } else {
+                                                $values = $attribute->get_options();
+
+                                                foreach ( $values as &$value ) {
+                                                    $value = make_clickable( esc_html( $value ) );
+                                                }
+                                            }
+
+                                            echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                                        ?></dd>
+                                <?php endforeach; ?>
+                                <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
+                                <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
+                                <dd class="product_weight">
+                                    <?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
+                                <?php endif; ?>
+
+                                <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
+                                <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
+                                <dd class="product_dimensions">
+                                    <?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?>
+                                </dd>
+                                <?php endif; ?>
+                            </dl>
+                            </div>
+                        
                         </div>
                         <div class="tabs-panel" id="obspanel">
                             <h3><?php _e('How to Order', 'marrakesh');?></h3>
@@ -421,6 +398,41 @@ if ( post_password_required() ) {
                         </div>
                     </div>
 
+
+                </div>
+
+                <div class="cell large-5 xxlarge-4 large-order-2">
+
+
+                    <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
+                        <h3><?php _e( 'Állítsd össze rendelésed', 'marrakesh' ) ?></h3>
+                        <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos szállítási időt kalkulálunk neked. Ezután a termék kosárba rakható és megrendelhető', 'marrakesh' ) ?></p>
+                        <?php
+                            /**
+                            * Hook: woocommerce_single_product_summary.
+                            *
+                            * @hooked woocommerce_template_single_title - 5
+                            * @hooked woocommerce_template_single_rating - 10
+                            * @hooked woocommerce_template_single_price - 10
+                            * @hooked woocommerce_template_single_excerpt - 20
+                            * @hooked woocommerce_template_single_add_to_cart - 30
+                            * @hooked woocommerce_template_single_meta - 40
+                            * @hooked woocommerce_template_single_sharing - 50
+                            * @hooked WC_Structured_Data::generate_product_data() - 60
+                            */
+                            do_action( 'woocommerce_single_product_summary' );
+                        ?>
+                    </div>
+                    <div class="singleproduct__meta meta">
+                        <?php do_action( 'woocommerce_product_meta_start' ); ?>
+                        <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
+                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                        <?php endif; ?>
+                        <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+                        <?php do_action( 'woocommerce_product_meta_end' ); ?>
+                    </div>
 
                 </div>
 

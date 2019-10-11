@@ -295,12 +295,8 @@ if ($(".psgallery").length) {
 // Order Box functions on single product detail pages
 //////////////////////////////////////////////////////
 
-
-
-
 var $form = $("form.order");
 var origForm = $form.serialize();
-
 
 function updateOrderBox($changed) {
     var $boxes = $("#boxes");
@@ -334,7 +330,7 @@ function updateOrderBox($changed) {
         //update price
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(2);
-        $priceText.html("<small>Total price:</small> € " + priceText);
+        $priceText.html("<small>ÖSSZESEN (bruttó):</small>" + priceText + " Ft.");
 
         //update button text
         $buttonCount.html(sqftText.toFixed(2) + " m<sup>2</sup>");
@@ -379,5 +375,3 @@ $("form.order :input").on("change input", function() {
         updateOrderBox($(this));
     }
 });
-
-

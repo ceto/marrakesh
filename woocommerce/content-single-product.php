@@ -280,9 +280,9 @@ if ( post_password_required() ) {
                                 <?php $designdescr=term_description($designs['0']); ?>
                                 <?php if ($designdescr!=='') : ?>
                                 <div class="callout">
-                                    <h6><?= sprintf(__('%s mintáról','marrakesh'), get_term($designs['0'])->name); ?>
-                                    </h6>
+                                    <h6><?= sprintf(__('%s mintáról','marrakesh'), get_term($designs['0'])->name); ?></h6>
                                     <?= $designdescr; ?>
+                                    <p><a href="<?= get_term_link($designs['0']) ?>"><?= sprintf(__('Tovább a(z) %s lapokhoz','marrakesh'), get_term($designs['0'])->name); ?>    </a></p>
                                 </div>
                                 <?php endif; ?>
 
@@ -503,16 +503,16 @@ if ( post_password_required() ) {
                         )
                     ) );
                     ?>
-                    <h3 class="atext-center"><?php esc_html_e( 'Products related', 'marrakesh' ); ?></h3>
+                    <h3 class="atext-center"><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="producttabs">
                         <?php if ( $relproducts ) : ?><li class="tabs-title is-active"><a href="#similarpanel"
-                                aria-selected="true"><?php esc_html_e( 'Similar Products', 'marrakesh' ); ?></a></li>
+                                aria-selected="true"><?php _e( 'Hasonló termékek', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
                         <?php if ( $reldesignproducts  ) : ?><li class="tabs-title"><a
-                                href="#colvarpanel"><?php esc_html_e( 'Color Variations', 'marrakesh' ); ?></a></li>
+                                href="#colvarpanel"><?php _e( 'Színvariációk', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
                         <?php if ( $upsellproducts  ) : ?><li class="tabs-title"><a
-                                href="#upsellpanel"><?php esc_html_e( 'You may also like&hellip;', 'marrakesh' ) ?></a>
+                                href="#upsellpanel"><?php _e( 'Ajánljuk figyelemedbe&hellip;', 'marrakesh' ) ?></a>
                         </li><?php endif;  ?>
                     </ul>
                 </div>

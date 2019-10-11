@@ -181,6 +181,10 @@ msgstr ""
 msgid "%s mintáról"
 msgstr ""
 
+#: woocommerce/content-single-product.php:285
+msgid "Tovább a(z) %s lapokhoz"
+msgstr ""
+
 #: woocommerce/content-single-product.php:308
 msgid "Termék adatlap"
 msgstr ""
@@ -262,19 +266,19 @@ msgid "Kívánt mennyiség alapján megközelítőleg pontos szállítási időt
 msgstr ""
 
 #: woocommerce/content-single-product.php:506
-msgid "Products related"
+msgid "Kapcsolódó termékek"
 msgstr ""
 
 #: woocommerce/content-single-product.php:509
-msgid "Similar Products"
+msgid "Hasonló termékek"
 msgstr ""
 
 #: woocommerce/content-single-product.php:512
-msgid "Color Variations"
+msgid "Színvariációk"
 msgstr ""
 
 #: woocommerce/content-single-product.php:515
-msgid "You may also like&hellip;"
+msgid "Ajánljuk figyelemedbe&hellip;"
 msgstr ""
 
 #: woocommerce/single-product/add-to-cart/simple.php:112

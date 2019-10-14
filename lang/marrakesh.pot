@@ -133,23 +133,23 @@ msgstr ""
 msgid "Kapcsolat"
 msgstr ""
 
-#: woocommerce/archive-product.php:78
+#: woocommerce/archive-product.php:79
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:97, woocommerce/archive-product.php:165
+#: woocommerce/archive-product.php:141
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:172
+#: woocommerce/archive-product.php:185
 msgid "Színek szerint"
 msgstr ""
 
-#: woocommerce/archive-product.php:183
+#: woocommerce/archive-product.php:196
 msgid "Lapok stílusa"
 msgstr ""
 
-#: woocommerce/archive-product.php:294
+#: woocommerce/archive-product.php:309
 msgid "Color and style filters&hellip;"
 msgstr ""
 

@@ -98,11 +98,11 @@ select.taxchooser {
 
     h3 {
         font-size:.875rem;
-        //display: inline-block;
+        display: block;
         font-weight: $global-weight-normal;
-        margin:0;
-        padding:.5em .5em 0 0;
-        float:left;
+        margin:.5em 0 0;
+        padding:0 0 0;
+        //float:left;
         line-height: 1;
         &:after {
             content:': ';
@@ -118,8 +118,34 @@ select.taxchooser {
         }
         a {
             margin-left:.875em;
+            padding:.25em 0;
+            &:before {
+                top: .4em;
+            }
         }
     }
 
 }
 
+.pratopstatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: .5rem 0;
+
+    .button {
+        margin:0;
+        &:first-child() {
+            justify-self: right;
+        }
+    }
+}
+
+.pratopstatus__filters {
+    @extend .woocommerce-products-header__filters;
+    h3  {
+        //float:none;
+    }
+
+}

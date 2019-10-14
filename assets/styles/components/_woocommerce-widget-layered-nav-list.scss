@@ -1,6 +1,7 @@
 .woocommerce-widget-layered-nav-list, .widget_layered_nav_filters ul {
     @include menu-base;
     @include menu-direction(vertical);
+    flex-wrap: wrap;
 
     li {
         position: relative;

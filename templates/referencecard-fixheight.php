@@ -19,18 +19,6 @@
                 $psattr .= " data-video='". brick_the_vimeoembed( $video, 'pl-'.sanitize_title( get_the_title() ) ) . "'";
             }
 
-            if( $gallery=get_field('gallery') ) {
-                $gimagelist='';
-                $gimagesizes='';
-                foreach( $gallery as $image ){
-                    $gimage = wp_get_attachment_image_src( $image['ID'], 'xlarge' );
-                    $gimagelist .= $gimage[0].'|';
-                    $gimagesizes .= $gimage['1'].'x'.$gimage['2'].'|';
-                }
-                $psattr .= ' data-type="gallery"';
-                $psattr .= ' data-gallery="'.substr($gimagelist,0,-1).'"';
-                $psattr .= ' data-gimagesizes="'.substr($gimagesizes,0,-1).'"';
-            }
         ?>
         <figure class="referencecard__figure" style="/* padding-bottom: <?= $ratio ?>%*/" itemscope
             itemtype="http://schema.org/ImageObject">
@@ -90,12 +78,7 @@
         <h2 class="referencecard__title">
             <a target="_blank" href="<?= $url ?>"><?php the_title(); ?></a>
         </h2>
-        <?php elseif( $gallery=get_field('gallery') ): ?>
-        <p class="referencecard__label"><?= count($gallery)+1 ?> <svg class="icon">
-                <use xlink:href="#icon-gallery"></use>
-            </svg></p>
-        <h2 class="referencecard__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <?php else : ?>
+        <?php else :?>
         <h2 class="referencecard__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <?php endif; ?>
         <?php if ( $quickinfo=get_post_meta( get_the_id(), 'quickinfo', true ) ) :?>

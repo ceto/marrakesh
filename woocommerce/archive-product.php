@@ -75,7 +75,8 @@ defined( 'ABSPATH' ) || exit;
                             <?php foreach( $reltaxes as $reltax ): ?>
                             <option value="<?= get_term_link( $reltax->term_id) ?>"><?= $reltax->name ?></option>
                             <?php endforeach; ?>
-                            <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>"><?= __('Teljes kínálat', 'marrakesh') ?></option>
+                            <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">
+                                <?= __('Teljes kínálat', 'marrakesh') ?></option>
                         </select>
                         <a class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</a>
 
@@ -92,18 +93,6 @@ defined( 'ABSPATH' ) || exit;
                             </span>
                             <?php endif; ?>
                         </h1>
-                        <?php
-                                    the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                        'title' => __('Bekapcsolt szűrők', 'marrakesh')
-                                        ),
-                                        array(
-                                            'before_widget' => '<section class="hide-for-tablet woocommerce-products-header__filters %1$s">',
-                                            'after_widget'  => '</section>',
-                                            'before_title'  => '<h3>',
-                                            'after_title'   => '</h3>'
-                                        )
-                                    );
-                            ?>
                         <p class="woocommerce-products-header__count"><?php woocommerce_result_count() ?></p>
                         <?php endif; ?>
 
@@ -139,7 +128,31 @@ defined( 'ABSPATH' ) || exit;
     do_action( 'woocommerce_before_main_content' );
 
 ?>
-
+    <div class="ps--xlight ps--bordered ">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x align-right">
+                <div class="cell tablet-9 xlarge-10">
+                    <section class="pratopstatus">
+                        <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
+                        <a href="<?= !$availability_filter ? add_query_arg( 'filter_availability', 'in_stock' ) : remove_query_arg( 'filter_availability' ) ?>"
+                            class="button tiny <?= $availability_filter ? '' : 'hollow' ?>">RAKTÁRRÓL AZONNAL <span data-tooltip title="Azonnal vihető termékeket mutasd csak!"><svg class="icon"><use xlink:href="#icon-info"></use></svg></span></a>
+                        <?php
+                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                    'title' => __('Bekapcsolt szűrők', 'marrakesh')
+                                    ),
+                                    array(
+                                        'before_widget' => '<section class="pratopstatus__filters %1$s">',
+                                        'after_widget'  => '</section>',
+                                        'before_title'  => '<h3>',
+                                        'after_title'   => '</h3>'
+                                    )
+                                );
+                        ?>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="grid-container ps ps--narrow">
         <div class="grid-x grid-margin-x">
             <div class="cell show-for-tablet tablet-3 xlarge-2" data-sticky-container>
@@ -155,16 +168,16 @@ defined( 'ABSPATH' ) || exit;
                     );
                 ?>
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
-                        <?php
+                        <?php /*
                                 the_widget( 'WC_Widget_Status_Filter', array(
 
                                 ), $wargs );
-                        ?>
-                        <?php
+                        */ ?>
+                        <?php /*
                                 the_widget( 'WC_Widget_Layered_Nav_Filters', array(
                                     'title' => __('Bekapcsolt szűrők', 'marrakesh')
                                 ), $wargs );
-                        ?>
+                        */?>
 
                         <?php
                             if (!is_tax('pa_color')) {
@@ -209,69 +222,71 @@ defined( 'ABSPATH' ) || exit;
                     </aside>
                 </div>
             </div>
-            <div id="prarchive__main" class="prarchive__main cell tablet-9 xlarge-10">
-                <?php
-                    if ( woocommerce_product_loop() ) {
+            <div class="cell tablet-9 xlarge-10">
+                <div id="prarchive__main" class="prarchive__main">
+                    <?php
+                        if ( woocommerce_product_loop() ) {
 
-                        /**
-                         * Hook: woocommerce_before_shop_loop.
-                         *
-                         * @hooked woocommerce_output_all_notices - 10
-                         * @hooked woocommerce_result_count - 20
-                         * @hooked woocommerce_catalog_ordering - 30
-                         */
-                        do_action( 'woocommerce_before_shop_loop' );
+                            /**
+                             * Hook: woocommerce_before_shop_loop.
+                             *
+                             * @hooked woocommerce_output_all_notices - 10
+                             * @hooked woocommerce_result_count - 20
+                             * @hooked woocommerce_catalog_ordering - 30
+                             */
+                            do_action( 'woocommerce_before_shop_loop' );
 
-                        woocommerce_product_loop_start();
+                            woocommerce_product_loop_start();
 
-                        if ( wc_get_loop_prop( 'total' ) ) {
-                            while ( have_posts() ) {
-                                the_post();
+                            if ( wc_get_loop_prop( 'total' ) ) {
+                                while ( have_posts() ) {
+                                    the_post();
 
-                                /**
-                                 * Hook: woocommerce_shop_loop.
-                                 *
-                                 * @hooked WC_Structured_Data::generate_product_data() - 10
-                                 */
-                                do_action( 'woocommerce_shop_loop' );
+                                    /**
+                                     * Hook: woocommerce_shop_loop.
+                                     *
+                                     * @hooked WC_Structured_Data::generate_product_data() - 10
+                                     */
+                                    do_action( 'woocommerce_shop_loop' );
 
-                                wc_get_template_part( 'content', 'product' );
+                                    wc_get_template_part( 'content', 'product' );
+                                }
                             }
+
+                            woocommerce_product_loop_end();
+
+                            /**
+                             * Hook: woocommerce_after_shop_loop.
+                             *
+                             * @hooked woocommerce_pagination - 10
+                             */
+                            do_action( 'woocommerce_after_shop_loop' );
+                        } else {
+                            /**
+                             * Hook: woocommerce_no_products_found.
+                             *
+                             * @hooked wc_no_products_found - 10
+                             */
+                            do_action( 'woocommerce_no_products_found' );
                         }
-
-                        woocommerce_product_loop_end();
-
-                        /**
-                         * Hook: woocommerce_after_shop_loop.
-                         *
-                         * @hooked woocommerce_pagination - 10
-                         */
-                        do_action( 'woocommerce_after_shop_loop' );
-                    } else {
-                        /**
-                         * Hook: woocommerce_no_products_found.
-                         *
-                         * @hooked wc_no_products_found - 10
-                         */
-                        do_action( 'woocommerce_no_products_found' );
-                    }
-                ?>
-                <?php  if ( $gallery = get_field('gallery', get_field('linkedgallery', $theterm)) ) : ?>
-                <div class="ps aps--narrow ps--nobottom ">
-                    <div class="psgallery thumbswipe thumbswipe--medium thumbswipe--noleftpad">
-                        <?php foreach ( $gallery as $attachment_id ) : ?>
-                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
-                            itemtype="http://schema.org/ImageObject">
-                            <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
-                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                                <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
-                            </a>
-                        </figure>
-                        <?php endforeach; ?>
+                    ?>
+                    <?php  if ( $gallery = get_field('gallery', get_field('linkedgallery', $theterm)) ) : ?>
+                    <div class="ps aps--narrow ps--nobottom ">
+                        <div class="psgallery thumbswipe thumbswipe--medium thumbswipe--noleftpad">
+                            <?php foreach ( $gallery as $attachment_id ) : ?>
+                            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                                itemtype="http://schema.org/ImageObject">
+                                <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
+                                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                    <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
+                                </a>
+                            </figure>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
+                    <?php get_template_part('templates/photoswipedom'); ?>
+                    <?php endif; ?>
                 </div>
-                <?php get_template_part('templates/photoswipedom'); ?>
-                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -170,7 +170,7 @@ msgid "Adatlap"
 msgstr ""
 
 #: woocommerce/content-single-product.php:249
-msgid "Vásárlás menete"
+msgid "Megrendelés menete"
 msgstr ""
 
 #: woocommerce/content-single-product.php:254
@@ -250,7 +250,7 @@ msgid "Termékcsoport"
 msgstr ""
 
 #: woocommerce/content-single-product.php:391
-msgid "How to Order"
+msgid "Hogyan rendeljem meg"
 msgstr ""
 
 #: woocommerce/content-single-product.php:403

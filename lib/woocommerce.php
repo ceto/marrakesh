@@ -517,11 +517,11 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
         if ( $instance->backorders_require_notification() ) {
 
             if ( $csstock && $csdate ) {
-                $availability = __( 'Coming soon', 'marrakesh' );
+                $availability = __( 'Hamarosan érkezik', 'marrakesh' );
             } else {
 
-                $availability = __( 'Production on Order', 'marrakesh' );
-                $availability.=' <span data-tooltip title="'.__( 'Est. shipping time: 10-12 weeks.', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+                $availability = __( 'Rendelésre gyártjuk', 'marrakesh' );
+                $availability.=' <span data-tooltip title="'.__( 'Várható szállítás: 10-12 hét', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
             }
 
         } else {
@@ -553,7 +553,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
     }
 
     if ( $csstock && $csdate ) {
-        $availability .= '<span class="cs">' . __( 'Arrival', 'marrakesh' ).': '.date('M. j.',strtotime($csdate)).' <strong>'.wc_format_stock_quantity_for_display( $csstock, $instance ).'</strong></span>';
+        $availability .= '<span class="cs">' . __( 'Érkezik', 'marrakesh' ).': '.date('M. j.',strtotime($csdate)).' <strong>'.wc_format_stock_quantity_for_display( $csstock, $instance ).'</strong></span>';
     }
 
 

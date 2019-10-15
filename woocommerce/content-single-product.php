@@ -233,7 +233,7 @@ if ( post_password_required() ) {
 
                 <div class="cell large-7 xxlarge-6 large-order-1">
                     <!-- <h3><?php _e('Product Information', 'marrakesh');?></h3> -->
-                    <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="productinfotabs">
+                    <ul class="tabs tabs--singleproduct" data-tabs id="productinfotabs">
                         <li class="tabs-title is-active">
                             <a href="#prodinfopanel" aria-selected="true">
                                 <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
@@ -246,7 +246,7 @@ if ( post_password_required() ) {
                         </li>
                         <li class="tabs-title">
                             <a href="#obspanel">
-                                <?php esc_html_e( 'Vásárlás menete', 'marrakesh' ); ?>
+                                <?php esc_html_e( 'Megrendelés menete', 'marrakesh' ); ?>
                             </a>
                         </li>
                         <li class="tabs-title">
@@ -388,15 +388,15 @@ if ( post_password_required() ) {
 
                         </div>
                         <div class="tabs-panel" id="obspanel">
-                            <h3><?php _e('How to Order', 'marrakesh');?></h3>
+                            <h3><?php _e('Hogyan rendeljem meg', 'marrakesh');?></h3>
                             <div class="lead">
                                 <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_lhowtopage']) ); ?>
                             </div>
                             <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_lhowtopage'])) ); ?>
                             <?php echo $postparts['main']; ?>
-                            <p>Vásárlás előtt feltétlenül tájékozódj a <a
-                                    href="<?php the_permalink($datafromprod['_lhowtopage']) ?>">szállítási határidőkről
-                                    és a minimum rendelési mennyiségekről.</a>
+                            <p>Tovább fontos részleteket, az előlegről a szállítási határidőkről és a minimum rendelési
+                                mennyiségekről <a href="<?php the_permalink($datafromprod['_lhowtopage']) ?>">ebben a
+                                    tájékoztatóban találsz.</a>
                             </p>
                         </div>
                         <div class="tabs-panel" id="installpanel">

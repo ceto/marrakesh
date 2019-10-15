@@ -25,31 +25,31 @@ msgstr ""
 msgid "Összes mutatása"
 msgstr ""
 
-#: front-page.php:102
+#: front-page.php:99
 msgid "A kínálatunkból"
 msgstr ""
 
-#: front-page.php:106
+#: front-page.php:103
 msgid "Raktárról azonnal"
 msgstr ""
 
-#: front-page.php:111
+#: front-page.php:108
 msgid "Kiemelt lapok"
 msgstr ""
 
-#: front-page.php:116
+#: front-page.php:113
 msgid "Akciós"
 msgstr ""
 
-#: front-page.php:224
-msgid "Cement Tiles in Action"
+#: front-page.php:188
+msgid "Kézműves lapjaink bevetésen"
 msgstr ""
 
-#: front-page.php:225
-msgid "See our engaging reference"
+#: front-page.php:190
+msgid "Számos belső enteriőr ékessége az általunk gyártott cementlap."
 msgstr ""
 
-#: front-page.php:241
+#: front-page.php:208
 msgid "Tovább a galériákhoz"
 msgstr ""
 

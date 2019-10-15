@@ -57,15 +57,15 @@
 <?php endif; ?>
 
 
-<div class="ps ps--xlight ps--bordered">
+<div class="ps ps--black ps--bordered">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x align-center text-center">
+        <div class="grid-x grid-margin-x aalign-center atext-center">
             <div class="cell tablet-8 large-6">
-                <h3>Some featured information goes here</h3>
+                <h2>Műemléki rekonstrukció</h2>
                 <div class="lead">
-                    <p>Lorem ipsum dolor doloribus archi sit amet. doloribus architecto repudiandae consectetur dolore,
-                        corporis amet abidu cement eius totam magnam minima nobis suscipit delectus</p>
-                    <a href="#" class="button">Click to see details</a>
+                    <p>Régi megkopott cement- és terrazo burkolatok eredeti minta alapján történő rekonstruálását és
+                        utánygyártását vállaljuk</p>
+                    <a href="#" class="button accent small">Rekonstrukciós projektekről bővebben</a>
                 </div>
             </div>
         </div>
@@ -73,27 +73,24 @@
 </div>
 
 
-<!-- <div class="ps aps--xlight ps--bordered">
+<div class="ps ps--xlight ps--bordered">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x align-middle">
             <div class="cell tablet-8 large-6">
-                <h2>Lorem ipsum dolor sit amet.</h2>
+                <h2>Élőben még szebb. Látogass el bemutatótermünkbe!</h2>
                 <div class="lead">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere voluptas fuga voluptatem
-                        fugiat aspernatur cupiditate doloribus architecto repudiandae consectetur dolore, corporis amet
-                        eius totam magnam minima nobis suscipit delectus!</p>
+                    <p>Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a
+                        cementlapok izgalmas világát. Továbbá nagyon sok hasznos információval segítünk a
+                        választásban.</p>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim excepturi error explicabo
-                    nesciunt, magni aut sint animi quia reprehenderit iure libero illum similique ipsam,
-                    praesentium veniam deleniti optio facilis eius.</p>
-                <a href="#" class="button small">Learn more</a>
+                <a href="#" class="button small">Bemutatóterem és Nyitvatartás</a>
             </div>
             <div class="cell tablet-4 large-6">
                 <img src="https://source.unsplash.com/1200x600/?tiles,marrakesh,arab" alt="">
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="ps aps--bordered">
     <div class="grid-container">
@@ -167,40 +164,7 @@
     </div>
 </div>
 
-<!-- <div class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <div class="cell large-auto large-order-2">
-            <div class="ps ps--narrow">
-                <?php if (has_excerpt()) : ?>
-                <div class="lead"><?php the_excerpt(); ?></div>
-                <?php endif; ?>
-                <div class="lead">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sit eaque architecto
-                        molestiae rem dolor quis temporibus sequi atque odio possimus dolores, consequatur a
-                        nesciunt
-                        maxime. Earum illum excepturi optio.</p>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio, vel tempore unde omnis nemo
-                    ullam,
-                    illum, quos eius voluptatem quidem rem. Maxime excepturi aliquid eum voluptatibus harum!
-                    Repudiandae, nisi eaque?</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto voluptates, error ipsum quis
-                    nostrum
-                    culpa odio. Corrupti quasi magni officiis consequatur ipsam magnam odit, nesciunt quidem minima
-                    tempore iste expedita?</p>
-                <?php the_content(); ?>
-                <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
-            </div>
-        </div>
-        <div class="cell large-3 large-order-1">
-            <div class="ps ps--narrow">
-                <aside class="sidebar sidebar--page">
-                    <?php dynamic_sidebar('sidebar-page'); ?>
-                </aside>
-            </div>
-        </div>
-    </div>
-</div> -->
+
 <?php
     $args = array(
         'post_type' => array('reference'),
@@ -221,8 +185,10 @@
     <div id="homerefs" class="agrid-container homerefs">
         <div class="grid-x grid-margin-x text-center">
             <div class="cell">
-                <h2><?php _e('Cement Tiles in Action', 'marrakesh');?></h2>
-                <p class="lead"><?php _e('See our engaging reference', 'marrakesh');?></p>
+                <h2><?php _e('Kézműves lapjaink bevetésen', 'marrakesh');?></h2>
+                <p class="lead">
+                    <?php _e('Számos belső enteriőr ékessége az általunk gyártott cementlap.', 'marrakesh');?>
+                </p>
                 <br>
             </div>
         </div>
@@ -238,7 +204,8 @@
         <div class="grid-x grid-margin-x text-center">
             <div class="cell">
                 <br><br>
-                <a href="<?= get_post_type_archive_link( 'reference' ); ?>" class="button"><?php _e('Tovább a galériákhoz', 'marrakesh'); ?></a>
+                <a href="<?= get_post_type_archive_link( 'reference' ); ?>"
+                    class="button"><?php _e('Tovább a galériákhoz', 'marrakesh'); ?></a>
             </div>
         </div>
 

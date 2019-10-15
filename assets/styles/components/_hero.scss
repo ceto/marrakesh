@@ -37,7 +37,7 @@
     //text-transform: uppercase;
 	line-height: 1;
 
-	max-width: 24em;
+	max-width: 17em;
     margin: 0 0;
     &:after {
         content: '';
@@ -52,7 +52,7 @@
     font-weight: $global-weight-bold;
 	font-size: 1.25rem;
     line-height: 1.2;
-    max-width: 35em;;
+    max-width: 30em;;
 
     margin: .25em 0;
 }
@@ -66,16 +66,16 @@
     line-height: 1;
     display: inline-block;
     padding: .666em .75em;
-    border: 1px solid currentColor;
+    //border: 1px solid currentColor;
     color:#fff;
     font-weight: $global-weight-bold;
     background-color:#000;
     min-width: 10em;
     text-align: center;
     &:hover, &:focus {
-        background-color:$secondary-color;
+        background-color:$primary-color;
         color:#fff;
-        border-color: $secondary-color;
+        //border-color: $primary-color;
         //filter:invert(1);
     }
 

@@ -94,19 +94,19 @@ msgid "m<sup>2</sup>"
 msgstr ""
 
 #: lib/woocommerce.php:520
-msgid "Coming soon"
+msgid "Hamarosan érkezik"
 msgstr ""
 
 #: lib/woocommerce.php:523
-msgid "Production on Order"
+msgid "Rendelésre gyártjuk"
 msgstr ""
 
 #: lib/woocommerce.php:524
-msgid "Est. shipping time: 10-12 weeks."
+msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
 #: lib/woocommerce.php:556
-msgid "Arrival"
+msgid "Érkezik"
 msgstr ""
 
 #: lib/woocommerce.php:609
@@ -129,8 +129,20 @@ msgstr ""
 msgid "Infó & Segítség"
 msgstr ""
 
-#: templates/footer.php:40
+#: templates/footer.php:38
+msgid "Inspirációkért Kövess"
+msgstr ""
+
+#: templates/footer.php:48
 msgid "Kapcsolat"
+msgstr ""
+
+#: templates/footer.php:61
+msgid "Belvárosi bemutatóterem"
+msgstr ""
+
+#: templates/footer.php:79
+msgid "Raktáráruház és áruátvétel"
 msgstr ""
 
 #: woocommerce/archive-product.php:79

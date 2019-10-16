@@ -341,8 +341,8 @@ function blockgrid_gallery( $output, $atts, $instance ) {
 
   function marrakesh_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'thumbwide' => __( 'Thumbnail (16Ă9)', 'marrakesh'),
-        'thumbnail' => __( 'Thumbnail (1Ă1)', 'marrakesh')
+        'thumbwide' => __( 'Thumbnail (16x9)', 'marrakesh'),
+        'thumbnail' => __( 'Thumbnail (1x1)', 'marrakesh')
     ) );
 }
 

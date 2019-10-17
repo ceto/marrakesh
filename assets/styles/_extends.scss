@@ -1,3 +1,49 @@
-.lead{
-    font-weight: $global-weight-bold;
+// .lead{
+//     font-weight: $global-weight-bold;
+// }
+
+.switchlabel {
+    float:left;
+    margin:0 .5rem 0 0;;
+    line-height: $switch-height;
+    white-space: nowrap;
+    //font-weight: $global-weight-bold;
+    font-size: .875rem;
+}
+.switch--stock {
+    &.switch {
+        margin:0;
+        .switchlabel + & {
+            float:right;
+        }
+    }
+    &.switch.small {
+
+        .switch-paddle {
+            width: 9.5rem;
+        }
+        input:checked~.switch-paddle:after {
+            left: 8rem;
+        }
+
+
+    }
+    .switch-paddle {
+        width:12.7rem;
+        white-space: nowrap;
+    }
+
+    .switch-active {
+        left: 6%;
+    }
+    .switch-inactive {
+        right: 6%;
+    }
+
+    .switch-paddle:after {
+        left: .2875rem
+    }
+    input:checked~.switch-paddle:after {
+    left: 10.875rem
+    }
 }

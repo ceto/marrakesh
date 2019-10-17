@@ -134,8 +134,17 @@ defined( 'ABSPATH' ) || exit;
                 <div class="cell tablet-9 xlarge-10">
                     <section class="pratopstatus">
                         <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
-                        <a href="<?= !$availability_filter ? add_query_arg( 'filter_availability', 'in_stock' ) : remove_query_arg( 'filter_availability' ) ?>"
-                            class="button tiny <?= $availability_filter ? '' : 'hollow' ?>">RAKTÁRRÓL AZONNAL <span data-tooltip title="Azonnal vihető termékeket mutasd csak!"><svg class="icon"><use xlink:href="#icon-info"></use></svg></span></a>
+                        <aside class="stock-filter">
+                            <div class="switch switch--stock small">
+                                <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
+                                    <?= $availability_filter ? 'checked' : '' ?>>
+                                <label class="switch-paddle" for="instockyesno">
+                                    <span class="show-for-sr">Raktárról azonnal</span>
+                                    <span class="switch-active" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
+                                    <span class="switch-inactive" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
+                                </label>
+                            </div>
+                        </aside>
                         <?php
                                 the_widget( 'WC_Widget_Layered_Nav_Filters', array(
                                     'title' => __('Bekapcsolt szűrők', 'marrakesh')
@@ -148,6 +157,7 @@ defined( 'ABSPATH' ) || exit;
                                     )
                                 );
                         ?>
+
                     </section>
                 </div>
             </div>

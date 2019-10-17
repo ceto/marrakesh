@@ -85,6 +85,14 @@ msgstr ""
 msgid "Transport Calendar"
 msgstr ""
 
+#: lib/custom.php:344
+msgid "Thumbnail (16x9)"
+msgstr ""
+
+#: lib/custom.php:345
+msgid "Thumbnail (1x1)"
+msgstr ""
+
 #: lib/extras.php:31
 msgid "Continued"
 msgstr ""

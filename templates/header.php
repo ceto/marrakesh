@@ -53,7 +53,7 @@
             <div class="cell shrink show-for-tablet banner__ctacell">
                 <div class="banner__cta">
                     <p class="show-for-large">Egyedi színeket szeretnél?</p>
-                    <a href="#" class="btn">Tervező indítása</a>
+                    <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn">Tervező indítása</a>
                 </div>
             </div>
             <div class="shrink cell hide-for-tablet">

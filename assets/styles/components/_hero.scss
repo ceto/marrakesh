@@ -1,19 +1,19 @@
 .hero {
     position: relative;
-	width: 100%;
+    width: 100%;
 }
 
 .hero__fig {
     position: absolute;
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: #000;
-    background-image: linear-gradient(45deg, #000 0%, #fff 50% );
+    background-image: linear-gradient(45deg, #000 0%, #fff 50%);
 
-	img {
-        width:100%;
+    img {
+        width: 100%;
         height: 100%;
         max-width: none;
         object-fit: cover;
@@ -22,71 +22,79 @@
 }
 .hero__content {
     @include xy-grid-container;
-    padding-top:15%;
+    padding-top: 15%;
     padding-bottom: 5%;
     position: relative;
-    color:#fff;
-	text-shadow: 0 0 1rem rgba(#000, .5);
+    color: #fff;
+    text-shadow: 0 0 1rem rgba(#000, 0.5);
 }
 
 .hero__caption {
-
-
-    font-size: 3rem;
+    font-size: 1.875rem;
     font-weight: $global-weight-bold;
     //text-transform: uppercase;
-	line-height: 1;
+    line-height: 1;
 
-	max-width: 17em;
+    max-width: 17em;
     margin: 0 0;
     &:after {
-        content: '';
+        content: "";
         display: block;
-        width:2em;
-        height:1px;
-        border-top:1px solid currentColor;
-        margin:.333em 0;
+        width: 2em;
+        height: 1px;
+        border-top: 1px solid currentColor;
+        margin: 0.333em 0;
+    }
+
+    @include breakpoint(medium) {
+        font-size: 3rem;
     }
 }
 .hero__precapt {
     font-weight: $global-weight-bold;
-	font-size: 1.25rem;
+    font-size: 0.75rem;
     line-height: 1.2;
-    max-width: 30em;;
+    max-width: 30em;
 
-    margin: .25em 0;
+    margin: 0.25em 0;
+    @include breakpoint(medium) {
+        font-size: 1.25rem;
+    }
 }
 .hero__postcapt {
     @extend .hero__precapt;
 }
 .hero__action {
     //@include button(false,#fff, #fff, #fff, hollow);
-    margin:1rem 0 0;
-    font-size:.9375rem;
+    margin: 1rem 0 0;
+    font-size: 0.75rem;
     line-height: 1;
     display: inline-block;
-    padding: .666em .75em;
+    padding: 0.666em 0.75em;
     //border: 1px solid currentColor;
-    color:#fff;
+    color: #fff;
     font-weight: $global-weight-bold;
-    background-color:#000;
+    background-color: #000;
     min-width: 10em;
     text-align: center;
-    &:hover, &:focus {
-        background-color:$primary-color;
-        color:#fff;
+    &:hover,
+    &:focus {
+        background-color: $primary-color;
+        color: #fff;
         //border-color: $primary-color;
         //filter:invert(1);
     }
 
-
     &.hollow {
-        color:#fff;
-        background-color: rgba(#000,1);
+        color: #fff;
+        background-color: rgba(#000, 1);
         border-color: transparent;
     }
     & + & {
-        margin-left: .5em;
+        margin-left: 0.5em;
+    }
+
+    @include breakpoint(medium) {
+        font-size: 0.9375rem;
     }
 }
-

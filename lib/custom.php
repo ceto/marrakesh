@@ -210,8 +210,21 @@ class TabWalker extends Walker_Nav_Menu {
     }
   }
 
+  add_filter( 'tiny_mce_before_init', 'marrakesh_tinymce_add_pre' );
+  function marrakesh_tinymce_add_pre( $initArray ) {
+   // Command separated string of extended elements
+   $ext = 'svg[preserveAspectRatio|class|style|version|viewbox|xmlns],defs,use[xlink?href|x|y],linearGradient[id|x1|y1|z1]';
 
+    if ( isset( $initArray['extended_valid_elements'] ) ) {
+        $initArray['extended_valid_elements'] .= ',' . $ext;
+    } else {
+        $initArray['extended_valid_elements'] = $ext;
+    }
+    // maybe; set tiny paramter verify_html
+    //$initArray['verify_html'] = false;
 
+    return $initArray;
+  }
 
 // define the wp_kses_allowed_html callback
 function marrakesh_add_tags_to_wp_kses_allowed_html( $array ) {

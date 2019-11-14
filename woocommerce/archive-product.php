@@ -24,8 +24,8 @@ defined( 'ABSPATH' ) || exit;
     if ( is_shop()) {
         $theterm = get_term_by('id', 39, 'product_cat' );
         $ctax = get_taxonomy($theterm->taxonomy);
-        $theterm->name = 'All Products';
-        $ctaxname = 'All Products';
+        $theterm->name = __('Teljes kínálat','marrakesh');
+        $ctaxname = __('Teljes kínálat','marrakesh');
         $reltaxes = get_terms( array(
             'taxonomy' => $ctax->name,
             'parent' => 0,

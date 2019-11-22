@@ -161,15 +161,15 @@ msgstr ""
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:195
+#: woocommerce/archive-product.php:211
 msgid "Színek szerint"
 msgstr ""
 
-#: woocommerce/archive-product.php:206
+#: woocommerce/archive-product.php:222
 msgid "Lapok stílusa"
 msgstr ""
 
-#: woocommerce/archive-product.php:319
+#: woocommerce/archive-product.php:327
 msgid "Color and style filters&hellip;"
 msgstr ""
 

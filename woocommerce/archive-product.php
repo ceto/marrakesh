@@ -189,6 +189,22 @@ defined( 'ABSPATH' ) || exit;
                                 ), $wargs );
                         */?>
 
+
+                        <?php
+                            if (is_product_category() || is_shop()) {
+                                the_widget( 'WC_Widget_Product_Categories', array(
+                                'title' => 'prod. cat. work in progress',
+                                'dropdown' => 0,
+                                'count' => 1,
+                                'hide_empty' => 1,
+                                'orderby' => 'order',
+                                'show_children_only' => 1,
+                                // 'max_depth' => 1,
+                                'hierarchical' => 0
+                                ), $wargs );
+                            }
+                        ?>
+
                         <?php
                             if (!is_tax('pa_color')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
@@ -211,15 +227,7 @@ defined( 'ABSPATH' ) || exit;
                             }
                         ?>
 
-                        <?php
-                                // the_widget( 'WC_Widget_Product_Categories', array(
-                                //     title => 'Product categories',
-                                //     dropdown => 1,
-                                //     count => 1,
-                                //     hide_empty => 1,
-                                //     orderby => 'count',
-                                // ), $wargs );
-                        ?>
+
                         <?php //dynamic_sidebar('sidebar-primary'); ?>
                         <?php
                         /**

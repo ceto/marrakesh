@@ -108,7 +108,7 @@ if ( post_password_required() ) {
     //var_dump($datafromprod);
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
-    <div class="singleproduct__top">
+    <div class="singleproduct__top <?= (get_field('dontcoverwp')===true)?'dontcoverwp':''; ?>">
         <aside class="singleproduct__top__bg">
             <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?>
         </aside>

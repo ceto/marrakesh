@@ -116,6 +116,14 @@ defined( 'ABSPATH' ) || exit;
 
     </div>
 
+    <?php if (is_product_category() ) : ?>
+    <div class="ps--light">
+    <div class="grid-container">
+        <?php woocommerce_breadcrumb(); ?>
+    </div>
+    </div>
+    <?php endif; ?>
+
 
     <?php
     /**
@@ -126,7 +134,6 @@ defined( 'ABSPATH' ) || exit;
      * @hooked WC_Structured_Data::generate_website_data() - 30
      */
     do_action( 'woocommerce_before_main_content' );
-
 ?>
     <div class="ps--xlight ps--bordered ">
         <div class="grid-container">
@@ -157,7 +164,6 @@ defined( 'ABSPATH' ) || exit;
                                     )
                                 );
                         ?>
-
                     </section>
                 </div>
             </div>
@@ -193,9 +199,9 @@ defined( 'ABSPATH' ) || exit;
                         <?php
                             if (is_product_category() || is_shop()) {
                                 the_widget( 'WC_Widget_Product_Categories', array(
-                                'title' => 'prod. cat. work in progress',
+                                'title' => __('Termékcsoport','marrakesh'),
                                 'dropdown' => 0,
-                                'count' => 1,
+                                'count' => 0,
                                 'hide_empty' => 1,
                                 'orderby' => 'order',
                                 'show_children_only' => 1,
@@ -208,7 +214,7 @@ defined( 'ABSPATH' ) || exit;
                         <?php
                             if (!is_tax('pa_color')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Színek szerint', 'marrakesh'),
+                                    'title' => __('Szűrés színre', 'marrakesh'),
                                     'attribute' => 'color',
                                     'query_type' => 'or',
 
@@ -219,7 +225,7 @@ defined( 'ABSPATH' ) || exit;
                         <?php
                             if (!is_tax('pa_design') && !is_tax('pa_style')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Lapok stílusa', 'marrakesh'),
+                                    'title' => __('Szűrés stílusra', 'marrakesh'),
                                     'attribute' => 'style',
                                     'query_type' => 'or',
 

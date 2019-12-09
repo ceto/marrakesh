@@ -25,6 +25,9 @@ var svgstore = require("gulp-svgstore");
 var svgmin = require("gulp-svgmin");
 var inject = require("gulp-inject");
 
+var postcss = require('gulp-postcss');
+var postcssinlinesvg = require('postcss-inline-svg');
+
 var wpPot = require("gulp-wp-pot");
 
 // See https://github.com/austinpray/asset-builder
@@ -116,6 +119,9 @@ var cssTasks = function(filename) {
             concat,
             filename
         )
+        .pipe( postcss, [ postcssinlinesvg({
+            paths: ["assets/icons"]
+        }) ] )
         .pipe(
             autoprefixer,
             {

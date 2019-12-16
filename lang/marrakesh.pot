@@ -157,23 +157,23 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:157
+#: woocommerce/archive-product.php:158
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:202, woocommerce/content-single-product.php:342
+#: woocommerce/archive-product.php:201, woocommerce/content-single-product.php:342
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:217
+#: woocommerce/archive-product.php:216
 msgid "Szűrés színre"
 msgstr ""
 
-#: woocommerce/archive-product.php:228
+#: woocommerce/archive-product.php:227
 msgid "Szűrés stílusra"
 msgstr ""
 
-#: woocommerce/archive-product.php:333
+#: woocommerce/archive-product.php:332
 msgid "Color and style filters&hellip;"
 msgstr ""
 
@@ -299,6 +299,10 @@ msgstr ""
 
 #: woocommerce/content-single-product.php:531
 msgid "Ajánljuk figyelemedbe&hellip;"
+msgstr ""
+
+#: woocommerce/global/breadcrumb.php:26
+msgid "Kollekció"
 msgstr ""
 
 #: woocommerce/single-product/add-to-cart/simple.php:112

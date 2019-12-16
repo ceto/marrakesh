@@ -116,13 +116,28 @@ defined( 'ABSPATH' ) || exit;
 
     </div>
 
-    <?php if (is_product_category() ) : ?>
-    <div class="ps--light">
-    <div class="grid-container">
-        <?php woocommerce_breadcrumb(); ?>
+
+    <div class="aps aps--thin ps--xlight ps--bordered">
+        <div class="grid-container">
+            <section class="pratopstatus">
+                <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
+                <aside class="stock-filter">
+                    <div class="switch switch--stock small">
+                        <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
+                            <?= $availability_filter ? 'checked' : '' ?>>
+                        <label class="switch-paddle" for="instockyesno">
+                            <span class="show-for-sr">Raktárról azonnal</span>
+                            <span class="switch-active" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
+                            <span class="switch-inactive" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
+                        </label>
+                    </div>
+                </aside>
+                <?php if (is_product_category() ) : ?>
+                <?php woocommerce_breadcrumb(array('home'=>'')); ?>
+                <?php endif; ?>
+            </section>
+        </div>
     </div>
-    </div>
-    <?php endif; ?>
 
 
     <?php
@@ -135,24 +150,10 @@ defined( 'ABSPATH' ) || exit;
      */
     do_action( 'woocommerce_before_main_content' );
 ?>
-    <div class="ps--xlight ps--bordered ">
+    <div class="ps--xlight">
         <div class="grid-container">
-            <div class="grid-x grid-margin-x align-right">
-                <div class="cell tablet-9 xlarge-10">
-                    <section class="pratopstatus">
-                        <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
-                        <aside class="stock-filter">
-                            <div class="switch switch--stock small">
-                                <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
-                                    <?= $availability_filter ? 'checked' : '' ?>>
-                                <label class="switch-paddle" for="instockyesno">
-                                    <span class="show-for-sr">Raktárról azonnal</span>
-                                    <span class="switch-active" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
-                                    <span class="switch-inactive" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
-                                </label>
-                            </div>
-                        </aside>
-                        <?php
+            <section class="apratopstatus">
+                <?php
                                 the_widget( 'WC_Widget_Layered_Nav_Filters', array(
                                     'title' => __('Bekapcsolt szűrők', 'marrakesh')
                                     ),
@@ -164,16 +165,14 @@ defined( 'ABSPATH' ) || exit;
                                     )
                                 );
                         ?>
-                    </section>
-                </div>
-            </div>
+            </section>
         </div>
     </div>
     <div class="grid-container ps ps--narrow">
         <div class="grid-x grid-margin-x">
-            <div class="cell show-for-tablet tablet-3 xlarge-2" data-sticky-container>
-                <div class="prarchive__sidebar" class="sticky" data-margin-top="2" data-sticky
-                    data-anchor="prarchive__main">
+            <div class="cell show-for-tablet tablet-3 xlarge-2" adata-sticky-container>
+                <div class="prarchive__sidebar" class="asticky" data-margin-top="2" adata-sticky
+                    adata-anchor="prarchive__main">
                     <!-- <p><?php woocommerce_result_count() ?></p> -->
                     <?php
                     $wargs = array(
@@ -206,7 +205,7 @@ defined( 'ABSPATH' ) || exit;
                                 'orderby' => 'order',
                                 'show_children_only' => 1,
                                 // 'max_depth' => 1,
-                                'hierarchical' => 0
+                                'hierarchical' => 1
                                 ), $wargs );
                             }
                         ?>

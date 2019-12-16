@@ -60,10 +60,13 @@
             UTIL.fire("common");
 
             // Fire page-specific init JS, and then finalize JS
-            $.each(document.body.className.replace(/-/g, "_").split(/\s+/), function(i, classnm) {
-                UTIL.fire(classnm);
-                UTIL.fire(classnm, "finalize");
-            });
+            $.each(
+                document.body.className.replace(/-/g, "_").split(/\s+/),
+                function(i, classnm) {
+                    UTIL.fire(classnm);
+                    UTIL.fire(classnm, "finalize");
+                }
+            );
 
             // Fire common finalize JS
             UTIL.fire("common", "finalize");
@@ -77,6 +80,12 @@
 $(document).foundation();
 
 $(document).ready(function() {});
+
+$("#instockyesno").on("click", function(e) {
+    // e.preventDefault();
+
+    window.location = $(".wc-availability-in-stock a").attr("href");
+});
 
 //photoswipe things
 var initPhotoSwipeFromDOM = function(gallerySelector) {
@@ -111,7 +120,8 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             };
 
             if (linkEl.getAttribute("data-title")) {
-                item.title = "<h3>" + linkEl.getAttribute("data-title") + "</h3>";
+                item.title =
+                    "<h3>" + linkEl.getAttribute("data-title") + "</h3>";
                 item.caption = linkEl.getAttribute("data-caption");
             } else {
                 item.title = "";
@@ -138,7 +148,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         return el && (fn(el) ? el : closest(el.parentNode, fn));
     };
 
-    var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+    var openPhotoSwipe = function(
+        index,
+        galleryElement,
+        disableAnimation,
+        fromURL
+    ) {
         var pswpElement = document.querySelectorAll(".pswp")[0],
             gallery,
             options,
@@ -156,10 +171,16 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             getThumbBoundsFn: function(index) {
                 // See Options -> getThumbBoundsFn section of documentation for more info
                 var thumbnail = items[index].el.getElementsByTagName("img")[0], // find thumbnail
-                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                    pageYScroll =
+                        window.pageYOffset ||
+                        document.documentElement.scrollTop,
                     rect = thumbnail.getBoundingClientRect();
 
-                return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                return {
+                    x: rect.left,
+                    y: rect.top + pageYScroll,
+                    w: rect.width
+                };
             }
         };
 
@@ -192,7 +213,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         }
 
         // Pass data to PhotoSwipe and initialize it
-        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery = new PhotoSwipe(
+            pswpElement,
+            PhotoSwipeUI_Default,
+            items,
+            options
+        );
         gallery.init();
     };
 
@@ -282,7 +308,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     // Parse URL and open gallery if it contains #&pid=3&gid=1
     var hashData = photoswipeParseHash();
     if (hashData.pid && hashData.gid) {
-        openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+        openPhotoSwipe(
+            hashData.pid,
+            galleryElements[hashData.gid - 1],
+            true,
+            true
+        );
     }
 };
 
@@ -330,7 +361,9 @@ function updateOrderBox($changed) {
         //update price
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(2);
-        $priceText.html("<small>ÖSSZESEN (bruttó):</small>" + priceText + " Ft.");
+        $priceText.html(
+            "<small>ÖSSZESEN (bruttó):</small>" + priceText + " Ft."
+        );
 
         //update button text
         $buttonCount.html(sqftText.toFixed(2) + " m<sup>2</sup>");
@@ -370,12 +403,14 @@ function updateOrderBox($changed) {
 }
 
 $("form.order :input").on("change input", function() {
-    if ($form.serialize() !== origForm && $(this).attr("id") !== "yith-wcwtl-email") {
+    if (
+        $form.serialize() !== origForm &&
+        $(this).attr("id") !== "yith-wcwtl-email"
+    ) {
         origForm = $form.serialize();
         updateOrderBox($(this));
     }
 });
-
 
 //photoswipe things
 var initPhotoSwipeFromDOM = function(gallerySelector) {
@@ -410,7 +445,8 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             };
 
             if (linkEl.getAttribute("data-title")) {
-                item.title = "<h3>" + linkEl.getAttribute("data-title") + "</h3>";
+                item.title =
+                    "<h3>" + linkEl.getAttribute("data-title") + "</h3>";
                 item.caption = linkEl.getAttribute("data-caption");
             } else {
                 item.title = "";
@@ -437,7 +473,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         return el && (fn(el) ? el : closest(el.parentNode, fn));
     };
 
-    var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+    var openPhotoSwipe = function(
+        index,
+        galleryElement,
+        disableAnimation,
+        fromURL
+    ) {
         var pswpElement = document.querySelectorAll(".pswp")[0],
             gallery,
             options,
@@ -453,10 +494,16 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             getThumbBoundsFn: function(index) {
                 // See Options -> getThumbBoundsFn section of documentation for more info
                 var thumbnail = items[index].el.getElementsByTagName("img")[0], // find thumbnail
-                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                    pageYScroll =
+                        window.pageYOffset ||
+                        document.documentElement.scrollTop,
                     rect = thumbnail.getBoundingClientRect();
 
-                return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                return {
+                    x: rect.left,
+                    y: rect.top + pageYScroll,
+                    w: rect.width
+                };
             }
         };
 
@@ -489,7 +536,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         }
 
         // Pass data to PhotoSwipe and initialize it
-        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery = new PhotoSwipe(
+            pswpElement,
+            PhotoSwipeUI_Default,
+            items,
+            options
+        );
         gallery.init();
     };
 
@@ -579,7 +631,12 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     // Parse URL and open gallery if it contains #&pid=3&gid=1
     var hashData = photoswipeParseHash();
     if (hashData.pid && hashData.gid) {
-        openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+        openPhotoSwipe(
+            hashData.pid,
+            galleryElements[hashData.gid - 1],
+            true,
+            true
+        );
     }
 };
 
@@ -622,7 +679,10 @@ var initPhotoSwipeInline = function(gallerySelector) {
             // create slide object
             if (linkEl.getAttribute("data-type") === "video") {
                 item = {
-                    html: '<div class="wrapper">' + linkEl.getAttribute("data-video") + "</div>"
+                    html:
+                        '<div class="wrapper">' +
+                        linkEl.getAttribute("data-video") +
+                        "</div>"
                 };
             } else {
                 item = {
@@ -632,7 +692,9 @@ var initPhotoSwipeInline = function(gallerySelector) {
                 };
             }
 
-            item.title = linkEl.getAttribute("data-title") + linkEl.getAttribute("data-caption");
+            item.title =
+                linkEl.getAttribute("data-title") +
+                linkEl.getAttribute("data-caption");
 
             if (figureEl.children.length > 1) {
                 // <figcaption> content
@@ -663,7 +725,12 @@ var initPhotoSwipeInline = function(gallerySelector) {
         return el && (fn(el) ? el : closest(el.parentNode, fn));
     };
 
-    var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+    var openPhotoSwipe = function(
+        index,
+        galleryElement,
+        disableAnimation,
+        fromURL
+    ) {
         var pswpElement = document.querySelectorAll(".pswp")[0],
             gallery,
             options,
@@ -722,13 +789,20 @@ var initPhotoSwipeInline = function(gallerySelector) {
         }
 
         // Pass data to PhotoSwipe and initialize it
-        gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery = new PhotoSwipe(
+            pswpElement,
+            PhotoSwipeUI_Default,
+            items,
+            options
+        );
         gallery.init();
 
         gallery.listen("beforeChange", function() {
             var currItem = $(gallery.currItem.container);
             $(".pswp__video").removeClass("active");
-            var currItemIframe = currItem.find(".pswp__video").addClass("active");
+            var currItemIframe = currItem
+                .find(".pswp__video")
+                .addClass("active");
             $(".pswp__video").each(function() {
                 if (!$(this).hasClass("active")) {
                     $(this).attr("src", $(this).attr("src"));
@@ -852,7 +926,12 @@ var initPhotoSwipeInline = function(gallerySelector) {
     // Parse URL and open gallery if it contains #&pid=3&gid=1
     var hashData = photoswipeParseHash();
     if (hashData.pid && hashData.gid) {
-        openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+        openPhotoSwipe(
+            hashData.pid,
+            galleryElements[hashData.gid - 1],
+            true,
+            true
+        );
     }
     // else {
     //     if (galleryElements.length) {

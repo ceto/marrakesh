@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Marrakesh Theme
+# Copyright (C) 2020 Marrakesh Theme
 # This file is distributed under the same license as the Marrakesh Theme package.
 msgid ""
 msgstr ""
@@ -101,7 +101,7 @@ msgstr ""
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:516
+#: lib/woocommerce.php:516, lib/woocommerce.php:609
 msgid "Hamarosan érkezik"
 msgstr ""
 
@@ -157,23 +157,26 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:158
-msgid "Bekapcsolt szűrők"
+#: woocommerce/archive-product.php:166, woocommerce/archive-product.php:180
 msgstr ""
 
-#: woocommerce/archive-product.php:201, woocommerce/content-single-product.php:342
+#: woocommerce/archive-product.php:216, woocommerce/content-single-product.php:342
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:216
-msgid "Szűrés színre"
+#: woocommerce/archive-product.php:228
+msgid "Termékek szűrése"
 msgstr ""
 
-#: woocommerce/archive-product.php:227
-msgid "Szűrés stílusra"
+#: woocommerce/archive-product.php:239
+msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:332
+#: woocommerce/archive-product.php:249
+msgid "Stílus"
+msgstr ""
+
+#: woocommerce/archive-product.php:355
 msgid "Color and style filters&hellip;"
 msgstr ""
 

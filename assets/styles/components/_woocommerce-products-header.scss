@@ -102,7 +102,8 @@ select.taxchooser {
         }
     }
 
-    &.widget_layered_nav_filters ul {
+    &.widget_layered_nav_filters ul,
+    &.widget_status_filter ul {
         flex-direction: row;
         li {
             &:not(:last-child()) {
@@ -118,13 +119,21 @@ select.taxchooser {
         }
     }
 }
-
-.pratopstatus {
+.brblock {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse;
-    padding: 0.5rem 0;
+    // padding: 0.875rem 0 0.25rem;
+}
+.pratopstatus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    // flex-direction: row-reverse;
+    padding: 0.875rem 0 0.25rem;
 
     .button {
         margin: 0;
@@ -134,12 +143,28 @@ select.taxchooser {
     }
 }
 
+.pratopstatus__title {
+    position: absolute;
+    font-size: 0.75rem;
+    line-height: 1;
+    top: 0.666rem;
+    font-weight: $global-weight-normal;
+    //text-transform: uppercase;
+}
+
 .pratopstatus__filters {
     @extend .woocommerce-products-header__filters;
+    margin-right: 0.75rem;
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
     h3 {
         //float:none;
         margin: 0;
+    }
+    li {
+        display: none;
+        &.chosen {
+            display: list-item;
+        }
     }
 }

@@ -29,7 +29,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-  $cols = 50;
+  $cols = 70;
   return $cols;
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
@@ -606,7 +606,7 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 			$count_html  = ''; ////////// ADD COUNT LATER
 
 			printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
-
+            echo '<li><a href="#">'.__('Hamarosan érkezik', 'marrakesh').'</a></li>';
 			echo '</ul>';
 
 			$this->widget_end( $args );
@@ -614,6 +614,15 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 	} // end class WC_Widget_Status_Filter extends WC_Widget
 
 
-  add_action( 'widgets_init', function(){
-    register_widget( 'WC_Widget_Status_Filter' );
-  });
+add_action( 'widgets_init', function(){ register_widget( 'WC_Widget_Status_Filter' );});
+
+
+
+  // define the woocommerce_layered_nav_count callback
+function filter_woocommerce_layered_nav_count( $span_class_count_absint_count_span, $count, $term ) {
+    // make filter magic happen here...
+    return '';
+};
+
+// add the filter
+add_filter( 'woocommerce_layered_nav_count', 'filter_woocommerce_layered_nav_count', 10, 3 );

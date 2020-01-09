@@ -116,11 +116,13 @@ defined( 'ABSPATH' ) || exit;
 
     </div>
 
+    <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
 
-    <div class="aps aps--thin ps--xlight ps--bordered">
+
+
+    <div class="ps ps--thin ps--xlight ps--bordered">
         <div class="grid-container">
-            <section class="pratopstatus">
-                <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
+            <section class="brblock">
                 <aside class="stock-filter">
                     <div class="switch switch--stock small">
                         <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
@@ -140,6 +142,7 @@ defined( 'ABSPATH' ) || exit;
     </div>
 
 
+
     <?php
     /**
      * Hook: woocommerce_before_main_content.
@@ -150,24 +153,47 @@ defined( 'ABSPATH' ) || exit;
      */
     do_action( 'woocommerce_before_main_content' );
 ?>
+    <?php
+    $_chosen_attributes = WC_Query::get_layered_nav_chosen_attributes();
+    if ( (count( $_chosen_attributes ) > 0) || $availability_filter )  : ?>
     <div class="ps--xlight">
         <div class="grid-container">
-            <section class="apratopstatus">
+            <section class="pratopstatus">
+                <h3 class="pratopstatus__title">Bekapcsolt szűrők</h3>
+                <?php if ( count($_chosen_attributes) > 0) : ?>
                 <?php
-                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                    'title' => __('Bekapcsolt szűrők', 'marrakesh')
-                                    ),
-                                    array(
-                                        'before_widget' => '<section class="pratopstatus__filters %1$s">',
-                                        'after_widget'  => '</section>',
-                                        'before_title'  => '<h3>',
-                                        'after_title'   => '</h3>'
-                                    )
-                                );
-                        ?>
+                        the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                            'title' => __('', 'marrakesh')
+                            ),
+                            array(
+                                'before_widget' => '<section class="pratopstatus__filters %1$s">',
+                                'after_widget'  => '</section>',
+                                'before_title'  => '<h3>',
+                                'after_title'   => '</h3>'
+                            )
+                        );
+                ?>
+                <?php endif; ?>
+                <?php if ($availability_filter) : ?>
+                <?php
+                        the_widget( 'WC_Widget_Status_Filter', array(
+                            'title' => __('', 'marrakesh')
+                            ),
+                            array(
+                                'before_widget' => '<section class="pratopstatus__filters %1$s">',
+                                'after_widget'  => '</section>',
+                                'before_title'  => '<h3>',
+                                'after_title'   => '</h3>'
+                            )
+                        );
+                ?>
+                <?php endif; ?>
             </section>
         </div>
     </div>
+    <?php endif; ?>
+
+
     <div class="grid-container ps ps--narrow">
         <div class="grid-x grid-margin-x">
             <div class="cell show-for-tablet tablet-3 xlarge-2" adata-sticky-container>
@@ -183,17 +209,6 @@ defined( 'ABSPATH' ) || exit;
                     );
                 ?>
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
-                        <?php /*
-                                the_widget( 'WC_Widget_Status_Filter', array(
-
-                                ), $wargs );
-                        */ ?>
-                        <?php /*
-                                the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                                    'title' => __('Bekapcsolt szűrők', 'marrakesh')
-                                ), $wargs );
-                        */?>
-
 
                         <?php
                             if (is_product_category() || is_shop()) {
@@ -209,28 +224,36 @@ defined( 'ABSPATH' ) || exit;
                                 ), $wargs );
                             }
                         ?>
+                        <div class="callout">
+                            <h6><?php _e('Termékek szűrése', 'marrakesh') ?></h6>
 
-                        <?php
+                            <?php
+                            the_widget('WC_Widget_Status_Filter', array(), $wargs );
+                            ?>
+
+
+
+                            <?php
                             if (!is_tax('pa_color')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Szűrés színre', 'marrakesh'),
+                                    'title' => __('Színek', 'marrakesh'),
                                     'attribute' => 'color',
                                     'query_type' => 'or',
-
                                 ), $wargs );
                             }
 
                         ?>
-                        <?php
+                            <?php
                             if (!is_tax('pa_design') && !is_tax('pa_style')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Szűrés stílusra', 'marrakesh'),
+                                    'title' => __('Stílus', 'marrakesh'),
                                     'attribute' => 'style',
                                     'query_type' => 'or',
 
                                 ), $wargs );
                             }
                         ?>
+                        </div>
 
 
                         <?php //dynamic_sidebar('sidebar-primary'); ?>

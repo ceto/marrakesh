@@ -123,8 +123,9 @@ select.taxchooser {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+    font-weight: bold;
+    // justify-content: space-between;
+    // flex-direction: row-reverse;
     // padding: 0.875rem 0 0.25rem;
 }
 .pratopstatus {
@@ -145,7 +146,7 @@ select.taxchooser {
 
 .pratopstatus__title {
     position: absolute;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     line-height: 1;
     top: 0.666rem;
     font-weight: $global-weight-normal;

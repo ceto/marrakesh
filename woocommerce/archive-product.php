@@ -119,12 +119,12 @@ defined( 'ABSPATH' ) || exit;
     <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
 
 
-
-    <div class="ps ps--thin ps--xlight ps--bordered">
+    <?php if (is_product_category() ) : ?>
+    <div class="ps ps--thin ps--light ps--bordered">
         <div class="grid-container">
             <section class="brblock">
                 <aside class="stock-filter">
-                    <div class="switch switch--stock small">
+                    <!-- <div class="switch switch--stock small">
                         <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
                             <?= $availability_filter ? 'checked' : '' ?>>
                         <label class="switch-paddle" for="instockyesno">
@@ -132,14 +132,15 @@ defined( 'ABSPATH' ) || exit;
                             <span class="switch-active" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
                             <span class="switch-inactive" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
                         </label>
-                    </div>
+                    </div> -->
                 </aside>
-                <?php if (is_product_category() ) : ?>
+
                 <?php woocommerce_breadcrumb(array('home'=>'')); ?>
-                <?php endif; ?>
+
             </section>
         </div>
     </div>
+    <?php endif; ?>
 
 
 
@@ -201,70 +202,61 @@ defined( 'ABSPATH' ) || exit;
                     adata-anchor="prarchive__main">
                     <!-- <p><?php woocommerce_result_count() ?></p> -->
                     <?php
-                    $wargs = array(
-                        'before_widget' => '<section class="cell widget widget--sidebar %1$s">',
-                        'after_widget'  => '</section>',
-                        'before_title'  => '<h3 class="widget__title">',
-                        'after_title'   => '</h3>'
-                    );
-                ?>
+                        $wargs = array(
+                            'before_widget' => '<section class="cell widget widget--sidebar %1$s"><ul class="accordion" data-accordion data-allow-all-closed="true">',
+                            'after_widget'  => '</div></li></ul></section>',
+                            'before_title'  => '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">',
+                            'after_title'   => '</a><div class="accordion-content" data-tab-content>'
+                        );
+                    ?>
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
 
+                        <?php the_widget('WC_Widget_Status_Filter', array(), $wargs );?>
                         <?php
-                            if (is_product_category() || is_shop()) {
-                                the_widget( 'WC_Widget_Product_Categories', array(
-                                'title' => __('Termékcsoport','marrakesh'),
-                                'dropdown' => 0,
-                                'count' => 0,
-                                'hide_empty' => 1,
-                                'orderby' => 'order',
-                                'show_children_only' => 1,
-                                // 'max_depth' => 1,
-                                'hierarchical' => 1
-                                ), $wargs );
-                            }
-                        ?>
-                        <div class="callout">
-                            <h6><?php _e('Termékek szűrése', 'marrakesh') ?></h6>
+                                if (is_product_category() || is_shop()) {
+                                    the_widget( 'WC_Widget_Product_Categories', array(
+                                    'title' => __('Termékcsoport','marrakesh'),
+                                    'dropdown' => 0,
+                                    'count' => 0,
+                                    'hide_empty' => 1,
+                                    'orderby' => 'order',
+                                    'show_children_only' => 1,
+                                    // 'max_depth' => 1,
+                                    'hierarchical' => 1
+                                    ), $wargs );
+                                }
+                            ?>
+                        <?php
+                                if (!is_tax('pa_color')) {
+                                    the_widget( 'WC_Widget_Layered_Nav', array(
+                                        'title' => __('Színek', 'marrakesh'),
+                                        'attribute' => 'color',
+                                        'query_type' => 'or',
+                                    ), $wargs );
+                                }
 
-                            <?php
-                            the_widget('WC_Widget_Status_Filter', array(), $wargs );
                             ?>
 
+                        <?php
+                                if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                                    the_widget( 'WC_Widget_Layered_Nav', array(
+                                        'title' => __('Stílus', 'marrakesh'),
+                                        'attribute' => 'style',
+                                        'query_type' => 'or',
 
-
-                            <?php
-                            if (!is_tax('pa_color')) {
-                                the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Színek', 'marrakesh'),
-                                    'attribute' => 'color',
-                                    'query_type' => 'or',
-                                ), $wargs );
-                            }
-
-                        ?>
-                            <?php
-                            if (!is_tax('pa_design') && !is_tax('pa_style')) {
-                                the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Stílus', 'marrakesh'),
-                                    'attribute' => 'style',
-                                    'query_type' => 'or',
-
-                                ), $wargs );
-                            }
-                        ?>
-                        </div>
-
+                                    ), $wargs );
+                                }
+                            ?>
 
                         <?php //dynamic_sidebar('sidebar-primary'); ?>
                         <?php
-                        /**
-                         * Hook: woocommerce_sidebar.
-                         *
-                         * @hooked woocommerce_get_sidebar - 10
-                         */
-                        do_action( 'woocommerce_sidebar' );
-                    ?>
+                                /**
+                                 * Hook: woocommerce_sidebar.
+                                 *
+                                 * @hooked woocommerce_get_sidebar - 10
+                                 */
+                                do_action( 'woocommerce_sidebar' );
+                            ?>
                     </aside>
                 </div>
             </div>

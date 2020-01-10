@@ -1,8 +1,31 @@
 .widget {
     &:not(last-child) {
-        margin-bottom:2rem;
+        margin-bottom: 2rem;
+    }
+
+    .accordion {
+        margin: 0;
     }
 }
 .widget__title {
-    font-size: 1.25rem; 
+    font-size: 1.25rem;
+    font-weight: $global-weight-bold;
+}
+
+.sidebar--wcfilters {
+    .widget {
+        &:not(last-child) {
+            margin-bottom: 0;
+        }
+    }
+
+    .widget__title {
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: $global-weight-bold;
+        &:hover,
+        &:focus {
+            color: inherit;
+        }
+    }
 }

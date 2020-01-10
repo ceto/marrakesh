@@ -1,54 +1,54 @@
 .prarchive__sidebar {
+    // padding: 0.75rem;
+    border: 1px solid $light-gray;
 }
 
 .sidebar--wcfilters {
-
 }
 
 .prarchive__main {
-    
 }
 .sticky--toggler {
     background-color: $body-background;
-    padding-top:.75rem;
-    padding-bottom:.75rem;
-    border-top:1px  solid $xlight-gray;
-    box-shadow: 0 0 .666rem 0 rgba(#000,.25);
-    display:none;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-top: 1px solid $xlight-gray;
+    box-shadow: 0 0 0.666rem 0 rgba(#000, 0.25);
+    display: none;
     &.is-stuck {
-        display:block;
+        display: block;
         //z-index: #{$reveal-zindex+2};
     }
 }
 .filtertoggler {
-    margin:0;
+    margin: 0;
     outline: none;
 }
 
 .prarchive__filtermodal {
     padding: 2rem 0 4rem;
-    background-color: rgba(#fff,.95);
+    background-color: rgba(#fff, 0.95);
     height: 100%;
     min-height: 100%;
     width: 100%;
     max-width: none;
-    top:0 !important;
-    border:none;
+    top: 0 !important;
+    border: none;
 }
 
 .filtermodal__close {
-    margin-top:1rem;
+    margin-top: 1rem;
     font-size: 2.25rem;
     color: #fff;
     border: 1px solid currentColor;
     border-radius: 50%;
-    width:1em;
-    height:1em;
-    line-height: .5;
+    width: 1em;
+    height: 1em;
+    line-height: 0.5;
     position: absolute;
-    bottom:2rem;
-    left:50%;
+    bottom: 2rem;
+    left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(#000,.25);
-    box-shadow: 0 0 .875rem 0 rgba(#000,.25);
+    background-color: rgba(#000, 0.25);
+    box-shadow: 0 0 0.875rem 0 rgba(#000, 0.25);
 }

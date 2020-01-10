@@ -157,26 +157,22 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:166, woocommerce/archive-product.php:180
+#: woocommerce/archive-product.php:167, woocommerce/archive-product.php:181
 msgstr ""
 
-#: woocommerce/archive-product.php:216, woocommerce/content-single-product.php:342
+#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:342
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:228
-msgid "Termékek szűrése"
-msgstr ""
-
-#: woocommerce/archive-product.php:239
+#: woocommerce/archive-product.php:232
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:249
+#: woocommerce/archive-product.php:243
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:355
+#: woocommerce/archive-product.php:347
 msgid "Color and style filters&hellip;"
 msgstr ""
 

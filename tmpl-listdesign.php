@@ -53,7 +53,7 @@
 
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
-        <div class="cell tablet-9 tablet-order-2">
+        <div class="cell">
             <div class="ps ps--narrow">
                 <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
@@ -80,13 +80,6 @@
                     </div>
                     <?php endforeach; ?>
                 </section>
-            </div>
-        </div>
-        <div class="cell tablet-3 xxlarge-3 tablet-order-1">
-            <div class="ps ps--narrow">
-                <aside class="sidebar sidebar--page">
-                    <?php dynamic_sidebar('sidebar-page'); ?>
-                </aside>
             </div>
         </div>
     </div>

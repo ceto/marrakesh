@@ -90,9 +90,9 @@ if ( FALSE && $product->is_in_stock() ) : ?>
                         <small>Tényleges méret</small>
                         <span class="sqft-total">0</span>m<sup>2</sup>
                     </p>
-                    <p class="calculatedsizes">
+                    <!-- <p class="calculatedsizes">
                         <small>Várható száll.:</small>
-                        <span class="est-shipping"><?= date('M. j.');?></span></p>
+                        <span class="est-shipping"><?= date('M. j.');?></span></p> -->
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@ if ( FALSE && $product->is_in_stock() ) : ?>
                 0 Ft.
             </p>
         </div>
-        <div class="order-submit__actions">
+        <div class="order-submit__actions" style="display: none;">
             <input class="pricePerBox" type="hidden" value="<?= wc_get_price_to_display($product) ?>">
             <input class="sqftPerBox" type="hidden" value="<?= $datafromcat['size_per_box'] ?>">
             <input class="pricePerSqft" type="hidden"

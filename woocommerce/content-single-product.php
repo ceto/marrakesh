@@ -145,7 +145,7 @@ if ( post_password_required() ) {
                             <?php if ( $product->is_on_sale() ) : ?>
                             <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
                             <?php endif;?>
-                            <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+
 
                             <p class="singleproduct__price">
                                 <?php /* if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
@@ -157,14 +157,17 @@ if ( post_password_required() ) {
 
                                 <?php wc_get_template_part( 'loop/price'); ?>
                             </p>
+                            <br>
+                            <div style="font-size:1.25rem">
+                            <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                            </div>
 
-
+<!--
                             <br>
                             <div class="singleproduct__headeractions">
-
                                 <a href="#buycallout"
                                     class="button medium hollow expanded"><?= __('Várható szállítás & Rendelés', 'marrakesh') ?></a>
-                            </div>
+                            </div> -->
 
 
                         </header>
@@ -280,13 +283,13 @@ if ( post_password_required() ) {
                                 </p>
                                 <?php $designdescr=term_description($designs['0']); ?>
                                 <?php if ($designdescr!=='') : ?>
-                                <div class="callout">
+                                <!-- <div class="callout">
                                     <h6><?= sprintf(__('%s mintáról','marrakesh'), get_term($designs['0'])->name); ?>
                                     </h6>
                                     <?= $designdescr; ?>
                                     <p><a href="<?= get_term_link($designs['0']) ?>"><?= sprintf(__('Tovább a(z) %s lapokhoz','marrakesh'), get_term($designs['0'])->name); ?>
                                         </a></p>
-                                </div>
+                                </div> -->
                                 <?php endif; ?>
 
                             </div>
@@ -420,8 +423,8 @@ if ( post_password_required() ) {
 
 
                     <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
-                        <h3><?php _e( 'Állítsd össze rendelésed', 'marrakesh' ) ?></h3>
-                        <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos szállítási időt kalkulálunk neked. Ezután a termék kosárba rakható és megrendelhető', 'marrakesh' ) ?>
+                        <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
+                        <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked.', 'marrakesh' ) ?>
                         </p>
                         <?php
                             /**

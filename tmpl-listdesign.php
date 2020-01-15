@@ -64,17 +64,17 @@
                     <div class="cell">
                         <div class="tmplcard">
                             <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
-                                <?php if ($designthumb = get_field('thumbnail', $child) ) : ?>
-                                <?= wp_get_attachment_image( $designthumb['id'], 'medium169', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
+                                <?php if ($designthumb = get_field('covera', $child) ) : ?>
+                                <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
                                 <img class="tmplcard__img"
-                                    src="//placehold.it/640x360/cecece/333333/?text=<?= $child->name;?>"
+                                    src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
                                     class="tmplcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
                                 <h3 class="tmplcard__name"><?= $child->name;?></h3>
-                                <?php if ($designtmpl = get_field( 'template', $child) ) : ?>
+                                <!-- <?php if ($designtmpl = get_field( 'template', $child) ) : ?>
                                 <?= wp_get_attachment_image( $designtmpl['id'], 'tiny11', false, array('class'=>'tmplcard__tmpl', 'alt'=>$child->name.' template') ); ?>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
                             </a>
                         </div>
                     </div>

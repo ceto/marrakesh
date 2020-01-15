@@ -69,6 +69,10 @@ msgstr ""
 msgid "Design Lister Page"
 msgstr ""
 
+#: tmpl-listrefcats.php:3
+msgid "Reference Category Lister Page"
+msgstr ""
+
 #: tmpl-narrowpage.php:3
 msgid "Narrow Page With No Sidebar"
 msgstr ""

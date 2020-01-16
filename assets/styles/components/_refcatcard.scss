@@ -3,25 +3,20 @@
     height: 0;
     padding-bottom: 100%;
     background-color: $light-gray;
+    margin-bottom: 1.25rem;
 }
 
 .refcatcard__name {
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: 100%;
     width: 100%;
     margin: 0;
-    //height: 2em;
-    //background-image: linear-gradient(180deg, rgba(#000,.5) 0%, rgba(#000,0) 100%);
-    background-color: rgba($body-font-color, 0.75);
-    // border-right: 1px solid currentColor;
-    // border-bottom: 1px solid currentColor;
-    padding: 0.666em 0.5em 0.5em;
-
-    text-transform: uppercase;
-    font-size: 0.9375rem;
+    padding: 0.75em 0 0;
+    text-align: center;
+    color: $body-font-color;
+    font-size: 1rem;
     line-height: 1;
-    color: #fff;
 }
 
 .refcatcard__thumb {
@@ -30,4 +25,8 @@
     height: 100%;
     position: absolute;
     object-fit: cover;
+}
+
+.refcatcardgrid {
+    @extend .tmplcardgrid;
 }

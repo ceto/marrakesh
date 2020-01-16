@@ -44,9 +44,9 @@
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
                 <?php the_content(); ?> -->
-                <section class="grid-x grid-margin-x grid-margin-y small-up-2 large-up-3">
+                <ul class="refcatcardgrid">
                     <?php foreach ( $child_terms as $child ) : ?>
-                    <div class="cell">
+                    <li>
                         <div class="refcatcard">
                             <a class="refcatcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
                                 <?php if ($designthumb = get_field('thumbnail', $child) ) : ?>
@@ -59,9 +59,9 @@
                                 <h3 class="refcatcard__name"><?= $child->name;?></h3>
                             </a>
                         </div>
-                    </div>
+                    </li>
                     <?php endforeach; ?>
-                </section>
+                </ul>
             </div>
         </div>
     </div>

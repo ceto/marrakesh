@@ -59,27 +59,26 @@
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
                 <?php the_content(); ?>
-                <section class="grid-x grid-margin-x grid-margin-y small-up-2 large-up-3">
+                <ul class="tmplcardgrid">
                     <?php foreach ( $child_terms as $child ) : ?>
-                    <div class="cell">
+                    <li>
                         <div class="tmplcard">
                             <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
                                 <?php if ($designthumb = get_field('covera', $child) ) : ?>
                                 <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
-                                <img class="tmplcard__img"
-                                    src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
+                                <img src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
                                     class="tmplcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
+                                <?php if (($coverb = get_field('coverb', $child)) || true) : ?>
+                                <?= wp_get_attachment_image( $coverb['id'], 'large', false, array('class'=>'tmplcard__thumb variant', 'alt'=>$child->name) ); ?>
+                                <?php endif; ?>
                                 <h3 class="tmplcard__name"><?= $child->name;?></h3>
-                                <!-- <?php if ($designtmpl = get_field( 'template', $child) ) : ?>
-                                <?= wp_get_attachment_image( $designtmpl['id'], 'tiny11', false, array('class'=>'tmplcard__tmpl', 'alt'=>$child->name.' template') ); ?>
-                                <?php endif; ?> -->
                             </a>
                         </div>
-                    </div>
+                    </li>
                     <?php endforeach; ?>
-                </section>
+                </ul>
             </div>
         </div>
     </div>

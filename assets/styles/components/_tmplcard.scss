@@ -3,32 +3,40 @@
     height: 0;
     padding-bottom: 100%;
     background-color: $light-gray;
+    margin-bottom: 1.25rem;
 }
 
 .tmplcard__name {
     position: absolute;
-    left: 5px;
-    top: 5px;
-    //width:100%;
-    //height: 2em;
-    //background-image: linear-gradient(180deg, rgba(#000,.5) 0%, rgba(#000,0) 100%);
-    background-color: $body-font-color;
-    // border-right: 1px solid currentColor;
-    // border-bottom: 1px solid currentColor;
-    padding: 0.333em 0.5em;
-
-    text-transform: uppercase;
-    font-size: 0.875rem;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0.75em 0 0;
+    text-align: center;
+    color: $body-font-color;
+    font-size: 1rem;
     line-height: 1;
-    color: #fff;
 }
-
+.tmplcard__fulllink {
+    &:hover,
+    &:focus {
+        .tmplcard__thumb.variant {
+            opacity: 1;
+        }
+    }
+}
 .tmplcard__thumb {
     display: block;
     width: 100%;
     height: 100%;
     position: absolute;
     object-fit: cover;
+    transition: all 0.2s ease-in;
+
+    &.variant {
+        opacity: 0;
+    }
 }
 .tmplcard__tmpl {
     position: absolute;
@@ -40,4 +48,35 @@
     background-color: $body-font-color;
     padding: 3px;
     border: 3px solid $body-background;
+}
+
+.tmplcardgrid {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: rem-calc(rem-calc(20));
+
+    @include breakpoint(tablet) {
+        grid-gap: rem-calc(rem-calc(60));
+    }
+
+    @include breakpoint(large) {
+    }
+
+    @include breakpoint(xlarge) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: rem-calc(rem-calc(30));
+    }
+
+    @include breakpoint(xxlarge) {
+        grid-gap: rem-calc(rem-calc(60));
+    }
+
+    > li {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 }

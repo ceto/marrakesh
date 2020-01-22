@@ -20,9 +20,9 @@
 <?php while (have_posts()) : the_post(); ?>
 <div class="masthead">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x align-right">
-            <div class="cell large-9 xxlarge-9">
-                <?php if ($localnav = get_field('localnav')) :  ?>
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell xlarge-10 text-center">
+                <?php if (FALSE && ($localnav = get_field('localnav') )) :  ?>
                 <?php
                         $themenu = wp_get_nav_menu_object($localnav);
                         $menuitems = wp_get_nav_menu_items($localnav);
@@ -52,8 +52,8 @@
 </div>
 
 <div class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <div class="cell">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell xlarge-10">
             <div class="ps ps--narrow">
                 <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>

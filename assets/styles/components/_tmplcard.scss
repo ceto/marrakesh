@@ -63,14 +63,16 @@
     }
 
     @include breakpoint(large) {
-    }
-
-    @include breakpoint(xlarge) {
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: rem-calc(rem-calc(30));
     }
+    // @include breakpoint(xlarge) {
+    //     grid-template-columns: 1fr 1fr 1fr;
+    //     grid-gap: rem-calc(rem-calc(30));
+    // }
 
     @include breakpoint(xxlarge) {
+        // grid-template-columns: 1fr 1fr 1fr;
         grid-gap: rem-calc(rem-calc(60));
     }
 

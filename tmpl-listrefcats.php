@@ -21,7 +21,7 @@
 <div class="masthead">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-center">
-            <div class="cell large-9 xxlarge-9 text-center">
+            <div class="cell xlarge-10 text-center">
                 <h1 class="page__title"><?= Titles\title(); ?></h1>
             </div>
         </div>
@@ -37,8 +37,8 @@
 </div>
 
 <div class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <div class="cell">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell xlarge-10">
             <div class="ps ps--narrow">
                 <!-- <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
@@ -49,7 +49,7 @@
                     <li>
                         <div class="refcatcard">
                             <a class="refcatcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
-                                <?php if ($designthumb = get_field('thumbnail', $child) ) : ?>
+                                <?php if ($designthumb = get_field('cover', $child) ) : ?>
                                 <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'refcatcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
                                 <img class="refcatcard__img"

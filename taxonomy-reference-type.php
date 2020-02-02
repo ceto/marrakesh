@@ -39,7 +39,7 @@
                 <div class="grid-x grid-margin-x">
                     <div class="auto cell">
                         <nav class="portfolionav">
-                            <ul class="menu menu--portfolio js-activate-filter menu--local align-center">
+                            <ul class="menu amenu--portfolio ajs-activate-filter menu--local align-center">
                                 <li class="menu-all"><a href="<?= get_post_type_archive_link( 'reference' )?>">All</a>
                                 </li>
                                 <?php foreach( $refcats as $refcat ): ?>

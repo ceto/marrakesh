@@ -69,6 +69,10 @@ msgstr ""
 msgid "Design Lister Page"
 msgstr ""
 
+#: tmpl-listdesign.php:93
+msgid "Minták"
+msgstr ""
+
 #: tmpl-listrefcats.php:3
 msgid "Reference Category Lister Page"
 msgstr ""

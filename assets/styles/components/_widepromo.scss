@@ -1,0 +1,44 @@
+.widepromo {
+    position: relative;
+    z-index: 0;
+    color: $white;
+    background-color: #000;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @include breakpoint(large) {
+        padding-top: 4em;
+        padding-bottom: 4rem;
+    }
+}
+
+.widepromo__title {
+    font-size: 2.333rem;
+}
+
+.widepromo__text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.widepromo__bg {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 0;
+    width: 66.666%;
+    height: 100%;
+    background-color: inherit;
+    background-image: linear-gradient(-90deg, #fff 25%, #000 100%);
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+    }
+}

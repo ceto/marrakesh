@@ -159,10 +159,10 @@ if ( post_password_required() ) {
                             </p>
                             <br>
                             <div style="font-size:1.25rem">
-                            <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                                <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                             </div>
 
-<!--
+                            <!--
                             <br>
                             <div class="singleproduct__headeractions">
                                 <a href="#buycallout"
@@ -228,36 +228,41 @@ if ( post_password_required() ) {
         </div>
     </div>
 
-    <div class="ps aps--xlight aps--bordered">
+    <br><br><br>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-justify">
+            <div class="cell">
+                <ul class="tabs tabs--prdata" data-tabs id="productinfotabs">
+                    <li class="tabs-title is-active">
+                        <a href="#prodinfopanel" aria-selected="true">
+                            <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
+                        </a>
+                    </li>
+                    <li class="tabs-title">
+                        <a href="#datapanel" aria-selected="true">
+                            <?php esc_html_e( 'Adatlap', 'marrakesh' ); ?>
+                        </a>
+                    </li>
+                    <li class="tabs-title">
+                        <a href="#obspanel">
+                            <?php esc_html_e( 'Megrendelés menete', 'marrakesh' ); ?>
+                        </a>
+                    </li>
+                    <li class="tabs-title">
+                        <a href="#installpanel">
+                            <?php esc_html_e( 'Lerakás', 'marrakesh' ) ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="ps ps--xlight ps--narrow ps--bordered">
         <div class="grid-container">
             <div class="grid-x grid-margin-x align-justify">
-
-
-
                 <div class="cell large-7 xxlarge-6 large-order-1">
-                    <!-- <h3><?php _e('Product Information', 'marrakesh');?></h3> -->
-                    <ul class="tabs tabs--singleproduct" data-tabs id="productinfotabs">
-                        <li class="tabs-title is-active">
-                            <a href="#prodinfopanel" aria-selected="true">
-                                <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
-                            </a>
-                        </li>
-                        <li class="tabs-title">
-                            <a href="#datapanel" aria-selected="true">
-                                <?php esc_html_e( 'Adatlap', 'marrakesh' ); ?>
-                            </a>
-                        </li>
-                        <li class="tabs-title">
-                            <a href="#obspanel">
-                                <?php esc_html_e( 'Megrendelés menete', 'marrakesh' ); ?>
-                            </a>
-                        </li>
-                        <li class="tabs-title">
-                            <a href="#installpanel">
-                                <?php esc_html_e( 'Lerakás', 'marrakesh' ) ?>
-                            </a>
-                        </li>
-                    </ul>
+
                     <div class="tabs-content" data-tabs-content="productinfotabs">
                         <div class="tabs-panel is-active" id="prodinfopanel">
                             <div class="singleproduct__details">
@@ -307,9 +312,6 @@ if ( post_password_required() ) {
                                     do_action( 'woocommerce_before_single_product_summary' );
                                 ?>
 
-                                <!-- <figure class="singleproduct__prodthumb">
-                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
-                            </figure> -->
 
                                 <h3 class=""><?= __('Termék adatlap', 'marrakesh'); ?></h3>
                                 <dl class="singleproduct__catattributes">

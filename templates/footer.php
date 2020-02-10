@@ -37,9 +37,11 @@
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title"><?php _e('Inspirációkért Kövess', 'marrakesh'); ?></h3>
                         <ul class="menu vertical">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Pinterest</a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/MarrakeshLakberendezes/">Facebook</a>
+                            </li>
+                            <li><a target="_blank" href="https://www.instagram.com/marrakeshcementtile/">Instagram</a>
+                            </li>
+                            <li><a target="_blank" href="http://hu.pinterest.com/marrcementtiles/">Pinterest</a></li>
                         </ul>
                     </section>
                 </div>
@@ -62,16 +64,18 @@
                         <p>H-1088 Budapest, Bródy Sándor u. 34.</p>
                         <h6>Nyitvatartás*</h6>
                         <p>Hétfőtől - Péntekig: 10:00-18:00<br>
-                        Szombat: 10:00-14:00<br>
-                        Vasárnap: zárva</p>
+                            Szombat: 10:00-14:00<br>
+                            Vasárnap: zárva</p>
                         <h6>Kapcsolat</h6>
                         <p>Telefon: <a
-                                    href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a><br>
+                                href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a><br>
                             E-mail: <a
-                                    href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a>
+                                href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a>
 
-                            </p>
-                        <p><small>A bemutatóteremben csak minta készletet tartunk, áru átvételre nincs lehetőség. <a href="#">Térkép és részletek&hellip;</a></small></p>
+                        </p>
+                        <p><small>A bemutatóteremben csak minta készletet tartunk, áru átvételre nincs lehetőség. <a
+                                    href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">Térkép és
+                                    részletek&hellip;</a></small></p>
                     </section>
                 </div>
                 <div class="cell small-auto medium-6 large-3">
@@ -80,13 +84,14 @@
                         <p>H-2088 Törökbálint, Depo u. 34.</p>
                         <h6>Nyitvatartás</h6>
                         <p>Hétfőtől - Péntekig: 10:00-18:00<br>
-                        Szombat: zárva<br>
-                        Vasárnap: zárva</p>
+                            Szombat: zárva<br>
+                            Vasárnap: zárva</p>
                         <h6>Kapcsolat</h6>
                         <p>Telefon: <a
-                                    href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
+                                href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
                         </p>
-                        <p><small><a href="#">Térkép és részletek&hellip;</a></small></p>
+                        <p><small><a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">Térkép és
+                                    részletek&hellip;</a></small></p>
 
                     </section>
                 </div>

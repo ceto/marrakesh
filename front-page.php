@@ -1,4 +1,5 @@
 <?php use Roots\Sage\Titles; ?>
+<?php global $woocommerce; ?>
 <?php while (have_posts()) : the_post(); ?>
 
 <?php if( have_rows('hero') ): ?>
@@ -56,41 +57,54 @@
 </div>
 <?php endif; ?>
 
-
-<div class="ps ps--black ps--bordered">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x aalign-center atext-center">
-            <div class="cell tablet-8 large-6">
-                <h2>Műemléki rekonstrukció</h2>
-                <div class="lead">
-                    <p>Régi megkopott cement- és terrazo burkolatok eredeti minta alapján történő rekonstruálását és
-                        utánygyártását vállaljuk</p>
-                    <a href="#" class="button accent small">Rekonstrukciós projektekről bővebben</a>
-                </div>
+<?php
+    $args = array(
+        'post_type' => array('reference'),
+        'order'               => 'ASC',
+        'orderby'             => 'menu_order',
+        'posts_per_page'         => 10,
+        'meta_query' => array(
+            array(
+                'key' => 'featured',
+                'value'    => 1,
+                'compare'    => '=',
+            ),
+        ),
+    );
+    $the_featrefs = new WP_Query( $args );
+?>
+<div class="ps ps--bordered ps--xlight">
+    <div id="homerefs" class="agrid-container homerefs">
+        <div class="grid-x grid-margin-x text-center">
+            <div class="cell">
+                <h2><?php _e('Kézműves cementlapok bevetésen', 'marrakesh');?></h2>
+                <p class="lead">
+                    <?php _e('Számos belső enteriőr ékessége az általunk gyártott cementlap.', 'marrakesh');?>
+                </p>
+                <br>
             </div>
         </div>
-    </div>
-</div>
+        <section id="referenceswipe" class="referenceswipe" itemscope itemtype="http://schema.org/ImageGallery">
 
-
-<div class="ps ps--xlight ps--bordered">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x align-middle">
-            <div class="cell tablet-8 large-6">
-                <h2>Élőben még szebb. Látogass el bemutatótermünkbe!</h2>
-                <div class="lead">
-                    <p>Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a
-                        cementlapok izgalmas világát. Továbbá nagyon sok hasznos információval segítünk a
-                        választásban.</p>
-                </div>
-                <a href="#" class="button small">Bemutatóterem és Nyitvatartás</a>
-            </div>
-            <div class="cell tablet-4 large-6">
-                <img src="https://source.unsplash.com/1200x600/?tiles,marrakesh,arab" alt="">
+            <?php while ($the_featrefs->have_posts()) : $the_featrefs->the_post(); ?>
+            <?php setup_postdata( $post ); ?>
+            <div <?php reffilter_class('referenceswipe__item'); ?>>
+                <?php get_template_part('templates/referencecard-fixheight'); ?></div>
+            <?php endwhile; ?>
+        </section>
+        <?php wp_reset_postdata(); ?>
+        <div class="grid-x grid-margin-x text-center">
+            <div class="cell">
+                <br><br>
+                <a href="<?php the_permalink(get_field('pageforgallery', 'option')) ?>"
+                    class="button small"><?php _e('Tovább a tematikus galériákhoz', 'marrakesh'); ?></a>
             </div>
         </div>
+
     </div>
 </div>
+<?php get_template_part( 'templates/photoswipedom'); ?>
+
 
 <div class="ps aps--bordered">
     <div class="grid-container">
@@ -108,11 +122,11 @@
                             <?php esc_html_e( 'Kiemelt lapok', 'marrakesh' ); ?>
                         </a>
                     </li>
-                    <li class="tabs-title">
+                    <!-- <li class="tabs-title">
                         <a href="#fpsalepanel">
                             <?php esc_html_e( 'Akciós', 'marrakesh' ); ?>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -138,6 +152,13 @@
                 ), $wargs );
                 wp_cache_flush();
             ?>
+            <br><br>
+            <p class="text-center">
+                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>?filter_availability=in_stock"
+                    class="button small">Ugrás a
+                    raktárkészletre</a>
+            </p>
+
         </div>
         <div class="tabs-panel" id="fpfeatpanel">
             <?php
@@ -150,67 +171,76 @@
 
                 ), $wargs );
                 wp_cache_flush();
-                ?>
+            ?>
+            <br><br>
+            <p class="text-center">
+                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small">További lapok
+                    böngészése</a>
+
         </div>
-        <div class="tabs-panel" id="fpsalepanel">
-            <?php
+        <!-- <div class="tabs-panel" id="fpsalepanel">
+            <?php /*
                 the_widget( 'WC_Widget_Products', array(
                         'title' => '',
                         'number' => '15',
                         'show' => 'onsale'
                     ), $wargs );
+                    wp_cache_flush();
+                    */
                 ?>
-        </div>
+        </div> -->
     </div>
 </div>
 
 
-<?php
-    $args = array(
-        'post_type' => array('reference'),
-        'order'               => 'ASC',
-        'orderby'             => 'menu_order',
-        'posts_per_page'         => 10,
-        'meta_query' => array(
-            array(
-                'key' => 'featured',
-                'value'    => 1,
-                'compare'    => '=',
-            ),
-        ),
-    );
-    $the_featrefs = new WP_Query( $args );
-?>
-<div class="ps ps--bordered ps--xlight">
-    <div id="homerefs" class="agrid-container homerefs">
-        <div class="grid-x grid-margin-x text-center">
-            <div class="cell">
-                <h2><?php _e('Kézműves lapjaink bevetésen', 'marrakesh');?></h2>
-                <p class="lead">
-                    <?php _e('Számos belső enteriőr ékessége az általunk gyártott cementlap.', 'marrakesh');?>
-                </p>
-                <br>
+<section class="widepromo">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y align-middle align-justify">
+            <div class="cell tablet-8 large-6 xlarge-5">
+                <h3 class="widepromo__title"><?php the_field('widepromotitle', 'option') ?></h3>
+                <div class="widepromo__text">
+                    <?php the_field('widepromotext', 'option') ?>
+                </div>
+            </div>
+            <div class="cell tablet-4 large-6 xlarge-7 tablet-text-right">
+                <a href="<?php the_field('widepromotarget', 'option')?>" class="button accent">
+                    <?php the_field('widepromocta', 'option') ?>
+                </a>
             </div>
         </div>
-        <section id="referenceswipe" class="referenceswipe" itemscope itemtype="http://schema.org/ImageGallery">
+    </div>
+    <figure class="widepromo__bg">
+        <?php
+        if ( $widepromobg = get_field('widepromobg', 'option') )  {
+            echo wp_get_attachment_image( $widepromobg['ID'], 'xlarge' );
+        };
+        ?>
+    </figure>
 
-            <?php while ($the_featrefs->have_posts()) : $the_featrefs->the_post(); ?>
-            <?php setup_postdata( $post ); ?>
-            <div <?php reffilter_class('referenceswipe__item'); ?>>
-                <?php get_template_part('templates/referencecard-fixheight'); ?></div>
-            <?php endwhile; ?>
-        </section>
-        <?php wp_reset_postdata(); ?>
-        <div class="grid-x grid-margin-x text-center">
-            <div class="cell">
-                <br><br>
-                <a href="<?= get_post_type_archive_link( 'reference' ); ?>"
-                    class="button"><?php _e('Tovább a galériákhoz', 'marrakesh'); ?></a>
+</section>
+
+
+<div class="ps ps--xlight ps--bordered">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-middle align-justify">
+            <div class="cell tablet-6 large-5">
+                <h2>Élőben még szebb. Látogass el bemutatótermünkbe!</h2>
+                <div class="lead">
+                    <p>Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a
+                        cementlapok izgalmas világát. Továbbá nagyon sok hasznos információval segítünk a
+                        választásban.</p>
+                </div>
+                <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>"
+                    class="button small">Bemutatóterem és nyitvatartás</a>
+            </div>
+            <div class="cell tablet-6 large-6">
+                <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">
+                    <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/bemutatoterem_resized.jpg"
+                        alt="Bemutatóterem a Bródyban">
+                </a>
             </div>
         </div>
-
     </div>
 </div>
-<?php get_template_part( 'templates/photoswipedom'); ?>
 
 <?php endwhile; ?>

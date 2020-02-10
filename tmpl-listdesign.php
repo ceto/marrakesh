@@ -40,7 +40,8 @@
                 </select>
                 <a class="js-taxchooserstart"><?= $themenu->name; ?> &#9662;</a>
                 <?php endif; ?>
-                <h1 class="page__title"><?php  echo Titles\title(); echo $currentterm?' | '.$currentterm->name:''; ?></h1>
+                <h1 class="page__title"><?php  echo Titles\title(); echo $currentterm?': '.$currentterm->name:''; ?>
+                </h1>
             </div>
         </div>
     </div>
@@ -62,7 +63,8 @@
                     <?php foreach ( $allstyles as $child ) : ?>
                     <li>
                         <div class="refcatcard">
-                            <a class="refcatcard__fulllink" href="<?php the_permalink(); ?>?pa_style=<?= $child->slug; ?>">
+                            <a class="refcatcard__fulllink"
+                                href="<?php the_permalink(); ?>?pa_style=<?= $child->slug; ?>">
                                 <?php if ($designthumb = get_field('cover', $child) ) : ?>
                                 <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'refcatcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
@@ -82,17 +84,24 @@
 </div>
 <?php else: ?>
 <div id="thestickynav" class="localnav sticky-container" data-sticky-container>
-    <div class="sticky localnav__top" data-sticky data-stick-to="top" data-margin-top="0"
-        data-margin-bottom="0" data-sticky-on="small">
+    <div class="sticky localnav__top" data-sticky data-stick-to="top" data-margin-top="0" data-margin-bottom="0"
+        data-sticky-on="small">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell">
                     <nav class="portfolionav">
                         <ul class="menu amenu--portfolio menu--local align-center">
-                            <li class="menu-all"><a
-                                    href="<?php the_permalink() ?>"><?= __('Minták','marrakesh') ?></a></li>
+                            <li class="menu-all">
+                                <a href="<?php the_permalink() ?>">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-caret-left"></use>
+                                    </svg> <?= __('Vissza a kollekciókhoz','marrakesh') ?>
+                                </a>
+                            </li>
                             <?php foreach( $allstyles as $refcat ): ?>
-                            <li><a href="<?php the_permalink(); ?>?pa_style=<?= $refcat->slug; ?>"><?= $refcat->name ?></a></li>
+                            <!-- <li><a
+                                    href="<?php the_permalink(); ?>?pa_style=<?= $refcat->slug; ?>"><?= $refcat->name ?></a>
+                            </li> -->
                             <?php endforeach; ?>
                         </ul>
                     </nav>
@@ -104,11 +113,11 @@
 <div class="grid-container">
     <div class="grid-x grid-margin-x align-center">
         <div class="cell xlarge-10">
-            <div class="ps ps--narrow">
-                <?php if (has_excerpt()) : ?>
+            <div class="ps ps--narrow ps--notop">
+                <!-- <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
-                <?php the_content(); ?>
+                <?php the_content(); ?> -->
                 <ul class="tmplcardgrid">
                     <?php foreach ( $child_terms as $child ) : ?>
                     <?php if ( in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>

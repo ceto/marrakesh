@@ -467,19 +467,19 @@ function marrakesh_save_wc_custom_fields( $post_id ) {
 add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
 function marrakesh_price_html( $price, $product ){
     if (get_post_meta($product->get_id(), '_isboxed', true )=='yes') {
-        $price.='/box';
+        $price.='/doboz';
     }
-    else {$price.='/pcs.';}
-    return $price;
+    else {$price.='/db';}
+    return $price.' +ÁFA';
 }
 
 add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
 function marrakesh_united_cartitem_price( $price, $cart_item) {
     if (get_post_meta($cart_item[data]->get_id(), '_isboxed', true )=='yes') {
-        $price.='/box';
+        $price.='/doboz';
     }
-    else {$price.='/pcs.';}
-    return $price;
+    else {$price.='/db.';}
+    return $price.' +ÁFA';
 }
 
 

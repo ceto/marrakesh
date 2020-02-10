@@ -1,14 +1,13 @@
 .iconizedlist {
-    margin:1rem 0 2rem;
-    padding:0;
+    margin: 1rem 0 2rem;
+    padding: 0;
     list-style: none;
-    font-size: $lead-font-size;
+    font-size: 1.125rem;
     font-weight: $global-weight-bold;
     line-height: 1.2;
     display: grid;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-    grid-column-gap: 5%;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-column-gap: 3.5rem;
     grid-row-gap: 1.25rem;
     align-items: center;
 
@@ -21,18 +20,17 @@
         //min-height: 2.5rem;
 
         .icon {
-            content: '';
+            content: "";
             display: block;
-            border:.25em solid $xlight-gray;
+            border: 0.25em solid $xlight-gray;
             background-color: $xlight-gray;
             box-shadow: 0 0 0 1px $light-gray;
             //border-radius: 3px;
-            min-width:3.5rem;
-            width:3.5rem;
-            height:3.5rem;
-            margin-right:.75rem;
+            min-width: 3.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            margin-right: 0.75rem;
             //fill:red !important;
         }
-
     }
 }

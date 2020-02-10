@@ -202,8 +202,8 @@
 
 .singleproduct__callout {
     margin-bottom: 2rem;
-    background-color: $xlight-gray;
-    border-color: scale-color($xlight-gray, $lightness: -5%);
+    background-color: $white;
+    border-color: scale-color($light-gray, $lightness: -5%);
     padding: 2rem 5%;
 }
 
@@ -334,6 +334,25 @@
 .tabs-title.is-active > a {
     background: transparent;
     color: inherit;
+}
+
+.tabs--prdata {
+    transform: translateY(2px);
+    .tabs-title {
+        font-weight: $global-weight-bold;
+
+        > a {
+            font-size: 1rem;
+            padding: 0.875em 1em;
+        }
+        &.is-active {
+            > a {
+                background-color: $xlight-gray;
+                border: 1px solid $light-gray;
+                border-bottom-color: $xlight-gray;
+            }
+        }
+    }
 }
 
 .order-box {

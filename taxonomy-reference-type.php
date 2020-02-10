@@ -9,10 +9,10 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-center text-center">
             <div class="cell large-9">
-                <h1 class="page__title"><?= __('Cement Tiles','marrakesh') ?> | <?= $category->name; ?></h1>
-                <div class="lead">
+                <h1 class="page__title"><?= __('Galéria','marrakesh') ?>: <?= $category->name; ?></h1>
+                <!-- <div class="lead">
                     <?php echo apply_filters( 'content', get_the_archive_description('Lorem')); ?>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -31,28 +31,33 @@
         //'hide_empty' => false,
     ) );
 ?>
-<div class="ps ps--narrow">
-    <div id="thestickynav" class="localnav sticky-container" data-sticky-container>
-        <div class="sticky localnav__top" data-sticky data-stick-to="top" data-top-anchor="refiwrap" data-margin-top="0"
-            data-margin-bottom="0" data-sticky-on="small">
-            <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                    <div class="auto cell">
-                        <nav class="portfolionav">
-                            <ul class="menu amenu--portfolio ajs-activate-filter menu--local align-center">
-                                <li class="menu-all"><a href="<?= get_post_type_archive_link( 'reference' )?>">All</a>
-                                </li>
-                                <?php foreach( $refcats as $refcat ): ?>
-                                <li><a href="<?= get_term_link( $refcat->term_id) ?>"><?= $refcat->name ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </nav>
-                    </div>
+
+<div id="thestickynav" class="localnav sticky-container" data-sticky-container>
+    <div class="sticky localnav__top" data-sticky data-stick-to="top" data-top-anchor="refiwrap" data-margin-top="0"
+        data-margin-bottom="0" data-sticky-on="small">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class="auto cell">
+                    <nav class="portfolionav">
+                        <ul class="menu amenu--portfolio ajs-activate-filter menu--local align-center">
+                            <li class="menu-all">
+                                <a href="<?php the_permalink(get_field('pageforgallery', 'option')) ?>">
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-caret-left"></use>
+                                    </svg> <?= __('Vissza a galériákhoz','marrakesh') ?>
+                                </a>
+                            </li>
+                            <?php foreach( $refcats as $refcat ): ?>
+                            <!-- <li><a href="<?= get_term_link( $refcat->term_id) ?>"><?= $refcat->name ?></a></li> -->
+                            <?php endforeach; ?>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div id="refiwrap" class="grid-container refiwrap">
     <div class="grid-x grid-margin-x">

@@ -18,7 +18,7 @@
     </div>
     <figure class="masthead__bg">
         <?php
-        if ( !( $mastheadbg = get_field('masthead-bg') ) )  {
+        if ( !( $mastheadbg = get_field('masthead-bg',$category) ) )  {
             $mastheadbg = get_field('mhbg', 'option');
         };
             echo wp_get_attachment_image( $mastheadbg['ID'], 'xlarge' );

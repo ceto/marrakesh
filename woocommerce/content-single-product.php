@@ -318,15 +318,20 @@ if ( post_password_required() ) {
                                     <dt><?= __('Azonosító', 'marrakesh'); ?></dt>
                                     <dd><?php the_title(); ?></dd>
                                     <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
-                                    <dd><?php echo wc_price(wc_get_price_to_display($product)/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup>
-                                    </dd>
+                                    <dd><?php wc_get_template_part( 'loop/price'); ?></dd>
+                                    <?php if ($datafromprod['_tileweight']) : ?>
                                     <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
                                     <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
+                                    <?php endif; ?>
+                                    <?php if ($datafromprod['_tilewidth']) : ?>
                                     <dt><?= __('Lapméret','marrakesh'); ?></dt>
                                     <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
                                     </dd>
+                                    <?php endif; ?>
+                                    <?php if ($datafromprod['_tilethickness']) : ?>
                                     <dt><?= __('Vastagság','marrakesh'); ?></dt>
                                     <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
+                                    <?php endif; ?>
                                     <?php if ($datafromprod['_isboxed']=='yes') : ?>
                                     <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
                                     <dd><?= __('dobozban','marrakesh'); ?></dd>
@@ -339,8 +344,8 @@ if ( post_password_required() ) {
                                     <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?>
                                     </dd>
                                     <?php else: ?>
-                                    <dt><?= __('Can be bought','marrakesh'); ?></dt>
-                                    <dd><?= __('by pieces','marrakesh'); ?></dd>
+                                    <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
+                                    <dd><?= __('darab','marrakesh'); ?></dd>
                                     <?php endif; ?>
                                 </dl>
                                 <dl class="singleproduct__attributes">
@@ -422,8 +427,7 @@ if ( post_password_required() ) {
                 </div>
 
                 <div class="cell large-5 xxlarge-4 large-order-2">
-
-
+                    <?php if ( $datafromprod['_isboxed']=='yes' && $datafromprod['_sizeperbox'] )  : ?>
                     <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
                         <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
                         <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked.', 'marrakesh' ) ?>
@@ -444,6 +448,8 @@ if ( post_password_required() ) {
                             do_action( 'woocommerce_single_product_summary' );
                         ?>
                     </div>
+                    <?php endif; ?>
+
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>
                         <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
@@ -454,7 +460,6 @@ if ( post_password_required() ) {
                         <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
                         <?php do_action( 'woocommerce_product_meta_end' ); ?>
                     </div>
-
                 </div>
 
 

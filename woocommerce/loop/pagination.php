@@ -30,15 +30,15 @@ if ( $total <= 1 ) {
 ?>
 
 <nav class="ps ps--narrow woocommerce-pagination" aria-label="Pagination">
-	<?php
+    <?php
 		$pages = paginate_links( apply_filters( 'woocommerce_pagination_args', array( // WPCS: XSS ok.
 			'base'         => $base,
 			'format'       => $format,
 			'add_args'     => false,
 			'current'      => max( 1, $current ),
 			'total'        => $total,
-			'prev_text'    => 'Prev',
-			'next_text'    => 'Next',
+			'prev_text'    => __('Előző','marrakesh'),
+			'next_text'    => __('Következő','marrakesh'),
 			'type'         => 'array',
 			'end_size'     => 3,
 			'mid_size'     => 3,

@@ -344,7 +344,7 @@ defined( 'ABSPATH' ) || exit;
             data-stick-to="bottom" data-margin-bottom="0">
             <div class="grid-container">
                 <button class="filtertoggler button small expanded hollow"
-                    data-toggle="prarchive__filtermodal"><?php _e('Color and style filters&hellip;','marrakesh'); //woocommerce_result_count() ?></button>
+                    data-toggle="prarchive__filtermodal"><?php _e('Szűrés színre, stílusra&hellip;','marrakesh'); //woocommerce_result_count() ?></button>
             </div>
         </div>
     </div>
@@ -357,7 +357,7 @@ defined( 'ABSPATH' ) || exit;
                 <?php
                 if (!is_tax('pa_color')) {
                     the_widget( 'WC_Widget_Layered_Nav', array(
-                        'title' => 'Filter by Color',
+                        'title' => __('Színek', 'marrakesh'),
                         'attribute' => 'color',
                         'query_type' => 'or',
 
@@ -368,7 +368,7 @@ defined( 'ABSPATH' ) || exit;
                 <?php
                 if (!is_tax('pa_design') && !is_tax('pa_style')) {
                     the_widget( 'WC_Widget_Layered_Nav', array(
-                        'title' => 'Filter by Style',
+                        'title' => __('Stílus', 'marrakesh'),
                         'attribute' => 'style',
                         'query_type' => 'or',
 

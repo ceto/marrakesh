@@ -17,11 +17,7 @@ msgstr ""
 msgid "Galériák"
 msgstr ""
 
-#: archive-reference.php:8
-msgid "Quibusdam harum neque corrupti cupiditate aliquid deserunt."
-msgstr ""
-
-#: archive-reference.php:37
+#: archive-reference.php:34
 msgid "Összes mutatása"
 msgstr ""
 
@@ -166,7 +162,7 @@ msgid "Belvárosi bemutatóterem"
 msgstr ""
 
 #: templates/footer.php:83
-msgid "Raktáráruház és áruátvétel"
+msgid "Raktár és áruátvétel"
 msgstr ""
 
 #: woocommerce/archive-product.php:27, woocommerce/archive-product.php:28, woocommerce/archive-product.php:79
@@ -176,20 +172,20 @@ msgstr ""
 #: woocommerce/archive-product.php:167, woocommerce/archive-product.php:181
 msgstr ""
 
-#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:347
+#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:352
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:232
+#: woocommerce/archive-product.php:232, woocommerce/archive-product.php:360
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:243
+#: woocommerce/archive-product.php:243, woocommerce/archive-product.php:371
 msgid "Stílus"
 msgstr ""
 
 #: woocommerce/archive-product.php:347
-msgid "Color and style filters&hellip;"
+msgid "Szűrés színre, stílusra&hellip;"
 msgstr ""
 
 #: woocommerce/content-single-product.php:169
@@ -240,84 +236,88 @@ msgstr ""
 msgid "Súly (1db lap)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:325
+#: woocommerce/content-single-product.php:327
 msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/content-single-product.php:328
+#: woocommerce/content-single-product.php:332
 msgid "Vastagság"
 msgstr ""
 
-#: woocommerce/content-single-product.php:331
+#: woocommerce/content-single-product.php:336, woocommerce/content-single-product.php:347
 msgid "Kiszerelés"
 msgstr ""
 
-#: woocommerce/content-single-product.php:332
+#: woocommerce/content-single-product.php:337
 msgid "dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:333
+#: woocommerce/content-single-product.php:338
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:335
+#: woocommerce/content-single-product.php:340
 msgid "Lapok a dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:336
+#: woocommerce/content-single-product.php:341
 msgid "lap/doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:338
+#: woocommerce/content-single-product.php:343
 msgid "Doboz terítve"
 msgstr ""
 
-#: woocommerce/content-single-product.php:339
+#: woocommerce/content-single-product.php:344
 msgid "doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:342
-msgid "Can be bought"
+#: woocommerce/content-single-product.php:348
+msgid "darab"
 msgstr ""
 
-#: woocommerce/content-single-product.php:343
-msgid "by pieces"
-msgstr ""
-
-#: woocommerce/content-single-product.php:396
+#: woocommerce/content-single-product.php:401
 msgid "Hogyan rendeljem meg"
 msgstr ""
 
-#: woocommerce/content-single-product.php:408
+#: woocommerce/content-single-product.php:413
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:428
+#: woocommerce/content-single-product.php:432
 msgid "Ár kalkulátor"
 msgstr ""
 
-#: woocommerce/content-single-product.php:429
+#: woocommerce/content-single-product.php:433
 msgid "Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked."
 msgstr ""
 
-#: woocommerce/content-single-product.php:527
+#: woocommerce/content-single-product.php:532
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:530
+#: woocommerce/content-single-product.php:535
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:533
+#: woocommerce/content-single-product.php:538
 msgid "Színvariációk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:536
+#: woocommerce/content-single-product.php:541
 msgid "Ajánljuk figyelemedbe&hellip;"
 msgstr ""
 
 #: woocommerce/global/breadcrumb.php:26
 msgid "Kollekció"
+msgstr ""
+
+#: woocommerce/loop/pagination.php:40
+msgid "Előző"
+msgstr ""
+
+#: woocommerce/loop/pagination.php:41
+msgid "Következő"
 msgstr ""
 
 #: woocommerce/single-product/add-to-cart/simple.php:112

@@ -37,7 +37,7 @@
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title"><?php _e('Inspirációkért Kövess', 'marrakesh'); ?></h3>
                         <ul class="menu vertical">
-                            <li><a target="_blank" href="https://www.facebook.com/MarrakeshLakberendezes/">Facebook</a>
+                            <li><a target="_blank" href="https://www.facebook.com/MarrakeshCementlap/">Facebook</a>
                             </li>
                             <li><a target="_blank" href="https://www.instagram.com/marrakeshcementtile/">Instagram</a>
                             </li>
@@ -62,7 +62,7 @@
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title"><?php _e('Belvárosi bemutatóterem', 'marrakesh'); ?></h3>
                         <p>H-1088 Budapest, Bródy Sándor u. 34.</p>
-                        <h6>Nyitvatartás*</h6>
+                        <h6>Nyitvatartás</h6>
                         <p>Hétfőtől - Péntekig: 10:00-18:00<br>
                             Szombat: 10:00-14:00<br>
                             Vasárnap: zárva</p>
@@ -80,15 +80,15 @@
                 </div>
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget %1$s %2$s">
-                        <h3 class="widget__title"><?php _e('Raktáráruház és áruátvétel', 'marrakesh'); ?></h3>
-                        <p>H-2088 Törökbálint, Depo u. 34.</p>
+                        <h3 class="widget__title"><?php _e('Raktár és áruátvétel', 'marrakesh'); ?></h3>
+                        <p>H-2045 Törökbálint, Depo u. 34.</p>
                         <h6>Nyitvatartás</h6>
                         <p>Hétfőtől - Péntekig: 10:00-18:00<br>
                             Szombat: zárva<br>
                             Vasárnap: zárva</p>
                         <h6>Kapcsolat</h6>
-                        <p>Telefon: <a
-                                href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
+                        <p>Telefon: <a href="tel:<?= preg_replace("/[^\+0-9]/", "", '(+36) 30 582 2377'); ?>">+36 (30)
+                                582 2377</a>
                         </p>
                         <p><small><a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">Térkép és
                                     részletek&hellip;</a></small></p>

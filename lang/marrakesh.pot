@@ -113,7 +113,7 @@ msgstr ""
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:516, lib/woocommerce.php:609
+#: lib/woocommerce.php:516
 msgid "Hamarosan érkezik"
 msgstr ""
 

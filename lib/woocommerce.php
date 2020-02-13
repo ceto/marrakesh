@@ -606,7 +606,18 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 			$count_html  = ''; ////////// ADD COUNT LATER
 
 			printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
-            echo '<li><a href="#">'.__('Hamarosan érkezik', 'marrakesh').'</a></li>';
+            // echo '<li><a href="#">'.__('Hamarosan érkezik', 'marrakesh').'</a></li>';
+            ob_start();
+            the_widget( 'WC_Widget_Layered_Nav', array(
+                'attribute' => 'comingsoon',
+                'query_type' => 'or',
+            ), array(
+                'before_widget' => '',
+                'after_widget'  => '',
+                'before_title'  => '',
+                'after_title'   => ''
+            ) );
+            echo strip_tags(ob_get_clean(),'<li><a>');
 			echo '</ul>';
 
 			$this->widget_end( $args );

@@ -8,6 +8,10 @@
         position: relative;
         &.chosen {
         }
+
+        .pratopstatus__filters &.woocommerce-widget-layered-nav-list__item {
+            display: none;
+        }
     }
 
     li.chosen {

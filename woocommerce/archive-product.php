@@ -213,40 +213,40 @@ defined( 'ABSPATH' ) || exit;
 
                         <?php the_widget('WC_Widget_Status_Filter', array(), $wargs );?>
                         <?php
-                                if (is_product_category() || is_shop()) {
-                                    the_widget( 'WC_Widget_Product_Categories', array(
-                                    'title' => __('Termékcsoport','marrakesh'),
-                                    'dropdown' => 0,
-                                    'count' => 0,
-                                    'hide_empty' => 1,
-                                    'orderby' => 'order',
-                                    'show_children_only' => 1,
-                                    // 'max_depth' => 1,
-                                    'hierarchical' => 1
-                                    ), $wargs );
-                                }
-                            ?>
+                            if (is_product_category() || is_shop()) {
+                                the_widget( 'WC_Widget_Product_Categories', array(
+                                'title' => __('Termékcsoport','marrakesh'),
+                                'dropdown' => 0,
+                                'count' => 0,
+                                'hide_empty' => 1,
+                                'orderby' => 'order',
+                                'show_children_only' => 1,
+                                // 'max_depth' => 1,
+                                'hierarchical' => 1
+                                ), $wargs );
+                            }
+                        ?>
                         <?php
-                                if (!is_tax('pa_color')) {
-                                    the_widget( 'WC_Widget_Layered_Nav', array(
-                                        'title' => __('Színek', 'marrakesh'),
-                                        'attribute' => 'color',
-                                        'query_type' => 'or',
-                                    ), $wargs );
-                                }
+                            if (!is_tax('pa_color')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Színek', 'marrakesh'),
+                                    'attribute' => 'color',
+                                    'query_type' => 'or',
+                                ), $wargs );
+                            }
 
-                            ?>
+                        ?>
 
                         <?php
-                                if (!is_tax('pa_design') && !is_tax('pa_style')) {
-                                    the_widget( 'WC_Widget_Layered_Nav', array(
-                                        'title' => __('Stílus', 'marrakesh'),
-                                        'attribute' => 'style',
-                                        'query_type' => 'or',
+                            if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Stílus', 'marrakesh'),
+                                    'attribute' => 'style',
+                                    'query_type' => 'or',
 
-                                    ), $wargs );
-                                }
-                            ?>
+                                ), $wargs );
+                            }
+                        ?>
 
                         <?php //dynamic_sidebar('sidebar-primary'); ?>
                         <?php

@@ -279,6 +279,16 @@ if ( post_password_required() ) {
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
                                 </div>
                                 <?php the_content(); ?>
+                                <?php if ( have_rows('bullets', $datafromprod['_linfopage']) ) : ?>
+                                    <ul class="iconizedlist">
+                                        <?php  while ( have_rows('bullets', $datafromprod['_linfopage']) ) : the_row(); ?>
+                                        <li>
+                                            <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
+                                            <?php the_sub_field('text'); ?>
+                                        </li>
+                                        <?php endwhile; ?>
+                                    </ul>
+                                <?php endif; ?>
                                 <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
                                 <?php echo $postparts['main']; ?>
                                 <?php //echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>

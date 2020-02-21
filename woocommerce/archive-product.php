@@ -117,6 +117,7 @@ defined( 'ABSPATH' ) || exit;
     </div>
 
     <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
+    <?php $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); ?>
 
 
     <?php if (is_product_category() ) : ?>
@@ -175,7 +176,7 @@ defined( 'ABSPATH' ) || exit;
                         );
                 ?>
                 <?php endif; ?>
-                <?php if ($availability_filter) : ?>
+                <?php if ($availability_filter || $csavailability_filter ) : ?>
                 <?php
                         the_widget( 'WC_Widget_Status_Filter', array(
                             'title' => __('', 'marrakesh')

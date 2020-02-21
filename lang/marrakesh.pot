@@ -65,6 +65,10 @@ msgstr ""
 msgid "Contact Template with Map"
 msgstr ""
 
+#: tmpl-defaultwithicons.php:3
+msgid "Default Template With Icons"
+msgstr ""
+
 #: tmpl-faq.php:3
 msgid "Help/FAQ Template"
 msgstr ""
@@ -109,36 +113,36 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:490
+#: lib/woocommerce.php:502
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:516
+#: lib/woocommerce.php:528, lib/woocommerce.php:626
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:519
+#: lib/woocommerce.php:531
 msgid "Rendelésre gyártjuk"
 msgstr ""
 
-#: lib/woocommerce.php:520
+#: lib/woocommerce.php:532
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:552
+#: lib/woocommerce.php:564
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:605
+#: lib/woocommerce.php:619
 msgid "Azonnal vihető"
 msgstr ""
 
 #: templates/dlcage.php:2
-msgid "Downloads"
+msgid "Csatolt dokumentumok"
 msgstr ""
 
 #: templates/dlcage.php:18
-msgid "Download"
+msgid "Letöltés"
 msgstr ""
 
 #: templates/footer.php:7
@@ -169,22 +173,22 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:167, woocommerce/archive-product.php:181
+#: woocommerce/archive-product.php:168, woocommerce/archive-product.php:182
 msgstr ""
 
-#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:352
+#: woocommerce/archive-product.php:219, woocommerce/content-single-product.php:362
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:232, woocommerce/archive-product.php:360
+#: woocommerce/archive-product.php:233, woocommerce/archive-product.php:361
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:243, woocommerce/archive-product.php:371
+#: woocommerce/archive-product.php:244, woocommerce/archive-product.php:372
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:347
+#: woocommerce/archive-product.php:348
 msgid "Szűrés színre, stílusra&hellip;"
 msgstr ""
 
@@ -212,99 +216,99 @@ msgstr ""
 msgid "Product Information"
 msgstr ""
 
-#: woocommerce/content-single-product.php:292
+#: woocommerce/content-single-product.php:302
 msgid "%s mintáról"
 msgstr ""
 
-#: woocommerce/content-single-product.php:295
+#: woocommerce/content-single-product.php:305
 msgid "Tovább a(z) %s lapokhoz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:316
+#: woocommerce/content-single-product.php:326
 msgid "Termék adatlap"
 msgstr ""
 
-#: woocommerce/content-single-product.php:318
+#: woocommerce/content-single-product.php:328
 msgid "Azonosító"
 msgstr ""
 
-#: woocommerce/content-single-product.php:320
+#: woocommerce/content-single-product.php:330
 msgid "Bruttó ár"
 msgstr ""
 
-#: woocommerce/content-single-product.php:323
+#: woocommerce/content-single-product.php:333
 msgid "Súly (1db lap)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:327
+#: woocommerce/content-single-product.php:337
 msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/content-single-product.php:332
+#: woocommerce/content-single-product.php:342
 msgid "Vastagság"
 msgstr ""
 
-#: woocommerce/content-single-product.php:336, woocommerce/content-single-product.php:347
+#: woocommerce/content-single-product.php:346, woocommerce/content-single-product.php:357
 msgid "Kiszerelés"
 msgstr ""
 
-#: woocommerce/content-single-product.php:337
+#: woocommerce/content-single-product.php:347
 msgid "dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:338
+#: woocommerce/content-single-product.php:348
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:340
+#: woocommerce/content-single-product.php:350
 msgid "Lapok a dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:341
+#: woocommerce/content-single-product.php:351
 msgid "lap/doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:343
+#: woocommerce/content-single-product.php:353
 msgid "Doboz terítve"
 msgstr ""
 
-#: woocommerce/content-single-product.php:344
+#: woocommerce/content-single-product.php:354
 msgid "doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:348
+#: woocommerce/content-single-product.php:358
 msgid "darab"
 msgstr ""
 
-#: woocommerce/content-single-product.php:401
+#: woocommerce/content-single-product.php:411
 msgid "Hogyan rendeljem meg"
 msgstr ""
 
-#: woocommerce/content-single-product.php:413
+#: woocommerce/content-single-product.php:423
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:432
+#: woocommerce/content-single-product.php:442
 msgid "Ár kalkulátor"
 msgstr ""
 
-#: woocommerce/content-single-product.php:433
+#: woocommerce/content-single-product.php:443
 msgid "Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked."
 msgstr ""
 
-#: woocommerce/content-single-product.php:532
+#: woocommerce/content-single-product.php:542
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:535
+#: woocommerce/content-single-product.php:545
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:538
+#: woocommerce/content-single-product.php:548
 msgid "Színvariációk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:541
+#: woocommerce/content-single-product.php:551
 msgid "Ajánljuk figyelemedbe&hellip;"
 msgstr ""
 

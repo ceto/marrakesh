@@ -116,16 +116,28 @@ add_filter( 'woocommerce_shortcode_products_query', function( $query_args, $atts
 add_action( 'pre_get_posts', function ( $query ) {
     if (   !is_admin() && $query->is_main_query() && is_woocommerce() && ($query->is_post_type_archive('product') || $query->is_tax()) ) {
         $query->set( 'meta_key', '_stock' );
-        $query->set( 'orderby',  array('meta_value_num' => 'DESC', 'menu_order' => 'ASC') );
+        $query->set( 'orderby',  array('menu_order' => 'ASC') );
 
         $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $comingsoon_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $meta_query = array();
+        // $meta_query[] = array('relation' => 'or');
+
         if ($availability_filter === 'in_stock') {
-          $query->set('meta_query', array(
-            'key' => '_stock_status',
-            'value' => 'instock',
-            'compare' => '=',
-          ));
-        }
+            $meta_query[] =  array(
+                    'key' => '_stock_status',
+                    'value' => 'instock',
+                    'compare' => '=',
+            );
+        };
+        if ($comingsoon_filter === '1') {
+            $meta_query[]  = array(
+                'key' => '_csstock',
+                'value' => '0',
+                'compare' => '>',
+            );
+        };
+        $query->set('meta_query', $meta_query );
     }
 }, PHP_INT_MAX );
 
@@ -595,7 +607,9 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 			}
 
 			$availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
-      //print_r($availability_filter);
+            $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+
+
 			$this->widget_start( $args, $instance );
 
 			echo '<ul class="woocommerce-widget-layered-nav-list">';
@@ -606,18 +620,25 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 			$count_html  = ''; ////////// ADD COUNT LATER
 
 			printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
-            // echo '<li><a href="#">'.__('Hamarosan érkezik', 'marrakesh').'</a></li>';
-            ob_start();
-            the_widget( 'WC_Widget_Layered_Nav', array(
-                'attribute' => 'comingsoon',
-                'query_type' => 'or',
-            ), array(
-                'before_widget' => '',
-                'after_widget'  => '',
-                'before_title'  => '',
-                'after_title'   => ''
-            ) );
-            echo strip_tags(ob_get_clean(),'<li><a>');
+
+			$class       = $csavailability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
+			$link        = apply_filters( 'woocommerce_availability_filter_link', ! $csavailability_filter ? add_query_arg( 'filter_cs', '1' ) : remove_query_arg( 'filter_cs' ) );
+			$rating_html = __('Hamarosan érkezik', 'marrakesh');
+			$count_html  = ''; ////////// ADD COUNT LATER
+
+            printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
+
+            // ob_start();
+            // the_widget( 'WC_Widget_Layered_Nav', array(
+            //     'attribute' => 'comingsoon',
+            //     'query_type' => 'or',
+            // ), array(
+            //     'before_widget' => '',
+            //     'after_widget'  => '',
+            //     'before_title'  => '',
+            //     'after_title'   => ''
+            // ) );
+            // echo strip_tags(ob_get_clean(),'<li><a>');
 			echo '</ul>';
 
 			$this->widget_end( $args );

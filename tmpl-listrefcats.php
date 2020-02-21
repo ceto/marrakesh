@@ -8,13 +8,21 @@
 
 
 <?php
-  $allstylegroups = get_terms(array(
-    'taxonomy' => 'reference-type',
-    'hide_empty' => false,
-  ));
-//   var_dump($allstylegroups);
-  $child_terms = get_terms( 'reference-type', array(/*'child_of' => $parent_term->term_id */) );
-//var_dump($child_terms);
+
+  $child_terms = get_terms( array(
+        'taxonomy' => 'reference-type',
+        'hide_empty' => false,
+        'meta_query' => array(
+            'position_clause' => array(
+                'key' => 'order',
+                'value' => 0,
+                'compare' => '>='
+            ),
+            // 'relation' => 'AND',
+        ),
+        'orderby' => 'position_clause',
+        'order' =>  'ASC'
+    ));
 
 ?>
 <?php while (have_posts()) : the_post(); ?>

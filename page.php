@@ -40,6 +40,16 @@
                 <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
+                <?php if ( have_rows('bullets') ) : ?>
+                    <ul class="iconizedlist">
+                        <?php  while ( have_rows('bullets') ) : the_row(); ?>
+                        <li>
+                            <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
+                            <?php the_sub_field('text'); ?>
+                        </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php endif; ?>
                 <?php the_content(); ?>
                 <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
                 <?php get_template_part('/templates/dlcage' ); ?>

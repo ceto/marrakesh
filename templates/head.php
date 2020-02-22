@@ -13,7 +13,17 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
 
     <link rel="canonical" href="<?= $current_url; ?>">
     <meta property="og:url" content="<?= $current_url; ?>" />
-
-
     <?php wp_head(); ?>
+    <?php if ( !current_user_can( 'manage_options' ) ) : ?>
+    <!-- Global site tag (gtag.js) - Google Ads: 734728363 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-734728363"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'AW-734728363');
+    </script>
+    <?php endif; ?>
 </head>

@@ -8,7 +8,7 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link
-        href='http://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400,700,900,400italic&display=swap&subset=latin-ext'
+        href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400,700,900,400italic&display=swap&subset=latin-ext'
         rel='stylesheet' type='text/css'>
 
     <link rel="canonical" href="<?= $current_url; ?>">

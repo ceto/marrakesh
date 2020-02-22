@@ -24,6 +24,7 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
         }
         gtag('js', new Date());
         gtag('config', 'AW-734728363');
+        gtag('config', 'UA-3523093-7');
     </script>
     <?php endif; ?>
 </head>

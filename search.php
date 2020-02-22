@@ -1,5 +1,7 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
+<div class="ps ps--wide ps--xlight">
+    <div class="grid-container">
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
     <?php _e('Sorry, no results were found.', 'sage'); ?>
@@ -12,3 +14,5 @@
 <?php endwhile; ?>
 
 <?php the_posts_navigation(); ?>
+</div>
+</div>

@@ -412,6 +412,16 @@ if ( post_password_required() ) {
                             <div class="lead">
                                 <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_lhowtopage']) ); ?>
                             </div>
+                            <?php if ( have_rows('bullets', $datafromprod['_lhowtopage']) ) : ?>
+                                <ul class="iconizedlist">
+                                    <?php  while ( have_rows('bullets', $datafromprod['_lhowtopage']) ) : the_row(); ?>
+                                    <li>
+                                        <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
+                                        <?php the_sub_field('text'); ?>
+                                    </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                            <?php endif; ?>
                             <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_lhowtopage'])) ); ?>
                             <?php echo $postparts['main']; ?>
                             <p>Tovább fontos részleteket, az előlegről a szállítási határidőkről és a minimum rendelési
@@ -424,6 +434,16 @@ if ( post_password_required() ) {
                             <div class="lead">
                                 <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linstallpage']) ); ?>
                             </div>
+                            <?php if ( have_rows('bullets', $datafromprod['_linstallpage']) ) : ?>
+                                <ul class="iconizedlist">
+                                    <?php  while ( have_rows('bullets', $datafromprod['_linstallpage']) ) : the_row(); ?>
+                                    <li>
+                                        <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
+                                        <?php the_sub_field('text'); ?>
+                                    </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                            <?php endif; ?>
                             <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linstallpage'])) ); ?>
                             <?php echo $postparts['main']; ?>
                             <p>Részletes útmutatót a <a
@@ -560,7 +580,7 @@ if ( post_password_required() ) {
             <?php if ( $relproducts ) : ?>
             <div class="tabs-panel is-active" id="similarpanel">
                 <section class="related products">
-                    <ul class="prodswipe">
+                    <ul class="prodswipe prodswipe--similar">
                         <?php foreach ( $relproducts as $related_product ) : ?>
                         <?php
                             $post_object = get_post( $related_product->get_id() );
@@ -569,13 +589,17 @@ if ( post_password_required() ) {
                         <?php endforeach; wp_reset_postdata(); ?>
                     </ul>
                 </section>
+                <nav class="scroller" data-target="prodswipe--similar">
+                    <a href="#" class="js-scrollleft">‹</a>
+                    <a href="#" class="js-scrollright">›</a>
+                </nav>
             </div>
             <?php endif;  ?>
 
             <?php if ( $reldesignproducts ) : ?>
             <div class="tabs-panel" id="colvarpanel">
                 <section class="related products">
-                    <ul class="prodswipe">
+                    <ul class="prodswipe prodswipe--related">
                         <?php foreach ( $reldesignproducts as $related_product ) : ?>
                         <?php
                             $post_object = get_post( $related_product->get_id() );
@@ -585,6 +609,10 @@ if ( post_password_required() ) {
                         <?php endforeach; wp_reset_postdata(); ?>
                     </ul>
                 </section>
+                <nav class="scroller" data-target="prodswipe--related">
+                    <a href="#" class="js-scrollleft">‹</a>
+                    <a href="#" class="js-scrollright">›</a>
+                </nav>
             </div>
             <?php endif;  ?>
 
@@ -592,7 +620,7 @@ if ( post_password_required() ) {
             <?php if ( $upsellproducts ) : ?>
             <div class="tabs-panel" id="upsellpanel">
                 <section class="up-sells upsells products">
-                    <ul class="prodswipe">
+                    <ul class="prodswipe prodswipe--upsells">
                         <?php foreach ( $upsellproducts as $upsell ) : ?>
                         <?php
                             $post_object = get_post( $upsell->get_id() );
@@ -602,6 +630,10 @@ if ( post_password_required() ) {
                         <?php endforeach;  wp_reset_postdata(); ?>
                     </ul>
                 </section>
+                <nav class="scroller" data-target="prodswipe--upsells">
+                    <a href="#" class="js-scrollleft">‹</a>
+                    <a href="#" class="js-scrollright">›</a>
+                </nav>
             </div>
             <?php endif; ?>
 

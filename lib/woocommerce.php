@@ -147,6 +147,13 @@ add_filter( 'woocommerce_before_widget_product_list', function(){
     return '<ul class="prodswipe">';
 });
 
+add_filter( 'woocommerce_after_widget_product_list', function(){
+    return '</ul><nav class="scroller" data-target="prodswipe">
+    <a href="#" class="js-scrollleft">‹</a>
+    <a href="#" class="js-scrollright">›</a>
+</nav>';
+});
+
 
 add_filter( 'woocommerce_products_widget_query_args', function( $query_args ){
     $product_visibility_term_ids = wc_get_product_visibility_term_ids();

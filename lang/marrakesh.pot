@@ -13,6 +13,18 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: 404.php:5
+msgid "Bocsánat, a keresett oldal nem található."
+msgstr ""
+
+#: 404.php:7
+msgid "Újrakezdem a főoldalról."
+msgstr ""
+
+#: 404.php:9
+msgid "Ugrom a termékekre"
+msgstr ""
+
 #: archive-reference.php:6
 msgid "Galériák"
 msgstr ""
@@ -29,23 +41,23 @@ msgstr ""
 msgid "Számos belső enteriőr ékessége az általunk gyártott cementlap."
 msgstr ""
 
-#: front-page.php:100
+#: front-page.php:104
 msgid "Tovább a tematikus galériákhoz"
 msgstr ""
 
-#: front-page.php:113
+#: front-page.php:117
 msgid "A kínálatunkból"
 msgstr ""
 
-#: front-page.php:117
+#: front-page.php:121
 msgid "Raktárról azonnal"
 msgstr ""
 
-#: front-page.php:122
+#: front-page.php:126
 msgid "Kiemelt lapok"
 msgstr ""
 
-#: front-page.php:127
+#: front-page.php:131
 msgid "Akciós"
 msgstr ""
 
@@ -113,27 +125,27 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:502
+#: lib/woocommerce.php:509
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:528, lib/woocommerce.php:626
+#: lib/woocommerce.php:535, lib/woocommerce.php:633
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:531
+#: lib/woocommerce.php:538
 msgid "Rendelésre gyártjuk"
 msgstr ""
 
-#: lib/woocommerce.php:532
+#: lib/woocommerce.php:539
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:564
+#: lib/woocommerce.php:571
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:619
+#: lib/woocommerce.php:626
 msgid "Azonnal vihető"
 msgstr ""
 
@@ -284,31 +296,31 @@ msgstr ""
 msgid "Hogyan rendeljem meg"
 msgstr ""
 
-#: woocommerce/content-single-product.php:423
+#: woocommerce/content-single-product.php:433
 msgid "Installation &amp; Application Guide"
 msgstr ""
 
-#: woocommerce/content-single-product.php:442
+#: woocommerce/content-single-product.php:462
 msgid "Ár kalkulátor"
 msgstr ""
 
-#: woocommerce/content-single-product.php:443
+#: woocommerce/content-single-product.php:463
 msgid "Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked."
 msgstr ""
 
-#: woocommerce/content-single-product.php:542
+#: woocommerce/content-single-product.php:562
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:545
+#: woocommerce/content-single-product.php:565
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:548
+#: woocommerce/content-single-product.php:568
 msgid "Színvariációk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:551
+#: woocommerce/content-single-product.php:571
 msgid "Ajánljuk figyelemedbe&hellip;"
 msgstr ""
 

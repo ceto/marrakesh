@@ -81,21 +81,25 @@
                 <p class="lead">
                     <?php _e('Számos belső enteriőr ékessége az általunk gyártott cementlap.', 'marrakesh');?>
                 </p>
-                <br>
+
             </div>
         </div>
         <section id="referenceswipe" class="referenceswipe" itemscope itemtype="http://schema.org/ImageGallery">
-
             <?php while ($the_featrefs->have_posts()) : $the_featrefs->the_post(); ?>
             <?php setup_postdata( $post ); ?>
             <div <?php reffilter_class('referenceswipe__item'); ?>>
                 <?php get_template_part('templates/referencecard-fixheight'); ?></div>
             <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
         </section>
-        <?php wp_reset_postdata(); ?>
+        <nav class="scroller" data-target="referenceswipe">
+            <a href="#" class="js-scrollleft">‹</a>
+            <a href="#" class="js-scrollright">›</a>
+        </nav>
+
         <div class="grid-x grid-margin-x text-center">
             <div class="cell">
-                <br><br>
+                <br>
                 <a href="<?php the_permalink(get_field('pageforgallery', 'option')) ?>"
                     class="button small"><?php _e('Tovább a tematikus galériákhoz', 'marrakesh'); ?></a>
             </div>

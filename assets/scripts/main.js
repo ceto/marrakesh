@@ -943,3 +943,25 @@ var initPhotoSwipeInline = function(gallerySelector) {
 if ($(".psinlinegallery").length) {
     initPhotoSwipeInline(".psinlinegallery");
 }
+
+$(".scroller").on("click", ".js-scrollright", function(e) {
+    e.preventDefault();
+    var el = document.querySelector(
+        "." +
+            $(this)
+                .parent()
+                .attr("data-target")
+    );
+    el.scrollLeft = el.scrollLeft + 216;
+});
+
+$(".scroller").on("click", ".js-scrollleft", function(e) {
+    e.preventDefault();
+    var el = document.querySelector(
+        "." +
+            $(this)
+                .parent()
+                .attr("data-target")
+    );
+    el.scrollLeft = el.scrollLeft - 216;
+});

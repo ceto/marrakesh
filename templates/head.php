@@ -10,6 +10,8 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
     <link
         href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400,700,900,400italic&display=swap&subset=latin-ext'
         rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="<?= get_stylesheet_directory_uri(); ?>/dist/images/favicon/favicon.png">
+    <link rel="apple-touch-icon" href="<?= get_stylesheet_directory_uri(); ?>/dist/images/favicon/apple-touch-icon.png">
 
     <link rel="canonical" href="<?= $current_url; ?>">
     <meta property="og:url" content="<?= $current_url; ?>" />

@@ -68,10 +68,10 @@
 //   var map;
 //   var map2;
 function initialize() {
-    var latlng = new google.maps.LatLng(47.445761, 18.944464);
+    var latlngwarehouse = new google.maps.LatLng(47.443153, 18.932294);
+    var latlngshowroom = new google.maps.LatLng(47.493006, 19.067229);
     var myOptions = {
-        zoom: 15,
-        //center: latlng,
+        zoom: 12,
         disableDefaultUI: false,
         scrollwheel: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -154,12 +154,18 @@ function initialize() {
             ]
         }]
     };
-    myOptions["center"] = latlng;
+    myOptions["center"] = latlngshowroom;
     var map = new google.maps.Map(document.getElementById('map'), myOptions);
-    var marker = new google.maps.Marker({
-        position: latlng,
+    var markerwarehouse = new google.maps.Marker({
+        position: latlngwarehouse,
         map: map,
-        title: "SDT GROUP"
+        title: "Marrakesh raktár és átvevőpont"
+        //shadow:shadow
+    });
+    var markershowroom = new google.maps.Marker({
+        position: latlngshowroom,
+        map: map,
+        title: "Marrakesh bemutatóterem"
         //shadow:shadow
     });
 }

@@ -16,7 +16,7 @@ $current_url = home_url( add_query_arg( array(), $wp->request ) );
     <link rel="canonical" href="<?= $current_url; ?>">
     <meta property="og:url" content="<?= $current_url; ?>" />
     <?php wp_head(); ?>
-    <?php if ( !current_user_can( 'manage_options' ) ) : ?>
+    <?php if ( !current_user_can( 'manage_options' ) && (ENV!=='dev')) : ?>
     <!-- Hotjar Tracking Code for https://marrakeshcementlap.hu -->
     <script>
         (function(h,o,t,j,a,r){

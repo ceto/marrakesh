@@ -15,13 +15,15 @@
 .sidebar--wcfilters {
     .widget {
         border: 1px solid $light-gray;
+        padding: 0 0.5rem;
+        background-color: $xlight-gray;
 
         &:not(last-child) {
             margin-bottom: 1rem;
         }
-        &.widget_status_filter {
-            background-color: $medium-gray;
-        }
+        // &.widget_status_filter {
+        //     background-color: $light-gray;
+        // }
     }
 
     .widget__title {

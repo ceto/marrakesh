@@ -4,7 +4,7 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#<?= sanitize_title(get_sub_field('title')); ?>" class="accordion-title"><?php the_sub_field('title'); ?></a>
         <div id="<?= sanitize_title(get_sub_field('title')); ?>" class="accordion-content" data-tab-content>
-            <div class="bodycopy small">
+            <div class="bodycopy">
                 <?php the_sub_field('content'); ?>
             </div>
         </div>

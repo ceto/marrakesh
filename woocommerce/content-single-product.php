@@ -267,13 +267,6 @@ if ( post_password_required() ) {
                         <div class="tabs-panel is-active" id="prodinfopanel">
                             <div class="singleproduct__details">
                                 <h3><?php _e('Product Information', 'marrakesh');?></h3>
-                                <?php /* if ( $short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ) : ?>
-                                <div
-                                    class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
-                                    <?php echo $short_description; // WPCS: XSS ok. ?>
-                                </div>
-                                <?php endif; */?>
-
                                 <div
                                     class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
@@ -292,6 +285,13 @@ if ( post_password_required() ) {
                                 <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
                                 <?php echo $postparts['main']; ?>
                                 <?php //echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
+                                <?php
+                                    $datapostobject = get_post( $datafromprod['_linfopage'] );
+                                    setup_postdata( $GLOBALS['post'] =& $datapostobject );
+                                    get_template_part('templates/accordioncage');
+                                    get_template_part('templates/dlcage');
+                                    wp_reset_postdata();
+                                ?>
                                 <p>Vásárlás előtt feltétlenül olvasd el a <a
                                         href="<?php the_permalink($datafromprod['_linfopage']) ?>">részletes
                                         termékismertetőt.</a>

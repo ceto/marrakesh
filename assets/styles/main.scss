@@ -1,5 +1,5 @@
 @charset 'utf-8';
-@import 'settings';
+@import "settings";
 
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
@@ -15,18 +15,42 @@
 @import "components/components";
 @import "layouts/layouts";
 
+.accordion-title {
+    // font-family: $fontsans;
+    font-weight: $global-weight-bold;
+    &:hover,
+    &:focus {
+        // color: $cl-primary-dark;
+    }
+
+    &:before {
+        top: 0;
+        right: 0;
+        margin-top: 0.666rem;
+    }
+    // .accordion-item:not(:last-child) & {
+    //     border-bottom: 1px solid $light-gray;
+    // }
+}
+
+.accordion-item {
+    &:not(:last-child) {
+        border-bottom: 1px solid $light-gray;
+    }
+    &.is-active {
+        border-color: transparent;
+    }
+}
 
 span.onsale {
     display: inline-block;
     background-color: $secondary-color;
     line-height: 1;
     font-weight: $global-weight-black;
-    padding:.25em .333em .25em;
-    color:$white;
-    font-size:.875rem;
+    padding: 0.25em 0.333em 0.25em;
+    color: $white;
+    font-size: 0.875rem;
     border-radius: 3px;
     white-space: nowrap;
     cursor: default;
 }
-
-

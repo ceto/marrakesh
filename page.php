@@ -40,6 +40,7 @@
                 <?php if (has_excerpt()) : ?>
                 <div class="lead"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
+                <?php get_template_part('templates/accordioncage'); ?>
                 <?php if ( have_rows('bullets') ) : ?>
                     <ul class="iconizedlist">
                         <?php  while ( have_rows('bullets') ) : the_row(); ?>

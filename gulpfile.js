@@ -25,8 +25,8 @@ var svgstore = require("gulp-svgstore");
 var svgmin = require("gulp-svgmin");
 var inject = require("gulp-inject");
 
-var postcss = require('gulp-postcss');
-var postcssinlinesvg = require('postcss-inline-svg');
+var postcss = require("gulp-postcss");
+var postcssinlinesvg = require("postcss-inline-svg");
 
 var wpPot = require("gulp-wp-pot");
 
@@ -115,25 +115,23 @@ var cssTasks = function(filename) {
                 })
             );
         })
-        .pipe(
-            concat,
-            filename
-        )
-        .pipe( postcss, [ postcssinlinesvg({
-            paths: ["assets/icons"]
-        }) ] )
-        .pipe(
-            autoprefixer,
-            {
-                browsers: ["last 2 versions", "ie >= 9", "android >= 4.4", "ios >= 7"]
-            }
-        )
-        .pipe(
-            cssNano,
-            {
-                safe: true
-            }
-        )
+        .pipe(concat, filename)
+        .pipe(postcss, [
+            postcssinlinesvg({
+                paths: ["assets/icons"]
+            })
+        ])
+        .pipe(autoprefixer, {
+            browsers: [
+                "last 2 versions",
+                "ie >= 9",
+                "android >= 4.4",
+                "ios >= 7"
+            ]
+        })
+        .pipe(cssNano, {
+            safe: true
+        })
         .pipe(function() {
             return gulpif(enabled.rev, rev());
         })
@@ -159,18 +157,12 @@ var jsTasks = function(filename) {
         .pipe(function() {
             return gulpif(enabled.maps, sourcemaps.init());
         })
-        .pipe(
-            concat,
-            filename
-        )
-        .pipe(
-            uglify,
-            {
-                compress: {
-                    drop_debugger: enabled.stripJSDebug
-                }
+        .pipe(concat, filename)
+        .pipe(uglify, {
+            compress: {
+                drop_debugger: enabled.stripJSDebug
             }
-        )
+        })
         .pipe(function() {
             return gulpif(enabled.rev, rev());
         })
@@ -189,26 +181,13 @@ var jsTasks = function(filename) {
 // See https://github.com/sindresorhus/gulp-rev
 var writeToManifest = function(directory) {
     return lazypipe()
-        .pipe(
-            gulp.dest,
-            path.dist + directory
-        )
-        .pipe(
-            browserSync.stream,
-            { match: "**/*.{js,css}" }
-        )
-        .pipe(
-            rev.manifest,
-            revManifest,
-            {
-                base: path.dist,
-                merge: true
-            }
-        )
-        .pipe(
-            gulp.dest,
-            path.dist
-        )();
+        .pipe(gulp.dest, path.dist + directory)
+        .pipe(browserSync.stream, { match: "**/*.{js,css}" })
+        .pipe(rev.manifest, revManifest, {
+            base: path.dist,
+            merge: true
+        })
+        .pipe(gulp.dest, path.dist)();
 };
 
 // ## Gulp tasks
@@ -302,9 +281,14 @@ gulp.task("images", function() {
         .src(globs.images)
         .pipe(
             imagemin([
-                imagemin.jpegtran({ progressive: true }),
+                imagemin.mozjpeg({ progressive: true }),
                 imagemin.gifsicle({ interlaced: true }),
-                imagemin.svgo({ plugins: [{ removeUnknownsAndDefaults: false }, { cleanupIDs: false }] })
+                imagemin.svgo({
+                    plugins: [
+                        { removeUnknownsAndDefaults: false },
+                        { cleanupIDs: false }
+                    ]
+                })
             ])
         )
         .pipe(gulp.dest(path.dist + "images"))
@@ -353,7 +337,12 @@ gulp.task("watch", ["build"], function() {
 // `gulp build` - Run all the build tasks but don't clean up beforehand.
 // Generally you should be running `gulp` instead of `gulp build`.
 gulp.task("build", ["clean"], function(callback) {
-    runSequence("styles", "scripts", ["fonts", "images", "svgicons", "generatepot"], callback);
+    runSequence(
+        "styles",
+        "scripts",
+        ["fonts", "images", "svgicons", "generatepot"],
+        callback
+    );
 });
 
 // ### Wiredep

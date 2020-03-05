@@ -103,8 +103,6 @@ if ( post_password_required() ) {
     $datafromprod['_tileheight'] = get_post_meta($product->get_id(), '_tileheight', true );
     $datafromprod['_tilethickness'] = get_post_meta($product->get_id(), '_tilethickness', true );
     $datafromprod['_linfopage'] = get_post_meta($product->get_id(), '_linfopage', true );
-    $datafromprod['_linstallpage'] = get_post_meta($product->get_id(), '_linstallpage', true );
-    $datafromprod['_lhowtopage'] = get_post_meta($product->get_id(), '_lhowtopage', true );
     //var_dump($datafromprod);
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
@@ -243,16 +241,6 @@ if ( post_password_required() ) {
                             <?php esc_html_e( 'Adatlap', 'marrakesh' ); ?>
                         </a>
                     </li>
-                    <li class="tabs-title">
-                        <a href="#obspanel">
-                            <?php esc_html_e( 'Megrendelés menete', 'marrakesh' ); ?>
-                        </a>
-                    </li>
-                    <li class="tabs-title">
-                        <a href="#installpanel">
-                            <?php esc_html_e( 'Lerakás', 'marrakesh' ) ?>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -272,7 +260,14 @@ if ( post_password_required() ) {
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
                                 </div>
                                 <?php the_content(); ?>
-                                <?php if ( have_rows('bullets', $datafromprod['_linfopage']) ) : ?>
+                                <?php
+                                    $datapostobject = get_post( $datafromprod['_linfopage'] );
+                                    setup_postdata( $GLOBALS['post'] =& $datapostobject );
+                                    get_template_part('templates/accordioncage');
+                                    get_template_part('templates/dlcage');
+                                    wp_reset_postdata();
+                                ?>
+                                <?php /* if ( have_rows('bullets', $datafromprod['_linfopage']) ) : ?>
                                     <ul class="iconizedlist">
                                         <?php  while ( have_rows('bullets', $datafromprod['_linfopage']) ) : the_row(); ?>
                                         <li>
@@ -281,20 +276,12 @@ if ( post_password_required() ) {
                                         </li>
                                         <?php endwhile; ?>
                                     </ul>
-                                <?php endif; ?>
-                                <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
-                                <?php echo $postparts['main']; ?>
+                                <?php endif; */ ?>
+                                <?php // $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
+                                <?php // echo $postparts['main']; ?>
                                 <?php //echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
-                                <?php
-                                    $datapostobject = get_post( $datafromprod['_linfopage'] );
-                                    setup_postdata( $GLOBALS['post'] =& $datapostobject );
-                                    get_template_part('templates/accordioncage');
-                                    get_template_part('templates/dlcage');
-                                    wp_reset_postdata();
-                                ?>
-                                <p>Vásárlás előtt feltétlenül olvasd el a <a
-                                        href="<?php the_permalink($datafromprod['_linfopage']) ?>">részletes
-                                        termékismertetőt.</a>
+                                <p>További információk és részletes termék ismertetők az <a
+                                        href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>">Info &amp; Segítség</a> oldalon.
                                 </p>
                                 <?php $designdescr=term_description($designs['0']); ?>
                                 <?php if ($designdescr!=='') : ?>
@@ -406,50 +393,6 @@ if ( post_password_required() ) {
                                 </dl>
                             </div>
 
-                        </div>
-                        <div class="tabs-panel" id="obspanel">
-                            <h3><?php _e('Hogyan rendeljem meg', 'marrakesh');?></h3>
-                            <div class="lead">
-                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_lhowtopage']) ); ?>
-                            </div>
-                            <?php if ( have_rows('bullets', $datafromprod['_lhowtopage']) ) : ?>
-                                <ul class="iconizedlist">
-                                    <?php  while ( have_rows('bullets', $datafromprod['_lhowtopage']) ) : the_row(); ?>
-                                    <li>
-                                        <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
-                                        <?php the_sub_field('text'); ?>
-                                    </li>
-                                    <?php endwhile; ?>
-                                </ul>
-                            <?php endif; ?>
-                            <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_lhowtopage'])) ); ?>
-                            <?php echo $postparts['main']; ?>
-                            <p>Tovább fontos részleteket, az előlegről a szállítási határidőkről és a minimum rendelési
-                                mennyiségekről <a href="<?php the_permalink($datafromprod['_lhowtopage']) ?>">ebben a
-                                    tájékoztatóban találsz.</a>
-                            </p>
-                        </div>
-                        <div class="tabs-panel" id="installpanel">
-                            <h3><?php _e('Installation &amp; Application Guide', 'marrakesh');?></h3>
-                            <div class="lead">
-                                <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linstallpage']) ); ?>
-                            </div>
-                            <?php if ( have_rows('bullets', $datafromprod['_linstallpage']) ) : ?>
-                                <ul class="iconizedlist">
-                                    <?php  while ( have_rows('bullets', $datafromprod['_linstallpage']) ) : the_row(); ?>
-                                    <li>
-                                        <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
-                                        <?php the_sub_field('text'); ?>
-                                    </li>
-                                    <?php endwhile; ?>
-                                </ul>
-                            <?php endif; ?>
-                            <?php $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linstallpage'])) ); ?>
-                            <?php echo $postparts['main']; ?>
-                            <p>Részletes útmutatót a <a
-                                    href="<?php the_permalink($datafromprod['_linstallpage']) ?>">lerakási segédletben
-                                    található.</a>
-                            </p>
                         </div>
                     </div>
 

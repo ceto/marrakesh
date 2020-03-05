@@ -323,7 +323,7 @@ if ($(".psgallery").length) {
 }
 
 ///////////////////////////////////////////////////////
-// Order Box functions on single product detail pages
+// Calculator on single product detail pages
 //////////////////////////////////////////////////////
 
 var $form = $("form.order");
@@ -360,7 +360,7 @@ function updateOrderBox($changed) {
 
         //update price
         var newPrice = numberOfBoxes * pricePerBox;
-        var priceText = newPrice.toFixed(2);
+        var priceText = newPrice.toFixed(0);
         $priceText.html(
             "<small>ÖSSZESEN (bruttó):</small>" + priceText + " Ft."
         );

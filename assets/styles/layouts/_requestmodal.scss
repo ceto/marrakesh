@@ -1,0 +1,74 @@
+// html.is-reveal-open,
+// html.is-reveal-open body {
+//     overflow-y: hidden !important;
+// }
+
+.requestmodal {
+    padding: 0;
+
+    p {
+        font-size: 0.875rem;
+    }
+
+    @include breakpoint(medium) {
+        width: auto;
+        max-width: 40rem;
+    }
+}
+
+.requestmodal__head {
+    @include clearfix;
+    background-color: $xlight-gray;
+    padding: 1.5rem 1rem;
+
+    figure {
+        width: 33%;
+        max-width: 50%;
+        float: right;
+    }
+
+    h2 {
+        // text-transform: uppercase;
+        // background-color: $primary-color;
+        // color: #fff;
+        // display: inline-block;
+        // line-height: 1;
+        // padding: 0.5em 0.5em;
+        // font-size: 1.3335rem;
+        // margin: 0 0 3rem;
+    }
+
+    p {
+        margin: 0 0 2rem;
+        line-height: 1.2;
+        font-size: 1.125rem;
+        // font-weight: $global-weight-bold;
+    }
+
+    h3 {
+        font-size: 1.666rem;
+        //color: $primary-color;
+        margin: 0;
+    }
+}
+.requestmodal__inner {
+    padding: calc(2rem + 4vh) 1rem;
+}
+
+.requestmodal__close {
+    font-weight: $global-weight-light;
+    margin-top: 1rem;
+    font-size: 2.25rem;
+    color: $medium-gray;
+    border: 1px solid $xlight-gray;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    line-height: 0;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    //transform: translateX(-50%);
+    background-color: rgba(#fff, 0.75);
+    box-shadow: 0 0 0.875rem 0 rgba(#000, 0.25);
+}

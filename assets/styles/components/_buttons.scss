@@ -4,4 +4,8 @@
 
 .button.accent {
     color: #fff;
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
 }

@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post, $datafromcat;
+global $product, $post, $datafromcat, $datafromprod;
 $attributes = $product->get_attributes();
 
 $designterm = get_term_by('id', $attributes['pa_design']['options'][0],'pa_design');
@@ -160,12 +160,11 @@ if ( post_password_required() ) {
                                 <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                             </div>
 
-                            <!--
+
                             <br>
                             <div class="singleproduct__headeractions">
-                                <a href="#buycallout"
-                                    class="button medium hollow expanded"><?= __('Várható szállítás & Rendelés', 'marrakesh') ?></a>
-                            </div> -->
+                                <button data-open="requestmodal" class="button accent expanded"><?= __('Egyedi ajánlatot kérek', 'marrakesh'); ?></button>
+                            </div>
 
 
                         </header>
@@ -395,33 +394,10 @@ if ( post_password_required() ) {
 
                         </div>
                     </div>
-
-
                 </div>
-
                 <div class="cell large-5 xxlarge-4 large-order-2">
-                    <?php if ( $datafromprod['_isboxed']=='yes' && $datafromprod['_sizeperbox'] )  : ?>
-                    <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
-                        <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
-                        <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked.', 'marrakesh' ) ?>
-                        </p>
-                        <?php
-                            /**
-                            * Hook: woocommerce_single_product_summary.
-                            *
-                            * @hooked woocommerce_template_single_title - 5
-                            * @hooked woocommerce_template_single_rating - 10
-                            * @hooked woocommerce_template_single_price - 10
-                            * @hooked woocommerce_template_single_excerpt - 20
-                            * @hooked woocommerce_template_single_add_to_cart - 30
-                            * @hooked woocommerce_template_single_meta - 40
-                            * @hooked woocommerce_template_single_sharing - 50
-                            * @hooked WC_Structured_Data::generate_product_data() - 60
-                            */
-                            do_action( 'woocommerce_single_product_summary' );
-                        ?>
-                    </div>
-                    <?php endif; ?>
+                    <?php get_template_part('templates/calculator'); ?>
+                    <?php //do_action( 'woocommerce_single_product_summary' ); ?>
 
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>
@@ -434,11 +410,6 @@ if ( post_password_required() ) {
                         <?php do_action( 'woocommerce_product_meta_end' ); ?>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -446,7 +417,6 @@ if ( post_password_required() ) {
 
 
     <div class="ps ps--narrow aps--xlight ps--bordered">
-
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell">
@@ -603,3 +573,4 @@ if ( post_password_required() ) {
 
     <?php do_action( 'woocommerce_after_single_product' ); ?>
     <?php get_template_part('templates/photoswipedom'); ?>
+    <?php get_template_part('templates/requestmodal'); ?>

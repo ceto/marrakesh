@@ -113,6 +113,34 @@ msgstr ""
 msgid "Transport Calendar"
 msgstr ""
 
+#: lib/contact.php:8
+msgid "MARRAKESH | Webes ajánlatkérés."
+msgstr ""
+
+#: lib/contact.php:23
+msgid "Hiányzó kötelező mezők"
+msgstr ""
+
+#: lib/contact.php:38
+msgid "Teljes nevet adj meg"
+msgstr ""
+
+#: lib/contact.php:42
+msgid "Érvénytelen e-mail cím"
+msgstr ""
+
+#: lib/contact.php:71
+msgid "Hiba történt a küldéskor. Kérlek vedd fel velünk a kapcsolatot emailben vagy telefonon."
+msgstr ""
+
+#: lib/contact.php:79
+msgid "Kedves"
+msgstr ""
+
+#: lib/contact.php:80, lib/contact.php:83
+msgid "Köszönjük megkeresésedet. Munkatársunk hamarosan jelentkezik elérhetőségeid egyikén."
+msgstr ""
+
 #: lib/custom.php:357
 msgid "Thumbnail (16x9)"
 msgstr ""
@@ -165,11 +193,11 @@ msgstr ""
 msgid "Egyedi ajánlatot kérek"
 msgstr ""
 
-#: templates/dlcage.php:2
-msgid "Csatolt dokumentumok"
+#: templates/dlcage.php:3
+msgid "Csatolt dokumentum(ok)"
 msgstr ""
 
-#: templates/dlcage.php:18
+#: templates/dlcage.php:19
 msgid "Letöltés"
 msgstr ""
 
@@ -197,7 +225,7 @@ msgstr ""
 msgid "Raktár és áruátvétel"
 msgstr ""
 
-#: templates/requestmodal.php:85
+#: templates/requestmodal.php:90
 msgid "Küldés"
 msgstr ""
 

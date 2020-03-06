@@ -17,8 +17,8 @@
     </header>
     <div class="grid-container">
         <h3>Ajánlat kérése</h3>
-        <p>Örömmel vesszük megkeresésedet, személyesen a <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">belvárosi bemutatótermünkben,</a> telefonon a
-        <a href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a> telefonszámon, a <a
+        <p>Örömmel vesszük megkeresésedet, személyesen a <a target="_blank" href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">belvárosi bemutatótermünkben,</a> telefonon a
+        <a href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a> telefonszámon, az <a
             href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a> email címen, vagy töltsd ki kapcsolati űrlapunkat rád szabott, egyedi ajánlatért.</p>
         <form id="request_form" class="contactform" action="<?= get_template_directory_uri(); ?>/lib/contact.php"
             method="post" data-abide novalidate>
@@ -48,6 +48,11 @@
                         <span class="form-error">
                             Megadása kötelező
                         </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="speci">Mennyiség (m<sup>2</sup>)
+                        <input id="r_amount" name="r_amount" type="text">
                     </label>
                 </li>
             </ul>

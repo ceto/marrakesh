@@ -356,6 +356,7 @@ function updateOrderBox($changed) {
 
         var sqftText = numberOfBoxes * sqftPerBox;
         $totalSqftText.text(sqftText.toFixed(2));
+        $("#r_amount").val(sqftText.toFixed(0));
         $totalBoxText.text(numberOfBoxes);
 
         //update price

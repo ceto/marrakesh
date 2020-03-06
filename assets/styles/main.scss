@@ -15,6 +15,37 @@
 @import "components/components";
 @import "layouts/layouts";
 
+.inputgrid {
+    list-style: none;
+    margin: 0 -0.25rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+        display: inline-block;
+        margin: 0.25rem 0.25rem;
+        padding: 0;
+        flex-basis: 12rem;
+        flex-grow: 1;
+    }
+}
+.checkergrid {
+    list-style: none;
+    margin: 0 -0.25rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+        display: inline-block;
+        margin: 0.25rem 0.25rem;
+        padding: 0;
+        flex-basis: 12rem;
+        flex-grow: 1;
+    }
+}
+
 .accordion-title {
     // font-family: $fontsans;
     font-weight: $global-weight-bold;

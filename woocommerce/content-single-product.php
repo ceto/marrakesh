@@ -146,13 +146,6 @@ if ( post_password_required() ) {
 
 
                             <p class="singleproduct__price">
-                                <?php /* if ( $datafromprod['_isboxed'] && $datafromprod['_sizeperbox'] )  : ?>
-                                <span
-                                    class="price"><?php echo wc_price(wc_get_price_to_display($product)/$datafromprod['_sizeperbox'], array(decimals => 0 )); ?>/m<sup>2</sup></span>
-                                <?php elseif ( $price_html = $product->get_price_html() ) : ?>
-                                <span class="price"><?php echo $price_html; ?></span>
-                                <?php endif; */?>
-
                                 <?php wc_get_template_part( 'loop/price'); ?>
                             </p>
                             <br>

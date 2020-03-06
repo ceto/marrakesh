@@ -4,10 +4,11 @@
 // }
 
 .requestmodal {
-    padding: 0;
+    padding: calc(2rem + 4vh) 2.5%;
 
     p {
-        font-size: 0.875rem;
+        // font-size: 0.875rem;
+        // font-weight: normal;
     }
 
     @include breakpoint(medium) {
@@ -19,40 +20,27 @@
 .requestmodal__head {
     @include clearfix;
     background-color: $xlight-gray;
-    padding: 1.5rem 1rem;
+    border-bottom: 1px solid $light-gray;
+    padding: 2rem 2.5%;
+    margin-top: calc(-2rem - 4vh);
+    margin-bottom: calc(2rem + 4vh);
+    margin-left: -3.6666%;
+    margin-right: -3.6666%;
 
     figure {
-        width: 33%;
-        max-width: 50%;
+        width: 4.5em;
+        min-height: 4.333em;
+        max-width: 25%;
         float: right;
-    }
-
-    h2 {
-        // text-transform: uppercase;
-        // background-color: $primary-color;
-        // color: #fff;
-        // display: inline-block;
-        // line-height: 1;
-        // padding: 0.5em 0.5em;
-        // font-size: 1.3335rem;
-        // margin: 0 0 3rem;
+        margin: 0 0 0 1em;
+        background-color: #e6e6e6;
+        border: 3px solid #fff;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     }
 
     p {
-        margin: 0 0 2rem;
-        line-height: 1.2;
-        font-size: 1.125rem;
-        // font-weight: $global-weight-bold;
+        margin: 0 0;
     }
-
-    h3 {
-        font-size: 1.666rem;
-        //color: $primary-color;
-        margin: 0;
-    }
-}
-.requestmodal__inner {
-    padding: calc(2rem + 4vh) 1rem;
 }
 
 .requestmodal__close {

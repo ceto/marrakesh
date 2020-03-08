@@ -6,6 +6,23 @@
     margin-bottom: 1.25rem;
 }
 
+.refcatcard__fulllink {
+    &:hover,
+    &:focus {
+        .refcatcard__thumb {
+            transform: translateY(-0.2rem) scale(1.0125);
+            box-shadow: 0 0 0.75rem 0 rgba(#000, 0.25);
+        }
+
+        .refcatcard__name {
+            // color: $primary-color;
+            // text-decoration: underline;
+            // transform: translateY(-0.125em);
+            // transform: translateY(-0.5rem);
+        }
+    }
+}
+
 .refcatcard__name {
     position: absolute;
     left: 0;
@@ -17,6 +34,11 @@
     color: $body-font-color;
     font-size: 1rem;
     line-height: 1;
+    .icon {
+        font-size: 0.875em;
+        margin-left: 0.125em;
+        opacity: 0.75;
+    }
 }
 
 .refcatcard__thumb {
@@ -25,6 +47,7 @@
     height: 100%;
     position: absolute;
     object-fit: cover;
+    transition: all 0.2s ease-in;
 }
 
 .refcatcardgrid {

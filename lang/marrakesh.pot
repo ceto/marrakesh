@@ -153,27 +153,27 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:509
+#: lib/woocommerce.php:531
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:535, lib/woocommerce.php:633
+#: lib/woocommerce.php:557, lib/woocommerce.php:655
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:538
+#: lib/woocommerce.php:560
 msgid "Rendelésre gyártjuk"
 msgstr ""
 
-#: lib/woocommerce.php:539
+#: lib/woocommerce.php:561
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:571
+#: lib/woocommerce.php:593
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:626
+#: lib/woocommerce.php:648
 msgid "Azonnal vihető"
 msgstr ""
 
@@ -240,16 +240,16 @@ msgstr ""
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:233, woocommerce/archive-product.php:361
+#: woocommerce/archive-product.php:233, woocommerce/archive-product.php:363
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:244, woocommerce/archive-product.php:372
+#: woocommerce/archive-product.php:244, woocommerce/archive-product.php:374
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:348
-msgid "Szűrés színre, stílusra&hellip;"
+#: woocommerce/archive-product.php:350
+msgid "Színek, stílus és készlet"
 msgstr ""
 
 #: woocommerce/content-single-product.php:228

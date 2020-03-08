@@ -345,7 +345,9 @@ defined( 'ABSPATH' ) || exit;
             data-stick-to="bottom" data-margin-bottom="0">
             <div class="grid-container">
                 <button class="filtertoggler button small expanded hollow"
-                    data-toggle="prarchive__filtermodal"><?php _e('Szűrés színre, stílusra&hellip;','marrakesh'); //woocommerce_result_count() ?></button>
+                    data-toggle="prarchive__filtermodal">
+                    <svg class="icon"><use xlink:href="#icon-filter"></use></svg>
+                    <?php _e('Színek, stílus és készlet','marrakesh'); //woocommerce_result_count() ?></button>
             </div>
         </div>
     </div>

@@ -124,19 +124,41 @@ add_action( 'pre_get_posts', function ( $query ) {
         // $meta_query[] = array('relation' => 'or');
 
         if ($availability_filter === 'in_stock') {
-            $meta_query[] =  array(
+            if ($comingsoon_filter === '1') {
+                $meta_query[]  = array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => '_csstock',
+                        'value' => '0',
+                        'compare' => '>',
+                    ),
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock',
+                        'compare' => '=',
+                    )
+                );
+            } else {
+                $meta_query[]  = array(
                     'key' => '_stock_status',
                     'value' => 'instock',
                     'compare' => '=',
-            );
-        };
-        if ($comingsoon_filter === '1') {
+                );
+            }
+        } elseif ($comingsoon_filter === '1') {
             $meta_query[]  = array(
                 'key' => '_csstock',
                 'value' => '0',
                 'compare' => '>',
             );
         };
+        // if ($comingsoon_filter === '1') {
+        //     $meta_query[]  = array(
+        //         'key' => '_csstock',
+        //         'value' => '0',
+        //         'compare' => '>',
+        //     );
+        // };
         $query->set('meta_query', $meta_query );
     }
 }, PHP_INT_MAX );

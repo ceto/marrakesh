@@ -129,7 +129,7 @@ function marrakesh_add_reference_taxonomies(){
                     'labels' => $category_labels,
                     'show_ui' => true,
                     'query_var' => true,
-                    'rewrite' => array( 'slug' => 'references' )
+                    'rewrite' => array( 'slug' => __('galeria','marrakesh') )
     ));
 }
 

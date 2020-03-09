@@ -4,7 +4,7 @@
             "files": [
                 "scripts/main.js",
                 "scripts/_contact.js",
-                "scripts/workspopupgallery.js"
+                "scripts/allphotoswipe.js"
             ],
             "main": true
         },

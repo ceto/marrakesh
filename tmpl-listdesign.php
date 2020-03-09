@@ -72,7 +72,10 @@
                                     src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
                                     class="refcatcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
-                                <h3 class="refcatcard__name"><?= $child->name;?><svg class="icon"><use xlink:href="#icon-gallery"></use></svg></h3>
+                                <h3 class="refcatcard__name">
+                                <?php printf( __( '%s minták', 'marrakesh' ), $child->name); ?>
+                                <svg class="icon"><use xlink:href="#icon-gallery"></use></svg>
+                                </h3>
                             </a>
                         </div>
                     </li>
@@ -95,7 +98,7 @@
                                 <a href="<?php the_permalink() ?>">
                                     <svg class="icon">
                                         <use xlink:href="#icon-caret-left"></use>
-                                    </svg> <?= __('Vissza a kollekciókhoz','marrakesh') ?>
+                                    </svg> <?= __('Vissza a stílus választóhoz','marrakesh') ?>
                                 </a>
                             </li>
                             <?php foreach( $allstyles as $refcat ): ?>

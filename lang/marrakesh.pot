@@ -89,8 +89,12 @@ msgstr ""
 msgid "Design Lister Page"
 msgstr ""
 
-#: tmpl-listdesign.php:98
-msgid "Vissza a kollekciókhoz"
+#: tmpl-listdesign.php:76
+msgid "%s minták"
+msgstr ""
+
+#: tmpl-listdesign.php:101
+msgid "Vissza a stílus választóhoz"
 msgstr ""
 
 #: tmpl-listrefcats.php:3
@@ -147,6 +151,10 @@ msgstr ""
 
 #: lib/custom.php:358
 msgid "Thumbnail (1x1)"
+msgstr ""
+
+#: lib/customposts.php:132
+msgid "galeria"
 msgstr ""
 
 #: lib/extras.php:31

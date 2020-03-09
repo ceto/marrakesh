@@ -164,7 +164,7 @@ function initialize() {
     });
     infowarehouse = new google.maps.InfoWindow({
         content: '<div class="mapinfow"><h6>Raktár és áruátvétel</h6>' +
-        '<p>H-2045 Törökbálint, Depo u. 34.</p>' +
+        '<p>H-2045 Törökbálint, Raktárvárosi út (házszám nincs) DEPO</p>' +
         '<a class="button tiny" href="https://goo.gl/maps/p7dLeNi4C2N5mnWa8" target="_blank">Google Maps</a></div>'
     });
     infowarehouse.open(map, markerwarehouse);

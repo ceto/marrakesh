@@ -79,7 +79,7 @@
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title"><?php _e('Raktár és áruátvétel', 'marrakesh'); ?></h3>
-                        <p>2045 Törökbálint, Raktárvárosi út DEPO<br>(házszám nincs)</p>
+                        <p>H-2045 Törökbálint, Raktárvárosi út DEPO<br>(házszám nincs)</p>
                         <h6>Nyitvatartás</h6>
                         <p>Hétfőtől - Péntekig: 10:00-18:00<br>
                             Szombat: zárva<br>

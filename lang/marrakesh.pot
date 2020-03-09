@@ -218,18 +218,18 @@ msgid "Infó & Segítség"
 msgstr ""
 
 #: templates/footer.php:38
-msgid "Inspirációkért Kövess"
+msgid "Inspirációkért kövess"
 msgstr ""
 
-#: templates/footer.php:50
+#: templates/footer.php:48
 msgid "Kapcsolat"
 msgstr ""
 
-#: templates/footer.php:63
+#: templates/footer.php:61
 msgid "Belvárosi bemutatóterem"
 msgstr ""
 
-#: templates/footer.php:83
+#: templates/footer.php:81
 msgid "Raktár és áruátvétel"
 msgstr ""
 

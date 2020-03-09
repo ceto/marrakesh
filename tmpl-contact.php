@@ -163,12 +163,11 @@ function initialize() {
         //shadow:shadow
     });
     infowarehouse = new google.maps.InfoWindow({
-        content: '<h6>Bemutatóterem</h6>' +
-        '<p>Törökbálint Depó</p>' +
-        '<p><a href="_target="_blank">Útvonaltervezés</a></p>'
+        content: '<h6>Raktár és áruátvétel</h6>' +
+        '<p>H-2045 Törökbálint, Depo u. 34.</p>' +
+        '<a class="button tiny" href="https://goo.gl/maps/p7dLeNi4C2N5mnWa8" target="_blank">Google Maps</a>'
     });
     infowarehouse.open(map, markerwarehouse);
-
 
     var markershowroom = new google.maps.Marker({
         position: latlngshowroom,
@@ -176,6 +175,12 @@ function initialize() {
         title: "Marrakesh bemutatóterem"
         //shadow:shadow
     });
+    infoshowroom = new google.maps.InfoWindow({
+        content: '<h6>Belvárosi bemutatóterem</h6>' +
+        '<p>H-1088 Budapest, Bródy Sándor u. 34.</p>' +
+        '<a class="button tiny accent" href="https://goo.gl/maps/BXax46xvHyvybLLW7" target="_blank">Google Maps</a>'
+    });
+    infoshowroom.open(map, markershowroom);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>

@@ -35,13 +35,11 @@
                         ?>
                     </section>
                     <section class="widget %1$s %2$s">
-                        <h3 class="widget__title"><?php _e('Inspirációkért Kövess', 'marrakesh'); ?></h3>
-                        <ul class="menu vertical">
-                            <li><a target="_blank" href="https://www.facebook.com/MarrakeshCementlap/">Facebook</a>
-                            </li>
-                            <li><a target="_blank" href="https://www.instagram.com/marrakeshcementtile/">Instagram</a>
-                            </li>
-                            <li><a target="_blank" href="http://hu.pinterest.com/marrcementtiles/">Pinterest</a></li>
+                        <h3 class="widget__title"><?php _e('Inspirációkért kövess', 'marrakesh'); ?></h3>
+                        <ul class="menu menu--footersocial">
+                            <li><a target="_blank" href="https://facebook.com/MarrakeshCementlap/"><svg class="icon"><use xlink:href="#icon-facebook2"></use></svg></a></li>
+                            <li><a target="_blank" href="https://instagram.com/marrakeshcementtile/"><svg class="icon"><use xlink:href="#icon-instagram"></use></svg></a></li>
+                            <li><a target="_blank" href="https://pinterest.com/marrcementtiles/"><svg class="icon"><use xlink:href="#icon-pinterest2"></use></svg></a></li>
                         </ul>
                     </section>
                 </div>

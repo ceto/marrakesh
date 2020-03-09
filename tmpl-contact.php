@@ -24,7 +24,7 @@
                 </select>
                 <a class="js-taxchooserstart"><?= $themenu->name; ?> &#9662;</a>
                 <?php endif; ?>
-                <h1 class="page__title"><?= Titles\title(); ?></h1>
+                <h1 id="#content" class="page__title"><?= Titles\title(); ?></h1>
             </div>
         </div>
     </div>
@@ -162,6 +162,14 @@ function initialize() {
         title: "Marrakesh raktár és átvevőpont"
         //shadow:shadow
     });
+    infowarehouse = new google.maps.InfoWindow({
+        content: '<h6>Bemutatóterem</h6>' +
+        '<p>Törökbálint Depó</p>' +
+        '<p><a href="_target="_blank">Útvonaltervezés</a></p>'
+    });
+    infowarehouse.open(map, markerwarehouse);
+
+
     var markershowroom = new google.maps.Marker({
         position: latlngshowroom,
         map: map,

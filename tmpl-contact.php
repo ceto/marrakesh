@@ -163,9 +163,9 @@ function initialize() {
         //shadow:shadow
     });
     infowarehouse = new google.maps.InfoWindow({
-        content: '<h6>Raktár és áruátvétel</h6>' +
+        content: '<div class="mapinfow"><h6>Raktár és áruátvétel</h6>' +
         '<p>H-2045 Törökbálint, Depo u. 34.</p>' +
-        '<a class="button tiny" href="https://goo.gl/maps/p7dLeNi4C2N5mnWa8" target="_blank">Google Maps</a>'
+        '<a class="button tiny" href="https://goo.gl/maps/p7dLeNi4C2N5mnWa8" target="_blank">Google Maps</a></div>'
     });
     infowarehouse.open(map, markerwarehouse);
 
@@ -176,9 +176,9 @@ function initialize() {
         //shadow:shadow
     });
     infoshowroom = new google.maps.InfoWindow({
-        content: '<h6>Belvárosi bemutatóterem</h6>' +
+        content: '<div class="mapinfow"><h6>Belvárosi bemutatóterem</h6>' +
         '<p>H-1088 Budapest, Bródy Sándor u. 34.</p>' +
-        '<a class="button tiny accent" href="https://goo.gl/maps/BXax46xvHyvybLLW7" target="_blank">Google Maps</a>'
+        '<a class="button tiny accent" href="https://goo.gl/maps/BXax46xvHyvybLLW7" target="_blank">Google Maps</a></div>'
     });
     infoshowroom.open(map, markershowroom);
 }

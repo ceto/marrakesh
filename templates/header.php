@@ -4,7 +4,7 @@
             <div class="grid-x grid-margin-x">
                 <div class="shrink cell">
                     <ul class="menu menu--topbar align-right">
-                        <li class="menu-item show-for-medium"><a href="#">Bemutatóterem: 1088 Budapest, Bródy Sándor u.
+                        <li class="menu-item show-for-medium"><a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">Bemutatóterem: 1088 Budapest, Bródy Sándor u.
                                 34.</a></li>
                         <li class="menu-item"><a
                                 href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>

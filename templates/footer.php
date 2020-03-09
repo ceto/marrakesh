@@ -81,7 +81,7 @@
                         <h3 class="widget__title"><?php _e('Raktár és áruátvétel', 'marrakesh'); ?></h3>
                         <p>H-2045 Törökbálint, Raktárvárosi út DEPO<br>(házszám nincs)</p>
                         <h6>Nyitvatartás</h6>
-                        <p>Hétfőtől - Péntekig: 10:00-18:00<br>
+                        <p>Hétfőtől - Péntekig: 10:00-17:00<br>
                             Szombat: zárva<br>
                             Vasárnap: zárva</p>
                         <h6>Kapcsolat</h6>

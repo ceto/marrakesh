@@ -363,7 +363,7 @@ function updateOrderBox($changed) {
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(0);
         $priceText.html(
-            "<small>ÖSSZESEN (bruttó):</small>" + priceText + " Ft."
+            "<small>ÖSSZESEN:</small>" + priceText + "Ft. <em>+ÁFA</em>"
         );
 
         //update button text
@@ -411,6 +411,10 @@ $("form.order :input").on("change input", function() {
         origForm = $form.serialize();
         updateOrderBox($(this));
     }
+});
+$("form.order").on("submit", function(e) {
+    e.preventDefault();
+    return false;
 });
 
 $(".scroller").on("click", ".js-scrollright", function(e) {

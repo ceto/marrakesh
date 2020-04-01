@@ -398,6 +398,10 @@
             display: block;
             //font-weight: $global-weight-bold;
         }
+        em {
+            font-size: .666em;
+            font-style: normal;
+        }
     }
     .button {
         margin: 0;

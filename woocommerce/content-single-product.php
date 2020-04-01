@@ -467,15 +467,15 @@ if ( post_password_required() ) {
                     ?>
                     <h3 class="atext-center"><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="producttabs">
-                        <?php if ( $relproducts ) : ?><li class="tabs-title is-active"><a href="#similarpanel"
-                                aria-selected="true"><?php _e( 'Hasonló termékek', 'marrakesh' ); ?></a></li>
+                        <?php if ( $upsellproducts  ) : ?><li class="tabs-title is-active"><a
+                                href="#upsellpanel" aria-selected="true"><?php _e( 'Ehhez ajánljuk', 'marrakesh' ) ?></a>
+                        </li><?php endif;  ?>
+                        <?php if ( $relproducts ) : ?><li class="tabs-title <?= !$upsellproducts?'is-active':''; ?>"><a href="#similarpanel"
+                            <?= !$upsellproducts?'aria-selected="true"':''; ?>><?php _e( 'Hasonló termékek', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
                         <?php if ( $reldesignproducts  ) : ?><li class="tabs-title"><a
                                 href="#colvarpanel"><?php _e( 'Színvariációk', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
-                        <?php if ( $upsellproducts  ) : ?><li class="tabs-title"><a
-                                href="#upsellpanel"><?php _e( 'Ajánljuk figyelemedbe&hellip;', 'marrakesh' ) ?></a>
-                        </li><?php endif;  ?>
                     </ul>
                 </div>
             </div>
@@ -483,8 +483,28 @@ if ( post_password_required() ) {
 
         <div class="tabs-content" data-tabs-content="producttabs">
 
+            <?php if ( $upsellproducts ) : ?>
+            <div class="tabs-panel is-active" id="upsellpanel">
+                <section class="up-sells upsells products">
+                    <ul class="prodswipe prodswipe--upsells">
+                        <?php foreach ( $upsellproducts as $upsell ) : ?>
+                        <?php
+                            $post_object = get_post( $upsell->get_id() );
+                            setup_postdata( $GLOBALS['post'] =& $post_object );
+                            wc_get_template_part( 'content-widget-product' );
+                        ?>
+                        <?php endforeach;  wp_reset_postdata(); ?>
+                    </ul>
+                </section>
+                <nav class="scroller" data-target="prodswipe--upsells">
+                    <a href="#" class="js-scrollleft">‹</a>
+                    <a href="#" class="js-scrollright">›</a>
+                </nav>
+            </div>
+            <?php endif; ?>
+
             <?php if ( $relproducts ) : ?>
-            <div class="tabs-panel is-active" id="similarpanel">
+            <div class="tabs-panel <?= !$upsellproducts?'is-active':''; ?>" id="similarpanel">
                 <section class="related products">
                     <ul class="prodswipe prodswipe--similar">
                         <?php foreach ( $relproducts as $related_product ) : ?>
@@ -521,27 +541,6 @@ if ( post_password_required() ) {
                 </nav>
             </div>
             <?php endif;  ?>
-
-
-            <?php if ( $upsellproducts ) : ?>
-            <div class="tabs-panel" id="upsellpanel">
-                <section class="up-sells upsells products">
-                    <ul class="prodswipe prodswipe--upsells">
-                        <?php foreach ( $upsellproducts as $upsell ) : ?>
-                        <?php
-                            $post_object = get_post( $upsell->get_id() );
-                            setup_postdata( $GLOBALS['post'] =& $post_object );
-                            wc_get_template_part( 'content-widget-product' );
-                        ?>
-                        <?php endforeach;  wp_reset_postdata(); ?>
-                    </ul>
-                </section>
-                <nav class="scroller" data-target="prodswipe--upsells">
-                    <a href="#" class="js-scrollleft">‹</a>
-                    <a href="#" class="js-scrollright">›</a>
-                </nav>
-            </div>
-            <?php endif; ?>
 
         </div>
         <div class="grid-container">

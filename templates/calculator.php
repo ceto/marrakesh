@@ -3,7 +3,7 @@
 <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
     <?php if ( $datafromprod['_isboxed']=='yes' && $datafromprod['_sizeperbox'] )  : ?>
     <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
-    <p><?php _e( 'Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked.', 'marrakesh' ) ?>
+    <p><?php _e( 'Add meg a kívánt mennyiséget, hogy megközelítőleg pontos nettó árat számoljunk neked. A kalkulált ár ÁFA nélkül értendő.', 'marrakesh' ) ?>
     </p>
     <form class="order cart" action="<?php the_permalink(); ?>" method="post" novalidate="novalidate">
 
@@ -37,7 +37,7 @@
         <section class="order-submit">
             <div class="order-submit__price">
                 <p class="price text-center">
-                    <small><?= __( 'ÖSSZESEN (bruttó)', 'marrakesh'); ?></small>
+                    <small><?= __( 'ÖSSZESEN:', 'marrakesh'); ?></small>
                     0 Ft.
                 </p>
             </div>

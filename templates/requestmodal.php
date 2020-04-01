@@ -51,7 +51,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="speci">Mennyiség (m<sup>2</sup>)
+                    <label class="speci">Mennyiség <?= ($datafromprod['_isboxed']=='yes')?'(m<sup>2</sup>)':__('(db.)','marrakesh'); ?>
                         <input id="r_amount" name="r_amount" type="text">
                     </label>
                 </li>

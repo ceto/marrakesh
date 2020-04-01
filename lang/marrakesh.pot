@@ -190,11 +190,11 @@ msgid "Ár kalkulátor"
 msgstr ""
 
 #: templates/calculator.php:6
-msgid "Kívánt mennyiség alapján megközelítőleg pontos bruttó árat és kiszerelési egységet számolunk neked."
+msgid "Add meg a kívánt mennyiséget, hogy megközelítőleg pontos nettó árat számoljunk neked. A kalkulált ár ÁFA nélkül értendő."
 msgstr ""
 
-#: templates/calculator.php:40, woocommerce/single-product/add-to-cart/simple.php:112
-msgid "ÖSSZESEN (bruttó)"
+#: templates/calculator.php:40
+msgid "ÖSSZESEN:"
 msgstr ""
 
 #: templates/calculator.php:53, woocommerce/content-single-product.php:159
@@ -231,6 +231,10 @@ msgstr ""
 
 #: templates/footer.php:81
 msgid "Raktár és áruátvétel"
+msgstr ""
+
+#: templates/requestmodal.php:54
+msgid "(db.)"
 msgstr ""
 
 #: templates/requestmodal.php:90
@@ -341,15 +345,15 @@ msgid "Kapcsolódó termékek"
 msgstr ""
 
 #: woocommerce/content-single-product.php:471
-msgid "Hasonló termékek"
+msgid "Ehhez ajánljuk"
 msgstr ""
 
 #: woocommerce/content-single-product.php:474
-msgid "Színvariációk"
+msgid "Hasonló termékek"
 msgstr ""
 
 #: woocommerce/content-single-product.php:477
-msgid "Ajánljuk figyelemedbe&hellip;"
+msgid "Színvariációk"
 msgstr ""
 
 #: woocommerce/global/breadcrumb.php:26
@@ -362,6 +366,10 @@ msgstr ""
 
 #: woocommerce/loop/pagination.php:41
 msgid "Következő"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/simple.php:112
+msgid "ÖSSZESEN (bruttó)"
 msgstr ""
 
 #: woocommerce/single-product/add-to-cart/simple.php:126

@@ -123,7 +123,7 @@
                 <?php the_content(); ?> -->
                 <ul class="tmplcardgrid">
                     <?php foreach ( $child_terms as $child ) : ?>
-                    <?php if ( in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>
+                    <?php if ( get_field('style', $child) && in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>
                     <li>
                         <div class="tmplcard">
                             <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">

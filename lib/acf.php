@@ -24,7 +24,7 @@ add_filter('acf/settings/remove_wp_meta_box', '__return_false');
 // 6. Save JSON
 add_filter('acf/settings/save_json', 'marrakesh_acf_json_save_point');
 function marrakesh_acf_json_save_point( $path ) {
-    $path = get_stylesheet_directory() . '/lib/acf/json';
+    $path = get_stylesheet_directory() . '/lib/jsonacf';
     return $path;
 }
 
@@ -33,6 +33,6 @@ function marrakesh_acf_json_save_point( $path ) {
 add_filter('acf/settings/load_json', 'marrakesh_acf_json_load_point');
 function marrakesh_acf_json_load_point( $paths ) {
     unset($paths[0]);
-    $paths[] = get_stylesheet_directory() . '/lib/acf/json';
+    $paths[] = get_stylesheet_directory() . '/lib/jsonacf';
     return $paths;
 }

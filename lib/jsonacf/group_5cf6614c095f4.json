@@ -15,6 +15,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 3,
             "return_format": "array",
             "preview_size": "large",
             "library": "all",
@@ -56,5 +57,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586872908
+    "modified": 1586902407
 }

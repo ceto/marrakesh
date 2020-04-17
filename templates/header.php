@@ -4,8 +4,11 @@
             <div class="grid-x grid-margin-x">
                 <div class="shrink cell">
                     <ul class="menu menu--topbar align-right">
-                        <li class="menu-item show-for-medium"><a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">Bemutatóterem: 1088 Budapest, Bródy Sándor u.
-                                34.</a></li>
+                        <li class="menu-item show-for-medium">
+                            <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">
+                            <?= __('Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34.', 'marrakesh'); ?>
+                            </a>
+                        </li>
                         <li class="menu-item"><a
                                 href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
                         </li>
@@ -52,8 +55,8 @@
             </div>
             <div class="cell shrink show-for-tablet banner__ctacell">
                 <div class="banner__cta">
-                    <p class="show-for-large">Egyedi színeket szeretnél?</p>
-                    <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn">Tervező indítása</a>
+                    <p class="show-for-large"><?= __('Egyedi színeket szeretnél?', 'marrakesh') ?></p>
+                    <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn"><?= __('Tervező indítása', 'marrakesh'); ?></a>
                 </div>
             </div>
             <div class="shrink cell hide-for-tablet">

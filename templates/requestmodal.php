@@ -16,7 +16,7 @@
         </div>
     </header>
     <div class="grid-container">
-        <h3>Ajánlat kérése</h3>
+        <h3><?= __('Ajánlat kérése', 'marrakesh'); ?></h3>
         <p>Örömmel vesszük megkeresésedet, személyesen a <a target="_blank" href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">belvárosi bemutatótermünkben,</a> telefonon a
         <a href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a> telefonszámon, az <a
             href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a> email címen, vagy töltsd ki kapcsolati űrlapunkat rád szabott, egyedi ajánlatért.</p>
@@ -27,7 +27,7 @@
             </div>
             <ul class="inputgrid">
                 <li>
-                    <label class="speci">Név*
+                    <label class="speci"><?= __('Név', 'marrakesh'); ?>*
                         <input id="r_name" name="r_name" type="text" required>
                         <span class="form-error">
                             Megadása kötelező
@@ -35,7 +35,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="speci">E-mail*
+                    <label class="speci"><?= __('E-mail', 'marrakesh'); ?>*
                         <input id="r_email" name="r_email" type="email" required>
                         <span class="form-error">
                             Megadása kötelező
@@ -43,7 +43,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="speci">Telefon*
+                    <label class="speci"><?= __('Telefon', 'marrakesh'); ?>*
                         <input id="r_tel" name="r_tel" type="text" required>
                         <span class="form-error">
                             Megadása kötelező
@@ -51,23 +51,23 @@
                     </label>
                 </li>
                 <li>
-                    <label class="speci">Mennyiség <?= ($datafromprod['_isboxed']=='yes')?'(m<sup>2</sup>)':__('(db.)','marrakesh'); ?>
+                    <label class="speci"><?= __('Mennyiség', 'marrakesh'); ?> <?= ($datafromprod['_isboxed']=='yes')?'(m<sup>2</sup>)':__('(db.)','marrakesh'); ?>
                         <input id="r_amount" name="r_amount" type="text">
                     </label>
                 </li>
             </ul>
             <fieldset>
-                <legend>Mennyire sürgős az ügy?</legend>
+                <legend><?= __('Mennyire sürgős az ügy', 'marrakesh'); ?></legend>
                 <ul class="inputgrid">
-                    <li><label for="r_timeShort"><input type="radio" name="r_time" value="Azonnal kellene"
-                        id="r_timeShort">Azonnal kellene</label></li>
-                    <li><label for="r_timeMed"><input type="radio" name="r_time" value="Max. egy hónapot kivárok" id="r_timeMed">Pár hét várakozás belefér</label></li>
-                    <li><label for="r_timeLong"><input type="radio" name="r_time" value="Tudok várni 2-3 hónapot egyedi gyártásra" id="r_timeLong">Tudok várni 2-3 hónapot egyedi gyártásra</label></li>
+                    <li><label for="r_timeShort"><input type="radio" name="r_time" value="<?= __('Azonnal kellene', 'marrakesh'); ?>"
+                        id="r_timeShort"><?= __('Azonnal kellene', 'marrakesh'); ?></label></li>
+                    <li><label for="r_timeMed"><input type="radio" name="r_time" value="<?= __('Pár hét várakozás belefér', 'marrakesh'); ?>" id="r_timeMed"><?= __('Pár hét várakozás belefér', 'marrakesh'); ?></label></li>
+                    <li><label for="r_timeLong"><input type="radio" name="r_time" value="<?= __('Tudok várni 2-3 hónapot egyedi gyártásra', 'marrakesh'); ?>" id="r_timeLong"><?= __('Tudok várni 2-3 hónapot egyedi gyártásra', 'marrakesh'); ?></label></li>
                 </ul>
             </fieldset>
             <ul class="inputgrid">
                 <li>
-                    <label>Megjegyzés vagy kérdés
+                    <label><?= __('Megjegyzés vagy kérdés', 'marrakesh'); ?>
                         <textarea id="r_message" name="r_message" rows="3"></textarea>
                     </label>
                 </li>

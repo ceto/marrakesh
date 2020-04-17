@@ -507,26 +507,28 @@ function marrakesh_save_wc_custom_fields( $post_id ) {
 /****** Price unit Display Tricks */
 add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
 function marrakesh_price_html( $price, $product ){
-    if (get_post_meta($product->get_id(), '_isboxed', true )=='yes') {
-        $price.='/doboz';
+    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
+    if (get_post_meta($origproductid, '_isboxed', true )=='yes') {
+        $price.='/'.__('doboz','marrakesh');
     }
-    else {$price.='/db';}
-    return $price.' +ÁFA';
+    else {$price.='/'.__('db','marrakesh');}
+    return $price.' +'.__('ÁFA','marrakesh');
 }
 
 add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
 function marrakesh_united_cartitem_price( $price, $cart_item) {
     if (get_post_meta($cart_item[data]->get_id(), '_isboxed', true )=='yes') {
-        $price.='/doboz';
+        $price.='/'.__('doboz','marrakesh');
     }
-    else {$price.='/db.';}
-    return $price.' +ÁFA';
+    else {$price.='/'.__('db','marrakesh');}
+    return $price.' +'.__('ÁFA','marrakesh');
 }
 
 
 /****** Stock Quantity unit Display Tricks */
 function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
-    if ( get_post_meta($product->get_id(), '_isboxed', true ) && ($sizeperbox = get_post_meta($product->get_id(), '_sizeperbox', true ) ) ) {
+    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
+    if ( get_post_meta($origproductid, '_isboxed', true ) && ($sizeperbox = get_post_meta($origproductid, '_sizeperbox', true ) ) ) {
         $stock_quantity=number_format($stock_quantity*$sizeperbox,1);
         $stock_quantity.=__('m<sup>2</sup>','marrakesh');
     }
@@ -542,10 +544,10 @@ add_filter( 'woocommerce_format_stock_quantity', 'marrakesh_add_stock_quantity_u
 
 // define the woocommerce_get_availability_text callback
 function marrakesh_change_get_availability_text( $availability, $instance ) {
-    $csstock = get_post_meta($instance->get_id(), '_csstock', true );
-    $csdate = get_post_meta($instance->get_id(), '_csarrival', true );
-
-
+    $originstanceid = apply_filters( 'wpml_object_id', $instance->get_id(), 'product', TRUE, 'hu' );
+    // var_dump($instance);
+    $csstock = get_post_meta($originstanceid, '_csstock', true );
+    $csdate = get_post_meta($originstanceid, '_csarrival', true );
 
     if ( ! $instance->is_in_stock() ) {
         $availability = __( 'Out of stock', 'woocommerce' );

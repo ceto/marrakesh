@@ -17,12 +17,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post, $datafromcat, $datafromprod;
+global $product, $post, $datafromprod;
 $attributes = $product->get_attributes();
 
 $designterm = get_term_by('id', $attributes['pa_design']['options'][0],'pa_design');
 $linkeddesigngallery = get_field('linkedgallery', $designterm);
-//var_dump($linkeddesigngallery);
+// var_dump($linkeddesigngallery);
 /**
  * Hook: woocommerce_before_single_product.
  *
@@ -38,77 +38,29 @@ if ( post_password_required() ) {
 
 <?php
 
+
     $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
     $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
     $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
     $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids' ) );
 
-    $catids = $product->get_category_ids();
-    $datafromcat = array(
-        'isboxed' => false,
-        'weight' => false,
-        'length' => false,
-        'width' => false,
-        'height' => false,
-        'pcs_per_sqm' => false,
-        'pcs_per_box' => false,
-        'size_per_box' => false,
-        'productinfo' => false,
-        'order' => false,
-        'application' => false,
-    );
-    foreach ($catids as $categoryid) {
-        $datafromcat['isboxed'] = $datafromcat['isboxed'] || get_field('isboxed', 'product_cat_' . $categoryid);
+    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
 
-        if ($hvar = get_field('weight', 'product_cat_' . $categoryid)) {
-            $datafromcat['weight'] = $hvar;
-        }
-        if ($hvar = get_field('length', 'product_cat_' . $categoryid)) {
-            $datafromcat['length'] = $hvar;
-        }
-        if ($hvar = get_field('width', 'product_cat_' . $categoryid)) {
-            $datafromcat['width'] = $hvar;
-        }
-        if ($hvar = get_field('height', 'product_cat_' . $categoryid)) {
-            $datafromcat['height'] = $hvar;
-        }
-        if ($hvar = get_field('pcs_per_sqm', 'product_cat_' . $categoryid)) {
-            $datafromcat['pcs_per_sqm'] = $hvar;
-        }
-        if ($hvar = get_field('pcs_per_box', 'product_cat_' . $categoryid)) {
-            $datafromcat['pcs_per_box'] = $hvar;
-        }
-        if ($hvar = get_field('size_per_box', 'product_cat_' . $categoryid)) {
-            $datafromcat['size_per_box'] = $hvar;
-        }
-        if ($hvar = get_field('productinfo', 'product_cat_' . $categoryid)) {
-            $datafromcat['productinfo'] = $hvar;
-        }
-        if ($hvar = get_field('order', 'product_cat_' . $categoryid)) {
-            $datafromcat['order'] = $hvar;
-        }
-        if ($hvar = get_field('application', 'product_cat_' . $categoryid)) {
-            $datafromcat['application'] = $hvar;
-        }
-    }
-    //echo '<hr>';
-    //var_dump($datafromcat);
+    $datafromprod['_isboxed'] = get_post_meta($origproductid, '_isboxed', true );
+    $datafromprod['_sizeperbox'] = get_post_meta($origproductid, '_sizeperbox', true );
+    $datafromprod['_tilesperbox'] = get_post_meta($origproductid, '_tilesperbox', true );
+    $datafromprod['_tileweight'] = get_post_meta($origproductid, '_tileweight', true );
+    $datafromprod['_tilewidth'] = get_post_meta($origproductid, '_tilewidth', true );
+    $datafromprod['_tileheight'] = get_post_meta($origproductid, '_tileheight', true );
+    $datafromprod['_tilethickness'] = get_post_meta($origproductid, '_tilethickness', true );
 
+    $datafromprod['_linfopage'] = apply_filters( 'wpml_object_id', get_post_meta($origproductid, '_linfopage', true ), 'post', TRUE);
 
-    $datafromprod['_isboxed'] = get_post_meta($product->get_id(), '_isboxed', true );
-    $datafromprod['_sizeperbox'] = get_post_meta($product->get_id(), '_sizeperbox', true );
-    $datafromprod['_tilesperbox'] = get_post_meta($product->get_id(), '_tilesperbox', true );
-    $datafromprod['_tileweight'] = get_post_meta($product->get_id(), '_tileweight', true );
-    $datafromprod['_tilewidth'] = get_post_meta($product->get_id(), '_tilewidth', true );
-    $datafromprod['_tileheight'] = get_post_meta($product->get_id(), '_tileheight', true );
-    $datafromprod['_tilethickness'] = get_post_meta($product->get_id(), '_tilethickness', true );
-    $datafromprod['_linfopage'] = get_post_meta($product->get_id(), '_linfopage', true );
-    //var_dump($datafromprod);
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
-    <div class="singleproduct__top <?= (get_field('dontcoverwp')===true)?'dontcoverwp':''; ?>">
+    <div class="singleproduct__top <?= (get_field('dontcoverwp', $origproductid)===true)?'dontcoverwp':''; ?>">
         <aside class="singleproduct__top__bg">
-            <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'full' ); ?>
+            <?php echo wp_get_attachment_image( get_field('wallimg', $origproductid, false), 'full' ); ?>
         </aside>
 
         <div class="singleproduct__top__content">
@@ -131,12 +83,12 @@ if ( post_password_required() ) {
 
                             <!-- <figure class="singleproduct__prodimage">
                                 <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
-                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                                <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' ); ?>
                             </figure> -->
 
 
                             <figure class="singleproduct__prodthumb">
-                                <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'tiny' ); ?>
+                                <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' ); ?>
                             </figure>
 
                             <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
@@ -172,23 +124,23 @@ if ( post_password_required() ) {
         <div class="psgallery thumbswipe">
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg',false,false),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg', $origproductid, false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('singleimg',false,false), 'medium' ); ?>
+                    <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'medium' ); ?>
                 </a>
             </figure>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id(),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id( $origproductid),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
                     <?php echo woocommerce_get_product_thumbnail('medium'); ?>
                 </a>
             </figure>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg',false,false),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg', $origproductid, false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('wallimg',false,false), 'medium' ); ?>
+                    <?php echo wp_get_attachment_image( get_field('wallimg', $origproductid, false), 'medium' ); ?>
                 </a>
             </figure>
             <?php $attachment_ids = $product->get_gallery_image_ids(); ?>

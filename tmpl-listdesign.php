@@ -62,10 +62,11 @@
                 <ul class="refcatcardgrid">
                     <?php foreach ( $allstyles as $child ) : ?>
                     <li>
+                        <?php $origstyleid = apply_filters( 'wpml_object_id', $child->term_id, 'pa_style', TRUE, 'hu' ); ?>
                         <div class="refcatcard">
                             <a class="refcatcard__fulllink"
                                 href="<?php the_permalink(); ?>?pa_style=<?= $child->slug; ?>">
-                                <?php if ($designthumb = get_field('cover', $child) ) : ?>
+                                <?php if ($designthumb = get_field('cover', 'pa_style' . '_' . $origstyleid) ) : ?>
                                 <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'refcatcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
                                 <img class="refcatcard__img"

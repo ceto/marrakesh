@@ -48,10 +48,6 @@
     <div class="grid-x grid-margin-x align-center">
         <div class="cell xlarge-10">
             <div class="ps ps--narrow">
-                <!-- <?php if (has_excerpt()) : ?>
-                <div class="lead"><?php the_excerpt(); ?></div>
-                <?php endif; ?>
-                <?php the_content(); ?> -->
                 <ul class="refcatcardgrid">
                     <?php foreach ( $child_terms as $child ) : ?>
                     <li>

@@ -20,11 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+
+$origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
 ?>
-<?php if ( (get_post_meta($product->get_id(), '_isboxed', true )=='yes') && ($sizeperbox=get_post_meta($product->get_id(), '_sizeperbox', true )) )  : ?>
+<?php if ( (get_post_meta($origproductid, '_isboxed', true )=='yes') && ($sizeperbox=get_post_meta($origproductid, '_sizeperbox', true )) )  : ?>
 <span
     class="price"><?php echo wc_price(wc_get_price_to_display($product)/$sizeperbox, array('decimals' => 0 )); ?>/m<sup>2</sup>
-    +ÁFA</span>
+    +<?= __('ÁFA', 'marrakesh'); ?></span>
 <?php elseif ( $price_html = $product->get_price_html() ) : ?>
 <span class="price"><?php echo $price_html; ?></span>
 <?php endif; ?>

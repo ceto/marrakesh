@@ -43,19 +43,6 @@
                         </ul>
                     </section>
                 </div>
-                <!-- <div class="cell small-auto medium-6 large-3">
-                    <section class="widget %1$s %2$s">
-                        <h3 class="widget__title"><?php _e('Kapcsolat', 'marrakesh'); ?></h3>
-                        <ul class="menu vertical">
-                            <li><a
-                                    href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a>
-                            </li>
-                            <li><a
-                                    href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a>
-                            </li>
-                        </ul>
-                    </section>
-                </div> -->
                 <div class="cell small-auto medium-6 large-3">
                     <section class="widget %1$s %2$s">
                         <h3 class="widget__title"><?php _e('Belvárosi bemutatóterem', 'marrakesh'); ?></h3>

@@ -15,6 +15,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 0,
             "return_format": "id",
             "preview_size": "thumbnail",
             "library": "all",
@@ -39,6 +40,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 0,
             "return_format": "array",
             "preview_size": "thumbnail",
             "library": "all",
@@ -63,6 +65,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 0,
             "message": "",
             "default_value": 0,
             "ui": 0,
@@ -82,6 +85,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 0,
             "post_type": [
                 "gallery"
             ],
@@ -104,6 +108,7 @@
                 "class": "",
                 "id": ""
             },
+            "wpml_cf_preferences": 0,
             "post_type": [
                 "reference"
             ],
@@ -131,5 +136,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586872923
+    "modified": 1587079596
 }

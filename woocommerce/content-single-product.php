@@ -224,8 +224,8 @@ if ( post_password_required() ) {
                                 <?php // $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
                                 <?php // echo $postparts['main']; ?>
                                 <?php //echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
-                                <p>További információk és részletes termék ismertetők az <a
-                                        href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>">Info &amp; Segítség</a> oldalon.
+                                <p><?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a
+                                        href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
                                 </p>
                                 <?php $designdescr=term_description($designs['0']); ?>
                                 <?php if ($designdescr!=='') : ?>

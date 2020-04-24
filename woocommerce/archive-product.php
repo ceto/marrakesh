@@ -161,7 +161,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="ps--xlight">
         <div class="grid-container">
             <section class="pratopstatus">
-                <h3 class="pratopstatus__title">Bekapcsolt szűrők</h3>
+                <h3 class="pratopstatus__title"><?= __('Bekapcsolt szűrők', 'marrakesh'); ?></h3>
                 <?php if ( count($_chosen_attributes) > 0) : ?>
                 <?php
                         the_widget( 'WC_Widget_Layered_Nav_Filters', array(
@@ -201,7 +201,6 @@ defined( 'ABSPATH' ) || exit;
             <div class="cell show-for-tablet tablet-3 xlarge-2" adata-sticky-container>
                 <div class="prarchive__sidebar" class="asticky" data-margin-top="2" adata-sticky
                     adata-anchor="prarchive__main">
-                    <!-- <p><?php woocommerce_result_count() ?></p> -->
                     <?php
                         $wargs = array(
                             'before_widget' => '<section class="cell widget widget--sidebar %1$s"><ul class="accordion" data-accordion data-allow-all-closed="true">',
@@ -212,7 +211,9 @@ defined( 'ABSPATH' ) || exit;
                     ?>
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
 
-                        <?php the_widget('WC_Widget_Status_Filter', array(), $wargs );?>
+                        <?php the_widget('WC_Widget_Status_Filter',  array(
+                            'title' => __('Raktárkészlet', 'marrakesh')
+                            ), $wargs );?>
                         <?php
                             if (is_product_category() || is_shop()) {
                                 the_widget( 'WC_Widget_Product_Categories', array(

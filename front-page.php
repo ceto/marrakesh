@@ -159,8 +159,8 @@
             <br><br>
             <p class="text-center">
                 <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>?filter_availability=in_stock"
-                    class="button small">Ugrás a
-                    raktárkészletre</a>
+                    class="button small"><?= __('Ugrás a
+                    raktárkészletre','marrakesh'); ?></a>
             </p>
 
         </div>
@@ -178,8 +178,8 @@
             ?>
             <br><br>
             <p class="text-center">
-                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small">További lapok
-                    böngészése</a>
+                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small"><?= __('További lapok
+                    böngészése','marrakesh'); ?></a>
 
         </div>
         <!-- <div class="tabs-panel" id="fpsalepanel">
@@ -228,19 +228,19 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-middle align-justify">
             <div class="cell tablet-6 large-5">
-                <h2>Élőben még szebb. Látogass el bemutatótermünkbe!</h2>
+                <h2><?= __('Élőben még szebb. Látogass el bemutatótermünkbe!', 'marrakesh'); ?></h2>
                 <div class="lead">
-                    <p>Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a
+                    <p><?= __('Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a
                         cementlapok izgalmas világát. Továbbá nagyon sok hasznos információval segítünk a
-                        választásban.</p>
+                        választásban.', 'marrakesh'); ?></p>
                 </div>
                 <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>"
-                    class="button small">Bemutatóterem és nyitvatartás</a>
+                    class="button small"><?= __('Bemutatóterem és nyitvatartás', 'marrakesh'); ?></a>
             </div>
             <div class="cell tablet-6 large-6">
                 <a href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">
                     <img src="<?= get_stylesheet_directory_uri() ?>/dist/images/bemutatoterem_resized.jpg"
-                        alt="Bemutatóterem a Bródyban">
+                        alt="<?= __('Bemutatóterem a Bródyban', 'marrakesh'); ?>">
                 </a>
             </div>
         </div>

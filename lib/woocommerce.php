@@ -85,9 +85,12 @@ function woocommerce_template_loop_product_link_open() {
 
 function woocommerce_template_loop_product_thumbnail() {
     global $product;
+    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
     echo '<figure class="prodcard__prodimage">';
-    echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
-    echo wp_get_attachment_image( get_field('singleimg'), 'tiny' );
+    echo wp_get_attachment_image(get_post_thumbnail_id($origproductid),'medium');
+    // echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
+    echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' );
+    // echo wp_get_attachment_image( get_field('singleimg'), 'tiny' );
     echo '</figure>';
 }
 

@@ -192,39 +192,39 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:512, lib/woocommerce.php:521, templates/calculator.php:24, woocommerce/content-single-product.php:285
+#: lib/woocommerce.php:515, lib/woocommerce.php:524, templates/calculator.php:24, woocommerce/content-single-product.php:285
 msgid "doboz"
 msgstr ""
 
-#: lib/woocommerce.php:514, lib/woocommerce.php:523
+#: lib/woocommerce.php:517, lib/woocommerce.php:526
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:515, lib/woocommerce.php:524, woocommerce/loop/price.php:29
+#: lib/woocommerce.php:518, lib/woocommerce.php:527, woocommerce/loop/price.php:29
 msgid "ÁFA"
 msgstr ""
 
-#: lib/woocommerce.php:533
+#: lib/woocommerce.php:536
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:559, lib/woocommerce.php:657
+#: lib/woocommerce.php:562, lib/woocommerce.php:660
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:562
+#: lib/woocommerce.php:565
 msgid "Rendelésre gyártjuk"
 msgstr ""
 
-#: lib/woocommerce.php:563
+#: lib/woocommerce.php:566
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:595
+#: lib/woocommerce.php:598
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:650
+#: lib/woocommerce.php:653
 msgid "Azonnal vihető"
 msgstr ""
 

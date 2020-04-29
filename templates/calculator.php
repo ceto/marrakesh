@@ -1,9 +1,9 @@
-<?php global $datafromprod, $datafromcat, $product; ?>
+<?php global $datafromprod, $product; ?>
 
 <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
     <?php if ( $datafromprod['_isboxed']=='yes' && $datafromprod['_sizeperbox'] )  : ?>
     <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
-    <p><?php _e( 'Add meg a kívánt mennyiséget, hogy megközelítőleg pontos nettó árat számoljunk neked. A kalkulált ár ÁFA nélkül értendő.', 'marrakesh' ) ?>
+    <p><?php _e( 'Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. A kalkulált ár 27% ÁFA-t tartalamaz.', 'marrakesh' ) ?>
     </p>
     <form class="order cart" action="<?php the_permalink(); ?>" method="post" novalidate="novalidate">
 
@@ -43,8 +43,8 @@
             </div>
             <div class="order-submit__actions">
                 <input class="pricePerBox" type="hidden" value="<?= wc_get_price_to_display($product) ?>">
-                <input class="sqftPerBox" type="hidden" value="<?= $datafromcat['size_per_box'] ?>">
-                <input class="pricePerSqft" type="hidden" value="<?= wc_get_price_to_display($product)/$datafromcat['size_per_box'] ?>">
+                <input class="sqftPerBox" type="hidden" value="<?= $datafromprod['_sizeperbox'] ?>">
+                <input class="pricePerSqft" type="hidden" value="<?= wc_get_price_to_display($product)/$datafromprod['_sizeperbox'] ?>">
                 <input class="orderQuantity" type="hidden" name="quantity" value="0">
             </div>
         </section>

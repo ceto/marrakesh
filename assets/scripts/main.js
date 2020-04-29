@@ -363,7 +363,7 @@ function updateOrderBox($changed) {
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(0);
         $priceText.html(
-            "<small>ÖSSZESEN:</small>" + priceText + "Ft. <em>+ÁFA</em>"
+            "<small>ÖSSZESEN:</small>" + priceText + "Ft."
         );
 
         //update button text

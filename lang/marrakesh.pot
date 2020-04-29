@@ -200,10 +200,6 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:518, lib/woocommerce.php:527, woocommerce/loop/price.php:29
-msgid "ÁFA"
-msgstr ""
-
 #: lib/woocommerce.php:536
 msgid "m<sup>2</sup>"
 msgstr ""

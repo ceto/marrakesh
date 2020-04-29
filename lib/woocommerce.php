@@ -515,7 +515,7 @@ function marrakesh_price_html( $price, $product ){
         $price.='/'.__('doboz','marrakesh');
     }
     else {$price.='/'.__('db','marrakesh');}
-    return $price.' +'.__('ÁFA','marrakesh');
+    return $price;
 }
 
 add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
@@ -524,7 +524,7 @@ function marrakesh_united_cartitem_price( $price, $cart_item) {
         $price.='/'.__('doboz','marrakesh');
     }
     else {$price.='/'.__('db','marrakesh');}
-    return $price.' +'.__('ÁFA','marrakesh');
+    return $price;
 }
 
 

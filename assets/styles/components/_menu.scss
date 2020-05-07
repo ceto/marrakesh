@@ -7,17 +7,17 @@
 
 .menu a {
     color: inherit;
-    span {
-        font-weight: $global-weight-bold;
-        font-size: 0.875em;
-        //color:$dark-gray;
-        &:before {
-            content: " (";
-        }
-        &:after {
-            content: ")";
-        }
-    }
+    // span {
+    //     font-weight: $global-weight-bold;
+    //     font-size: 0.875em;
+    //     //color:$dark-gray;
+    //     &:before {
+    //         content: " (";
+    //     }
+    //     &:after {
+    //         content: ")";
+    //     }
+    // }
 }
 
 .menu.menu--topbar {
@@ -25,6 +25,9 @@
     li {
         &:not(:last-child()):after {
             content: "|";
+        }
+        &.wpml-ls-menu-item {
+            text-transform: uppercase;
         }
     }
 

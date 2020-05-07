@@ -276,14 +276,6 @@ msgstr ""
 msgid "Inspirációkért kövess"
 msgstr ""
 
-#: templates/footer.php:48
-msgid "Belvárosi bemutatóterem"
-msgstr ""
-
-#: templates/footer.php:68
-msgid "Raktár és áruátvétel"
-msgstr ""
-
 #: templates/header.php:9
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""

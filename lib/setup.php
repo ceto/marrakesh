@@ -95,8 +95,8 @@ function widgets_init() {
   register_sidebar([
     'name'          => __('Footer', 'marrakeshadmin'),
     'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget widget--footer %1$s %2$s">',
-    'after_widget'  => '</section>',
+    'before_widget' => '<div class="cell small-auto medium-6 large-3"><section class="widget widget--footer %1$s %2$s">',
+    'after_widget'  => '</section></div>',
     'before_title'  => '<h3 class="widget__title">',
     'after_title'   => '</h3>'
   ]);

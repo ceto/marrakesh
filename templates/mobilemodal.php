@@ -5,12 +5,16 @@
         <nav class="mobilemodal__mainnav">
             <a class="mobilemodal__brand <?= get_locale(); ?>" href="<?= esc_url(home_url('/')); ?>">
                 <?php switch( get_locale() ) {
-                        case 'sk_SK' : ?>
-                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/orientdecor.svg"
-                    alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                case 'en_US' : ?>
+                    <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo-en.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                <?php break; ?>
+                <?php case 'de_DE' : ?>
+                    <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo-de.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                <?php break; ?>
+                <?php case 'sk_SK' : ?>
+                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/orientdecor.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                 <?php break; default: ?>
-                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg"
-                    alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
+                <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                 <?php } ?>
             </a>
             <?php

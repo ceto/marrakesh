@@ -288,11 +288,11 @@ msgstr ""
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
-#: templates/header.php:58
+#: templates/header.php:61
 msgid "Egyedi színeket szeretnél?"
 msgstr ""
 
-#: templates/header.php:59
+#: templates/header.php:62
 msgid "Tervező indítása"
 msgstr ""
 

@@ -132,5 +132,10 @@ function assets() {
   }
 
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+
+  wp_localize_script( 'sage/js', 'marrakesh_globals', array(
+    'currency' =>  get_woocommerce_currency(),
+    'currency_symbol' => get_woocommerce_currency_symbol()
+  ));
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

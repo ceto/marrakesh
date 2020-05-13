@@ -184,10 +184,6 @@ msgstr ""
 msgid "Thumbnail (1x1)"
 msgstr ""
 
-#: lib/customposts.php:132
-msgid "galeria"
-msgstr ""
-
 #: lib/extras.php:31
 msgid "Continued"
 msgstr ""
@@ -205,7 +201,7 @@ msgid "m<sup>2</sup>"
 msgstr ""
 
 #: lib/woocommerce.php:562, lib/woocommerce.php:660
-msgid "Hamarosan érkezik"
+msgid "Hamarosan raktáron"
 msgstr ""
 
 #: lib/woocommerce.php:565

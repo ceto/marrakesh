@@ -38,7 +38,7 @@
             <div class="order-submit__price">
                 <p class="price text-center">
                     <small><?= __('ÖSSZESEN', 'marrakesh'); ?>:</small>
-                    0 Ft.
+                    0 <?= get_woocommerce_currency_symbol() ?>
                 </p>
             </div>
             <div class="order-submit__actions">

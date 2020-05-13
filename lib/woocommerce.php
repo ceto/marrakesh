@@ -559,7 +559,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
         if ( $instance->backorders_require_notification() ) {
 
             if ( $csstock && $csdate ) {
-                $availability = __( 'Hamarosan érkezik', 'marrakesh' );
+                $availability = __( 'Hamarosan raktáron', 'marrakesh' );
             } else {
 
                 $availability = __( 'Rendelésre gyártjuk', 'marrakesh' );
@@ -657,7 +657,7 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 
 			$class       = $csavailability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
 			$link        = apply_filters( 'woocommerce_availability_filter_link', ! $csavailability_filter ? add_query_arg( 'filter_cs', '1' ) : remove_query_arg( 'filter_cs' ) );
-			$rating_html = __('Hamarosan érkezik', 'marrakesh');
+			$rating_html = __('Hamarosan raktáron', 'marrakesh');
 			$count_html  = ''; ////////// ADD COUNT LATER
 
             printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.

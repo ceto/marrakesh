@@ -363,7 +363,7 @@ function updateOrderBox($changed) {
         var newPrice = numberOfBoxes * pricePerBox;
         var priceText = newPrice.toFixed(0);
         $priceText.html(
-            "<small>ÖSSZESEN:</small>" + priceText + "Ft."
+            "<small>ÖSSZESEN:</small>" + priceText + marrakesh_globals.currency_symbol
         );
 
         //update button text

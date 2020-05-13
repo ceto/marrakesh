@@ -53,12 +53,10 @@
                     <li>
                         <div class="refcatcard">
                             <a class="refcatcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
-                                <?php if ($designthumb = get_field('cover', $child) ) : ?>
-                                <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'refcatcard__thumb', 'alt'=>$child->name) ); ?>
+                                <?php if ($designthumbid = get_field('cover', 'reference-type_'.$child->term_id, FALSE) ) : ?>
+                                <?= wp_get_attachment_image( $designthumbid , 'large', false, array('class'=>'refcatcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
-                                <img class="refcatcard__img"
-                                    src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
-                                    class="refcatcard__thumb" alt="<?= $child->name;?>">
+                                <img src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>" class="refcatcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
                                 <h3 class="refcatcard__name"><?= $child->name;?> (<?= $child->count;?>)<svg class="icon"><use xlink:href="#icon-gallery"></use></svg></h3>
                             </a>

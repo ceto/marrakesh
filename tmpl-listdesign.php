@@ -15,9 +15,10 @@
     // var_dump($allstyles);
 
 
-    $child_terms = get_terms( 'pa_design', array(
-        /*'child_of' => $parent_term->term_id */
-    ) );
+    $child_terms = get_terms( array(
+        'taxonomy' => 'pa_style',
+        // 'hide_empty' => false,
+    ));
 
 ?>
 <?php while (have_posts()) : the_post(); ?>
@@ -102,11 +103,6 @@
                                     </svg> <?= __('Vissza a stílus választóhoz','marrakesh') ?>
                                 </a>
                             </li>
-                            <?php foreach( $allstyles as $refcat ): ?>
-                            <!-- <li><a
-                                    href="<?php the_permalink(); ?>?pa_style=<?= $refcat->slug; ?>"><?= $refcat->name ?></a>
-                            </li> -->
-                            <?php endforeach; ?>
                         </ul>
                     </nav>
                 </div>

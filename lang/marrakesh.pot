@@ -120,11 +120,11 @@ msgstr ""
 msgid "Design Lister Page"
 msgstr ""
 
-#: tmpl-listdesign.php:77
+#: tmpl-listdesign.php:78
 msgid "%s minták"
 msgstr ""
 
-#: tmpl-listdesign.php:102
+#: tmpl-listdesign.php:103
 msgid "Vissza a stílus választóhoz"
 msgstr ""
 

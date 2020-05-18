@@ -64,8 +64,12 @@ $("#request_form").on("submit", function(ev, frm) {
 
                     var fn = window.gtag;
                     if (typeof fn === "function") {
-                        gtag("event", "sent", {
-                            event_category: "requestform"
+                        // gtag("event", "sent", {
+                        //     event_category: "requestform"
+                        // });
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-734728363/3XqMCOTO3tABEKuhrN4C',
+                            'transaction_id': 'formsent'
                         });
                         console.log("Gtag event fired");
                     } else {

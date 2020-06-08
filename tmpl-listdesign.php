@@ -108,6 +108,7 @@
     <div class="grid-x grid-margin-x align-center">
         <div class="cell xlarge-10">
             <div class="ps ps--narrow ps--notop">
+                <?php // var_dump($designterms); ?>
                 <ul class="tmplcardgrid">
                     <?php foreach ( $designterms as $child ) : ?>
                     <?php if ( get_field('style', $child) && in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>

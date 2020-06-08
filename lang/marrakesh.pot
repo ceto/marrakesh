@@ -343,23 +343,23 @@ msgstr ""
 #: woocommerce/archive-product.php:168, woocommerce/archive-product.php:182
 msgstr ""
 
-#: woocommerce/archive-product.php:215
+#: woocommerce/archive-product.php:214
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:220, woocommerce/content-single-product.php:293
+#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:293
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:234, woocommerce/archive-product.php:364
+#: woocommerce/archive-product.php:232, woocommerce/archive-product.php:361
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:245, woocommerce/archive-product.php:375
+#: woocommerce/archive-product.php:242, woocommerce/archive-product.php:372
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:351
+#: woocommerce/archive-product.php:348
 msgid "Színek, stílus és készlet"
 msgstr ""
 

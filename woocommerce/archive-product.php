@@ -211,9 +211,7 @@ defined( 'ABSPATH' ) || exit;
                     ?>
                     <aside id="sidebar--wcfilters" class="sidebar sidebar--wcfilters grid-x grid-margin-x">
 
-                        <?php the_widget('WC_Widget_Status_Filter',  array(
-                            'title' => __('Raktárkészlet', 'marrakesh')
-                            ), $wargs );?>
+                        <?php the_widget('WC_Widget_Status_Filter',  array('title' => __('Raktárkészlet', 'marrakesh')), $wargs ); ?>
                         <?php
                             if (is_product_category() || is_shop()) {
                                 the_widget( 'WC_Widget_Product_Categories', array(
@@ -236,7 +234,6 @@ defined( 'ABSPATH' ) || exit;
                                     'query_type' => 'or',
                                 ), $wargs );
                             }
-
                         ?>
 
                         <?php

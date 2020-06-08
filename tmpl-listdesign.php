@@ -4,22 +4,10 @@
  */
 ?>
 <?php use Roots\Sage\Titles; ?>
-
-
-
 <?php
     $currentterm = get_term_by('slug', $_REQUEST['pa_style'],'pa_style');
     // var_dump($currentterm);
-
     $allstyles = get_terms( 'pa_style', array() );
-    // var_dump($allstyles);
-
-
-    $child_terms = get_terms( array(
-        'taxonomy' => 'pa_style',
-        // 'hide_empty' => false,
-    ));
-
 ?>
 <?php while (have_posts()) : the_post(); ?>
 <div class="masthead">
@@ -110,18 +98,21 @@
         </div>
     </div>
 </div>
+<?php
+    $designterms = get_terms( array(
+        'taxonomy' => 'pa_design',
+        // 'hide_empty' => false,
+    ));
+?>
 <div class="grid-container">
     <div class="grid-x grid-margin-x align-center">
         <div class="cell xlarge-10">
             <div class="ps ps--narrow ps--notop">
-                <!-- <?php if (has_excerpt()) : ?>
-                <div class="lead"><?php the_excerpt(); ?></div>
-                <?php endif; ?>
-                <?php the_content(); ?> -->
                 <ul class="tmplcardgrid">
-                    <?php foreach ( $child_terms as $child ) : ?>
+                    <?php foreach ( $designterms as $child ) : ?>
                     <?php if ( get_field('style', $child) && in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>
                     <li>
+
                         <div class="tmplcard">
                             <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
                                 <?php if ($designthumb = get_field('covera', $child) ) : ?>

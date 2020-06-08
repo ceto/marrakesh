@@ -20,6 +20,6 @@
         }
     },
     "config": {
-        "devUrl": "http://marrakeshen.localhost"
+        "devUrl": "http://marrakesh.localhost"
     }
 }

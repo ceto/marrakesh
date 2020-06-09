@@ -120,11 +120,11 @@ msgstr ""
 msgid "Design Lister Page"
 msgstr ""
 
-#: tmpl-listdesign.php:66
+#: tmpl-listdesign.php:71
 msgid "%s minták"
 msgstr ""
 
-#: tmpl-listdesign.php:91
+#: tmpl-listdesign.php:96
 msgid "Vissza a stílus választóhoz"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Letöltés"
 msgstr ""
 
-#: templates/footer.php:7
+#: templates/footer.php:7, woocommerce/archive-product.php:97
 msgid "Termékek"
 msgstr ""
 
@@ -288,78 +288,106 @@ msgstr ""
 msgid "Ajánlat kérése"
 msgstr ""
 
-#: templates/requestmodal.php:30
+#: templates/requestmodal.php:21
+msgid "belvárosi bemutatótermünkben"
+msgstr ""
+
+#: templates/requestmodal.php:25
+msgid "Örömmel vesszük megkeresésedet, személyesen a %1s, telefonon a %2s telefonszámon. az %3s email címen, vagy töltsd ki kapcsolati űrlapunkat rád szabott, egyedi ajánlatért."
+msgstr ""
+
+#: templates/requestmodal.php:29
+msgid "Hiba történt, ellenőrizd az űrlapot"
+msgstr ""
+
+#: templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: templates/requestmodal.php:38
+#: templates/requestmodal.php:36, templates/requestmodal.php:44, templates/requestmodal.php:52
+msgid "Megadása kötelező"
+msgstr ""
+
+#: templates/requestmodal.php:41
 msgid "E-mail"
 msgstr ""
 
-#: templates/requestmodal.php:46
+#: templates/requestmodal.php:49
 msgid "Telefon"
 msgstr ""
 
-#: templates/requestmodal.php:54
+#: templates/requestmodal.php:57
 msgid "Mennyiség"
 msgstr ""
 
-#: templates/requestmodal.php:54
+#: templates/requestmodal.php:57
 msgid "(db.)"
 msgstr ""
 
-#: templates/requestmodal.php:60
+#: templates/requestmodal.php:63
 msgid "Mennyire sürgős az ügy"
 msgstr ""
 
-#: templates/requestmodal.php:62, templates/requestmodal.php:63
+#: templates/requestmodal.php:65, templates/requestmodal.php:66
 msgid "Azonnal kellene"
 msgstr ""
 
-#: templates/requestmodal.php:64, templates/requestmodal.php:64
+#: templates/requestmodal.php:67, templates/requestmodal.php:67
 msgid "Pár hét várakozás belefér"
 msgstr ""
 
-#: templates/requestmodal.php:65, templates/requestmodal.php:65
+#: templates/requestmodal.php:68, templates/requestmodal.php:68
 msgid "Tudok várni 2-3 hónapot egyedi gyártásra"
 msgstr ""
 
-#: templates/requestmodal.php:70
+#: templates/requestmodal.php:73
 msgid "Megjegyzés vagy kérdés"
 msgstr ""
 
-#: templates/requestmodal.php:90
+#: templates/requestmodal.php:81
+msgid "Elolvastam és elfogadom az"
+msgstr ""
+
+#: templates/requestmodal.php:81
+msgid "adatvédelmi tákékoztatóban foglaltakat."
+msgstr ""
+
+#: templates/requestmodal.php:82
+msgid "Elfogadása kötelező"
+msgstr ""
+
+#: templates/requestmodal.php:93
 msgid "Küldés"
 msgstr ""
 
-#: woocommerce/archive-product.php:27, woocommerce/archive-product.php:28, woocommerce/archive-product.php:79
+#: woocommerce/archive-product.php:85, woocommerce/archive-product.php:94
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:164
+#: woocommerce/archive-product.php:167
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:168, woocommerce/archive-product.php:182
+#: woocommerce/archive-product.php:171, woocommerce/archive-product.php:185
 msgstr ""
 
-#: woocommerce/archive-product.php:214
+#: woocommerce/archive-product.php:217
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:218, woocommerce/content-single-product.php:293
+#: woocommerce/archive-product.php:221, woocommerce/content-single-product.php:293
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:232, woocommerce/archive-product.php:361
+#: woocommerce/archive-product.php:235, woocommerce/archive-product.php:362
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:242, woocommerce/archive-product.php:372
+#: woocommerce/archive-product.php:245, woocommerce/archive-product.php:373
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:348
+#: woocommerce/archive-product.php:351
 msgid "Színek, stílus és készlet"
 msgstr ""
 
@@ -466,6 +494,21 @@ msgstr ""
 #: woocommerce/loop/pagination.php:41
 msgid "Következő"
 msgstr ""
+
+#. translators: %d: total results
+#: woocommerce/loop/result-count.php:29
+msgid "Összesen 1 találat"
+msgid_plural "Mind a(z) %d találat megjelenítése"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: first result 2: last result 3: total results
+#: woocommerce/loop/result-count.php:34
+msgctxt "%1$d&ndash;%2$d termék, összesen %3$d db"
+msgid "Összesen 1 találat"
+msgid_plural "%1$d&ndash;%2$d termék, összesen %3$d db"
+msgstr[0] ""
+msgstr[1] ""
 
 #: woocommerce/single-product/add-to-cart/simple.php:112
 msgid "ÖSSZESEN (bruttó)"

@@ -17,20 +17,23 @@
     </header>
     <div class="grid-container">
         <h3><?= __('Ajánlat kérése', 'marrakesh'); ?></h3>
-        <p>Örömmel vesszük megkeresésedet, személyesen a <a target="_blank" href="<?php the_permalink(get_field('pageforcontact', 'option')) ?>">belvárosi bemutatótermünkben,</a> telefonon a
-        <a href="tel:<?= preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')); ?>"><?php the_field('cphone', 'option'); ?></a> telefonszámon, az <a
-            href="mailto:<?php the_field('cemail', 'option'); ?>"><?php the_field('cemail', 'option'); ?></a> email címen, vagy töltsd ki kapcsolati űrlapunkat rád szabott, egyedi ajánlatért.</p>
+        <?php
+            $showroomlink ='<a target="_blank" href="'.get_permalink(get_field('pageforcontact', 'option')).'">'.__('belvárosi bemutatótermünkben','marrakesh').'</a>';
+            $emaillink = '<a href="mailto:'.get_field('cemail', 'option').'">'.get_field('cemail', 'option').'</a>';
+            $phonelink = '<a href="tel: '.preg_replace("/[^\+0-9]/", "", get_field('cphone', 'option')).'">'.get_field('cphone', 'option').'</a>';
+        ?>
+        <p><?php printf( __( 'Örömmel vesszük megkeresésedet, személyesen a %1s, telefonon a %2s telefonszámon. az %3s email címen, vagy töltsd ki kapcsolati űrlapunkat rád szabott, egyedi ajánlatért.' , 'marrakesh' ), $showroomlink, $phonelink, $emaillink ); ?></p>
         <form id="request_form" class="contactform" action="<?= get_template_directory_uri(); ?>/lib/contact.php"
             method="post" data-abide novalidate>
             <div data-abide-error class="alert callout" style="display: none;">
-                <p>Hiba történt, ellenőrizd az űrlapot</p>
+                <p><?= __('Hiba történt, ellenőrizd az űrlapot','marrakesh' ); ?></p>
             </div>
             <ul class="inputgrid">
                 <li>
                     <label class="speci"><?= __('Név', 'marrakesh'); ?>*
                         <input id="r_name" name="r_name" type="text" required>
                         <span class="form-error">
-                            Megadása kötelező
+                            <?= __('Megadása kötelező','marrakesh'); ?>
                         </span>
                     </label>
                 </li>
@@ -38,7 +41,7 @@
                     <label class="speci"><?= __('E-mail', 'marrakesh'); ?>*
                         <input id="r_email" name="r_email" type="email" required>
                         <span class="form-error">
-                            Megadása kötelező
+                            <?= __('Megadása kötelező','marrakesh'); ?>
                         </span>
                     </label>
                 </li>
@@ -46,7 +49,7 @@
                     <label class="speci"><?= __('Telefon', 'marrakesh'); ?>*
                         <input id="r_tel" name="r_tel" type="text" required>
                         <span class="form-error">
-                            Megadása kötelező
+                            <?= __('Megadása kötelező','marrakesh'); ?>
                         </span>
                     </label>
                 </li>
@@ -75,8 +78,8 @@
             <ul class="inputgrid">
                 <li>
                     <label class="accept" for="r_acceptgdpr"><input id="r_acceptgdpr" name="r_acceptgdpr"  type="checkbox" required>
-                    Elolvastam és elfogadom az <a target="_blank" href="<?= get_privacy_policy_url(); ?>">adatvédelmi tákékoztatóban foglaltakat.</a>
-                    <span class="form-error">Elfogadása kötelező</span>
+                    <?= __('Elolvastam és elfogadom az','marrakesh'); ?> <a target="_blank" href="<?= get_privacy_policy_url(); ?>"><?= __('adatvédelmi tákékoztatóban foglaltakat.','marrakesh'); ?></a>
+                    <span class="form-error"><?= __('Elfogadása kötelező', 'marrakesh'); ?></span>
                     </label>
                 </li>
             </ul>

@@ -19,13 +19,14 @@ defined( 'ABSPATH' ) || exit;
 
 //get_header( 'shop' );
 ?>
+<?php global $sitepress; ?>
 
 <?php
     if ( is_shop()) {
         $theterm = get_term_by('id', 39, 'product_cat' );
         $ctax = get_taxonomy($theterm->taxonomy);
-        $theterm->name = __('Teljes kínálat','marrakesh');
-        $ctaxname = __('Teljes kínálat','marrakesh');
+        // $theterm->name = __('Teljes kínálat','marrakesh');
+        // $ctaxname = __('Teljes kínálat','marrakesh');
         $reltaxes = get_terms( array(
             'taxonomy' => $ctax->name,
             'parent' => 0,
@@ -34,6 +35,14 @@ defined( 'ABSPATH' ) || exit;
 
     } else {
         $theterm = get_queried_object();
+        $origtermid = apply_filters('wpml_object_id', $theterm->term_id, $theterm->taxonomy, TRUE, $sitepress->get_default_language());
+        $currentlang = ICL_LANGUAGE_CODE;
+        $origlang = $sitepress->get_default_language();
+        $sitepress->switch_lang($origlang);
+        $origterm = get_term($origtermid, $theterm->taxonomy);
+        $sitepress->switch_lang($currentlang);
+
+        // var_dump($origterm);
         $ctax = get_taxonomy($theterm->taxonomy);
         $ctaxname = $ctax->labels->singular_name;
         $reltaxes = get_terms( array(
@@ -42,8 +51,8 @@ defined( 'ABSPATH' ) || exit;
             'parent' => 0,
         ) );
 
-        if ( !( $mastheadbg = get_field('masthead-bg', $theterm, true) ) )  {
-            if ( !( $mastheadbg = get_field('thumbnail', $theterm, true) ) )  {
+        if ( !( $mastheadbg = get_field('masthead-bg', $origterm, true) ) )  {
+            if ( !( $mastheadbg = get_field('thumbnail', $origterm, true) ) )  {
                 $mastheadbg = get_field('mhbg', 'option');
             }
         };
@@ -55,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="masthead">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-right">
-            <?php if ($archthumb = get_field('template', $theterm) ) : ?>
+            <?php if ($archthumb = get_field('template', $origterm) ) : ?>
             <div class="cell small-3 xlarge-2">
                 <figure class="woocommerce-products-header__thumb">
                     <?php echo wp_get_attachment_image( $archthumb['ID'], 'medium' ); ?>
@@ -71,14 +80,21 @@ defined( 'ABSPATH' ) || exit;
                         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
                         <select class="taxchooser" name="taxchooser" id="taxchooser"
                             onChange="window.location.href=this.value;">
+                            <?php if (is_shop()) : ?>
+                                <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">
+                                <?= __('Teljes kínálat', 'marrakesh') ?></option>
+                            <?php else : ?>
                             <option value="<?= get_term_link( $theterm->term_id) ?>"><?= $theterm->name ?></option>
+                            <?php endif; ?>
                             <?php foreach( $reltaxes as $reltax ): ?>
                             <option value="<?= get_term_link( $reltax->term_id) ?>"><?= $reltax->name ?></option>
                             <?php endforeach; ?>
+                            <?php if (!is_shop()) : ?>
                             <option value="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">
                                 <?= __('Teljes kínálat', 'marrakesh') ?></option>
+                            <?php endif; ?>
                         </select>
-                        <a class="js-taxchooserstart"><?= $ctaxname ?> &#9662;</a>
+                        <a class="js-taxchooserstart"><?= is_shop()?__('Termékek', 'marrakesh'):$ctaxname ?> &#9662;</a>
 
                         <h1 class="woocommerce-products-header__title page-title">
                             <?php woocommerce_page_title(); ?>
@@ -124,20 +140,7 @@ defined( 'ABSPATH' ) || exit;
     <div class="ps ps--thin ps--light ps--bordered">
         <div class="grid-container">
             <section class="brblock">
-                <aside class="stock-filter">
-                    <!-- <div class="switch switch--stock small">
-                        <input class="switch-input" id="instockyesno" type="checkbox" name="instockyesno"
-                            <?= $availability_filter ? 'checked' : '' ?>>
-                        <label class="switch-paddle" for="instockyesno">
-                            <span class="show-for-sr">Raktárról azonnal</span>
-                            <span class="switch-active" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
-                            <span class="switch-inactive" aria-hidden="true">RAKTÁRRÓL AZONNAL</span>
-                        </label>
-                    </div> -->
-                </aside>
-
                 <?php woocommerce_breadcrumb(array('home'=>'')); ?>
-
             </section>
         </div>
     </div>
@@ -307,7 +310,7 @@ defined( 'ABSPATH' ) || exit;
                             do_action( 'woocommerce_no_products_found' );
                         }
                     ?>
-                    <?php  if ( $gallery = get_field('gallery', get_field('linkedgallery', $theterm)) ) : ?>
+                    <?php  if ( $gallery = get_field('gallery', get_field('linkedgallery', $origterm)) ) : ?>
                     <div class="ps aps--narrow ps--nobottom ">
                         <div class="psgallery thumbswipe thumbswipe--medium thumbswipe--noleftpad">
                             <?php foreach ( $gallery as $attachment_id ) : ?>
@@ -352,33 +355,29 @@ defined( 'ABSPATH' ) || exit;
     <div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal
         data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
         <div class="grid-container">
-            <aside id="filtermodal__wcfilters"
-                class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
-
+            <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
                 <?php
-                if (!is_tax('pa_color')) {
-                    the_widget( 'WC_Widget_Layered_Nav', array(
-                        'title' => __('Színek', 'marrakesh'),
-                        'attribute' => 'color',
-                        'query_type' => 'or',
+                    if (!is_tax('pa_color')) {
+                        the_widget( 'WC_Widget_Layered_Nav', array(
+                            'title' => __('Színek', 'marrakesh'),
+                            'attribute' => 'color',
+                            'query_type' => 'or',
 
-                    ), $wargs );
-                }
+                        ), $wargs );
+                    }
 
-            ?>
+                ?>
                 <?php
-                if (!is_tax('pa_design') && !is_tax('pa_style')) {
-                    the_widget( 'WC_Widget_Layered_Nav', array(
-                        'title' => __('Stílus', 'marrakesh'),
-                        'attribute' => 'style',
-                        'query_type' => 'or',
+                    if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                        the_widget( 'WC_Widget_Layered_Nav', array(
+                            'title' => __('Stílus', 'marrakesh'),
+                            'attribute' => 'style',
+                            'query_type' => 'or',
 
-                    ), $wargs );
-                }
-            ?>
-                <?php
-              the_widget('WC_Widget_Status_Filter', array(), $wargs );
-            ?>
+                        ), $wargs );
+                    }
+                ?>
+                <?php the_widget('WC_Widget_Status_Filter', array(), $wargs ); ?>
             </aside>
             <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>

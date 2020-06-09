@@ -4,8 +4,11 @@
  */
 ?>
 <?php use Roots\Sage\Titles; ?>
+<?php global $sitepress; ?>
 <?php
     $currentterm = get_term_by('slug', $_REQUEST['pa_style'],'pa_style');
+    $origstyletermid = apply_filters( 'wpml_object_id', $currentterm->term_id, 'pa_style', TRUE, $sitepress->get_default_language() );
+
     // var_dump($currentterm);
     $allstyles = get_terms( 'pa_style', array() );
 ?>
@@ -36,13 +39,15 @@
     </div>
     <figure class="masthead__bg">
         <?php
-            if ( !( $mastheadbg = get_field('masthead-bg',$currentterm) ) )  {
+            if ( !( $mastheadbg = get_field('masthead-bg', 'pa_style_'.$origstyletermid) ) )  {
                 $mastheadbg = get_field('mhbg', 'option');
             };
             echo wp_get_attachment_image( $mastheadbg['ID'], 'xlarge' );
          ?>
     </figure>
 </div>
+<?php //var_dump($origstyletermid); ?>
+
 <?php if(!$currentterm) : ?>
 <div class="grid-container">
     <div class="grid-x grid-margin-x align-center">
@@ -51,7 +56,7 @@
                 <ul class="refcatcardgrid">
                     <?php foreach ( $allstyles as $child ) : ?>
                     <li>
-                        <?php $origstyleid = apply_filters( 'wpml_object_id', $child->term_id, 'pa_style', TRUE, 'hu' ); ?>
+                        <?php $origstyleid = apply_filters( 'wpml_object_id', $child->term_id, 'pa_style', TRUE, $sitepress->get_default_language() ); ?>
                         <div class="refcatcard">
                             <a class="refcatcard__fulllink"
                                 href="<?php the_permalink(); ?>?pa_style=<?= $child->slug; ?>">
@@ -108,21 +113,20 @@
     <div class="grid-x grid-margin-x align-center">
         <div class="cell xlarge-10">
             <div class="ps ps--narrow ps--notop">
-                <?php // var_dump($designterms); ?>
                 <ul class="tmplcardgrid">
                     <?php foreach ( $designterms as $child ) : ?>
-                    <?php if ( get_field('style', $child) && in_array( $currentterm->term_id, get_field('style', $child) ) ) : ?>
+                    <?php $origchildid = apply_filters('wpml_object_id', $child->term_id, $child->taxonomy, TRUE, $sitepress->get_default_language() ); ?>
+                    <?php if ( in_array( $origstyletermid, get_field('style', 'pa_design_'.$origchildid) ) ) : ?>
                     <li>
-
                         <div class="tmplcard">
                             <a class="tmplcard__fulllink" href="<?php echo get_term_link( $child->term_id); ?>">
-                                <?php if ($designthumb = get_field('covera', $child) ) : ?>
+                                <?php if ($designthumb = get_field('covera', 'pa_design_'.$origchildid) ) : ?>
                                 <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'tmplcard__thumb', 'alt'=>$child->name) ); ?>
                                 <?php else : ?>
                                 <img src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>"
                                     class="tmplcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
-                                <?php if (($coverb = get_field('coverb', $child)) || true) : ?>
+                                <?php if ($coverb = get_field('coverb', 'pa_design_'.$origchildid)) : ?>
                                 <?= wp_get_attachment_image( $coverb['id'], 'large', false, array('class'=>'tmplcard__thumb variant', 'alt'=>$child->name) ); ?>
                                 <?php endif; ?>
                                 <h3 class="tmplcard__name"><?= $child->name;?></h3>

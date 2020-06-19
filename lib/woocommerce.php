@@ -118,8 +118,8 @@ add_filter( 'woocommerce_shortcode_products_query', function( $query_args, $atts
 
 add_action( 'pre_get_posts', function ( $query ) {
     if (   !is_admin() && $query->is_main_query() && is_woocommerce() && ($query->is_post_type_archive('product') || $query->is_tax()) ) {
-        $query->set( 'meta_key', '_stock' );
-        $query->set( 'orderby',  array('menu_order' => 'ASC') );
+        // $query->set( 'meta_key', '_stock' );
+        $query->set( 'orderby',  array('title' => 'ASC') );
 
         $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $comingsoon_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
@@ -534,6 +534,8 @@ function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
     if ( get_post_meta($origproductid, '_isboxed', true ) && ($sizeperbox = get_post_meta($origproductid, '_sizeperbox', true ) ) ) {
         $stock_quantity=number_format($stock_quantity*$sizeperbox,1);
         $stock_quantity.=__('m<sup>2</sup>','marrakesh');
+    } else {
+        $stock_quantity.=' '.__('db','marrakesh');
     }
     return '<strong>'.$stock_quantity.'</strong>';
 };

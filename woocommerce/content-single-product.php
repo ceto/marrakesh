@@ -177,7 +177,7 @@ if ( post_password_required() ) {
                 <ul class="tabs tabs--prdata" data-tabs id="productinfotabs">
                     <li class="tabs-title is-active">
                         <a href="#prodinfopanel" aria-selected="true">
-                            <?php esc_html_e( 'Termék leírás', 'marrakesh' ); ?>
+                            <?php esc_html_e( 'FAQ', 'marrakesh' ); ?>
                         </a>
                     </li>
                     <li class="tabs-title">
@@ -198,7 +198,6 @@ if ( post_password_required() ) {
                     <div class="tabs-content" data-tabs-content="productinfotabs">
                         <div class="tabs-panel is-active" id="prodinfopanel">
                             <div class="singleproduct__details">
-                                <h3><?php _e('Product Information', 'marrakesh');?></h3>
                                 <div
                                     class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
@@ -254,7 +253,7 @@ if ( post_password_required() ) {
                                 ?>
 
 
-                                <h3 class=""><?= __('Termék adatlap', 'marrakesh'); ?></h3>
+                                <!-- <h3 class=""><?= __('Termék adatlap', 'marrakesh'); ?></h3> -->
                                 <dl class="singleproduct__catattributes">
                                     <dt><?= __('Azonosító', 'marrakesh'); ?></dt>
                                     <dd><?php the_title(); ?></dd>

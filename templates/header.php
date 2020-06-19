@@ -58,8 +58,11 @@
             </div>
             <div class="cell shrink show-for-tablet banner__ctacell">
                 <div class="banner__cta">
-                    <p class="show-for-large"><?= __('Egyedi színeket szeretnél?', 'marrakesh') ?></p>
-                    <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn"><?= __('Tervező indítása', 'marrakesh'); ?></a>
+                    <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn">
+                        <small><?= __('Egyedi színeket szeretnél?', 'marrakesh') ?></small><br>
+                        <?= __('Tervező program indítása', 'marrakesh'); ?>
+                        <svg class="icon"><use xlink:href="#icon-designer"></use></svg>
+                    </a>
                 </div>
             </div>
             <div class="shrink cell hide-for-tablet">

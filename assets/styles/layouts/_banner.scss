@@ -69,21 +69,40 @@
         font-size: .75rem;
     }
     .btn {
+        position: relative;
         margin:-1px -1px -1px;
         //border: 1px solid $body-font-color;
         display: block;
         color: $white;
-        //background-color: $dark-gray;
-        background-color: $primary-color;
-        padding:.875em 1.25em;
+        background-color: $dark-gray;
+        // background-color: $primary-color;
+        padding:.75em .875em;
         //font-size:1.125rem;
         font-size: .875rem;
-        line-height: 1;
+        line-height: 1.2;
         font-weight: $global-weight-bold;
         text-transform: uppercase;
+        // text-align: center;
+        border-left:3.75em solid $primary-color;
+        box-shadow: 0 0 .5em rgba(#000,.25);
+        small {
+            text-transform:none;
+            font-size: .9375em;
+        }
         &:hover, &:focus {
-            background-color: $body-font-color;
+            background-color: $primary-color;
+            // border-color: $dark-gray;
             //color: $body-font-color;
+
+        }
+
+        .icon {
+            font-size: 3.75em;
+            position: absolute;
+            left:-.9375em;
+            top:.125em;
+            // fill: #fff;
+
         }
 
 

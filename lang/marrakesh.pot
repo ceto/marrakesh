@@ -124,6 +124,10 @@ msgstr ""
 msgid "Vissza a stílus választóhoz"
 msgstr ""
 
+#: tmpl-listdesignsimple.php:3
+msgid "Design Lister (Original)"
+msgstr ""
+
 #: tmpl-listrefcats.php:3
 msgid "Reference Category Lister Page"
 msgstr ""

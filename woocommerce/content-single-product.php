@@ -17,11 +17,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post, $datafromprod;
+global $product, $post, $datafromprod, $sitepress;
 $attributes = $product->get_attributes();
 
 $designterm = get_term_by('id', $attributes['pa_design']['options'][0],'pa_design');
-$linkeddesigngallery = get_field('linkedgallery', $designterm);
+$origdesigntermid = apply_filters('wpml_object_id', $designterm->term_id, $designterm->taxonomy, TRUE, $sitepress->get_default_language() );
+$linkeddesigngallery = get_field('linkedgallery', 'pa_design_'.$origdesigntermid);
 // var_dump($linkeddesigngallery);
 /**
  * Hook: woocommerce_before_single_product.

@@ -223,14 +223,15 @@ defined( 'ABSPATH' ) || exit;
                                 'count' => 0,
                                 'hide_empty' => 1,
                                 'orderby' => 'order',
-                                'show_children_only' => 1,
-                                // 'max_depth' => 1,
+                                // 'show_children_only' => 1,
+                                // 'max_depth' => 2,
                                 'hierarchical' => 1
                                 ), $wargs );
                             }
                         ?>
                         <?php
                             if (!is_tax('pa_color')) {
+                                $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Színek', 'marrakesh'),
                                     'attribute' => 'color',
@@ -238,9 +239,10 @@ defined( 'ABSPATH' ) || exit;
                                 ), $wargs );
                             }
                         ?>
-
                         <?php
                             if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                                $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Stílus', 'marrakesh'),
                                     'attribute' => 'style',
@@ -357,6 +359,24 @@ defined( 'ABSPATH' ) || exit;
         <div class="grid-container">
             <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
                 <?php
+                    $wargs['before_title'] = '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                ?>
+                <?php the_widget('WC_Widget_Status_Filter', array(), $wargs ); ?>
+                <?php
+                    if (is_product_category() || is_shop()) {
+                        the_widget( 'WC_Widget_Product_Categories', array(
+                        'title' => __('Termékcsoport','marrakesh'),
+                        'dropdown' => 0,
+                        'count' => 0,
+                        'hide_empty' => 1,
+                        'orderby' => 'order',
+                        'show_children_only' => 1,
+                        'max_depth' => 3,
+                        'hierarchical' => 1
+                        ), $wargs );
+                    }
+                ?>
+                <?php
                     if (!is_tax('pa_color')) {
                         the_widget( 'WC_Widget_Layered_Nav', array(
                             'title' => __('Színek', 'marrakesh'),
@@ -377,7 +397,6 @@ defined( 'ABSPATH' ) || exit;
                         ), $wargs );
                     }
                 ?>
-                <?php the_widget('WC_Widget_Status_Filter', array(), $wargs ); ?>
             </aside>
             <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>

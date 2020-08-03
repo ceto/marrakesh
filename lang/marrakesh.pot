@@ -375,19 +375,19 @@ msgstr ""
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:221, woocommerce/content-single-product.php:293
+#: woocommerce/archive-product.php:221, woocommerce/archive-product.php:368, woocommerce/content-single-product.php:293
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/archive-product.php:235, woocommerce/archive-product.php:362
+#: woocommerce/archive-product.php:236, woocommerce/archive-product.php:382
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:245, woocommerce/archive-product.php:373
+#: woocommerce/archive-product.php:247, woocommerce/archive-product.php:393
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:351
+#: woocommerce/archive-product.php:353
 msgid "Színek, stílus és készlet"
 msgstr ""
 

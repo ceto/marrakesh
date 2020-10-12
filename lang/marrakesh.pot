@@ -33,44 +33,44 @@ msgstr ""
 msgid "Összes mutatása"
 msgstr ""
 
-#: front-page.php:80
+#: front-page.php:84
 msgid "Kézműves cementlapok bevetésen"
 msgstr ""
 
-#: front-page.php:82
+#: front-page.php:86
 msgid "Számos belső enteriőr ékessége az általunk gyártott cementlap."
 msgstr ""
 
-#: front-page.php:104
+#: front-page.php:108
 msgid "Tovább a tematikus galériákhoz"
 msgstr ""
 
-#: front-page.php:117
+#: front-page.php:121
 msgid "A kínálatunkból"
 msgstr ""
 
-#: front-page.php:144
+#: front-page.php:148
 msgid ""
 "További lapok\n"
 "            böngészése"
 msgstr ""
 
-#: front-page.php:180
+#: front-page.php:184
 msgid "Élőben még szebb. Látogass el bemutatótermünkbe!"
 msgstr ""
 
-#: front-page.php:182
+#: front-page.php:186
 msgid ""
 "Ugorj be hozzánk egy kávéra a Bródy 34-be. Testközelből megtapasztalhatod a\n"
 "                        cementlapok izgalmas világát. Továbbá nagyon sok hasznos információval segítünk a\n"
 "                        választásban."
 msgstr ""
 
-#: front-page.php:187
+#: front-page.php:191
 msgid "Bemutatóterem és nyitvatartás"
 msgstr ""
 
-#: front-page.php:192
+#: front-page.php:196
 msgid "Bemutatóterem a Bródyban"
 msgstr ""
 
@@ -104,6 +104,10 @@ msgstr ""
 
 #: tmpl-listdesign.php:97
 msgid "Vissza a stílus választóhoz"
+msgstr ""
+
+#: tmpl-listdesign.php:109
+msgid "Swipe for details"
 msgstr ""
 
 #: tmpl-listdesignsimple.php:3

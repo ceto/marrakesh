@@ -2,23 +2,27 @@
 <?php global $woocommerce; ?>
 <?php while (have_posts()) : the_post(); ?>
 
-<?php if( have_rows('hero') ): ?>
-<?php while( have_rows('hero') ): the_row(); ?>
-<aside class="hero">
-    <figure class="hero__fig">
-        <?php if ( !($bgimage = get_sub_field('bgimage')) ) {
-            $bgimage = get_field('mhbg', 'option');
-        } ?>
-        <?= wp_get_attachment_image( $bgimage[ID], 'full' ) ?>
-    </figure>
-    <div class="hero__content grid-container">
-        <p class="hero__precapt"><?php the_sub_field('precapt'); ?></p>
-        <h3 class="hero__caption"><?php the_sub_field('caption'); ?></h3>
-        <p class="hero__postcapt"><?php the_sub_field('postcapt'); ?></p>
-        <a href="<?php the_sub_field('ctatarget'); ?>" class="hero__action"><?php the_sub_field('ctatext'); ?></a>
+<?php if( have_rows('slides') ): ?>
+<div class="heroslider">
+<?php while( have_rows('slides') ): the_row(); ?>
+    <div>
+        <aside class="hero">
+            <figure class="hero__fig">
+                <?php if ( !($bgimage = get_sub_field('bgimage')) ) {
+                    $bgimage = get_field('mhbg', 'option');
+                } ?>
+                <?= wp_get_attachment_image( $bgimage[ID], 'full' ) ?>
+            </figure>
+            <div class="hero__content grid-container">
+                <p class="hero__precapt"><?php the_sub_field('precapt'); ?></p>
+                <h3 class="hero__caption"><?php the_sub_field('caption'); ?></h3>
+                <p class="hero__postcapt"><?php the_sub_field('postcapt'); ?></p>
+                <a href="<?php the_sub_field('ctatarget'); ?>" class="hero__action"><?php the_sub_field('ctatext'); ?></a>
+            </div>
+        </aside>
     </div>
-</aside>
 <?php endwhile; ?>
+</div>
 <?php endif; ?>
 
 

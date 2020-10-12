@@ -71,10 +71,10 @@
     line-height: 1;
     display: inline-block;
     padding: 0.666em 0.75em;
-    //border: 1px solid currentColor;
-    color: #fff;
+    // border: 1px solid currentColor;
+    color: #000;
     font-weight: $global-weight-bold;
-    background-color: #000;
+    background-color: #fff;
     min-width: 10em;
     text-align: center;
     &:hover,

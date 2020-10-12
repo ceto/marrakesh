@@ -12,7 +12,8 @@
     "photoswipe": "^4.1.2",
     "isotope-layout": "^3.0.6",
     "imagesloaded": "^4.1.4",
-    "jquery-touchswipe": "^1.6.19"
+    "jquery-touchswipe": "^1.6.19",
+    "slick-carousel": "^1.8.1"
   },
   "overrides": {
     "motion-ui": {
@@ -20,6 +21,12 @@
         "dist/motion-ui.js",
         "src/motion-ui.scss"
       ]
+    },
+    "slick-carousel": {
+        "main": [
+          "slick/slick.js",
+          "slick/slick.scss"
+        ]
     },
     "photoswipe": {
       "main": [

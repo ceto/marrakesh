@@ -451,5 +451,22 @@ $(".tmplcard").swipe( {
 
   });
 
+  const $heroslider = $('.heroslider');
+  $heroslider
+      .slick({
+          arrows: false,
+          dots: true,
+          // prevArrow: '<button type="button" class="slick-prev"><svg class="icon"><use xlink:href="#icon-caret-left"></use></svg></button>',
+          // nextArrow: '<button type="button" class="slick-next"><svg class="icon"><use xlink:href="#icon-caret-right"></use></svg></button>',
+          // appendArrows: '.carouselwrap',
+          infinite: true,
+          slidesToShow: 1,
+          fade: true,
+          cssEase: 'linear',
+          speed: 500,
+          adaptiveHeight: true,
+          autoplay:true
+  });
+
   //Set some options later
 //   $(".tmplcard").swipe( {fingers:2} );

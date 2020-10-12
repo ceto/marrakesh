@@ -20,7 +20,8 @@
 }
 .tmplcard__fulllink {
     &:hover,
-    &:focus {
+    &:focus,
+    &.swiped {
         .tmplcard__thumb.variant {
             opacity: 1;
         }
@@ -81,4 +82,31 @@
         margin: 0;
         padding: 0;
     }
+}
+
+
+.touchhint {
+    text-align: center;
+    font-size: .666rem;
+    padding:.5em;
+    font-weight: $global-weight-bold;
+    line-height: 1;
+    margin:0 auto;
+    border: 1px solid currentColor;
+    width: min-content;
+    svg.icon {
+        width:3em;
+        height:3.5em;
+    }
+    span {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    display: none;
+
+    [data-whatinput=touch] & {
+        display: block;
+    }
+
 }

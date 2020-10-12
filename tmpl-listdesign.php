@@ -104,6 +104,10 @@
         </div>
     </div>
 </div>
+<div class="touchhint">
+    <svg class="icon"><use xlink:href="#icon-swipehorizontal"></use></svg>
+    <span><?= __('Swipe for details', 'marrakesh'); ?></span>
+</div>
 <?php
     $designterms = get_terms( array(
         'taxonomy' => 'pa_design',

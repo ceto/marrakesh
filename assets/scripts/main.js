@@ -438,3 +438,18 @@ $(".scroller").on("click", ".js-scrollleft", function(e) {
     );
     el.scrollLeft = el.scrollLeft - 216;
 });
+
+
+$(".tmplcard").swipe( {
+    allowPageScroll: 'vertical',
+    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        if ( direction === 'right' || direction === 'left' ) {
+            $(this).find('.tmplcard__fulllink').toggleClass('swiped');
+        }
+    },
+
+
+  });
+
+  //Set some options later
+//   $(".tmplcard").swipe( {fingers:2} );

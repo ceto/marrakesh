@@ -6,9 +6,9 @@
 
     @include xy-grid;
     @include xy-gutters($grid-margin-gutters, margin, top bottom left right, true);
-    
+
     @include xy-grid-layout(2, '.prodgrid__item', true, map-get( $grid-margin-gutters, small), margin, top bottom left right);
-    
+
     @include breakpoint(medium) {
         @include xy-grid-layout(3, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
     }
@@ -17,15 +17,15 @@
     //     @include xy-grid-layout(3, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
     // }
 
-    @include breakpoint(large) {
-        @include xy-grid-layout(4, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
-    }
+    // @include breakpoint(large) {
+    //     @include xy-grid-layout(4, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
+    // }
 
-    @include breakpoint(xlarge) {
-        @include xy-grid-layout(5, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
-    }
+    // @include breakpoint(xlarge) {
+    //     @include xy-grid-layout(5, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
+    // }
     @include breakpoint(xxlarge) {
-        @include xy-grid-layout(6, '.prodgrid__item', true, map-get( $grid-margin-gutters, medium ), margin, top bottom left right);
+        @include xy-grid-layout(4, '.prodgrid__item', true, map-get( $grid-margin-gutters, large ), margin, top bottom left right);
     }
 
 }

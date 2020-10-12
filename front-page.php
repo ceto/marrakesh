@@ -115,26 +115,10 @@
         <div class="grid-x grid-margin-x">
             <div class="cell text-center">
                 <h2><?php _e('A kínálatunkból', 'marrakesh');?>&hellip;</h2>
-                <ul id="featprodtabs" class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs>
-                    <li class="tabs-title is-active">
-                        <a href="#fpinstockpanel">
-                            <?php esc_html_e( 'Raktárról azonnal', 'marrakesh' ) ?>
-                        </a>
-                    </li>
-                    <li class="tabs-title">
-                        <a href="#fpfeatpanel" aria-selected="true">
-                            <?php esc_html_e( 'Kiemelt lapok', 'marrakesh' ); ?>
-                        </a>
-                    </li>
-                    <!-- <li class="tabs-title">
-                        <a href="#fpsalepanel">
-                            <?php esc_html_e( 'Akciós', 'marrakesh' ); ?>
-                        </a>
-                    </li> -->
-                </ul>
             </div>
         </div>
     </div>
+    <br>
     <?php
         $wargs = array(
             'before_widget' => '',
@@ -143,57 +127,22 @@
             'after_title'   => ''
         );
     ?>
-    <div class="tabs-content" data-tabs-content="featprodtabs">
-        <div class="tabs-panel is-active" id="fpinstockpanel">
-            <?php
-                the_widget( 'WC_Widget_Products', array(
-                    'title' => '',
-                    'number' => 10,
-                    'show' => '',
-                    'orderby' => 'date',
-                    'order' => 'DESC'
 
-                ), $wargs );
-                wp_cache_flush();
-            ?>
-            <br><br>
-            <p class="text-center">
-                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>?filter_availability=in_stock"
-                    class="button small"><?= __('Ugrás a
-                    raktárkészletre','marrakesh'); ?></a>
-            </p>
+    <?php
+        the_widget( 'WC_Widget_Products', array(
+            'title' => '',
+            'number' => 12,
+            'show' => 'featured',
+            // 'orderby' => 'rand',
+            // 'order' => 'ASC'
 
-        </div>
-        <div class="tabs-panel" id="fpfeatpanel">
-            <?php
-                the_widget( 'WC_Widget_Products', array(
-                    'title' => '',
-                    'number' => 12,
-                    'show' => '',
-                    'orderby' => 'rand',
-                    'order' => 'ASC'
-
-                ), $wargs );
-                wp_cache_flush();
-            ?>
-            <br><br>
-            <p class="text-center">
-                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small"><?= __('További lapok
-                    böngészése','marrakesh'); ?></a>
-
-        </div>
-        <!-- <div class="tabs-panel" id="fpsalepanel">
-            <?php /*
-                the_widget( 'WC_Widget_Products', array(
-                        'title' => '',
-                        'number' => '15',
-                        'show' => 'onsale'
-                    ), $wargs );
-                    wp_cache_flush();
-                    */
-                ?>
-        </div> -->
-    </div>
+        ), $wargs );
+        wp_cache_flush();
+    ?>
+    <br><br>
+    <p class="text-center">
+        <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small"><?= __('További lapok
+            böngészése','marrakesh'); ?></a>
 </div>
 
 

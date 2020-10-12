@@ -11,32 +11,33 @@
     "motion-ui": "^2.0.3",
     "photoswipe": "^4.1.2",
     "isotope-layout": "^3.0.6",
-    "imagesloaded": "^4.1.4"
+    "imagesloaded": "^4.1.4",
+    "jquery-touchswipe": "^1.6.19"
   },
   "overrides": {
     "motion-ui": {
-        "main": [
-          "dist/motion-ui.js",
-          "src/motion-ui.scss"
-        ]
-      },
-      "photoswipe": {
-        "main": [
-          "dist/photoswipe.js",
-          "dist/photoswipe-ui-default.js"
-        ]
-      },
-      "isotope-layout": {
-        "main": [
-          "dist/isotope.pkgd.js"
-        ],
-        "dependencies": {}
-      },
-      "imagesloaded": {
-        "main": [
-          "imagesloaded.pkgd.js"
-        ],
-        "dependencies": {}
-      }
+      "main": [
+        "dist/motion-ui.js",
+        "src/motion-ui.scss"
+      ]
+    },
+    "photoswipe": {
+      "main": [
+        "dist/photoswipe.js",
+        "dist/photoswipe-ui-default.js"
+      ]
+    },
+    "isotope-layout": {
+      "main": [
+        "dist/isotope.pkgd.js"
+      ],
+      "dependencies": {}
+    },
+    "imagesloaded": {
+      "main": [
+        "imagesloaded.pkgd.js"
+      ],
+      "dependencies": {}
+    }
   }
 }

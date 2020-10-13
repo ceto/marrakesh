@@ -359,3 +359,27 @@ function blockgrid_gallery( $output, $atts, $instance ) {
 }
 
 add_filter( 'image_size_names_choose', 'marrakesh_custom_image_sizes' );
+
+
+function marrakesh_add_style_select_buttons( $buttons ) {
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+add_filter( 'mce_buttons_2', 'marrakesh_add_style_select_buttons' );
+
+//add custom styles to the WordPress editor
+function marrakesh_custom_editor_styles( $init_array ) {
+    $style_formats = array(
+        array(
+            'title' => 'Button',
+            'inline' => 'a',
+            'selector' => 'a',
+            'classes' => 'button',
+            'wrapper' => false,
+        ),
+    );
+    // Insert the array, JSON ENCODED, into 'style_formats'
+    $init_array['style_formats'] = json_encode( $style_formats );
+    return $init_array;
+}
+add_filter( 'tiny_mce_before_init', 'marrakesh_custom_editor_styles' );

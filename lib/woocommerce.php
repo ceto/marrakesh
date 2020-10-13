@@ -29,7 +29,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-  $cols = 70;
+  $cols = 82;
   return $cols;
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
@@ -608,81 +608,81 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 
 
 
-	/**
-	 * Widget rating filter class.
-	 */
-	class WC_Widget_Status_Filter extends WC_Widget {
-		/**
-		 * Constructor.
-		 */
-		public function __construct() {
-			$this->widget_cssclass    = 'woocommerce widget_status_filter';
-			$this->widget_description = __( 'Display a list of additional options to filter products in your store.', 'woocommerce' );
-			$this->widget_id          = 'woocommerce_status_filter';
-			$this->widget_name        = __( 'Filter Products by Status', 'woocommerce' );
-			$this->settings           = array(
-				'title' => array(
-					'type'  => 'text',
-					'std'   => __( 'Raktárkészlet', 'woocommerce' ),
-					'label' => __( 'Title', 'woocommerce' ),
-				),
-			);
-			parent::__construct();
-		}
+/**
+ * Widget rating filter class.
+ */
+class WC_Widget_Status_Filter extends WC_Widget {
+    /**
+     * Constructor.
+     */
+    public function __construct() {
+        $this->widget_cssclass    = 'woocommerce widget_status_filter';
+        $this->widget_description = __( 'Display a list of additional options to filter products in your store.', 'woocommerce' );
+        $this->widget_id          = 'woocommerce_status_filter';
+        $this->widget_name        = __( 'Filter Products by Status', 'woocommerce' );
+        $this->settings           = array(
+            'title' => array(
+                'type'  => 'text',
+                'std'   => __( 'Raktárkészlet', 'woocommerce' ),
+                'label' => __( 'Title', 'woocommerce' ),
+            ),
+        );
+        parent::__construct();
+    }
 
-		/**
-		 * Output widget.
-		 *
-		 * @see WP_Widget
-		 * @param array $args     Arguments.
-		 * @param array $instance Widget instance.
-		 */
-		public function widget( $args, $instance ) {
-			if ( ! is_shop() && ! is_product_taxonomy() ) {
-				return;
-			}
+    /**
+     * Output widget.
+     *
+     * @see WP_Widget
+     * @param array $args     Arguments.
+     * @param array $instance Widget instance.
+     */
+    public function widget( $args, $instance ) {
+        if ( ! is_shop() && ! is_product_taxonomy() ) {
+            return;
+        }
 
-			$availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
-            $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
 
 
-			$this->widget_start( $args, $instance );
+        $this->widget_start( $args, $instance );
 
-			echo '<ul class="woocommerce-widget-layered-nav-list">';
+        echo '<ul class="woocommerce-widget-layered-nav-list">';
 
-			$class       = $availability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
-			$link        = apply_filters( 'woocommerce_availability_filter_link', ! $availability_filter ? add_query_arg( 'filter_availability', 'in_stock' ) : remove_query_arg( 'filter_availability' ) );
-			$rating_html = __('Azonnal vihető', 'marrakesh');
-			$count_html  = ''; ////////// ADD COUNT LATER
+        $class       = $availability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
+        $link        = apply_filters( 'woocommerce_availability_filter_link', ! $availability_filter ? add_query_arg( 'filter_availability', 'in_stock' ) : remove_query_arg( 'filter_availability' ) );
+        $rating_html = __('Azonnal vihető', 'marrakesh');
+        $count_html  = ''; ////////// ADD COUNT LATER
 
-			printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
+        printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
 
-			$class       = $csavailability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
-			$link        = apply_filters( 'woocommerce_availability_filter_link', ! $csavailability_filter ? add_query_arg( 'filter_cs', '1' ) : remove_query_arg( 'filter_cs' ) );
-			$rating_html = __('Hamarosan raktáron', 'marrakesh');
-			$count_html  = ''; ////////// ADD COUNT LATER
+        $class       = $csavailability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
+        $link        = apply_filters( 'woocommerce_availability_filter_link', ! $csavailability_filter ? add_query_arg( 'filter_cs', '1' ) : remove_query_arg( 'filter_cs' ) );
+        $rating_html = __('Hamarosan raktáron', 'marrakesh');
+        $count_html  = ''; ////////// ADD COUNT LATER
 
-            printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
+        printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
 
-            // ob_start();
-            // the_widget( 'WC_Widget_Layered_Nav', array(
-            //     'attribute' => 'comingsoon',
-            //     'query_type' => 'or',
-            // ), array(
-            //     'before_widget' => '',
-            //     'after_widget'  => '',
-            //     'before_title'  => '',
-            //     'after_title'   => ''
-            // ) );
-            // echo strip_tags(ob_get_clean(),'<li><a>');
-			echo '</ul>';
+        echo '</ul>';
 
-			$this->widget_end( $args );
-		}
-	} // end class WC_Widget_Status_Filter extends WC_Widget
-
+        $this->widget_end( $args );
+    }
+} // end class WC_Widget_Status_Filter extends WC_Widget
 
 add_action( 'widgets_init', function(){ register_widget( 'WC_Widget_Status_Filter' );});
+
+
+function marrakesh_laynavlink($link, $term, $taxonomy ) {
+    $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+    $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+
+    return add_query_arg(array(
+        'filter_availability' => $availability_filter,
+        'filter_cs' => $csavailability_filter
+        ),$link);
+}
+add_filter( 'woocommerce_layered_nav_link', 'marrakesh_laynavlink', 10, 3 );
 
 
 

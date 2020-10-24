@@ -50,7 +50,7 @@
         </section>
     </form>
     <?php endif; ?>
-    <button data-open="requestmodal" class="button large accent expanded"><?= __('Egyedi ajánlatot kérek', 'marrakesh'); ?></button>
+    <button data-open="requestmodal" class="button large accent expanded"><?= __('Ajánlatot kérek', 'marrakesh'); ?></button>
 
 </div>
 

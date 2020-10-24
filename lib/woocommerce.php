@@ -563,9 +563,13 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
             if ( $csstock && $csdate ) {
                 $availability = __( 'Hamarosan raktáron', 'marrakesh' );
             } else {
-
                 $availability = __( 'Rendelésre gyártjuk', 'marrakesh' );
-                $availability.=' <span data-tooltip title="'.__( 'Várható szállítás: 10-12 hét', 'marrakesh' ).'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+                $tooltip=__( 'Várható szállítás: 10-12 hét', 'marrakesh' );
+                $shipclassslug = $instance->get_shipping_class();
+                if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
+                    $tooltip = wp_strip_all_tags(term_description( $theshipclass ), true);
+                }
+                $availability.=' <span data-tooltip title="'.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
             }
 
         } else {

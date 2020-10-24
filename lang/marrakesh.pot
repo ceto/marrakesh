@@ -167,23 +167,23 @@ msgstr ""
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:567
+#: lib/woocommerce.php:566
 msgid "Rendelésre gyártjuk"
 msgstr ""
 
-#: lib/woocommerce.php:568
+#: lib/woocommerce.php:567
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:564, lib/woocommerce.php:662
+#: lib/woocommerce.php:564, lib/woocommerce.php:666
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:600
+#: lib/woocommerce.php:604
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:655
+#: lib/woocommerce.php:659
 msgid "Azonnal vihető"
 msgstr ""
 
@@ -216,7 +216,7 @@ msgid "ÖSSZESEN"
 msgstr ""
 
 #: templates/calculator.php:53, woocommerce/content-single-product.php:112
-msgid "Egyedi ajánlatot kérek"
+msgid "Ajánlatot kérek"
 msgstr ""
 
 #: templates/dlcage.php:3

@@ -109,7 +109,7 @@ if ( post_password_required() ) {
 
                             <br>
                             <div class="singleproduct__headeractions">
-                                <button data-open="requestmodal" class="button accent expanded"><?= __('Egyedi ajánlatot kérek', 'marrakesh'); ?></button>
+                                <button data-open="requestmodal" class="button accent expanded"><?= __('Ajánlatot kérek', 'marrakesh'); ?></button>
                             </div>
 
 

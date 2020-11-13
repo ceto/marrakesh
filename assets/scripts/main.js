@@ -326,6 +326,11 @@ if ($(".psgallery").length) {
 // Calculator on single product detail pages
 //////////////////////////////////////////////////////
 
+
+function formatNumber (num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+}
+
 var $form = $("form.order");
 var origForm = $form.serialize();
 
@@ -361,9 +366,9 @@ function updateOrderBox($changed) {
 
         //update price
         var newPrice = numberOfBoxes * pricePerBox;
-        var priceText = newPrice.toFixed(0);
+        var priceText = formatNumber(newPrice.toFixed(0));
         $priceText.html(
-            "<small>ÖSSZESEN:</small>" + priceText + marrakesh_globals.currency_symbol
+            "<small>" + $(".order-submit__price .price small").text() + "</small>" + priceText + marrakesh_globals.currency_symbol
         );
 
         //update button text

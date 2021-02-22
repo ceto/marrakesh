@@ -52,6 +52,17 @@
             left: -0.875em;
             top: 0.75em;
         }
+
+        .count {
+            // font-size: 87.5%;
+            font-weight: $global-weight-bold;
+            &:before {
+                content: " (";
+            }
+            &:after {
+                content: ")";
+            }
+        }
     }
 
     .active > a,

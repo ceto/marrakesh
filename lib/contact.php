@@ -46,7 +46,7 @@ if($_POST) {
   $headers = array(
       'From: '.$user_Email,
       'Reply-To: '.$user_Email,
-      'BCC: '.$dev_Email,
+    //   'BCC: '.$dev_Email,
       'X-Mailer: PHP/' . phpversion(),
       'Content-Type: text/html; charset=UTF-8'
   );

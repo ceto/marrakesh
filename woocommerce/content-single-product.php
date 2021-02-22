@@ -178,12 +178,12 @@ if ( post_password_required() ) {
                 <ul class="tabs tabs--prdata" data-tabs id="productinfotabs">
                     <li class="tabs-title is-active">
                         <a href="#prodinfopanel" aria-selected="true">
-                            <?php esc_html_e( 'FAQ', 'marrakesh' ); ?>
+                            <?php esc_html_e( 'Termék információ', 'marrakesh' ); ?>
                         </a>
                     </li>
                     <li class="tabs-title">
                         <a href="#datapanel" aria-selected="true">
-                            <?php esc_html_e( 'Adatlap', 'marrakesh' ); ?>
+                            <?php esc_html_e( 'Méretek, kiszerelés', 'marrakesh' ); ?>
                         </a>
                     </li>
                 </ul>

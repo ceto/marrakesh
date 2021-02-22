@@ -47,3 +47,16 @@
     left: 10.875rem
     }
 }
+
+
+.pagination {
+    li {
+        // font-weight: $global-weight-bold;
+    }
+
+    a, button {
+
+        background-color: $light-gray;
+        // border-radius: .5em;
+    }
+}

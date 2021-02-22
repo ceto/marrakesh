@@ -29,7 +29,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
-  $cols = 82;
+  $cols = 84;
   return $cols;
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );
@@ -563,7 +563,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
             if ( $csstock && $csdate ) {
                 $availability = __( 'Hamarosan raktáron', 'marrakesh' );
             } else {
-                $availability = __( 'Rendelésre gyártjuk', 'marrakesh' );
+                $availability = __( 'Rendelhető', 'marrakesh' );
                 $tooltip=__( 'Várható szállítás: 10-12 hét', 'marrakesh' );
                 $shipclassslug = $instance->get_shipping_class();
                 if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {

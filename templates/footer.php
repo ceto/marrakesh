@@ -23,6 +23,14 @@
                         ?>
                         </ul>
                     </section>
+                    <section class="widget">
+                        <h3 class="widget__title"><?php _e('Marrakesh Bt.', 'marrakesh'); ?></h3>
+                        <?php
+                            if (has_nav_menu('footer_navigation')) :
+                            wp_nav_menu(['theme_location' => 'footer_navigation', 'menu_class' => 'menu vertical', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
+                            endif;
+                        ?>
+                    </section>
 
                 </div>
                 <div class="cell small-auto medium-6 large-3">

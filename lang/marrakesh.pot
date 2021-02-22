@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Marrakesh Global Theme
+# Copyright (C) 2021 Marrakesh Global Theme
 # This file is distributed under the same license as the Marrakesh Global Theme package.
 msgid ""
 msgstr ""
@@ -168,7 +168,7 @@ msgid "m<sup>2</sup>"
 msgstr ""
 
 #: lib/woocommerce.php:566
-msgid "Rendelésre gyártjuk"
+msgid "Rendelhető"
 msgstr ""
 
 #: lib/woocommerce.php:567
@@ -231,11 +231,15 @@ msgstr ""
 msgid "Termékek"
 msgstr ""
 
-#: templates/footer.php:30
-msgid "Infó & Segítség"
+#: templates/footer.php:27
+msgid "Marrakesh Bt."
 msgstr ""
 
 #: templates/footer.php:38
+msgid "Infó & Segítség"
+msgstr ""
+
+#: templates/footer.php:46
 msgid "Inspirációkért kövess"
 msgstr ""
 
@@ -359,11 +363,11 @@ msgid "Színek, stílus és készlet"
 msgstr ""
 
 #: woocommerce/content-single-product.php:181
-msgid "FAQ"
+msgid "Termék információ"
 msgstr ""
 
 #: woocommerce/content-single-product.php:186
-msgid "Adatlap"
+msgid "Méretek, kiszerelés"
 msgstr ""
 
 #: woocommerce/content-single-product.php:227

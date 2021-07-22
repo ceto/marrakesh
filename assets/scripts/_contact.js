@@ -11,7 +11,6 @@ $("#request_form").on("submit", function(ev, frm) {
     var user_msg = $("textarea[name=r_message]").val();
     var user_product = $("input[name=r_product]").val();
     var user_amount = $("input[name=r_amount]").val();
-    var user_time = $("input[name=r_time]").val();
 
     var proceed = true;
 
@@ -39,8 +38,7 @@ $("#request_form").on("submit", function(ev, frm) {
             userTel: user_tel,
             userMsg: user_msg,
             userProduct: user_product,
-            userAmount: user_amount,
-            userTime: user_time
+            userAmount: user_amount
         };
         $("#contact_submit").addClass("disabled");
         $("#contact_submit").attr("disabled", "disabled");

@@ -29,7 +29,6 @@ if($_POST) {
   $user_Message = filter_var($_POST["userMsg"], FILTER_SANITIZE_STRING);
   $user_Product = filter_var($_POST["userProduct"], FILTER_SANITIZE_STRING);
   $user_Amount = filter_var($_POST["userAmount"], FILTER_SANITIZE_STRING);
-  $user_Time = filter_var($_POST["userTime"], FILTER_SANITIZE_STRING);
 
   $user_Message = str_replace("\&#39;", "'", $user_Message);
   $user_Message = str_replace("&#39;", "'", $user_Message);
@@ -58,7 +57,6 @@ if($_POST) {
     <p><strong>Phone:</strong> <?= $user_Tel ?></p>
     <p><strong>Product:</strong> <a href="<?= get_permalink($user_Product) ?>"><?= get_the_title($user_Product) ?></a></p>
     <p><strong>Amount:</strong> <?= $user_Amount ?></p>
-    <p><strong>Urgent:</strong> <?= $user_Time ?></p>
     <p><strong>Message:</strong> <?= $user_Message ?></p>
     <br><hr><br>
     <?php $htmlcontent = ob_get_clean(); ?>

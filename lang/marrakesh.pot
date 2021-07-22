@@ -123,23 +123,23 @@ msgstr ""
 msgid "Hiányzó kötelező mezők"
 msgstr ""
 
-#: lib/contact.php:38
+#: lib/contact.php:37
 msgid "Teljes nevet adj meg"
 msgstr ""
 
-#: lib/contact.php:42
+#: lib/contact.php:41
 msgid "Érvénytelen e-mail cím"
 msgstr ""
 
-#: lib/contact.php:79
+#: lib/contact.php:77
 msgid "Kedves"
 msgstr ""
 
-#: lib/contact.php:80, lib/contact.php:83
+#: lib/contact.php:78, lib/contact.php:81
 msgid "Köszönjük megkeresésedet. Munkatársunk hamarosan jelentkezik elérhetőségeid egyikén."
 msgstr ""
 
-#: lib/contact.php:71
+#: lib/contact.php:69
 msgid "Hiba történt a küldéskor. Kérlek vedd fel velünk a kapcsolatot emailben vagy telefonon."
 msgstr ""
 
@@ -295,39 +295,23 @@ msgstr ""
 msgid "(db.)"
 msgstr ""
 
-#: templates/requestmodal.php:63
-msgid "Mennyire sürgős az ügy"
-msgstr ""
-
-#: templates/requestmodal.php:65, templates/requestmodal.php:66
-msgid "Azonnal kellene"
-msgstr ""
-
-#: templates/requestmodal.php:67, templates/requestmodal.php:67
-msgid "Pár hét várakozás belefér"
-msgstr ""
-
-#: templates/requestmodal.php:68, templates/requestmodal.php:68
-msgid "Tudok várni 2-3 hónapot egyedi gyártásra"
-msgstr ""
-
-#: templates/requestmodal.php:73
+#: templates/requestmodal.php:64
 msgid "Megjegyzés vagy kérdés"
 msgstr ""
 
-#: templates/requestmodal.php:81
+#: templates/requestmodal.php:72
 msgid "Elolvastam és elfogadom az"
 msgstr ""
 
-#: templates/requestmodal.php:81
+#: templates/requestmodal.php:72
 msgid "adatvédelmi tákékoztatóban foglaltakat."
 msgstr ""
 
-#: templates/requestmodal.php:82
+#: templates/requestmodal.php:73
 msgid "Elfogadása kötelező"
 msgstr ""
 
-#: templates/requestmodal.php:93
+#: templates/requestmodal.php:84
 msgid "Küldés"
 msgstr ""
 

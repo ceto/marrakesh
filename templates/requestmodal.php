@@ -59,15 +59,6 @@
                     </label>
                 </li>
             </ul>
-            <fieldset>
-                <legend><?= __('Mennyire sürgős az ügy', 'marrakesh'); ?></legend>
-                <ul class="inputgrid">
-                    <li><label for="r_timeShort"><input type="radio" name="r_time" value="<?= __('Azonnal kellene', 'marrakesh'); ?>"
-                        id="r_timeShort"><?= __('Azonnal kellene', 'marrakesh'); ?></label></li>
-                    <li><label for="r_timeMed"><input type="radio" name="r_time" value="<?= __('Pár hét várakozás belefér', 'marrakesh'); ?>" id="r_timeMed"><?= __('Pár hét várakozás belefér', 'marrakesh'); ?></label></li>
-                    <li><label for="r_timeLong"><input type="radio" name="r_time" value="<?= __('Tudok várni 2-3 hónapot egyedi gyártásra', 'marrakesh'); ?>" id="r_timeLong"><?= __('Tudok várni 2-3 hónapot egyedi gyártásra', 'marrakesh'); ?></label></li>
-                </ul>
-            </fieldset>
             <ul class="inputgrid">
                 <li>
                     <label><?= __('Megjegyzés vagy kérdés', 'marrakesh'); ?>

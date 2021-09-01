@@ -143,29 +143,6 @@
             "multiple": 0
         },
         {
-            "key": "field_60f9a0f91dc99",
-            "label": "Product Category",
-            "name": "prodcat",
-            "type": "taxonomy",
-            "instructions": "Set the main product category (choose the closest to the root)",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "wpml_cf_preferences": 0,
-            "taxonomy": "product_cat",
-            "field_type": "select",
-            "allow_null": 0,
-            "add_term": 0,
-            "save_terms": 1,
-            "load_terms": 0,
-            "return_format": "id",
-            "multiple": 0
-        },
-        {
             "key": "field_5f8436721f974",
             "label": "Designer Endpoint",
             "name": "designerendpoint",
@@ -188,7 +165,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "pa_design"
+                "value": "product_cat"
             }
         ]
     ],
@@ -200,5 +177,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626972987
+    "modified": 1630503816
 }

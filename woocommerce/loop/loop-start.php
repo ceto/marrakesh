@@ -20,4 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<ul class="prodgrid prodgrid--columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+
+<?php
+    global $subcatdisplay;
+    // $category_id = get_queried_object_id();
+    // $term_vals = get_term_meta( $category_id );
+?>
+<?php if ( $subcatdisplay ) : ?>
+    <ul class="tmplcardgrid">
+<?php else: ?>
+    <ul class="prodgrid prodgrid--columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
+<?php endif?>

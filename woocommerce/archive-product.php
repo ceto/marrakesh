@@ -22,6 +22,16 @@ defined( 'ABSPATH' ) || exit;
 <?php global $sitepress; ?>
 
 <?php
+    global $subcatdisplay;
+    $subcatdisplay=false;
+    $category_id = get_queried_object_id();
+    $term_vals = get_term_meta( $category_id );
+    if ( $term_vals[ 'display_type' ][ 0 ] === 'subcategories' ) {
+        $subcatdisplay=true;
+    }
+?>
+
+<?php
     if ( is_shop()) {
         $theterm = get_term_by('id', 39, 'product_cat' );
         $ctax = get_taxonomy($theterm->taxonomy);
@@ -63,7 +73,7 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="masthead">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x align-right">
+        <div class="grid-x grid-margin-x">
             <?php if ($archthumb = get_field('template', $origterm) ) : ?>
             <div class="cell small-3 xlarge-2">
                 <figure class="woocommerce-products-header__thumb">
@@ -200,7 +210,8 @@ defined( 'ABSPATH' ) || exit;
 
 
     <div class="grid-container ps ps--narrow">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x <?= $subcatdisplay?'align-center':'' ; ?>">
+            <?php if ( !$subcatdisplay ) : ?>
             <div class="cell show-for-tablet tablet-3 xlarge-2" adata-sticky-container>
                 <div class="prarchive__sidebar" class="asticky" data-margin-top="2" adata-sticky
                     adata-anchor="prarchive__main">
@@ -216,6 +227,7 @@ defined( 'ABSPATH' ) || exit;
 
                         <?php the_widget('WC_Widget_Status_Filter',  array('title' => __('Raktárkészlet', 'marrakesh')), $wargs ); ?>
                         <?php
+                            /*
                             if (is_product_category() || is_shop()) {
                                 the_widget( 'WC_Widget_Product_Categories', array(
                                 'title' => __('Termékcsoport','marrakesh'),
@@ -228,6 +240,7 @@ defined( 'ABSPATH' ) || exit;
                                 'hierarchical' => 1
                                 ), $wargs );
                             }
+                            */
                         ?>
                         <?php
                             if (!is_tax('pa_color')) {
@@ -264,7 +277,8 @@ defined( 'ABSPATH' ) || exit;
                     </aside>
                 </div>
             </div>
-            <div class="cell tablet-9 xlarge-10">
+            <?php endif; ?>
+            <div class="cell <?= $subcatdisplay?'xlarge-10':' tablet-9 xlarge-10' ; ?>">
                 <div id="prarchive__main" class="prarchive__main">
                     <?php
                         if ( woocommerce_product_loop() ) {
@@ -342,66 +356,70 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 
-
-    <div data-sticky-container class="hide-for-tablet">
-        <div class="sticky sticky--toggler" data-sticky data-anchor="prarchive__main" data-sticky-on="small"
-            data-stick-to="bottom" data-margin-bottom="0">
-            <div class="grid-container">
-                <button class="filtertoggler button small expanded hollow"
-                    data-toggle="prarchive__filtermodal">
-                    <svg class="icon"><use xlink:href="#icon-filter"></use></svg>
-                    <?php _e('Színek, stílus és készlet','marrakesh'); //woocommerce_result_count() ?></button>
+    <?php if ( !$subcatdisplay ) : ?>
+        <div data-sticky-container class="hide-for-tablet">
+            <div class="sticky sticky--toggler" data-sticky data-anchor="prarchive__main" data-sticky-on="small"
+                data-stick-to="bottom" data-margin-bottom="0">
+                <div class="grid-container">
+                    <button class="filtertoggler button small expanded hollow"
+                        data-toggle="prarchive__filtermodal">
+                        <svg class="icon"><use xlink:href="#icon-filter"></use></svg>
+                        <?php _e('Színek, stílus és készlet','marrakesh'); //woocommerce_result_count() ?></button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal
-        data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
-        <div class="grid-container">
-            <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
-                <?php
-                    $wargs['before_title'] = '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">';
-                ?>
-                <?php the_widget('WC_Widget_Status_Filter', array(), $wargs ); ?>
-                <?php
-                    if (is_product_category() || is_shop()) {
-                        the_widget( 'WC_Widget_Product_Categories', array(
-                        'title' => __('Termékcsoport','marrakesh'),
-                        'dropdown' => 0,
-                        'count' => 0,
-                        'hide_empty' => 1,
-                        'orderby' => 'order',
-                        'show_children_only' => 1,
-                        'max_depth' => 3,
-                        'hierarchical' => 1
-                        ), $wargs );
-                    }
-                ?>
-                <?php
-                    if (!is_tax('pa_color')) {
-                        the_widget( 'WC_Widget_Layered_Nav', array(
-                            'title' => __('Színek', 'marrakesh'),
-                            'attribute' => 'color',
-                            'query_type' => 'or',
 
-                        ), $wargs );
-                    }
+        <div id="prarchive__filtermodal" class="reveal prarchive__filtermodal" data-reveal
+            data-animation-in="scale-in-down fast" data-animation-out="scale-out-up fast">
+            <div class="grid-container">
+                <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
+                    <?php
+                        $wargs['before_title'] = '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                    ?>
+                    <?php the_widget('WC_Widget_Status_Filter', array(), $wargs ); ?>
+                    <?php
+                        /*
+                        if (is_product_category() || is_shop()) {
+                            the_widget( 'WC_Widget_Product_Categories', array(
+                            'title' => __('Termékcsoport','marrakesh'),
+                            'dropdown' => 0,
+                            'count' => 0,
+                            'hide_empty' => 1,
+                            'orderby' => 'order',
+                            'show_children_only' => 1,
+                            'max_depth' => 3,
+                            'hierarchical' => 1
+                            ), $wargs );
+                        }
+                        */
+                    ?>
+                    <?php
+                        if (!is_tax('pa_color')) {
+                            the_widget( 'WC_Widget_Layered_Nav', array(
+                                'title' => __('Színek', 'marrakesh'),
+                                'attribute' => 'color',
+                                'query_type' => 'or',
 
-                ?>
-                <?php
-                    if (!is_tax('pa_design') && !is_tax('pa_style')) {
-                        the_widget( 'WC_Widget_Layered_Nav', array(
-                            'title' => __('Stílus', 'marrakesh'),
-                            'attribute' => 'style',
-                            'query_type' => 'or',
+                            ), $wargs );
+                        }
 
-                        ), $wargs );
-                    }
-                ?>
-            </aside>
-            <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                    ?>
+                    <?php
+                        if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                            the_widget( 'WC_Widget_Layered_Nav', array(
+                                'title' => __('Stílus', 'marrakesh'),
+                                'attribute' => 'style',
+                                'query_type' => 'or',
+
+                            ), $wargs );
+                        }
+                    ?>
+                </aside>
+                <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
-    </div>
+    <?php endif; //not subcatdisplay ?>
     <?php
 //get_footer( 'shop' );

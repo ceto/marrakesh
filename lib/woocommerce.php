@@ -76,6 +76,8 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_d
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
 
+
+
 function woocommerce_template_loop_product_link_open() {
     global $product;
     $link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );

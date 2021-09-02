@@ -155,35 +155,35 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:517, lib/woocommerce.php:526, lib/woocommerce.php:538
+#: lib/woocommerce.php:519, lib/woocommerce.php:528, lib/woocommerce.php:540
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:515, lib/woocommerce.php:524, templates/calculator.php:24, woocommerce/content-single-product.php:285
+#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:24, woocommerce/content-single-product.php:285
 msgid "doboz"
 msgstr ""
 
-#: lib/woocommerce.php:536
+#: lib/woocommerce.php:538
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:566
+#: lib/woocommerce.php:568
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:567
+#: lib/woocommerce.php:569
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:564, lib/woocommerce.php:666
+#: lib/woocommerce.php:566, lib/woocommerce.php:668
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:604
+#: lib/woocommerce.php:606
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:659
+#: lib/woocommerce.php:661
 msgid "Azonnal vihető"
 msgstr ""
 
@@ -227,7 +227,7 @@ msgstr ""
 msgid "Letöltés"
 msgstr ""
 
-#: templates/footer.php:7, woocommerce/archive-product.php:97
+#: templates/footer.php:7, woocommerce/archive-product.php:107
 msgid "Termékek"
 msgstr ""
 
@@ -315,34 +315,30 @@ msgstr ""
 msgid "Küldés"
 msgstr ""
 
-#: woocommerce/archive-product.php:85, woocommerce/archive-product.php:94
+#: woocommerce/archive-product.php:95, woocommerce/archive-product.php:104
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:167
+#: woocommerce/archive-product.php:177
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:171, woocommerce/archive-product.php:185
+#: woocommerce/archive-product.php:181, woocommerce/archive-product.php:195
 msgstr ""
 
-#: woocommerce/archive-product.php:217
+#: woocommerce/archive-product.php:228
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:221, woocommerce/archive-product.php:368, woocommerce/content-single-product.php:293
-msgid "Termékcsoport"
-msgstr ""
-
-#: woocommerce/archive-product.php:236, woocommerce/archive-product.php:382
+#: woocommerce/archive-product.php:249, woocommerce/archive-product.php:399
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:247, woocommerce/archive-product.php:393
+#: woocommerce/archive-product.php:260, woocommerce/archive-product.php:410
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:353
+#: woocommerce/archive-product.php:367
 msgid "Színek, stílus és készlet"
 msgstr ""
 
@@ -416,6 +412,10 @@ msgstr ""
 
 #: woocommerce/content-single-product.php:284
 msgid "Doboz terítve"
+msgstr ""
+
+#: woocommerce/content-single-product.php:293
+msgid "Termékcsoport"
 msgstr ""
 
 #: woocommerce/content-single-product.php:420

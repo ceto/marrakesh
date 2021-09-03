@@ -100,7 +100,7 @@
 }
 
 .singleproduct__title {
-    font-size: 3em;
+    font-size: 1.875em;
     font-weight: $global-weight-thin;
     text-transform: uppercase;
     margin: 0 0 0;
@@ -132,7 +132,7 @@
 
 .singleproduct__header .stock,
 .singleproduct__callout .stock {
-    font-size: 1em;
+    font-size: .875em;
     line-height: $header-lineheight;
     margin: 0 0 0.125em;
     display: inline-block;
@@ -188,6 +188,12 @@
     }
 }
 
+
+.singleproduct__headeractions{
+    .button {
+        margin-bottom: 0;;
+    }
+}
 .singleproduct__images {
     // margin-top:-5.666rem;
     // background-color: rgba(#000,.75);

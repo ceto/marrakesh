@@ -128,6 +128,25 @@ select.taxchooser {
     // flex-direction: row-reverse;
     // padding: 0.875rem 0 0.25rem;
 }
+
+.brblock--smaller {
+    .breadcrumbs {
+        // color: $medium-gray;
+        li {
+            // font-size: .75rem;
+            // font-weight: normal;
+            text-transform: none;
+            // color: $medium-gray;
+
+        }
+        a {
+            color: inherit;
+            &:hover, &:focus {
+                color: $primary-color;
+            }
+        }
+    }
+}
 .pratopstatus {
     position: relative;
     display: flex;

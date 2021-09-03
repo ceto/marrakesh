@@ -43,7 +43,7 @@ if ( post_password_required() ) {
     $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
     $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
     $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
-    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids' ) );
+    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids', 'orderby' => 'parent' ) );
 
     $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
 
@@ -58,7 +58,17 @@ if ( post_password_required() ) {
     $datafromprod['_linfopage'] = apply_filters( 'wpml_object_id', get_post_meta($origproductid, '_linfopage', true ), 'post', TRUE);
 
 ?>
+
+<div class="ps ps--thin ps--xlight ps--bordered">
+    <div class="grid-container">
+        <section class="brblock brblock--smaller">
+            <?php woocommerce_breadcrumb(array('home'=>'')); ?>
+        </section>
+    </div>
+</div>
+
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
+
     <div class="singleproduct__top <?= (get_field('dontcoverwp', $origproductid)===true)?'dontcoverwp':''; ?>">
         <aside class="singleproduct__top__bg">
             <?php echo wp_get_attachment_image( get_field('wallimg', $origproductid, false), 'full' ); ?>
@@ -170,6 +180,8 @@ if ( post_password_required() ) {
             <?php endif; ?>
         </div>
     </div>
+
+
 
     <br><br><br>
     <div class="grid-container">
@@ -370,52 +382,59 @@ if ( post_password_required() ) {
                     $upsellproducts = $upsells;
                     ?>
                     <?php
-                    $reldesignproducts = wc_get_products(array(
-                        'post_status' => 'publish',
-                        'posts_per_page' => -1,
-                        'exclude' => array($product->id),
-                        'tax_query'      => array(
-                            'relation' => 'AND',
-                            array(
-                                'taxonomy'     => 'product_cat',
-                                'field'        => 'id',
-                                'terms'        => $cats,
-                                'operator'     => 'IN'
+                        $samecatproducts = wc_get_products(array(
+                            'post_status' => 'publish',
+                            'posts_per_page' => -1,
+                            'exclude' => array($product->id),
+                            'tax_query'      => array(
+                                'relation' => 'AND',
+                                array(
+                                    'taxonomy'     => 'product_cat',
+                                    'field'        => 'id',
+                                    'terms'        => end($cats),
+                                    'operator'     => 'IN'
 
-                            ),
-                            array(
-                                'taxonomy'     => 'pa_design',
-                                'field'        => 'id',
-                                'terms'        => $designs,
-                                'operator'     => 'IN'
+                                ),
+                                // array(
+                                //     'taxonomy'     => 'pa_design',
+                                //     'field'        => 'id',
+                                //     'terms'        => $designs,
+                                //     'operator'     => 'IN'
+                                // )
                             )
-                        )
-                    ) );
-                    $exclarr=array($product->id);
-                    foreach ($reldesignproducts as $tempprod) {
-                        $exclarr[]= $tempprod->id;
+                        ) );
+                        $exclarr=array($product->id);
+                        foreach ($samecatproducts as $tempprod) {
+                            $exclarr[]= $tempprod->id;
 
-                    }
-                    $relproducts = wc_get_products(array(
-                        'post_status' => 'publish',
-                        'posts_per_page' => 10,
-                        'post__not_in' => $exclarr,
-                        'tax_query'      => array(
-                            'relation' => 'AND',
-                            array(
-                                'taxonomy'     => 'pa_color',
-                                'field'        => 'id',
-                                'terms'        => $colors,
-                                'operator'     => 'IN'
-                            ),
-                            array(
-                                'taxonomy'     => 'pa_style',
-                                'field'        => 'id',
-                                'terms'        => $styles,
-                                'operator'     => 'IN'
+                        }
+                        $relproducts = wc_get_products(array(
+                            'post_status' => 'publish',
+                            'posts_per_page' => 10,
+                            'post__not_in' => $exclarr,
+                            'tax_query'      => array(
+                                'relation' => 'AND',
+                                array(
+                                    'taxonomy'     => 'pa_color',
+                                    'field'        => 'id',
+                                    'terms'        => $colors,
+                                    'operator'     => 'IN'
+                                ),
+                                array(
+                                    'taxonomy'     => 'pa_style',
+                                    'field'        => 'id',
+                                    'terms'        => $styles,
+                                    'operator'     => 'IN'
+                                ),
+                                array(
+                                    'taxonomy'     => 'product_cat',
+                                    'field'        => 'id',
+                                    'terms'        => $cats[0],
+                                    'operator'     => 'IN'
+
+                                ),
                             )
-                        )
-                    ) );
+                        ) );
                     ?>
                     <h3 class="atext-center"><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="producttabs">
@@ -425,7 +444,7 @@ if ( post_password_required() ) {
                         <?php if ( $relproducts ) : ?><li class="tabs-title <?= !$upsellproducts?'is-active':''; ?>"><a href="#similarpanel"
                             <?= !$upsellproducts?'aria-selected="true"':''; ?>><?php _e( 'Hasonló termékek', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
-                        <?php if ( $reldesignproducts  ) : ?><li class="tabs-title"><a
+                        <?php if ( $samecatproducts  ) : ?><li class="tabs-title <?= (!$upsellproducts && empty($relproducts))?'is-active':''; ?>"><a
                                 href="#colvarpanel"><?php _e( 'Színvariációk', 'marrakesh' ); ?></a></li>
                         <?php endif;  ?>
                     </ul>
@@ -474,11 +493,11 @@ if ( post_password_required() ) {
             </div>
             <?php endif;  ?>
 
-            <?php if ( $reldesignproducts ) : ?>
-            <div class="tabs-panel" id="colvarpanel">
+            <?php if ( $samecatproducts ) : ?>
+            <div class="tabs-panel <?= (!$upsellproducts && empty($relproducts))?'is-active':''; ?>" id="colvarpanel">
                 <section class="related products">
                     <ul class="prodswipe prodswipe--related">
-                        <?php foreach ( $reldesignproducts as $related_product ) : ?>
+                        <?php foreach ( $samecatproducts as $related_product ) : ?>
                         <?php
                             $post_object = get_post( $related_product->get_id() );
                             setup_postdata( $GLOBALS['post'] =& $post_object );

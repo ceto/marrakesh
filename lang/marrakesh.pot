@@ -159,7 +159,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:24, woocommerce/content-single-product.php:285
+#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:24, woocommerce/content-single-product.php:297
 msgid "doboz"
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük."
 msgstr ""
 
-#: templates/calculator.php:23, woocommerce/content-single-product.php:288, woocommerce/content-single-product.php:277
+#: templates/calculator.php:23, woocommerce/content-single-product.php:300, woocommerce/content-single-product.php:289
 msgid "Kiszerelés"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "ÖSSZESEN"
 msgstr ""
 
-#: templates/calculator.php:53, woocommerce/content-single-product.php:112
+#: templates/calculator.php:53, woocommerce/content-single-product.php:122
 msgid "Ajánlatot kérek"
 msgstr ""
 
@@ -342,95 +342,95 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product.php:181
+#: woocommerce/content-single-product.php:193
 msgid "Termék információ"
 msgstr ""
 
-#: woocommerce/content-single-product.php:186
+#: woocommerce/content-single-product.php:198
 msgid "Méretek, kiszerelés"
 msgstr ""
 
-#: woocommerce/content-single-product.php:227
+#: woocommerce/content-single-product.php:239
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/content-single-product.php:228
+#: woocommerce/content-single-product.php:240
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 
-#: woocommerce/content-single-product.php:233
+#: woocommerce/content-single-product.php:245
 msgid "%s mintáról"
 msgstr ""
 
-#: woocommerce/content-single-product.php:236
+#: woocommerce/content-single-product.php:248
 msgid "Tovább a(z) %s lapokhoz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:257
+#: woocommerce/content-single-product.php:269
 msgid "Termék adatlap"
 msgstr ""
 
-#: woocommerce/content-single-product.php:259
+#: woocommerce/content-single-product.php:271
 msgid "Azonosító"
 msgstr ""
 
-#: woocommerce/content-single-product.php:261
+#: woocommerce/content-single-product.php:273
 msgid "Bruttó ár"
 msgstr ""
 
-#: woocommerce/content-single-product.php:264
+#: woocommerce/content-single-product.php:276
 msgid "Súly (1db lap)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:268
+#: woocommerce/content-single-product.php:280
 msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/content-single-product.php:273
+#: woocommerce/content-single-product.php:285
 msgid "Vastagság"
 msgstr ""
 
-#: woocommerce/content-single-product.php:289
+#: woocommerce/content-single-product.php:301
 msgid "darab"
 msgstr ""
 
-#: woocommerce/content-single-product.php:278
+#: woocommerce/content-single-product.php:290
 msgid "dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:279
+#: woocommerce/content-single-product.php:291
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/content-single-product.php:281
+#: woocommerce/content-single-product.php:293
 msgid "Lapok a dobozban"
 msgstr ""
 
-#: woocommerce/content-single-product.php:282
+#: woocommerce/content-single-product.php:294
 msgid "lap/doboz"
 msgstr ""
 
-#: woocommerce/content-single-product.php:284
+#: woocommerce/content-single-product.php:296
 msgid "Doboz terítve"
 msgstr ""
 
-#: woocommerce/content-single-product.php:293
+#: woocommerce/content-single-product.php:305
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/content-single-product.php:420
+#: woocommerce/content-single-product.php:439
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:423
+#: woocommerce/content-single-product.php:442
 msgid "Ehhez ajánljuk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:426
+#: woocommerce/content-single-product.php:445
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:429
+#: woocommerce/content-single-product.php:448
 msgid "Színvariációk"
 msgstr ""
 

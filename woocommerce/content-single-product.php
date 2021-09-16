@@ -11,8 +11,8 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
- * @version 3.4.0
+ * @package WooCommerce\Templates
+ * @version 3.6.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -67,7 +67,7 @@ if ( post_password_required() ) {
     </div>
 </div>
 
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct'); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct', $product ); ?>>
 
     <div class="singleproduct__top <?= (get_field('dontcoverwp', $origproductid)===true)?'dontcoverwp':''; ?>">
         <aside class="singleproduct__top__bg">

@@ -446,20 +446,6 @@ msgstr ""
 msgid "Következő"
 msgstr ""
 
-#. translators: 1: first result 2: last result 3: total results
-#: woocommerce/loop/result-count.php:34
-msgctxt "%1$d&ndash;%2$d termék, összesen %3$d db"
-msgid "Összesen 1 találat"
-msgid_plural "%1$d&ndash;%2$d termék, összesen %3$d db"
-msgstr[0] ""
-msgstr[1] ""
-
-#: woocommerce/loop/result-count.php:29
-msgid "Összesen 1 találat"
-msgid_plural "Mind a(z) %d találat megjelenítése"
-msgstr[0] ""
-msgstr[1] ""
-
 #: woocommerce/single-product/add-to-cart/simple.php:112
 msgid "ÖSSZESEN (bruttó)"
 msgstr ""

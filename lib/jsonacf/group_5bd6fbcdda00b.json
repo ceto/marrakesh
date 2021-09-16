@@ -117,6 +117,26 @@
             "multiple": 1,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_61432d3cc4cdf",
+            "label": "Show simulator link",
+            "name": "showsimulator",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -134,7 +154,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1587079596
+    "modified": 1631792517
 }

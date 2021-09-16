@@ -264,7 +264,6 @@ defined( 'ABSPATH' ) || exit;
                                 ), $wargs );
                             }
                         ?>
-
                         <?php //dynamic_sidebar('sidebar-primary'); ?>
                         <?php
                                 /**

@@ -417,10 +417,10 @@ $("form.order :input").on("change input", function() {
         updateOrderBox($(this));
     }
 });
-$("form.order").on("submit", function(e) {
-    e.preventDefault();
-    return false;
-});
+// $("form.order").on("submit", function(e) {
+//     e.preventDefault();
+//     return false;
+// });
 
 $(".scroller").on("click", ".js-scrollright", function(e) {
     e.preventDefault();

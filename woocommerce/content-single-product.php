@@ -217,7 +217,7 @@ if ( post_password_required() ) {
                                 </div>
                                 <?php the_content(); ?>
                                 <?php
-                                    if (get_field('showsimulator', $origproductid)===true) {
+                                    if (get_field('showsimulator', $origproductid)==true) {
                                         get_template_part('templates/simulatorcta');
                                     }
                                 ?>

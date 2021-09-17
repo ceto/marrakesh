@@ -22,10 +22,15 @@
     &:hover,
     &:focus,
     &.swiped {
+
         .tmplcard__thumb.variant {
             opacity: 1;
         }
+        .tmplcard__name {
+            text-decoration: underline;
+        }
     }
+
 }
 .tmplcard__thumb {
     display: block;

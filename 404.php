@@ -6,7 +6,7 @@
             <p>
                 <a href="<?= esc_url(home_url('/')); ?>" class="button"><?php _e('Újrakezdem a főoldalról.', 'marrakesh'); ?></a>
                 vagy
-                <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ) ?>" class="button accent"><?php _e('Ugrom a termékekre', 'marrakesh'); ?></a>
+                <a href="<?= get_permalink( wc_get_page_id( 'shop' ) ) ?>" class="button accent"><?php _e('Ugrom a termékekre', 'marrakesh'); ?></a>
 
             </p>
         </div>

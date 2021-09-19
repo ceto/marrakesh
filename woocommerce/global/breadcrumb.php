@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! empty( $breadcrumb ) ) {
 
     echo '<ul class="breadcrumbs">';
-    echo '<li><a href="'.get_permalink( woocommerce_get_page_id( 'shop' ) ).'">'.__('Kollekció','marrakesh').'</a></li>';
+    echo '<li><a href="'.get_permalink( wc_get_page_id( 'shop' ) ).'">'.__('Kollekció','marrakesh').'</a></li>';
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 

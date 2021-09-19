@@ -145,7 +145,7 @@
     ?>
     <br><br>
     <p class="text-center">
-        <a href="<?= get_permalink( woocommerce_get_page_id( 'shop' ) ); ?>" class="button small"><?= __('További lapok
+        <a href="<?= get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="button small"><?= __('További lapok
             böngészése','marrakesh'); ?></a>
 </div>
 

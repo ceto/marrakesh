@@ -159,7 +159,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:24, woocommerce/content-single-product.php:303
+#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:23, woocommerce/content-single-product.php:303
 msgid "doboz"
 msgstr ""
 
@@ -199,23 +199,27 @@ msgstr ""
 msgid "Hány négyzetméter lapra van szükséged"
 msgstr ""
 
-#: templates/calculator.php:20
+#: templates/calculator.php:19
 msgid "Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük."
 msgstr ""
 
-#: templates/calculator.php:23, woocommerce/content-single-product.php:306, woocommerce/content-single-product.php:295
+#: templates/calculator.php:22, woocommerce/content-single-product.php:306, woocommerce/content-single-product.php:295
 msgid "Kiszerelés"
 msgstr ""
 
-#: templates/calculator.php:26
+#: templates/calculator.php:25
 msgid "Tényleges méret"
 msgstr ""
 
-#: templates/calculator.php:40
+#: templates/calculator.php:29
+msgid "Átvehető"
+msgstr ""
+
+#: templates/calculator.php:39
 msgid "ÖSSZESEN"
 msgstr ""
 
-#: templates/calculator.php:53, woocommerce/content-single-product.php:122
+#: templates/calculator.php:60, woocommerce/content-single-product.php:122
 msgid "Ajánlatot kérek"
 msgstr ""
 
@@ -444,12 +448,4 @@ msgstr ""
 
 #: woocommerce/loop/pagination.php:41
 msgid "Következő"
-msgstr ""
-
-#: woocommerce/single-product/add-to-cart/simple.php:112
-msgid "ÖSSZESEN (bruttó)"
-msgstr ""
-
-#: woocommerce/single-product/add-to-cart/simple.php:126
-msgid "%s %s<br>hozzáadása a kosárhoz"
 msgstr ""

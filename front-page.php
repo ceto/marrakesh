@@ -11,7 +11,7 @@
                 <?php if ( !($bgimage = get_sub_field('bgimage')) ) {
                     $bgimage = get_field('mhbg', 'option');
                 } ?>
-                <?= wp_get_attachment_image( $bgimage[ID], 'full' ) ?>
+                <?= wp_get_attachment_image( $bgimage['ID'], 'full' ) ?>
             </figure>
             <div class="hero__content grid-container">
                 <p class="hero__precapt"><?php the_sub_field('precapt'); ?></p>

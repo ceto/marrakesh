@@ -16,7 +16,7 @@
         </div>
     </header>
     <div class="grid-container">
-        <h3><?= __('Ajánlat kérése', 'marrakesh'); ?></h3>
+        <h3><?= __('Érdeklődés, ajánlat kérés', 'marrakesh'); ?></h3>
         <?php
             $showroomlink ='<a target="_blank" href="'.get_permalink(get_field('pageforcontact', 'option')).'">'.__('belvárosi bemutatótermünkben','marrakesh').'</a>';
             $emaillink = '<a href="mailto:'.get_field('cemail', 'option').'">'.get_field('cemail', 'option').'</a>';

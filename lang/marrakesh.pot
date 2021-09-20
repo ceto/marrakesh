@@ -187,12 +187,20 @@ msgstr ""
 msgid "Azonnal vihető"
 msgstr ""
 
+#: lib/woocommerce.php:718, templates/requestmodal.php:33
+msgid "Név"
+msgstr ""
+
+#: lib/woocommerce.php:720
+msgid "pl.: Céges számlaigény, adószám stb..."
+msgstr ""
+
 #: templates/calculator.php:5
-msgid "Ár kalkulátor"
+msgid "Rendeld meg online!"
 msgstr ""
 
 #: templates/calculator.php:6
-msgid "Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. A kalkulált ár 27% ÁFA-t tartalamaz."
+msgid "Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. Ezután a termék kosárba helyezhető. A kalkulált ár 27% ÁFA-t tartalamaz."
 msgstr ""
 
 #: templates/calculator.php:14
@@ -219,8 +227,8 @@ msgstr ""
 msgid "ÖSSZESEN"
 msgstr ""
 
-#: templates/calculator.php:60, woocommerce/content-single-product.php:122
-msgid "Ajánlatot kérek"
+#: templates/calculator.php:60
+msgid "Kérdésem van a termékkel kapcsolatban."
 msgstr ""
 
 #: templates/dlcage.php:3
@@ -252,7 +260,7 @@ msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
 #: templates/requestmodal.php:19
-msgid "Ajánlat kérése"
+msgid "Érdeklődés, ajánlat kérés"
 msgstr ""
 
 #: templates/requestmodal.php:21
@@ -265,10 +273,6 @@ msgstr ""
 
 #: templates/requestmodal.php:29
 msgid "Hiba történt, ellenőrizd az űrlapot"
-msgstr ""
-
-#: templates/requestmodal.php:33
-msgid "Név"
 msgstr ""
 
 #: templates/requestmodal.php:36, templates/requestmodal.php:44, templates/requestmodal.php:52
@@ -344,6 +348,10 @@ msgstr ""
 
 #: woocommerce/archive-product.php:366
 msgid "Színek, stílus és készlet"
+msgstr ""
+
+#: woocommerce/content-single-product.php:122
+msgid "Vásárlás és rendelés"
 msgstr ""
 
 #: woocommerce/content-single-product.php:193

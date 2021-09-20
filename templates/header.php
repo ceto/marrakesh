@@ -56,6 +56,14 @@
                 ?>
                 </nav>
             </div>
+            <div class="cell shrink">
+                <div class="banner__cart">
+                    <a href="<?= get_permalink( wc_get_page_id( 'cart' ) ) ?>">
+                        <svg class="icon"><use xlink:href="#icon-cart3"></use></svg>
+                        <?= marrakesh_cartcount(); ?>
+                    </a>
+                </div>
+            </div>
             <div class="shrink cell hide-for-medium">
                 <button class="menutoggler" type="button" data-toggle="mobilemodal"></button>
             </div>

@@ -700,3 +700,38 @@ function filter_woocommerce_layered_nav_count( $span_class_count_absint_count_sp
 
 // add the filter
 add_filter( 'woocommerce_layered_nav_count', 'filter_woocommerce_layered_nav_count', 10, 3 );
+
+
+
+//Cart an checkout stuffs
+
+add_filter( 'woocommerce_cart_needs_shipping_address', '__return_false');
+
+add_filter( 'woocommerce_checkout_fields', 'marrakesh_checkout_fields' );
+function marrakesh_checkout_fields( $woo_checkout_fields_array ) {
+    unset( $woo_checkout_fields_array['billing']['billing_last_name'] );
+    unset( $woo_checkout_fields_array['billing']['billing_country']);
+    unset( $woo_checkout_fields_array['billing']['billing_address_2'] );
+    unset( $woo_checkout_fields_array['billing']['billing_state'] );
+    unset( $woo_checkout_fields_array['billing']['billing_company'] );
+
+    $woo_checkout_fields_array['billing']['billing_first_name']['label'] = __('Név', 'marrakesh');
+
+    $woo_checkout_fields_array['order']['order_comments']['placeholder'] = __('pl.: Céges számlaigény, adószám stb...', 'marrakesh');
+
+	return $woo_checkout_fields_array;
+}
+
+
+function marrakesh_cartcount() {
+    global $woocommerce;
+    if ($woocommerce->cart->cart_contents_count != 0) {
+      return '<span class="badge">'. $woocommerce->cart->cart_contents_count.'</span>';
+    } else {
+      return '';
+    }
+  }
+  function marrakesh_carttotal() {
+    global $woocommerce;
+    return '<span class="total">'.$woocommerce->cart->get_cart_total().'</span>';
+  }

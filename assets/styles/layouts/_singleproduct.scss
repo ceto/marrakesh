@@ -413,3 +413,15 @@
         margin: 0;
     }
 }
+
+
+.order-quotelink {
+    display: block;
+    font-size: .875rem;
+    text-align: center;
+    color: inherit;
+    &:hover, &:focus {
+        color: inherit;
+        text-decoration: underline;
+    }
+}

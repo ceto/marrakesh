@@ -118,8 +118,8 @@ if ( post_password_required() ) {
 
 
                             <br>
-                            <div class="singleproduct__headeractions">
-                                <button data-open="requestmodal" class="button accent expanded"><?= __('Ajánlatot kérek', 'marrakesh'); ?></button>
+                            <div class="singleproduct__headeractions" data-magellan>
+                                <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
                             </div>
 
 

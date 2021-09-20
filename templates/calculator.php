@@ -2,10 +2,10 @@
 
 <div id="buycallout" class="callout singleproduct__callout" data-magellan-target="buycallout">
     <?php if ( $datafromprod['_isboxed']=='yes' && $datafromprod['_sizeperbox'] )  : ?>
-    <h3><?php _e( 'Ár kalkulátor', 'marrakesh' ) ?></h3>
-    <p><?php _e( 'Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. A kalkulált ár 27% ÁFA-t tartalamaz.', 'marrakesh' ) ?>
+    <h3><?php _e( 'Rendeld meg online!', 'marrakesh' ) ?></h3>
+    <p><?php _e( 'Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. Ezután a termék kosárba helyezhető. A kalkulált ár 27% ÁFA-t tartalamaz.', 'marrakesh' ) ?>
     </p>
-    <form class="order cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' novalidate="novalidate">
+    <form class="order cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' anovalidate="novalidate">
 
         <section class="order-box">
 
@@ -13,7 +13,7 @@
                 <div class="cell amedium-6">
                     <label for="sqft"><?= __('Hány négyzetméter lapra van szükséged','marrakesh'); ?><em>*</em></label>
                     <div class="input-group" style="margin:0 0;">
-                        <input class="input-group-field" type="number" name="sqft" id="sqft" value="" placeholder="E.g.: 20">
+                        <input class="input-group-field" required type="number" name="sqft" id="sqft" value="" placeholder="E.g.: 20">
                         <span class="input-group-label">m<sup>2</sup></span>
                     </div>
                     <p class="waste-warning atext-center"><small>*<?= __('Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük.','marrakesh'); ?></small></p>
@@ -57,7 +57,7 @@
         <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button large accent expanded"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
     </form>
     <?php endif; ?>
-    <button data-open="requestmodal" class="button hollow small expanded"><?= __('Ajánlatot kérek', 'marrakesh'); ?></button>
+    <a href="#requestmodal" data-open="requestmodal" class="order-quotelink"><?= __('Kérdésem van a termékkel kapcsolatban.', 'marrakesh'); ?></a>
 
 
 </div>

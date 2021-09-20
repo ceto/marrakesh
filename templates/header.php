@@ -70,8 +70,4 @@
         </div>
     </div>
 </header>
-<?php
- if ( is_woocommerce() ) {
-    do_action( 'marrakesh_after_banner');
-}
-?>
+<?php do_action( 'marrakesh_after_banner'); ?>

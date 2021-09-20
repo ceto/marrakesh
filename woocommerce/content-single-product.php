@@ -359,8 +359,12 @@ if ( post_password_required() ) {
                     </div>
                 </div>
                 <div class="cell large-5 xxlarge-4 large-order-2">
+                    <?php if ($datafromprod['_isboxed']=='yes') : ?>
                     <?php get_template_part('templates/calculator'); ?>
-                    <?php //do_action( 'woocommerce_single_product_summary' ); ?>
+                    <?php else : ?>
+                    <?php do_action( 'woocommerce_single_product_summary' ); ?>
+
+                    <?php endif; ?>
 
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>

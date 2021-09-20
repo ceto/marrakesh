@@ -22,7 +22,7 @@
          ?>
     </figure>
 </div>
-
+<?php do_action( 'marrakesh_after_masthead'); ?>
 <div class="grid-container ps ps--narrow">
     <div class="grid-x grid-margin-x align-center">
         <div class="cell tablet-10 large-9 xlarge-7">

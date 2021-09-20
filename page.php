@@ -32,7 +32,7 @@
          ?>
     </figure>
 </div>
-
+<?php do_action( 'marrakesh_after_masthead'); ?>
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
         <div class="cell tablet-9 xlarge-7 xxlarge-6 tablet-order-2">

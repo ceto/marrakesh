@@ -155,43 +155,55 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:519, lib/woocommerce.php:528, lib/woocommerce.php:540
+#: lib/woocommerce.php:517, lib/woocommerce.php:526, lib/woocommerce.php:538
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:517, lib/woocommerce.php:526, templates/calculator.php:23, woocommerce/content-single-product.php:303
+#: lib/woocommerce.php:515, lib/woocommerce.php:524, lib/woocommerce.php:646, templates/calculator.php:23, woocommerce/content-single-product.php:303
 msgid "doboz"
 msgstr ""
 
-#: lib/woocommerce.php:538
+#: lib/woocommerce.php:536
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:568
+#: lib/woocommerce.php:566
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:569
+#: lib/woocommerce.php:567
 msgid "Várható szállítás: 10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:566, lib/woocommerce.php:668
+#: lib/woocommerce.php:564, lib/woocommerce.php:704
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:606
+#: lib/woocommerce.php:604
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:661
+#: lib/woocommerce.php:616
+msgid "Várható szállítási idő: 10-12 hét"
+msgstr ""
+
+#: lib/woocommerce.php:626
+msgid "Várható szállítás"
+msgstr ""
+
+#: lib/woocommerce.php:648
+msgid "db."
+msgstr ""
+
+#: lib/woocommerce.php:697
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:718, templates/requestmodal.php:33
+#: lib/woocommerce.php:754, templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: lib/woocommerce.php:720
+#: lib/woocommerce.php:756
 msgid "pl.: Céges számlaigény, adószám stb..."
 msgstr ""
 
@@ -430,19 +442,19 @@ msgstr ""
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/content-single-product.php:445
+#: woocommerce/content-single-product.php:449
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:448
+#: woocommerce/content-single-product.php:452
 msgid "Ehhez ajánljuk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:451
+#: woocommerce/content-single-product.php:455
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:454
+#: woocommerce/content-single-product.php:458
 msgid "Színvariációk"
 msgstr ""
 

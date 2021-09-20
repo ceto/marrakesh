@@ -42,10 +42,8 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices',
 add_action( 'marrakesh_after_banner', 'woocommerce_output_all_notices', 10 );
 
 
-// remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
-// add_action( 'marrakesh_after_banner', 'woocommerce_output_all_notices', 10 );
-
-
+remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
+add_action( 'marrakesh_after_banner', 'woocommerce_output_all_notices', 10 );
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 add_action( 'woocommerce_before_page_title', 'woocommerce_breadcrumb', 10 );
@@ -612,7 +610,45 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
 add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availability_text', 10, 2 );
 
 
+// Change backorder notification - Shop page
+function marrakesh_cart_item_backorder_notification( $html, $product_id ){
 
+    $availability = __( 'Várható szállítási idő: 10-12 hét', 'marrakesh' );
+
+    $originproductid = apply_filters( 'wpml_object_id', $product_id, 'product', TRUE, 'hu' );
+
+    $csstock = get_post_meta($originproductid, '_csstock', true );
+    $csdate = get_post_meta($originproductid, '_csarrival', true );
+    $product= get_product($originproductid);
+
+
+    if ( $csstock && $csdate ) {
+        $availability = __( 'Várható szállítás', 'marrakesh' ).': '.date('M. j.',strtotime($csdate));
+    } else {
+        $shipclassslug = $product->get_shipping_class();
+        if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
+            $availability = wp_strip_all_tags(term_description( $theshipclass ), true);
+        }
+    }
+
+
+    return '<p class="backorder_notification">'.$availability.'</p>';
+}
+add_filter( 'woocommerce_cart_item_backorder_notification', 'marrakesh_cart_item_backorder_notification', 10, 2 );
+
+
+
+function marrakesh_add_meta_on_checkout_order_review_item( $quantity , $cart_item , $cart_item_key  ) {
+
+    $origproductid = apply_filters( 'wpml_object_id', $cart_item['product_id'], 'product', TRUE, 'hu' );
+    $datafromprodisboxed = get_post_meta($origproductid, '_isboxed', true );
+    if ($datafromprodisboxed=='yes') {
+        echo '<strong class="product-quantity">×&nbsp;'.$cart_item[ 'quantity' ].'&nbsp;'.__('doboz','marrakesh').'</strong>';
+    } else {
+        echo '<strong class="product-quantity">×&nbsp;'.$cart_item[ 'quantity' ].'&nbsp;'.__('db.','marrakesh').'</strong>';
+    }
+}
+add_filter( 'woocommerce_checkout_cart_item_quantity', 'marrakesh_add_meta_on_checkout_order_review_item', 1, 3 );
 
 /**
  * Widget rating filter class.
@@ -735,3 +771,9 @@ function marrakesh_cartcount() {
     global $woocommerce;
     return '<span class="total">'.$woocommerce->cart->get_cart_total().'</span>';
   }
+
+
+
+
+
+

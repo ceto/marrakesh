@@ -13,13 +13,13 @@ function marrakesh_dequeue_styles( $enqueue_styles ) {
 
 add_action( 'template_redirect', 'marrakesh_remove_woocommerce_styles_scripts', 999 );
 function marrakesh_remove_woocommerce_styles_scripts() {
-    // if ( function_exists( 'is_woocommerce' ) ) {
-    //     if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
+    if ( function_exists( 'is_woocommerce' ) ) {
+        if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
             remove_action('wp_enqueue_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
 	        remove_action('wp_print_scripts', [WC_Frontend_Scripts::class, 'localize_printed_scripts'], 5);
 	        remove_action('wp_print_footer_scripts', [WC_Frontend_Scripts::class, 'localize_printed_scripts'], 5);
-    //     }
-    // }
+        }
+    }
 }
 
 
@@ -771,7 +771,6 @@ function marrakesh_cartcount() {
     global $woocommerce;
     return '<span class="total">'.$woocommerce->cart->get_cart_total().'</span>';
   }
-
 
 
 

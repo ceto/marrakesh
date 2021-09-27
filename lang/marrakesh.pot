@@ -159,7 +159,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:515, lib/woocommerce.php:524, lib/woocommerce.php:646, templates/calculator.php:23, woocommerce/content-single-product.php:303
+#: lib/woocommerce.php:515, lib/woocommerce.php:524, lib/woocommerce.php:659, templates/calculator.php:23, woocommerce/content-single-product.php:303
 msgid "doboz"
 msgstr ""
 
@@ -171,11 +171,15 @@ msgstr ""
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:567
-msgid "Várható szállítás: 10-12 hét"
+#: lib/woocommerce.php:567, lib/woocommerce.php:616
+msgid "10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:564, lib/woocommerce.php:704
+#: lib/woocommerce.php:572, lib/woocommerce.php:635
+msgid "Várható szállítás"
+msgstr ""
+
+#: lib/woocommerce.php:564, lib/woocommerce.php:718
 msgid "Hamarosan raktáron"
 msgstr ""
 
@@ -183,27 +187,19 @@ msgstr ""
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:616
-msgid "Várható szállítási idő: 10-12 hét"
-msgstr ""
-
-#: lib/woocommerce.php:626
-msgid "Várható szállítás"
-msgstr ""
-
-#: lib/woocommerce.php:648
+#: lib/woocommerce.php:662
 msgid "db."
 msgstr ""
 
-#: lib/woocommerce.php:697
+#: lib/woocommerce.php:711
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:754, templates/requestmodal.php:33
+#: lib/woocommerce.php:768, templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: lib/woocommerce.php:756
+#: lib/woocommerce.php:770
 msgid "pl.: Céges számlaigény, adószám stb..."
 msgstr ""
 
@@ -212,11 +208,15 @@ msgid "Rendeld meg online!"
 msgstr ""
 
 #: templates/calculator.php:6
-msgid "Add meg a kívánt mennyiséget, hogy megközelítőleg pontos árat számoljunk neked. Ezután a termék kosárba helyezhető. A kalkulált ár 27% ÁFA-t tartalamaz."
+msgid "Add meg a kívánt mennyiséget, hogy pontos árat számoljunk neked. Ezután a termék kosárba helyezhető. A kalkulált ár 27% ÁFA-t tartalmaz."
 msgstr ""
 
 #: templates/calculator.php:14
 msgid "Hány négyzetméter lapra van szükséged"
+msgstr ""
+
+#: templates/calculator.php:16
+msgid "pl.: 20"
 msgstr ""
 
 #: templates/calculator.php:19
@@ -239,7 +239,7 @@ msgstr ""
 msgid "ÖSSZESEN"
 msgstr ""
 
-#: templates/calculator.php:60
+#: templates/calculator.php:61
 msgid "Kérdésem van a termékkel kapcsolatban."
 msgstr ""
 

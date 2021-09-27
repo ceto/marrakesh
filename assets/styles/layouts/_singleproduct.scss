@@ -360,9 +360,13 @@
         }
     }
 }
+p.waste-warning {
+    line-height: 1.2;
 
+
+}
 .order-box {
-    .calculatedsizewrap {
+    .calculatedinfowrap {
         display: flex;
         margin: 2rem 0 1rem;
         border: 1px solid $light-gray;
@@ -371,15 +375,22 @@
         text-align: center;
         justify-content: center;
     }
-    .calculatedsizes {
+    .calculatedinfo {
         line-height: 1;
         font-size: 1.25em;
         font-weight: $global-weight-bold;
         min-height: 1em;
         padding: 0.666em 0.875em;
-        //border:1px solid $light-gray;
         margin: 0;
-        //color:$dark-gray;
+
+        &.longtext span {
+            font-size: .75em;
+            font-weight: $global-weight-normal;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-style: italic;
+        }
+
 
         small {
             font-size: 66.666%;

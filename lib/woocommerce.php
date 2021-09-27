@@ -564,12 +564,12 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
                 $availability = __( 'Hamarosan raktáron', 'marrakesh' );
             } else {
                 $availability = __( 'Rendelhető', 'marrakesh' );
-                $tooltip=__( 'Várható szállítás: 10-12 hét', 'marrakesh' );
+                $tooltip=__( '10-12 hét', 'marrakesh' );
                 $shipclassslug = $instance->get_shipping_class();
                 if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
                     $tooltip = wp_strip_all_tags(term_description( $theshipclass ), true);
                 }
-                $availability.=' <span data-tooltip title="'.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+                $availability.=' <span data-tooltip title="'.__('Várható szállítás','marrakesh').': '.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
             }
 
         } else {
@@ -613,7 +613,7 @@ add_filter( 'woocommerce_get_availability_text', 'marrakesh_change_get_availabil
 // Change backorder notification - Shop page
 function marrakesh_cart_item_backorder_notification( $html, $product_id ){
 
-    $availability = __( 'Várható szállítási idő: 10-12 hét', 'marrakesh' );
+    $availability = __( '10-12 hét', 'marrakesh' );
 
     $originproductid = apply_filters( 'wpml_object_id', $product_id, 'product', TRUE, 'hu' );
 
@@ -623,7 +623,7 @@ function marrakesh_cart_item_backorder_notification( $html, $product_id ){
 
 
     if ( $csstock && $csdate ) {
-        $availability = __( 'Várható szállítás', 'marrakesh' ).': '.date('M. j.',strtotime($csdate));
+        $availability = date('M. j.',strtotime($csdate));
     } else {
         $shipclassslug = $product->get_shipping_class();
         if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
@@ -632,20 +632,34 @@ function marrakesh_cart_item_backorder_notification( $html, $product_id ){
     }
 
 
-    return '<p class="backorder_notification">'.$availability.'</p>';
+    return '<p class="backorder_notification">'.__( 'Várható szállítás', 'marrakesh' ).': '.$availability.'</p>';
 }
 add_filter( 'woocommerce_cart_item_backorder_notification', 'marrakesh_cart_item_backorder_notification', 10, 2 );
 
+
+// Add from stock text on cart page
+function marrakesh_cart_item_fromstock_notification( $cart_item, $cart_item_key ){
+    $instance = get_product($cart_item['product_id']);
+    if (!$instance->is_on_backorder( $cart_item['quantity'] ) ) {
+        echo '<p class="backorder_notification">'.__( 'Raktárról azonnal', 'woocommerce' ). '</p>';
+    }
+}
+
+add_filter( 'woocommerce_after_cart_item_name', 'marrakesh_cart_item_fromstock_notification', 10, 2 );
 
 
 function marrakesh_add_meta_on_checkout_order_review_item( $quantity , $cart_item , $cart_item_key  ) {
 
     $origproductid = apply_filters( 'wpml_object_id', $cart_item['product_id'], 'product', TRUE, 'hu' );
     $datafromprodisboxed = get_post_meta($origproductid, '_isboxed', true );
+    $datafromprodsizeperbox = get_post_meta($origproductid, '_sizeperbox', true );
     if ($datafromprodisboxed=='yes') {
-        echo '<strong class="product-quantity">×&nbsp;'.$cart_item[ 'quantity' ].'&nbsp;'.__('doboz','marrakesh').'</strong>';
+        echo '<br><strong class="product-quantity">'
+        .$cart_item[ 'quantity' ]*$datafromprodsizeperbox.'&nbsp;m<sup>2</sup>'
+        .' ('.$cart_item[ 'quantity' ].'&nbsp;'.__('doboz','marrakesh').')'
+        .'</strong>';
     } else {
-        echo '<strong class="product-quantity">×&nbsp;'.$cart_item[ 'quantity' ].'&nbsp;'.__('db.','marrakesh').'</strong>';
+        echo '<br><strong class="product-quantity">×&nbsp;'.$cart_item[ 'quantity' ].'&nbsp;'.__('db.','marrakesh').'</strong>';
     }
 }
 add_filter( 'woocommerce_checkout_cart_item_quantity', 'marrakesh_add_meta_on_checkout_order_review_item', 1, 3 );

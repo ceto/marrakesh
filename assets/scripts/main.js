@@ -335,33 +335,25 @@ var $form = $("form.order");
 var origForm = $form.serialize();
 
 function updateOrderBox($changed) {
-    var $boxes = $("#boxes");
-    var $sqft = $("#sqft");
-    var $boxesInput = $boxes.val();
-    var $sqftInput = $sqft.val();
-    var $totalSqftText = $(".sqft-total");
+    var $sqm = $("#sqm");
+    var $sqmInput = $sqm.val();
+    var $totalSqmText = $(".sqm-total");
     var $totalBoxText = $(".box-total");
-    var $submitbtn = $(".order-submit button");
+    var $addtocartButton = $('button[name="add-to-cart"]');
     var $priceText = $(".order-submit__price .price");
-    var $orderButton = $(".order-submit__actions .order-button");
-    var $buttonCount = $(".order-submit__actions .order-button strong");
     var pricePerBox = $(".pricePerBox").val();
-    var sqftPerBox = $(".sqftPerBox").val();
-    var pricePerSqft = $(".pricePerSqft").val();
+    var sqmPerBox = $(".sqmPerBox").val();
+    var pricePerSqm = $(".pricePerSqm").val();
     var orderQuantity = $(".orderQuantity");
     var numberOfBoxes;
 
     //if change happened on tile order box
-    if ($changed.is("#sqft") || $changed.is("#boxes")) {
-        if ($changed.is("#sqft")) {
-            numberOfBoxes = Math.ceil($sqftInput / sqftPerBox); //sqft multiplier
-        } else if ($changed.is("#boxes")) {
-            numberOfBoxes = Math.ceil($boxesInput);
-        }
+    if ( $changed.is("#sqm") ) {
 
-        var sqftText = numberOfBoxes * sqftPerBox;
-        $totalSqftText.text(sqftText.toFixed(2));
-        $("#r_amount").val(sqftText.toFixed(0));
+        numberOfBoxes = Math.ceil($sqmInput / sqmPerBox); //sqft multiplier
+
+        var sqmText = numberOfBoxes * sqmPerBox;
+        $totalSqmText.text(sqmText.toFixed(2));
         $totalBoxText.text(numberOfBoxes);
 
         //update price
@@ -371,56 +363,18 @@ function updateOrderBox($changed) {
             "<small>" + $(".order-submit__price .price small").text() + "</small>" + priceText + marrakesh_globals.currency_symbol
         );
 
-        //update button text
-        $buttonCount.html(sqftText.toFixed(2) + " m<sup>2</sup>");
-
-        //update button url
+        //update hidden input field
         orderQuantity.val(numberOfBoxes);
-        // if (numberOfBoxes > 0) {
-        //     $submitbtn.removeAttr("disabled");
-        // } else {
-        //     $submitbtn.setAttribute("disabled");
-        // }
 
-        if ($changed.is("#sqft")) {
-            //update the boxes value
-            $boxes.val(numberOfBoxes);
-        } else if ($changed.is("#boxes")) {
-            //update sqft value
-            $sqft.val(sqftText.toFixed(2));
-        }
-    } /*else if ($changed.is("#quantity")) {
-        //else if other order box changed
-        var $qty = $("#quantity");
-        var $qtyInput = $qty.val();
-        numberOfProduct = Math.ceil($qtyInput);
-
-        //update price
-        var newPrice = numberOfProduct * sqftPerBox;
-        var priceText = newPrice.toFixed(2);
-        $priceText.text("€ " + priceText);
-
-        //update button text
-        $buttonCount.text(numberOfProduct);
-
-        //update button url
-        orderQuantity.val(numberOfProduct);
-    }*/
+    }
 }
 
 $("form.order :input").on("change input", function() {
-    if (
-        $form.serialize() !== origForm &&
-        $(this).attr("id") !== "yith-wcwtl-email"
-    ) {
+    if ( $form.serialize() !== origForm /*&& $(this).attr("id") !== "yith-wcwtl-email"*/) {
         origForm = $form.serialize();
         updateOrderBox($(this));
     }
 });
-// $("form.order").on("submit", function(e) {
-//     e.preventDefault();
-//     return false;
-// });
 
 $(".scroller").on("click", ".js-scrollright", function(e) {
     e.preventDefault();

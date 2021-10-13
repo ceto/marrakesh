@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <div class="tmplcard">
         <a class="tmplcard__fulllink" href="<?php echo get_term_link( $category ); ?>">
-            <?php $origcatid = apply_filters('wpml_object_id', $category->term_id, $category->taxonomy, TRUE, $sitepress->get_default_language() ); ?>
+            <?php $origcatid = $category->term_id; ?>
             <?php if ($designthumb = get_field('covera', $category->taxonomy.'_'.$origcatid) ) : ?>
             <?= wp_get_attachment_image( $designthumb['id'], 'large', false, array('class'=>'tmplcard__thumb', 'alt'=>$category->name) ); ?>
             <?php else : ?>

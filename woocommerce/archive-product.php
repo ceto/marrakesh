@@ -45,12 +45,8 @@ defined( 'ABSPATH' ) || exit;
 
     } else {
         $theterm = get_queried_object();
-        $origtermid = apply_filters('wpml_object_id', $theterm->term_id, $theterm->taxonomy, TRUE, $sitepress->get_default_language());
-        $currentlang = ICL_LANGUAGE_CODE;
-        $origlang = $sitepress->get_default_language();
-        $sitepress->switch_lang($origlang);
+        $origtermid = $theterm->term_id;
         $origterm = get_term($origtermid, $theterm->taxonomy);
-        $sitepress->switch_lang($currentlang);
 
         // var_dump($origterm);
         $ctax = get_taxonomy($theterm->taxonomy);

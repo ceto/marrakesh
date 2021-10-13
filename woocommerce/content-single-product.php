@@ -20,10 +20,7 @@ defined( 'ABSPATH' ) || exit;
 global $product, $post, $datafromprod, $sitepress;
 $attributes = $product->get_attributes();
 
-$designterm = get_term_by('id', $attributes['pa_design']['options'][0],'pa_design');
-$origdesigntermid = apply_filters('wpml_object_id', $designterm->term_id, $designterm->taxonomy, TRUE, $sitepress->get_default_language() );
-$linkeddesigngallery = get_field('linkedgallery', 'pa_design_'.$origdesigntermid);
-// var_dump($linkeddesigngallery);
+
 /**
  * Hook: woocommerce_before_single_product.
  *
@@ -39,23 +36,21 @@ if ( post_password_required() ) {
 
 <?php
 
+    $product_id = wc_get_product()->get_id();
 
-    $designs   = wc_get_product_terms( $product->id, 'pa_design', array( 'fields' => 'ids' ) );
-    $colors   = wc_get_product_terms( $product->id, 'pa_color', array( 'fields' => 'ids' ) );
-    $styles   = wc_get_product_terms( $product->id, 'pa_style', array( 'fields' => 'ids' ) );
-    $cats      = wc_get_product_terms( $product->id, 'product_cat', array( 'fields' => 'ids', 'orderby' => 'parent' ) );
+    $colors   = wc_get_product_terms( $product_id, 'pa_color', array( 'fields' => 'ids' ) );
+    $styles   = wc_get_product_terms( $product_id, 'pa_style', array( 'fields' => 'ids' ) );
+    $cats     = wc_get_product_terms( $product_id, 'product_cat', array( 'fields' => 'ids', 'orderby' => 'parent', 'order' => 'ASC' ) );
 
-    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
+    $datafromprod['_isboxed'] = get_post_meta($product_id, '_isboxed', true );
+    $datafromprod['_sizeperbox'] = get_post_meta($product_id, '_sizeperbox', true );
+    $datafromprod['_tilesperbox'] = get_post_meta($product_id, '_tilesperbox', true );
+    $datafromprod['_tileweight'] = get_post_meta($product_id, '_tileweight', true );
+    $datafromprod['_tilewidth'] = get_post_meta($product_id, '_tilewidth', true );
+    $datafromprod['_tileheight'] = get_post_meta($product_id, '_tileheight', true );
+    $datafromprod['_tilethickness'] = get_post_meta($product_id, '_tilethickness', true );
 
-    $datafromprod['_isboxed'] = get_post_meta($origproductid, '_isboxed', true );
-    $datafromprod['_sizeperbox'] = get_post_meta($origproductid, '_sizeperbox', true );
-    $datafromprod['_tilesperbox'] = get_post_meta($origproductid, '_tilesperbox', true );
-    $datafromprod['_tileweight'] = get_post_meta($origproductid, '_tileweight', true );
-    $datafromprod['_tilewidth'] = get_post_meta($origproductid, '_tilewidth', true );
-    $datafromprod['_tileheight'] = get_post_meta($origproductid, '_tileheight', true );
-    $datafromprod['_tilethickness'] = get_post_meta($origproductid, '_tilethickness', true );
-
-    $datafromprod['_linfopage'] = apply_filters( 'wpml_object_id', get_post_meta($origproductid, '_linfopage', true ), 'post', TRUE);
+    $datafromprod['_linfopage'] = get_post_meta($product_id, '_linfopage', true );
 
 ?>
 
@@ -69,9 +64,9 @@ if ( post_password_required() ) {
 
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct', $product ); ?>>
 
-    <div class="singleproduct__top <?= (get_field('dontcoverwp', $origproductid)===true)?'dontcoverwp':''; ?>">
+    <div class="singleproduct__top <?= (get_field('dontcoverwp', $product_id)===true)?'dontcoverwp':''; ?>">
         <aside class="singleproduct__top__bg">
-            <?php echo wp_get_attachment_image( get_field('wallimg', $origproductid, false), 'full' ); ?>
+            <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'full' ); ?>
         </aside>
 
         <div class="singleproduct__top__content">
@@ -94,13 +89,18 @@ if ( post_password_required() ) {
 
                             <!-- <figure class="singleproduct__prodimage">
                                 <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
-                                <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' ); ?>
+                                <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
                             </figure> -->
 
 
                             <figure class="singleproduct__prodthumb">
-                                <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' ); ?>
+                                <?php if (get_field('singleimg', $product_id, false)) : ?>
+                                <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
+                                <?php else : ?>
+                                <?php echo woocommerce_get_product_thumbnail('medium'); ?>
+                                <?php endif; ?>
                             </figure>
+
 
                             <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
                             <?php if ( $product->is_on_sale() ) : ?>
@@ -133,42 +133,32 @@ if ( post_password_required() ) {
 
     <div class="aps--xlight aps--bordered singleproduct__images">
         <div class="psgallery thumbswipe">
+            <?php if (get_field('singleimg', $product_id, false)) : ?>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg', $origproductid, false),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg', $product_id, false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'medium' ); ?>
+                    <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'medium' ); ?>
                 </a>
             </figure>
+            <?php endif; ?>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id( $origproductid),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id( $product_id),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
                     <?php echo woocommerce_get_product_thumbnail('medium'); ?>
                 </a>
             </figure>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg', $origproductid, false),'full'); echo $targimg[0];?>"
+                <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg', $product_id, false),'full'); echo $targimg[0];?>"
                     data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( get_field('wallimg', $origproductid, false), 'medium' ); ?>
+                    <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'medium' ); ?>
                 </a>
             </figure>
             <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
             <?php if ( $attachment_ids && $product->get_image_id() ) : ?>
             <?php foreach ( $attachment_ids as $attachment_id ) : ?>
-            <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
-                itemtype="http://schema.org/ImageObject">
-                <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
-                    data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
-                    <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
-                </a>
-            </figure>
-            <?php endforeach; ?>
-            <?php endif; ?>
-
-            <?php if ( $gallery = get_field('gallery', $linkeddesigngallery) ) : ?>
-            <?php foreach ( $gallery as $attachment_id ) : ?>
             <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
                 itemtype="http://schema.org/ImageObject">
                 <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
@@ -213,11 +203,12 @@ if ( post_password_required() ) {
                             <div class="singleproduct__details">
                                 <div
                                     class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
+
                                     <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
                                 </div>
                                 <?php the_content(); ?>
                                 <?php
-                                    if (get_field('showsimulator', $origproductid)==true) {
+                                    if (get_field('showsimulator', $product_id)==true) {
                                         get_template_part('templates/simulatorcta');
                                     }
                                 ?>
@@ -229,32 +220,16 @@ if ( post_password_required() ) {
                                     get_template_part('templates/dlcage');
                                     wp_reset_postdata();
                                 ?>
-                                <?php /* if ( have_rows('bullets', $datafromprod['_linfopage']) ) : ?>
-                                    <ul class="iconizedlist">
-                                        <?php  while ( have_rows('bullets', $datafromprod['_linfopage']) ) : the_row(); ?>
-                                        <li>
-                                            <?= wp_get_attachment_image(get_sub_field('icon'), 'thumbnail', false, array('class' => 'icon icon--raster')); ?>
-                                            <?php the_sub_field('text'); ?>
-                                        </li>
-                                        <?php endwhile; ?>
-                                    </ul>
-                                <?php endif; */ ?>
                                 <?php // $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
                                 <?php // echo $postparts['main']; ?>
-                                <?php //echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
-                                <p><?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a
-                                        href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
-                                </p>
-                                <?php $designdescr=term_description($designs['0']); ?>
-                                <?php if ($designdescr!=='') : ?>
-                                <!-- <div class="callout">
-                                    <h6><?= sprintf(__('%s mintáról','marrakesh'), get_term($designs['0'])->name); ?>
-                                    </h6>
-                                    <?= $designdescr; ?>
-                                    <p><a href="<?= get_term_link($designs['0']) ?>"><?= sprintf(__('Tovább a(z) %s lapokhoz','marrakesh'), get_term($designs['0'])->name); ?>
-                                        </a></p>
-                                </div> -->
+                                <?php // echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
+                                <?php if ($catdescr=term_description(end($cats))) : ?>
+                                    <?= $catdescr; ?>
                                 <?php endif; ?>
+                                <p>
+                                    <?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
+                                </p>
+
 
                             </div>
                         </div>
@@ -369,8 +344,7 @@ if ( post_password_required() ) {
                     <div class="singleproduct__meta meta">
                         <?php do_action( 'woocommerce_product_meta_start' ); ?>
                         <?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span
-                                class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+                        <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
                         <?php endif; ?>
                         <?php //echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
                         <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
@@ -395,7 +369,7 @@ if ( post_password_required() ) {
                         $samecatproducts = wc_get_products(array(
                             'post_status' => 'publish',
                             'posts_per_page' => -1,
-                            'exclude' => array($product->id),
+                            'exclude' => array($product_id),
                             'tax_query'      => array(
                                 'relation' => 'AND',
                                 array(
@@ -404,19 +378,12 @@ if ( post_password_required() ) {
                                     'terms'        => end($cats),
                                     'operator'     => 'IN'
 
-                                ),
-                                // array(
-                                //     'taxonomy'     => 'pa_design',
-                                //     'field'        => 'id',
-                                //     'terms'        => $designs,
-                                //     'operator'     => 'IN'
-                                // )
+                                )
                             )
                         ) );
-                        $exclarr=array($product->id);
+                        $exclarr=array($product_id);
                         foreach ($samecatproducts as $tempprod) {
-                            $exclarr[]= $tempprod->id;
-
+                            $exclarr[]= $tempprod->get_id();
                         }
                         $relproducts = wc_get_products(array(
                             'post_status' => 'publish',
@@ -446,7 +413,7 @@ if ( post_password_required() ) {
                             )
                         ) );
                     ?>
-                    <h3 class="atext-center"><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
+                    <h3><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
                     <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="producttabs">
                         <?php if ( $upsellproducts  ) : ?><li class="tabs-title is-active"><a
                                 href="#upsellpanel" aria-selected="true"><?php _e( 'Ehhez ajánljuk', 'marrakesh' ) ?></a>

@@ -16,8 +16,8 @@ use Roots\Sage\Wrapper;
       </div>
     <![endif]-->
     <?php
-      do_action('get_header');
-      get_template_part('templates/header');
+        do_action('get_header');
+        get_template_part('templates/header');
     ?>
     <div class="document" role="document">
         <main class="main" role="main">

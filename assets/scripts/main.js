@@ -429,3 +429,10 @@ $(".tmplcard").swipe( {
 
   //Set some options later
 //   $(".tmplcard").swipe( {fingers:2} );
+
+
+$(".js_searchstarter").on("click", function(e) {
+    e.preventDefault();
+    $(".banner__megasearch").toggleClass("is-shown");
+    $(".banner__megasearch.is-shown input[type='search']").focus();
+});

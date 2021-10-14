@@ -1,3 +1,13 @@
+.banner {
+    z-index: 5;
+    position: relative;
+
+    //padding-bottom:1rem;
+    @include breakpoint(medium) {
+        //padding-bottom:0;
+    }
+}
+
 
 .banner__toprow {
    background-color: $xlight-gray;
@@ -21,14 +31,7 @@
 
 }
 
-.banner {
-    z-index: 5;
-    position: relative;
-    //padding-bottom:1rem;
-    @include breakpoint(medium) {
-        //padding-bottom:0;
-    }
-}
+
 
 .banner__top {
     border-bottom:1px solid transparent;
@@ -111,35 +114,79 @@
 
 }
 
-.banner__cart {
-
+.banner__actions {
+    display: flex;
+    gap: .25rem;
     a {
         position: relative;
         display: block;
-        // background-color: rgba(#000,.025);
         border:1px solid rgba(#000,.125);
-        padding:.5rem .5rem .25rem;
-        fill: $dark-gray;
+        // background-color: $body-font-color;
+
+        fill: $body-font-color;
+
+        width: 2.5em;
+        height: 2.5em;
+
         &:hover, &:focus {
-            fill: $primary-color;
+            fill: $black;
+            border-color: rgba(#000,.25);
+            background-color: rgba(#000,.025);
         }
-    }
-    .icon {
-        font-size: 2.5em;
-        fill: inherit;
-        width: .875em;
-        height: .75em;
 
         @include breakpoint('tablet') {
-            font-size: 3.5em;
+            width: 3em;
+            height: 3em;
         }
+
+
+    }
+    .icon {
+        fill: inherit;
+        position: absolute;
+        left:24%;
+        top:24%;
+        width: 52%;
+        height: 52%;
     }
     .badge {
         position: absolute;
-        bottom: -.25rem;
-        right:-.25rem;
-
-
-
+        bottom: -.4666rem;
+        right:-.4666rem;
     }
 }
+
+
+.banner__actions__cart {
+    .icon {
+        left:10%;
+        top:10%;
+        width: 80%;
+        height: 80%;
+    }
+}
+
+.banner__main {
+    background-color: $body-background;
+}
+
+.banner__megasearch {
+    position: absolute;
+    z-index: -6;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: all 0.4s ease;
+    border-top: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+    background-color: $body-background;
+    box-shadow: inset 0 4rem 4rem -4rem rgba(#000, 0.125);
+
+    &.is-shown {
+        transform: translateY(0);
+        box-shadow: inset 0 4rem 4rem -4rem rgba(#000, 0.125), 0 4rem 4rem 0 rgba(#000, 0.125);
+    }
+}
+
+

@@ -55,6 +55,16 @@ msgid ""
 "            böngészése"
 msgstr ""
 
+#: searchform.php:12
+msgctxt "placeholder"
+msgid "Keresés a teljes katalógusban &hellip;"
+msgstr ""
+
+#: searchform.php:14
+msgctxt "submit button"
+msgid "Keresés"
+msgstr ""
+
 #: taxonomy-reference-type.php:12
 msgid "Galéria"
 msgstr ""
@@ -269,6 +279,10 @@ msgstr ""
 
 #: templates/header.php:9
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
+msgstr ""
+
+#: templates/megasearch.php:7
+msgid "Nem találod kedvenc lapodat? Használd a keresőnket!"
 msgstr ""
 
 #: templates/requestmodal.php:19

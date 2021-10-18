@@ -383,3 +383,24 @@ function marrakesh_custom_editor_styles( $init_array ) {
     return $init_array;
 }
 add_filter( 'tiny_mce_before_init', 'marrakesh_custom_editor_styles' );
+
+function marrakesh_product_cat( $record, $item ) {
+    $images = array();
+
+    $pics = array( 'thumbnail', 'template', 'covera', 'coverb' );
+    foreach ( $pics as $pic ) {
+        $theimg = get_field($pic, $item->$taxonomy . '_' . $item->term_id);
+        $info = wp_get_attachment_image_src($theimg['ID'], 'thumbnail' );
+        if ( ! $info ) {
+            continue;
+        }
+        $images[ $pic ] = array(
+            'url'    => $info[0],
+            'width'  => $info[1],
+            'height' => $info[2],
+        );
+    }
+    $record['images'] = (array) apply_filters( 'algolia_get_post_images', $images );
+    return $record;
+}
+add_filter( 'algolia_term_product_cat_record', 'marrakesh_product_cat');

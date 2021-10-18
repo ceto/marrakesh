@@ -384,12 +384,12 @@ function marrakesh_custom_editor_styles( $init_array ) {
 }
 add_filter( 'tiny_mce_before_init', 'marrakesh_custom_editor_styles' );
 
-function marrakesh_product_cat( $record, $item ) {
+function marrakesh_product_cat( $record ) {
     $images = array();
 
-    $pics = array( 'thumbnail', 'template', 'covera', 'coverb' );
+    $pics = array('template', 'covera', 'coverb' );
     foreach ( $pics as $pic ) {
-        $theimg = get_field($pic, $item->$taxonomy . '_' . $item->term_id);
+        $theimg = get_field($pic, $record['taxonomy'] . '_' . $record['term_id']);
         $info = wp_get_attachment_image_src($theimg['ID'], 'thumbnail' );
         if ( ! $info ) {
             continue;

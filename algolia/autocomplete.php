@@ -45,6 +45,13 @@
 
 <script type="text/html" id="tmpl-autocomplete-term-suggestion">
 	<a class="suggestion-link" href="{{ data.permalink }}" title="{{ data.name }}">
+        <# if ( data.images.template ) { #>
+			<img class="suggestion-post-thumbnail" src="{{ data.images.template.url }}" alt="{{ data.name }}">
+        <# } else { #>
+            <# if ( data.images.covera ) { #>
+            <img class="suggestion-post-thumbnail" src="{{ data.images.covera.url }}" alt="{{ data.name }}">
+            <# } #>
+        <# } #>
 		<svg viewBox="0 0 21 21" width="21" height="21">
 			<svg width="21" height="21" viewBox="0 0 21 21">
 				<path

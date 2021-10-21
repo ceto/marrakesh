@@ -790,3 +790,36 @@ function marrakesh_cartcount() {
 
 
 
+add_filter('wpseo_title', 'custom_titles', 10, 1);
+function custom_titles() {
+    global $wp;
+    $current_slug = $wp->request;
+    if ($current_slug == 'foobar') {
+        return 'Foobar';
+    }
+}
+
+function marrakesh_product_title($title) {
+
+    if ( is_singular('product') ) {
+        global $post;
+        $title = mb_strtoupper(get_the_title($post));
+        if ( has_excerpt($post) ) {
+            $title .= ' - '.wp_strip_all_tags(get_the_excerpt($post), true);
+        } else {
+            $cats     = wc_get_product_terms( $post->ID, 'product_cat', array( 'fields' => 'ids', 'orderby' => 'parent', 'order' => 'ASC' ) );
+            $title .= ' - '.get_term($cats[0])->name;
+        }
+    } elseif ( is_tax('product_cat') ) {
+            $category = get_queried_object();
+            $title = mb_strtoupper($category->name);
+            $root = get_term( end( get_ancestors( $category->term_id, 'product_cat' ) ), 'product_cat');
+            if ( !is_wp_error( $root ) ) {
+                $title .= ' - '.$root->name;
+            } else {
+                $title .= ' - '.get_bloginfo('name');
+            }
+    }
+    return $title;
+}
+add_filter( 'pre_get_document_title', 'marrakesh_product_title', 20 );

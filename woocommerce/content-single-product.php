@@ -86,13 +86,6 @@ if ( post_password_required() ) {
                                 do_action( 'woocommerce_before_single_product_summary' );
                             ?>
 
-
-                            <!-- <figure class="singleproduct__prodimage">
-                                <?php echo woocommerce_get_product_thumbnail('medium_large'); ?>
-                                <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
-                            </figure> -->
-
-
                             <figure class="singleproduct__prodthumb">
                                 <?php if (get_field('singleimg', $product_id, false)) : ?>
                                 <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
@@ -106,22 +99,23 @@ if ( post_password_required() ) {
                             <?php if ( $product->is_on_sale() ) : ?>
                             <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
                             <?php endif;?>
-
+                            <?php if (has_excerpt() ) :?>
+                                <div class="singleproduct__shortdesc"><?php the_excerpt(); ?></div>
+                            <?php endif; ?>
 
                             <p class="singleproduct__price">
                                 <?php wc_get_template_part( 'loop/price'); ?>
                             </p>
-                            <br>
-                            <div style="font-size:1.25rem">
+
+                            <div class="singleproduct__status">
                                 <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                             </div>
 
 
-                            <br>
+
                             <div class="singleproduct__headeractions" data-magellan>
                                 <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
                             </div>
-
 
                         </header>
                     </div>
@@ -201,11 +195,9 @@ if ( post_password_required() ) {
                     <div class="tabs-content" data-tabs-content="productinfotabs">
                         <div class="tabs-panel is-active" id="prodinfopanel">
                             <div class="singleproduct__details">
-                                <div
-                                    class="lead singleproduct__shortdesc woocommerce-product-details__short-description">
-
-                                    <?php echo apply_filters('the_excerpt', get_the_excerpt($datafromprod['_linfopage']) ); ?>
-                                </div>
+                                <?php if ($catdescr=term_description(end($cats))) : ?>
+                                    <?= $catdescr; ?>
+                                <?php endif; ?>
                                 <?php the_content(); ?>
                                 <?php
                                     if (get_field('showsimulator', $product_id)==true) {
@@ -220,12 +212,6 @@ if ( post_password_required() ) {
                                     get_template_part('templates/dlcage');
                                     wp_reset_postdata();
                                 ?>
-                                <?php // $postparts = get_extended( apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])) ); ?>
-                                <?php // echo $postparts['main']; ?>
-                                <?php // echo apply_filters('the_content', get_post_field('post_content', $datafromprod['_linfopage'])); ?>
-                                <?php if ($catdescr=term_description(end($cats))) : ?>
-                                    <?= $catdescr; ?>
-                                <?php endif; ?>
                                 <p>
                                     <?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
                                 </p>

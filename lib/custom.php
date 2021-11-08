@@ -406,19 +406,19 @@ function marrakesh_product_cat( $record ) {
 add_filter( 'algolia_term_product_cat_record', 'marrakesh_product_cat');
 
 function marrakesh_algolia_post_atts($shared_attributes, $post ) {
-    $removed = remove_filter( 'the_excerpt', 'wptexturize', 10 );
-    $shared_attributes['post_excerpt'] = apply_filters( 'the_excerpt', $post->post_excerpt ); // phpcs:ignore -- Legitimate use of Core hook.
-    if ( true === $removed ) {
-        add_filter( 'the_excerpt', 'wptexturize', 10 );
-    }
+    // $removed = remove_filter( 'the_excerpt', 'wptexturize', 10 );
+    $shared_attributes['post_excerpt'] =  $post->post_excerpt;
+    // if ( true === $removed ) {
+    //     add_filter( 'the_excerpt', 'wptexturize', 10 );
+    // }
     return $shared_attributes;
 }
 add_filter( 'algolia_searchable_post_shared_attributes', 'marrakesh_algolia_post_atts' );
 
 
 function marrakesh_algolia_product_atts($shared_attributes, $post ) {
-    $shared_attributes['_stock_status'] = get_post_meta( $post->ID, '_stock_status', true );
-    $shared_attributes['_stock'] = (int) get_post_meta( $post->ID, '_stock', true );
+    $shared_attributes['stock_status'] = get_post_meta( $post->ID, '_stock_status', true );
+    $shared_attributes['stock'] = (int) get_post_meta( $post->ID, '_stock', true );
     return $shared_attributes;
 }
 add_filter( 'algolia_searchable_post_product_shared_attributes', 'marrakesh_algolia_product_atts' );

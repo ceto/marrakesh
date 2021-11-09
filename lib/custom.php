@@ -405,16 +405,37 @@ function marrakesh_product_cat( $record ) {
 }
 add_filter( 'algolia_term_product_cat_record', 'marrakesh_product_cat');
 
-function marrakesh_algolia_post_atts( $shared_attributes ) {
-    $shared_attributes['post_excerpt'] = get_the_excerpt($shared_attributes['post_id']);
-    return $shared_attributes;
+function marrakesh_algolia_post_atts( array $attributes, WP_Post $post ) {
+    $attributes['post_excerpt'] = get_the_excerpt($post->ID);
+    return $attributes;
 }
-add_filter( 'algolia_post_shared_attributes', 'marrakesh_algolia_post_atts' );
+add_filter( 'algolia_post_shared_attributes', 'marrakesh_algolia_post_atts', 10, 2 );
+add_filter( 'algolia_searchable_post_shared_attributes', 'marrakesh_algolia_post_atts', 10, 2 );
 
 
-function marrakesh_algolia_product_atts($shared_attributes ) {
-    $shared_attributes['stock_status'] = get_post_meta( $shared_attributes['post_id'], '_stock_status', true );
-    $shared_attributes['stock'] = (int) get_post_meta( $shared_attributes['post_id'], '_stock', true );
-    return $shared_attributes;
+function marrakesh_algolia_product_atts( array $attributes, WP_Post $post ) {
+    $attributes['stock_status'] = get_post_meta( $post->ID, '_stock_status', true );
+    $attributes['stock'] = (int) get_post_meta( $post->ID, '_stock', true );
+    return $attributes;
 }
-add_filter( 'algolia_post_product_shared_attributes', 'marrakesh_algolia_product_atts' );
+add_filter( 'algolia_post_product_shared_attributes', 'marrakesh_algolia_product_atts', 10, 2 );
+add_filter( 'algolia_searchable_post_product_shared_attributes', 'marrakesh_algolia_product_atts', 10, 2 );
+
+function marrakesh_algolia_product_index_settings( array $settings ) {
+    $settings['attributesToIndex'][] = 'unordered(post_excerpt)';
+    $settings['attributesToSnippet'][] = 'post_excerpt:30';
+
+    // By default, the plugin uses 'is_sticky' and the 'post_date' in the custom ranking.
+    // Here we retrieve the custom ranking so that we can alter it with more control.
+    $customRanking = $settings['customRanking'];
+
+    // We add our custom ranking rule at the beginning of the rules so that
+    // it is the first one considered in the algorithm.
+    array_unshift( $customRanking, 'desc(stock)' );
+
+    // We override the initial custom ranking rules.
+    $settings['customRanking'] = $customRanking;
+
+    return $settings;
+}
+add_filter( 'algolia_posts_product_index_settings', 'marrakesh_algolia_product_index_settings' );

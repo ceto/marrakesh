@@ -439,3 +439,8 @@ function marrakesh_algolia_product_index_settings( array $settings ) {
     return $settings;
 }
 add_filter( 'algolia_posts_product_index_settings', 'marrakesh_algolia_product_index_settings' );
+
+add_filter( 'algolia_searchable_post_types', function( $post_types ) {
+    $post_types = array('product');
+    return $post_types;
+});

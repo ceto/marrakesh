@@ -207,11 +207,51 @@
 
 
 .singleproduct__headeractions{
+    display: flex;
+    gap:.5em;
     margin-top:.5em;
     .button {
         margin-bottom: 0;;
     }
 }
+
+.yith-wcwl-add-button {
+    .button {
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        .icon {
+            transform: scale(1.75);
+            fill: none;
+        }
+
+        .singleproduct__callout__actions & {
+            font-size: 1.25rem;
+        }
+
+    }
+
+    .button--yithwcwladd {
+        background-color: $light-gray;
+        color: $body-font-color;
+        background-image: svg-load('star-outline.svg', fill=#{$body-font-color});
+
+        &:hover, &:focus {
+            background-color: $medium-gray;
+            background-image: svg-load('star-add.svg', fill=#{$body-font-color});
+        }
+    }
+
+    .button--yithwcwlremove {
+        background-color: $dark-gray;
+        color: $body-background;
+        background-image: svg-load('star-checked.svg', fill=#{$body-background});
+        &:hover, &:focus {
+            background-image: svg-load('star-delete.svg', fill=#{$body-background})
+        }
+    }
+}
+
 .singleproduct__images {
     // margin-top:-5.666rem;
     // background-color: rgba(#000,.75);
@@ -229,6 +269,12 @@
     background-color: $white;
     border-color: scale-color($light-gray, $lightness: -5%);
     padding: 2rem 5%;
+}
+
+.singleproduct__callout__actions {
+    display: flex;
+    gap:.5em;
+
 }
 
 .attrheader {
@@ -454,3 +500,5 @@ p.waste-warning {
         text-decoration: underline;
     }
 }
+
+

@@ -55,7 +55,11 @@
                 >
             </div>
         </section>
-        <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button large accent expanded"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+        <div class="singleproduct__callout__actions">
+            <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button large accent expanded"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+            <?php get_template_part('templates/wcwlbutton'); ?>
+        </div>
+
     </form>
     <?php endif; ?>
     <a href="#requestmodal" data-open="requestmodal" class="order-quotelink"><?= __('Kérdésem van a termékkel kapcsolatban.', 'marrakesh'); ?></a>

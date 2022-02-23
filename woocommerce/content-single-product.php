@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $product_id, $post, $datafromprod, $sitepress;
+global $product, $post, $datafromprod, $sitepress;
 $attributes = $product->get_attributes();
 
 
@@ -115,7 +115,7 @@ if ( post_password_required() ) {
 
                             <div class="singleproduct__headeractions" data-magellan>
                                 <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
-                                <?php get_template_part('templates/wcwlbutton'); ?>
+                                <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
                             </div>
 
                         </header>

@@ -444,3 +444,21 @@ add_filter( 'algolia_searchable_post_types', function( $post_types ) {
     $post_types = array('product');
     return $post_types;
 });
+
+add_filter( 'yith_wcwl_main_script_deps', function() {
+    return array( 'jquery' );
+});
+
+// function marrakesh_remove_unnecessary_scripts() {
+//     wp_dequeue_script( 'jquery-selectBox' );
+//     wp_deregister_script( 'jquery-selectBox' );
+//     wp_dequeue_script( 'prettyPhoto' );
+//     wp_deregister_script( 'prettyPhoto' );
+// }
+// add_action( 'wp_print_scripts', 'marrakesh_remove_unnecessary_scripts' );
+
+// function marrakesh_remove_unnecessary_styles() {
+//     wp_dequeue_style( 'yith-wcwl-main' );
+//     wp_deregister_style( 'yith-wcwl-main' );
+// }
+// add_action( 'wp_print_styles', 'marrakesh_remove_unnecessary_styles' );

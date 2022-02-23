@@ -23,9 +23,6 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 }
 
 
-
-
-
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page.
@@ -81,16 +78,16 @@ function woocommerce_template_loop_product_link_open() {
     $link = apply_filters( 'woocommerce_loop_product_link', get_the_permalink(), $product );
     echo '<a href="' . esc_url( $link ) . '" class="prodcard__productlink">';
 }
-
+function woocommerce_template_loop_product_link_close() {
+    echo '</a>';
+    // echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+}
 
 function woocommerce_template_loop_product_thumbnail() {
-    global $product;
-    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
+    // global $product;
     echo '<figure class="prodcard__prodimage">';
-    echo wp_get_attachment_image(get_post_thumbnail_id($origproductid),'medium');
-    // echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
-    echo wp_get_attachment_image( get_field('singleimg', $origproductid, false), 'tiny' );
-    // echo wp_get_attachment_image( get_field('singleimg'), 'tiny' );
+    echo woocommerce_get_product_thumbnail('medium'); // WPCS: XSS ok.
+    echo wp_get_attachment_image( get_field('singleimg'), 'tiny' );
     echo '</figure>';
 }
 

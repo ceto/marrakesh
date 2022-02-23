@@ -54,6 +54,15 @@
         font-size:.875rem;
         line-height:1.2;
         margin:0 0 .25em;
+        .has-tip {
+            border-bottom: none;
+            svg.icon {
+                width:.9375em;
+                height:.9375em;
+                fill: $medium-gray;
+                transform: translateY(.2em);
+            }
+        }
     }
 
     .price {
@@ -71,14 +80,6 @@
         }
     }
 
-    .has-tip {
-        border-bottom: none;
-        svg.icon {
-            width:.9375em;
-            height:.9375em;
-            fill: $medium-gray;
-            transform: translateY(.2em);
-        }
-    }
+
 
 }

@@ -78,4 +78,8 @@
     <?php get_template_part('templates/megasearch'); ?>
 </header>
 
-<?php do_action( 'marrakesh_after_banner'); ?>
+<?php
+    if (!is_archive()) {
+        do_action( 'marrakesh_after_banner');
+    }
+?>

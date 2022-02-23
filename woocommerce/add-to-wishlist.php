@@ -67,8 +67,6 @@ global $product;
     <a
             href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'remove_from_wishlist', $product_id, $target ), 'remove_from_wishlist' ) ); ?>"
             class="button button--yithwcwlremove"
-            data-item-id="<?php echo esc_attr( $found_item->get_id() ); ?>"
-            data-list-id="<?php echo esc_attr( $found_in_list->get_id() ); ?>"
             data-product-id="<?php echo esc_attr( $product_id ); ?>"
             data-tooltip title="<?= __('Eltávolítás a személyes listából') ?>"
             rel="nofollow"

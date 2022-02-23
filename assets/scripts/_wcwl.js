@@ -39,7 +39,7 @@
             return false;
         } );
 
-        $('.button--yithwcwlremove').on( 'click', function( ev ) {
+        $('AAA.button--yithwcwlremove').on( 'click', function( ev ) {
             ev.preventDefault();
             var t = $(this),
                 product_id = t.attr( 'data-product-id' ),

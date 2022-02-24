@@ -70,7 +70,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 	<?php else :
 		?>
 		<div class="callout">
-			<p><?php _e( 'A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket.', 'marrakesh' ); ?></p>
+			<p><?php _e( 'A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket egy helyen.', 'marrakesh' ); ?></p>
 		</div>
 		<?php
 	endif;

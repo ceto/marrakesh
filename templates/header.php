@@ -1,3 +1,6 @@
+<?php
+    global $whislistmenuitem;
+?>
 <header class="banner">
     <div class="banner__toprow">
         <div class="grid-container">
@@ -18,12 +21,19 @@
                     </ul>
                 </div>
                 <div class="auto cell show-for-tablet">
-
                     <?php
-                    if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu menu--topbar align-right', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
-                endif;
-                ?>
+                        $whislistmenuitem='';
+                        if ( defined( 'YITH_WCWL' ) ) {
+                            $whislistmenuitem = '<li class="menu-item menu-wishlist"><a id="megatoggler" href="'.YITH_WCWL()->get_wishlist_url().'">'.__('Személyes lista','helsinki').'<span>'.YITH_WCWL()->count_all_products().'</span></a></li>';
+                        };
+                        if (has_nav_menu('secondary_navigation')) :
+                            wp_nav_menu([
+                                'theme_location' => 'secondary_navigation',
+                                'menu_class' => 'menu menu--topbar align-right',
+                                'items_wrap' => '<ul class="%2$s">'.$whislistmenuitem.'%3$s</ul>'
+                            ]);
+                        endif;
+                    ?>
                 </div>
             </div>
         </div>

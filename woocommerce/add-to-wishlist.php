@@ -41,9 +41,19 @@ global $product;
 <div class="yith-wcwl-add-button">
 
     <?php if (! YITH_WCWL()->is_product_in_wishlist( $product_id ) ){
-        $add=true;
+        $add = true;
+        $action = 'add_to_wishlist';
+        $tooltip =  __('Hozzáadás a személyes listához');
+        $class = "button";
+        $icon = "#icon-star-outline";
+
+
     } else {
         $add=false;
+        $action='remove_from_wishlist';
+        $tooltip =  __('Eltávolítás a személyes listából');
+        $class = "button is-on";
+        $icon = "#icon-star-checked";
     }
     ?>
 
@@ -54,25 +64,13 @@ global $product;
             $target = home_url( add_query_arg( array(), $wp->request ) );
         }
     ?>
-    <a
-        href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'add_to_wishlist', $product_id, $target ), 'add_to_wishlist' ) ); ?>"
-        class="button button--yithwcwladd"
+    <a href="<?= esc_url( wp_nonce_url( add_query_arg( $action, $product_id, $target ), $action ) ); ?>"
+        class="<?= $class; ?>"
+        data-action="<?= $action ?>"
         data-product-id="<?= $product_id; ?>"
-        data-tooltip title="<?= __('Hozzáadás a személyes listához') ?>"
+        data-tip-text="<?= $tooltip ?>"
+        data-tooltip
         rel="nofollow"
-        style="<?= $add?'':'display:none'; ?>"
-    >
-        <svg class="icon"><use xlink:href="#icon-star-outline"></use></svg>
+    ><span><?= $tooltip ?></span>
     </a>
-    <a
-            href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'remove_from_wishlist', $product_id, $target ), 'remove_from_wishlist' ) ); ?>"
-            class="button button--yithwcwlremove"
-            data-product-id="<?php echo esc_attr( $product_id ); ?>"
-            data-tooltip title="<?= __('Eltávolítás a személyes listából') ?>"
-            rel="nofollow"
-            style="<?= $add?'display:none':''; ?>"
-    >
-        <svg class="icon"><use xlink:href="#icon-star-checked"></use></svg>
-    </a>
-
 </div>

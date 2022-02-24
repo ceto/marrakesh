@@ -1,3 +1,7 @@
+<?php
+    global $whislistmenuitem;
+?>
+
 <div class="reveal mobilemodal" id="mobilemodal" data-reveal data-animation-in="scale-in-down fast"
     data-animation-out="scale-out-up fast">
 
@@ -28,7 +32,10 @@
     <nav class="mobilemodal__secondarynav">
         <?php
                 if (has_nav_menu('secondary_navigation')) :
-                wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu menu--mobilesecondary align-center ahorizontal', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
+                wp_nav_menu([
+                    'theme_location' => 'secondary_navigation',
+                    'menu_class' => 'menu menu--mobilesecondary align-center ahorizontal',
+                    'items_wrap' => '<ul class="%2$s">'.$whislistmenuitem.'%3$s</ul>']);
                 endif;
             ?>
         <button class="mobilemodal__close" data-close aria-label="Close modal" type="button">

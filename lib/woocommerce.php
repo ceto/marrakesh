@@ -80,7 +80,7 @@ function woocommerce_template_loop_product_link_open() {
 }
 function woocommerce_template_loop_product_link_close() {
     echo '</a>';
-    // echo do_shortcode('[yith_wcwl_add_to_wishlist]');
+    echo do_shortcode('[yith_wcwl_add_to_wishlist]');
 }
 
 function woocommerce_template_loop_product_thumbnail() {

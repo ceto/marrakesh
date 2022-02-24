@@ -145,5 +145,13 @@ function assets() {
     'currency' =>  get_woocommerce_currency(),
     'currency_symbol' => get_woocommerce_currency_symbol()
   ));
+
+  if ( defined( 'YITH_WCWL' ) ) {
+    $yith_wcwl_l10n_vars = YITH_WCWL_Frontend()->get_localize();
+    wp_localize_script( 'sage/js', 'yith_wcwl_l10n', $yith_wcwl_l10n_vars);
+  }
+
+
+
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

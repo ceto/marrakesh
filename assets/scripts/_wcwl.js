@@ -1,81 +1,70 @@
+$('.yith-wcwl-add-button .button').on( 'click', function( ev ) {
+    ev.preventDefault();
+    var t = $(this),
+        product_id = t.attr( 'data-product-id' ),
+        el_wrap = t.parent(),
+        switchaction = 'remove_from_wishlist';
+        switchtext = 'Eltávolítás a személyes listából';
+    var data = {
+        action: yith_wcwl_l10n.actions.add_to_wishlist_action,
+        nonce: yith_wcwl_l10n.nonce.add_to_wishlist_nonce,
+        add_to_wishlist: product_id,
+    };
+    if (t.attr('data-action') === 'remove_from_wishlist') {
+        switchaction = 'add_to_wishlist';
+        switchtext = 'Hozzáadás a személyes listához';
+        data = {
+            action: yith_wcwl_l10n.actions.remove_from_wishlist_action,
+            nonce: yith_wcwl_l10n.nonce.remove_from_wishlist_nonce,
+            remove_from_wishlist: product_id,
+        };
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: yith_wcwl_l10n.ajax_url,
+        data: data,
+        dataType: 'json',
+        beforeSend: function(){
+            // block( t );
+
+        },
+        complete: function(){
+            // unblock( t );
+
+        },
+        success: function( response ) {
+            var response_result = response.result,
+                response_message = response.message;
+            console.log(response);
+
+            if (t.attr('data-action') === 'remove_from_wishlist') {
+                $('.menu-wishlist a span').text(parseInt($('.menu--topbar .menu-wishlist a span').text()) - 1);
+            } else {
+                $('.menu-wishlist a span').text(parseInt($('.menu--topbar .menu-wishlist a span').text()) + 1);
+            }
+
+            t.toggleClass( 'is-on' );
+            t.blur();
+            t.attr('data-action', switchaction);
+            t.attr('data-tip-text', switchtext);
+            t.data().zfPlugin.template.text( t.attr('data-tip-text'));
+            if ($('body').hasClass('wishlist')) {
+                t.closest('.prodcard').remove();
+            }
 
 
 
-        $('.button--yithwcwladd').on( 'click', function( ev ) {
-            ev.preventDefault();
-            var t = $(this),
-                product_id = t.attr( 'data-product-id' ),
-                el_wrap = t.parent(),
-                data = {
-                    action: yith_wcwl_l10n.actions.add_to_wishlist_action,
-                    nonce: yith_wcwl_l10n.nonce.add_to_wishlist_nonce,
-                    add_to_wishlist: product_id,
-                };
-            $.ajax({
-                type: 'POST',
-                url: yith_wcwl_l10n.ajax_url,
-                data: data,
-                dataType: 'json',
-                beforeSend: function(){
-                    // block( t );
+            if( response_result === 'true' || response_result === 'exists' ) {
+                // el_wrap.find('.button').toggleClass( "is-on" );
+                // el_wrap.find('.button--yithwcwlremove').css( "display", "block" );
+            }
+        }
 
-                },
-                complete: function(){
-                    // unblock( t );
+    });
 
-                },
-                success: function( response ) {
-                    var response_result = response.result,
-                        response_message = response.message;
-                    console.log(response);
-                    if( response_result === 'true' || response_result === 'exists' ) {
-                        el_wrap.find('.button--yithwcwladd').css( "display", "none" );
-                        el_wrap.find('.button--yithwcwlremove').css( "display", "block" );
-                    }
-                }
+    return false;
+} );
 
-            });
-
-            return false;
-        } );
-
-        $('AAA.button--yithwcwlremove').on( 'click', function( ev ) {
-            ev.preventDefault();
-            var t = $(this),
-                product_id = t.attr( 'data-product-id' ),
-                item_id = t.attr( 'data-item-id' ),
-                el_wrap = t.parent(),
-                data = {
-                    action: yith_wcwl_l10n.actions.remove_from_wishlist_action,
-                    nonce: yith_wcwl_l10n.nonce.remove_from_wishlist_nonce,
-                    remove_from_wishlist: product_id,
-                };
-            $.ajax({
-                type: 'POST',
-                url: yith_wcwl_l10n.ajax_url,
-                data: data,
-                dataType: 'json',
-                beforeSend: function(){
-                    // block( t );
-
-                },
-                complete: function(){
-                    // unblock( t );
-
-                },
-                success: function( response ) {
-                    var response_result = response.result,
-                        response_message = response.message;
-                    console.log(response);
-                    if( response_result === 'true' || response_result === 'not_exists' ) {
-                        el_wrap.find('.button--yithwcwlremove').css( "display", "none" );
-                        el_wrap.find('.button--yithwcwladd').css( "display", "block" );
-                    }
-                }
-
-            });
-
-            return false;
-        } );
 
 

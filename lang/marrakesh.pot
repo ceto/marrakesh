@@ -277,7 +277,7 @@ msgstr ""
 msgid "Inspirációkért kövess"
 msgstr ""
 
-#: templates/header.php:9
+#: templates/header.php:12
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
@@ -464,8 +464,12 @@ msgstr ""
 msgid "Színvariációk"
 msgstr ""
 
+#: woocommerce/share.php:48
+msgid "Megosztás"
+msgstr ""
+
 #: woocommerce/wishlist-view.php:73
-msgid "A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket."
+msgid "A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket egy helyen."
 msgstr ""
 
 #: woocommerce/global/breadcrumb.php:26

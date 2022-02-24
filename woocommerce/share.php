@@ -42,57 +42,22 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 
 do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
 ?>
-
+<br><br>
+<hr class="fulldivider">
 <div class="yith-wcwl-share">
-	<h4 class="yith-wcwl-share-title"><?php echo esc_html( $share_title ); ?></h4>
-	<ul>
-		<?php if ( $share_facebook_enabled ) : ?>
-			<li class="share-button">
-				<a target="_blank" rel="noopener" class="facebook" href="https://www.facebook.com/sharer.php?u=<?php echo urlencode( $share_link_url ); ?>&p[title]=<?php echo esc_attr( $share_link_title ); ?>" title="<?php esc_html_e( 'Facebook', 'yith-woocommerce-wishlist' ); ?>">
-					<?php echo $share_facebook_icon ? yith_wcwl_kses_icon( $share_facebook_icon ) : esc_html__( 'Facebook', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			</li>
-		<?php endif; ?>
-
-		<?php if ( $share_twitter_enabled ) : ?>
-			<li class="share-button">
-				<a target="_blank" rel="noopener" class="twitter" href="https://twitter.com/share?url=<?php echo urlencode( $share_link_url ); ?>&amp;text=<?php echo esc_attr( $share_twitter_summary ); ?>" title="<?php esc_html_e( 'Twitter', 'yith-woocommerce-wishlist' ); ?>">
-					<?php echo $share_twitter_icon ? yith_wcwl_kses_icon( $share_twitter_icon ) : esc_html__( 'Twitter', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			</li>
-		<?php endif; ?>
-
-		<?php if ( $share_pinterest_enabled ) : ?>
-			<li class="share-button">
-				<a target="_blank" rel="noopener" class="pinterest" href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode( $share_link_url ); ?>&amp;description=<?php echo esc_attr( $share_summary ); ?>&amp;media=<?php echo esc_attr( $share_image_url ); ?>" title="<?php esc_html_e( 'Pinterest', 'yith-woocommerce-wishlist' ); ?>" onclick="window.open(this.href); return false;">
-					<?php echo $share_pinterest_icon ? yith_wcwl_kses_icon( $share_pinterest_icon ) : esc_html__( 'Pinterest', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			</li>
-		<?php endif; ?>
-
-		<?php if ( $share_email_enabled ) : ?>
-			<li class="share-button">
-				<a class="email" href="mailto:?subject=<?php echo esc_attr( apply_filters( 'yith_wcwl_email_share_subject', $share_link_title ) ); ?>&amp;body=<?php echo esc_attr( apply_filters( 'yith_wcwl_email_share_body', urlencode( $share_link_url ) ) ); ?>&amp;title=<?php echo esc_attr( $share_link_title ); ?>" title="<?php esc_html_e( 'Email', 'yith-woocommerce-wishlist' ); ?>">
-					<?php echo $share_email_icon ? yith_wcwl_kses_icon( $share_email_icon ) : __( 'Email', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			</li>
-		<?php endif; ?>
-
-		<?php if ( $share_whatsapp_enabled ) : ?>
-			<li class="share-button">
-				<a class="whatsapp" href="<?php echo esc_attr( $share_whatsapp_url ); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'WhatsApp', 'yith-woocommerce-wishlist' ); ?>">
-					<?php echo $share_whatsapp_icon ? yith_wcwl_kses_icon( $share_whatsapp_icon ) : esc_html__( 'Whatsapp', 'yith-woocommerce-wishlist' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			</li>
-		<?php endif; ?>
-	</ul>
-
-	<?php if ( $share_url_enabled ) : ?>
-		<div class="yith-wcwl-after-share-section">
-			<input class="copy-target" readonly="readonly" type="url" name="yith_wcwl_share_url" id="yith_wcwl_share_url" value="<?php echo esc_attr( $share_link_url ); ?>"/>
-			<?php echo ( ! empty( $share_link_url ) ) ? sprintf( '<small>%s <span class="copy-trigger">%s</span> %s</small>', esc_html__( '(Now', 'yith-woocommerce-wishlist' ), esc_html__( 'copy', 'yith-woocommerce-wishlist' ), esc_html__( 'this wishlist link and share it anywhere)', 'yith-woocommerce-wishlist' ) ) : ''; ?>
-		</div>
-	<?php endif; ?>
+	<h4 class="yith-wcwl-share-title"><?= __('Megosztás', 'marrakesh'); ?></h4>
+    <ul class="menu menu--footersocial">
+        <li><a target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode( $share_link_url ); ?>&amp;description=<?php echo esc_attr( $share_summary ); ?>&amp;media=<?php echo esc_attr( $share_image_url ); ?>" title="<?php esc_html_e( 'Pinterest', 'yith-woocommerce-wishlist' ); ?>"><svg class="icon"><use xlink:href="#icon-pinterest2"></use></svg></a></li>
+        <li><a target="_blank" rel="noopener" href="https://www.facebook.com/sharer.php?u=<?php echo urlencode( $share_link_url ); ?>&p[title]=<?php echo esc_attr( $share_link_title ); ?>" title="<?php esc_html_e( 'Facebook', 'yith-woocommerce-wishlist' ); ?>"><svg class="icon"><use xlink:href="#icon-facebook"></use></svg></a></li>
+        <li><a target="_blank" rel="noopener" href="<?php echo esc_attr( $share_whatsapp_url ); ?>" data-action="share/whatsapp/share" target="_blank" rel="noopener" title="<?php esc_html_e( 'WhatsApp', 'yith-woocommerce-wishlist' ); ?>"><svg class="icon"><use xlink:href="#icon-whatsapp"></use></svg></a></li>
+        <li><a target="_blank" rel="noopener" href="https://twitter.com/share?url=<?php echo urlencode( $share_link_url ); ?>&amp;text=<?php echo esc_attr( $share_twitter_summary ); ?>" title="<?php esc_html_e( 'Twitter', 'yith-woocommerce-wishlist' ); ?>"><svg class="icon"><use xlink:href="#icon-twitter"></use></svg></a></li>
+        <li><a target="_blank" rel="noopener" href="mailto:?subject=<?php echo esc_attr( apply_filters( 'yith_wcwl_email_share_subject', $share_link_title ) ); ?>&amp;body=<?php echo esc_attr( apply_filters( 'yith_wcwl_email_share_body', urlencode( $share_link_url ) ) ); ?>&amp;title=<?php echo esc_attr( $share_link_title ); ?>" title="<?php esc_html_e( 'Email', 'yith-woocommerce-wishlist' ); ?>"><svg class="icon"><use xlink:href="#icon-envelope"></use></svg></a></li>
+    </ul>
+    <br>
+    <div class="yith-wcwl-after-share-section">
+        <input class="copy-target" readonly="readonly" type="url" name="yith_wcwl_share_url" id="yith_wcwl_share_url" value="<?php echo esc_attr( $share_link_url ); ?>"/>
+        <?php echo ( ! empty( $share_link_url ) ) ? sprintf( '<small>%s <span class="copy-trigger">%s</span> %s</small>', esc_html__( '(Now', 'yith-woocommerce-wishlist' ), esc_html__( 'copy', 'yith-woocommerce-wishlist' ), esc_html__( 'this wishlist link and share it anywhere)', 'yith-woocommerce-wishlist' ) ) : ''; ?>
+    </div>
 
 	<?php do_action( 'yith_wcwl_after_share_buttons', $share_link_url, $share_title, $share_link_title ); ?>
 </div>

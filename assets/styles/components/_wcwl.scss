@@ -4,23 +4,11 @@
         background-size: 50%;
         background-position: center 45%;
         margin:0;
-        &.has-tip {
-            border-bottom: none;
-            cursor:pointer;
-        }
-
-        .icon {
-            transform: scale(1.75);
-            fill: none;
-        }
-
-        .singleproduct__callout__actions & {
-            font-size: 1.25rem;
-        }
-
-    }
-
-    .button--yithwcwladd {
+        display: block;
+        width: 2.5666rem;
+        height:0;
+        padding:0 0 100% 0;
+        border:none;
         background-color: $light-gray;
         color: $body-font-color;
         background-image: svg-load('star-outline.svg', fill=#{$body-font-color});
@@ -29,9 +17,25 @@
             background-color: $medium-gray;
             background-image: svg-load('star-add.svg', fill=#{$body-font-color});
         }
+
+        &.has-tip {
+            border-bottom: none;
+            display: block;
+            cursor:pointer;
+        }
+
+        .singleproduct__callout__actions & {
+            width:3.25rem;
+        }
+
+        span {
+            display: none;
+        }
+
     }
 
-    .button--yithwcwlremove {
+
+    .button.is-on {
         background-color: $dark-gray;
         color: $body-background;
         background-image: svg-load('star-checked.svg', fill=#{$body-background});
@@ -46,34 +50,51 @@
 
 .prodcard .yith-wcwl-add-button  {
     position: absolute;
-    top: .666rem;
-    right: .666rem;
-    box-shadow: 0 0 5px 0 rgba(#000,.25);
-    // z-index: 1;
-    // border:1px solid $white;
+    top: .5rem;
+    right: .5rem;
+    // box-shadow: 0 0 5px 0 rgba(#000,.25);
+
     .button {
         display: block;
-        font-size: .75em;
-        background-size: 60.666%;
-    }
-
-    .button--yithwcwladd {
-        background-color: $white;
-        color: $primary-color;
-        background-image: svg-load('star-outline.svg', fill=#{$primary-color});
+        width:1.75rem;
+        background-size: 75%;
+        background-color: transparent;
+        background-image: svg-load('star-outline.svg', fill=#{$white});
+        filter: drop-shadow(0 0 .125rem rgba(#000,.875));
 
         &:hover, &:focus {
-            background-color: $primary-color;
-            background-image: svg-load('star-add.svg', fill=#{$white});
+            background-color: transparent;
+            background-image: svg-load('star.svg', fill=#{$primary-color});
         }
     }
 
-    .button--yithwcwlremove {
-        background-color: $primary-color;
-        color: $body-background;
-        background-image: svg-load('star-checked.svg', fill=#{$body-background});
+    .button.is-on {
+        // background-color: $primary-color;
+        filter: drop-shadow(0 0 .125rem rgba(#fff,.875));
+        background-image: svg-load('star.svg', fill=#{$primary-color});
         &:hover, &:focus {
-            background-image: svg-load('star-delete.svg', fill=#{$body-background})
+            background-image: svg-load('star-delete.svg', fill=#{$primary-color})
+        }
+    }
+}
+
+.menu-wishlist {
+    a {
+    // background-color: lightblue;
+    padding-left: 1.5em !important;
+    background-repeat: no-repeat;
+    background-size: auto 56%;
+    background-position: .333em 40%;
+    background-image: svg-load('star-outline.svg', fill=#{$black});
+
+        span {
+            color: $primary-color;
+            &:before {
+                content: ' (';
+            }
+            &:after {
+                content: ')';
+            }
         }
     }
 }

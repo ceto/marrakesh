@@ -22,15 +22,11 @@
                 </div>
                 <div class="auto cell show-for-tablet">
                     <?php
-                        $whislistmenuitem='';
-                        if ( defined( 'YITH_WCWL' ) ) {
-                            $whislistmenuitem = '<li class="menu-item menu-wishlist"><a id="megatoggler" href="'.YITH_WCWL()->get_wishlist_url().'">'.__('Személyes lista','helsinki').'<span>'.YITH_WCWL()->count_all_products().'</span></a></li>';
-                        };
                         if (has_nav_menu('secondary_navigation')) :
                             wp_nav_menu([
                                 'theme_location' => 'secondary_navigation',
                                 'menu_class' => 'menu menu--topbar align-right',
-                                'items_wrap' => '<ul class="%2$s">'.$whislistmenuitem.'%3$s</ul>'
+                                'items_wrap' => '<ul class="%2$s">%3$s</ul>'
                             ]);
                         endif;
                     ?>
@@ -72,6 +68,12 @@
                         <a class="banner__actions__search js_searchstarter" href="#">
                             <svg class="icon"><use xlink:href="#icon-search"></use></svg>
                         </a>
+                        <?php if ( defined( 'YITH_WCWL' ) ) : ?>
+                            <a class="banner__actions__wishlist" href="<?= YITH_WCWL()->get_wishlist_url(); ?>">
+                                <svg class="icon"><use xlink:href="#icon-heart-outline"></use></svg>
+                                <span class="badge"><?= YITH_WCWL()->count_all_products(); ?></span>
+                            </a>
+                        <?php endif; ?>
                         <a class="banner__actions__cart" href="<?= get_permalink( wc_get_page_id( 'cart' ) ) ?>">
                             <svg class="icon"><use xlink:href="#icon-cart"></use></svg>
                             <?= marrakesh_cartcount(); ?>

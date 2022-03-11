@@ -1,8 +1,8 @@
 .yith-wcwl-add-button {
     .button {
         background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center 45%;
+        background-size: 66%;
+        background-position: center 50%;
         margin:0;
         display: block;
         width: 2.5666rem;
@@ -11,11 +11,11 @@
         border:none;
         background-color: $light-gray;
         color: $body-font-color;
-        background-image: svg-load('star-outline.svg', fill=#{$body-font-color});
+        background-image: svg-load('heart-outline.svg', fill=#{$body-font-color});
 
         &:hover, &:focus {
             background-color: $medium-gray;
-            background-image: svg-load('star-add.svg', fill=#{$body-font-color});
+            background-image: svg-load('heart-add-outline.svg', fill=#{$body-font-color});
         }
 
         &.has-tip {
@@ -36,11 +36,11 @@
 
 
     .button.is-on {
-        background-color: $dark-gray;
-        color: $body-background;
-        background-image: svg-load('star-checked.svg', fill=#{$body-background});
+        // background-color: $dark-gray;
+        // color: $body-background;
+        background-image: svg-load('heart.svg', fill=#{$primary-color});
         &:hover, &:focus {
-            background-image: svg-load('star-delete.svg', fill=#{$body-background})
+            background-image: svg-load('heart-remove.svg', fill=#{$body-font-color})
         }
     }
 
@@ -59,21 +59,21 @@
         width:1.75rem;
         background-size: 75%;
         background-color: transparent;
-        background-image: svg-load('star-outline.svg', fill=#{$white});
+        background-image: svg-load('heart.svg', fill=#{$white});
         filter: drop-shadow(0 0 .125rem rgba(#000,.875));
 
         &:hover, &:focus {
             background-color: transparent;
-            background-image: svg-load('star.svg', fill=#{$primary-color});
+            background-image: svg-load('heart.svg', fill=#{$primary-color});
         }
     }
 
     .button.is-on {
         // background-color: $primary-color;
         filter: drop-shadow(0 0 .125rem rgba(#fff,.875));
-        background-image: svg-load('star.svg', fill=#{$primary-color});
+        background-image: svg-load('heart.svg', fill=#{$primary-color});
         &:hover, &:focus {
-            background-image: svg-load('star-delete.svg', fill=#{$primary-color})
+            background-image: svg-load('heart.svg', fill=#{$white})
         }
     }
 }
@@ -85,7 +85,7 @@
     background-repeat: no-repeat;
     background-size: auto 56%;
     background-position: .333em 40%;
-    background-image: svg-load('star-outline.svg', fill=#{$black});
+    background-image: svg-load('heart-outline.svg', fill=#{$black});
 
         span {
             color: $primary-color;

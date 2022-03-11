@@ -55,8 +55,9 @@ do_action( 'yith_wcwl_before_wishlist_share', $wishlist );
     </ul>
     <br>
     <div class="yith-wcwl-after-share-section">
+        <?php echo ( ! empty( $share_link_url ) ) ? sprintf( '<small>%s</small>', __('Személyes listád az alábbi url-en érhető el. Másold és oszd meg!', 'marrakesh')) : ''; ?>
+
         <input class="copy-target" type="url" name="yith_wcwl_share_url" id="yith_wcwl_share_url" value="<?php echo esc_attr( $share_link_url ); ?>"/>
-        <?php echo ( ! empty( $share_link_url ) ) ? sprintf( '<small>%s <span class="copy-trigger">%s</span> %s</small>', esc_html__( '(Now', 'yith-woocommerce-wishlist' ), esc_html__( 'copy', 'yith-woocommerce-wishlist' ), esc_html__( 'this wishlist link and share it anywhere)', 'yith-woocommerce-wishlist' ) ) : ''; ?>
     </div>
 
 	<?php do_action( 'yith_wcwl_after_share_buttons', $share_link_url, $share_title, $share_link_title ); ?>

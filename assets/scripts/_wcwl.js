@@ -39,9 +39,9 @@ $('.yith-wcwl-add-button .button').on( 'click', function( ev ) {
             console.log(response);
 
             if (t.attr('data-action') === 'remove_from_wishlist') {
-                $('.menu-wishlist a span').text(parseInt($('.menu--topbar .menu-wishlist a span').text()) - 1);
+                $('.banner__actions__wishlist span').text(parseInt($('.banner__actions__wishlist span').text()) - 1);
             } else {
-                $('.menu-wishlist a span').text(parseInt($('.menu--topbar .menu-wishlist a span').text()) + 1);
+                $('.banner__actions__wishlist span').text(parseInt($('.banner__actions__wishlist span').text()) + 1);
             }
 
             t.toggleClass( 'is-on' );

@@ -468,6 +468,10 @@ msgstr ""
 msgid "Megosztás"
 msgstr ""
 
+#: woocommerce/share.php:58
+msgid "Személyes listád az alábbi url-en érhető el. Másold és oszd meg!"
+msgstr ""
+
 #: woocommerce/wishlist-view.php:73
 msgid "A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket egy helyen."
 msgstr ""

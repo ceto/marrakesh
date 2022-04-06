@@ -13,7 +13,7 @@
                 <div class="cell amedium-6">
                     <label for="sqm"><?= __('Hány négyzetméter lapra van szükséged','marrakesh'); ?><em>*</em></label>
                     <div class="input-group" style="margin:0 0;">
-                        <input class="input-group-field" required type="number" name="sqm" id="sqm" value="" placeholder="<?= __('pl.: 20','marrakesh'); ?>">
+                        <input class="input-group-field" required type="number" step="any" name="sqm" id="sqm" value="" placeholder="<?= __('pl.: 20','marrakesh'); ?>">
                         <span class="input-group-label">m<sup>2</sup></span>
                     </div>
                     <p class="waste-warning atext-center"><small>*<?= __('Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük.','marrakesh'); ?></small></p>

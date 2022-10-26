@@ -19,14 +19,11 @@ defined( 'ABSPATH' ) || exit;
 
 //get_header( 'shop' );
 ?>
-<?php global $sitepress; ?>
-
 <?php
     global $subcatdisplay;
     $subcatdisplay=false;
-    $category_id = get_queried_object_id();
-    $term_vals = get_term_meta( $category_id );
-    if ( $term_vals[ 'display_type' ][ 0 ] === 'subcategories' ) {
+    $display_type = get_term_meta( get_queried_object_id(), 'display_type' );
+    if ( $display_type[ 0 ] === 'subcategories' ) {
         $subcatdisplay=true;
     }
 ?>
@@ -223,20 +220,18 @@ defined( 'ABSPATH' ) || exit;
 
                         <?php the_widget('WC_Widget_Status_Filter',  array('title' => __('Raktárkészlet', 'marrakesh')), $wargs ); ?>
                         <?php
-                            /*
-                            if (is_product_category() || is_shop()) {
-                                the_widget( 'WC_Widget_Product_Categories', array(
-                                'title' => __('Termékcsoport','marrakesh'),
-                                'dropdown' => 0,
-                                'count' => 0,
-                                'hide_empty' => 1,
-                                'orderby' => 'order',
-                                // 'show_children_only' => 1,
-                                // 'max_depth' => 2,
-                                'hierarchical' => 1
-                                ), $wargs );
-                            }
-                            */
+                            // if (is_product_category() || is_shop()) {
+                            //     the_widget( 'WC_Widget_Product_Categories', array(
+                            //     'title' => __('Termékcsoport','marrakesh'),
+                            //     'dropdown' => 0,
+                            //     'count' => 0,
+                            //     'hide_empty' => 1,
+                            //     'orderby' => 'order',
+                            //     // 'show_children_only' => 1,
+                            //     'max_depth' => 2,
+                            //     'hierarchical' => 1
+                            //     ), $wargs );
+                            // }
                         ?>
                         <?php
                             if (!is_tax('pa_color')) {
@@ -278,6 +273,8 @@ defined( 'ABSPATH' ) || exit;
                     <?php
                         if ( woocommerce_product_loop() ) {
 
+
+
                             /**
                              * Hook: woocommerce_before_shop_loop.
                              *
@@ -287,12 +284,14 @@ defined( 'ABSPATH' ) || exit;
                              */
                             do_action( 'woocommerce_before_shop_loop' );
 
+                            // var_dump(wc_get_loop_prop('loop'));
                             woocommerce_product_loop_start();
+                            // var_dump($GLOBALS['woocommerce_loop']);
+                            // wc_get_template_part( 'loop/loop', 'start' );
 
-                            if ( wc_get_loop_prop( 'total' ) ) {
+                            if ( wc_get_loop_prop( 'total' )  ) {
                                 while ( have_posts() ) {
                                     the_post();
-
                                     /**
                                      * Hook: woocommerce_shop_loop.
                                      *
@@ -305,13 +304,16 @@ defined( 'ABSPATH' ) || exit;
                             }
 
                             woocommerce_product_loop_end();
+                            // wc_get_template_part( 'loop/loop', 'end' );
 
                             /**
                              * Hook: woocommerce_after_shop_loop.
                              *
                              * @hooked woocommerce_pagination - 10
                              */
+
                             do_action( 'woocommerce_after_shop_loop' );
+
                         } else {
                             /**
                              * Hook: woocommerce_no_products_found.

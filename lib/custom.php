@@ -465,3 +465,4 @@ function marrakesh_remove_unnecessary_styles() {
     wp_deregister_style( 'yith-wcwl-main' );
 }
 add_action( 'wp_print_styles', 'marrakesh_remove_unnecessary_styles' );
+

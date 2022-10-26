@@ -820,3 +820,34 @@ function marrakesh_product_title($title) {
     return $title;
 }
 add_filter( 'pre_get_document_title', 'marrakesh_product_title', 20 );
+
+
+
+
+
+function marrakesh_override_prod_category_display( $value = null, $object_id, $meta_key, $single ){
+    $browse=false;
+    if ( $_GET[ 'browse' ] ) {
+        $browse=true;
+    }
+    $term = get_term( $object_id, 'product_cat' );
+    if( is_object( $term ) && $meta_key === 'display_type' && $browse ) {
+        $display_type = 'products';
+    } else {   //  else return nothing, this meta is not "display_type"
+        return;
+    }
+
+    return ( $single === true ) ? $display_type : array( $display_type );
+}
+//	Attach function with wordpress filter
+add_filter( 'get_term_metadata', 'marrakesh_override_prod_category_display', 10, 4 );
+
+
+function marrakesh_wc_layered_nav_link_hack( $link, $term, $taxonomy ) {
+    if( $_GET[ 'browse' ] ) {
+        return add_query_arg( 'browse', '1', $link);
+    } else {
+        return $link;
+    }
+}
+add_filter( 'woocommerce_layered_nav_link', 'marrakesh_wc_layered_nav_link_hack', 10, 4 );

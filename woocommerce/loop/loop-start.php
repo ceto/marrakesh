@@ -23,8 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php
     global $subcatdisplay;
-    // $category_id = get_queried_object_id();
-    // $term_vals = get_term_meta( $category_id );
 ?>
 <?php if ( $subcatdisplay ) : ?>
     <ul class="tmplcardgrid">

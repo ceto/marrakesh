@@ -261,7 +261,7 @@ msgstr ""
 msgid "Letöltés"
 msgstr ""
 
-#: templates/footer.php:7, woocommerce/archive-product.php:103
+#: templates/footer.php:7, woocommerce/archive-product.php:100
 msgid "Termékek"
 msgstr ""
 
@@ -349,30 +349,30 @@ msgstr ""
 msgid "Tervező program indítása"
 msgstr ""
 
-#: woocommerce/archive-product.php:91, woocommerce/archive-product.php:100
+#: woocommerce/archive-product.php:88, woocommerce/archive-product.php:97
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:173
+#: woocommerce/archive-product.php:170
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:177, woocommerce/archive-product.php:191
+#: woocommerce/archive-product.php:174, woocommerce/archive-product.php:188
 msgstr ""
 
-#: woocommerce/archive-product.php:224
+#: woocommerce/archive-product.php:221
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:245, woocommerce/archive-product.php:394
+#: woocommerce/archive-product.php:240, woocommerce/archive-product.php:396
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:256, woocommerce/archive-product.php:405
+#: woocommerce/archive-product.php:251, woocommerce/archive-product.php:407
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:362
+#: woocommerce/archive-product.php:364
 msgid "Színek, stílus és készlet"
 msgstr ""
 

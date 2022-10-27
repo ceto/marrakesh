@@ -144,6 +144,29 @@ defined( 'ABSPATH' ) || exit;
         <div class="grid-container">
             <section class="brblock">
                 <?php woocommerce_breadcrumb(array('home'=>'')); ?>
+                <?php
+                    $disableswitch=false;
+                    $currentpageurl=marrakesh_get_current_url();
+                    if ($subcatdisplay) {
+                        $switchedbrowseurl = add_query_arg('browse', 1, $currentpageurl);
+                    } else {
+                        $switchedbrowseurl = remove_query_arg('browse', $currentpageurl);
+                    }
+                    if (($currentpageurl == $switchedbrowseurl) || str_contains($currentpageurl, 'filter')) {
+                        $disableswitch=true;
+                    }
+                ?>
+                <aside class="stock-filter">
+                    <div class="switch switch--browsemode small">
+                        <input class="switch-input" id="switchbrowse" type="checkbox" name="switchbrowse"
+                            <?= !$subcatdisplay ? 'checked' : '' ?> <?= $disableswitch ? 'disabled' : '' ?> value="<?= $switchedbrowseurl; ?>">
+                        <label class="switch-paddle" for="switchbrowse">
+                            <span class="show-for-sr">Böngésző mód</span>
+                            <span class="switch-active" aria-hidden="true">Böngésző mód</span>
+                            <span class="switch-inactive" aria-hidden="true">Böngésző mód</span>
+                        </label>
+                    </div>
+                </aside>
             </section>
         </div>
     </div>
@@ -235,7 +258,7 @@ defined( 'ABSPATH' ) || exit;
                         ?>
                         <?php
                             if (!is_tax('pa_color')) {
-                                $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Színek', 'marrakesh'),
                                     'attribute' => 'color',
@@ -245,7 +268,7 @@ defined( 'ABSPATH' ) || exit;
                         ?>
                         <?php
                             if (!is_tax('pa_design') && !is_tax('pa_style')) {
-                                $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
 
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Stílus', 'marrakesh'),

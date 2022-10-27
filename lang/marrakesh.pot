@@ -353,26 +353,26 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:170
+#: woocommerce/archive-product.php:193
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:174, woocommerce/archive-product.php:188
+#: woocommerce/archive-product.php:197, woocommerce/archive-product.php:211
 msgstr ""
 
-#: woocommerce/archive-product.php:221
+#: woocommerce/archive-product.php:244
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:240, woocommerce/archive-product.php:396
+#: woocommerce/archive-product.php:263, woocommerce/archive-product.php:419
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:251, woocommerce/archive-product.php:407
+#: woocommerce/archive-product.php:274, woocommerce/archive-product.php:430
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:364
+#: woocommerce/archive-product.php:387
 msgid "Színek, stílus és készlet"
 msgstr ""
 

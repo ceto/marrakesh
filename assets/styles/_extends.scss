@@ -10,7 +10,7 @@
     //font-weight: $global-weight-bold;
     font-size: .875rem;
 }
-.switch--stock {
+.switch--browsemode {
     &.switch {
         margin:0;
         .switchlabel + & {
@@ -18,18 +18,30 @@
         }
     }
     &.switch.small {
-
+        height:1.5rem;
         .switch-paddle {
-            width: 9.5rem;
+            font-size: .875rem;
+            height:1.5rem;
+            width: 7.125rem;
+            &:after {
+                width: .9375rem;
+                height: .9375rem;
+            }
         }
-        input:checked~.switch-paddle:after {
-            left: 8rem;
+        input:checked~.switch-paddle {
+            // background-color: $dark-gray;
+            &:after {
+                left: 5.875rem;
+            }
+        }
+        input:disabled~.switch-paddle {
+            opacity: 1;
         }
 
 
     }
     .switch-paddle {
-        width:12.7rem;
+        width:10rem;
         white-space: nowrap;
     }
 

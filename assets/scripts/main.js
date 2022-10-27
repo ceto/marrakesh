@@ -81,11 +81,7 @@ $(document).foundation();
 
 $(document).ready(function() {});
 
-$("#instockyesno").on("click", function(e) {
-    // e.preventDefault();
 
-    window.location = $(".wc-availability-in-stock a").attr("href");
-});
 
 //photoswipe things
 var initPhotoSwipeFromDOM = function(gallerySelector) {
@@ -435,4 +431,20 @@ $(".js_searchstarter").on("click", function(e) {
     e.preventDefault();
     $(".banner__megasearch").toggleClass("is-shown");
     $(".banner__megasearch.is-shown input[type='search']").focus();
+});
+
+$(".widget_layered_nav_filters a").each( function (indexInArray, valueOfElement) {
+    var $this=$(this);
+    var href = $this.attr('href');
+    if (window.location.search.includes('browse=1')) {
+        href += (href.match(/\?/) ? '&' : '?') + 'browse=1';
+        $this.attr('href', href);
+    }
+    console.log($this.attr('href'));
+});
+
+
+$("#switchbrowse").on("change", function(e) {
+    // e.preventDefault();
+    window.location = $(this).val();
 });

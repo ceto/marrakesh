@@ -152,7 +152,7 @@ defined( 'ABSPATH' ) || exit;
                     } else {
                         $switchedbrowseurl = remove_query_arg('browse', $currentpageurl);
                     }
-                    if (($currentpageurl == $switchedbrowseurl) || str_contains($currentpageurl, 'filter')) {
+                    if (($currentpageurl == $switchedbrowseurl) || str_contains($currentpageurl, 'filter') || str_contains($currentpageurl, 'page')) {
                         $disableswitch=true;
                     }
                 ?>

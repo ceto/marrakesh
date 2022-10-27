@@ -454,7 +454,7 @@ defined( 'ABSPATH' ) || exit;
 
                     ?>
                     <?php
-                        if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                        if (!is_tax('pa_style')) {
                             the_widget( 'WC_Widget_Layered_Nav', array(
                                 'title' => __('Stílus', 'marrakesh'),
                                 'attribute' => 'style',
@@ -463,6 +463,46 @@ defined( 'ABSPATH' ) || exit;
                             ), $wargs );
                         }
                     ?>
+                    <?php
+                            if (!is_tax('pa_shape')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Forma', 'marrakesh'),
+                                    'attribute' => 'shape',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_suit')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Alkalmazás', 'marrakesh'),
+                                    'attribute' => 'suit',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_space')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Felhasználás', 'marrakesh'),
+                                    'attribute' => 'space',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_pattern')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Mintázat', 'marrakesh'),
+                                    'attribute' => 'pattern',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
                 </aside>
                 <button class="filtermodal__close" data-close aria-label="Close modal" type="button">
                     <span aria-hidden="true">&times;</span>

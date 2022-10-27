@@ -243,20 +243,6 @@ defined( 'ABSPATH' ) || exit;
 
                         <?php the_widget('WC_Widget_Status_Filter',  array('title' => __('Raktárkészlet', 'marrakesh')), $wargs ); ?>
                         <?php
-                            // if (is_product_category() || is_shop()) {
-                            //     the_widget( 'WC_Widget_Product_Categories', array(
-                            //     'title' => __('Termékcsoport','marrakesh'),
-                            //     'dropdown' => 0,
-                            //     'count' => 0,
-                            //     'hide_empty' => 1,
-                            //     'orderby' => 'order',
-                            //     // 'show_children_only' => 1,
-                            //     'max_depth' => 2,
-                            //     'hierarchical' => 1
-                            //     ), $wargs );
-                            // }
-                        ?>
-                        <?php
                             if (!is_tax('pa_color')) {
                                 // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
                                 the_widget( 'WC_Widget_Layered_Nav', array(
@@ -267,12 +253,55 @@ defined( 'ABSPATH' ) || exit;
                             }
                         ?>
                         <?php
-                            if (!is_tax('pa_design') && !is_tax('pa_style')) {
+                            if (!is_tax('pa_style')) {
                                 // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
-
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Stílus', 'marrakesh'),
                                     'attribute' => 'style',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_shape')) {
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Forma', 'marrakesh'),
+                                    'attribute' => 'shape',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_suit')) {
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Alkalmazás', 'marrakesh'),
+                                    'attribute' => 'suit',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_space')) {
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Felhasználás', 'marrakesh'),
+                                    'attribute' => 'space',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_pattern')) {
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Mintázat', 'marrakesh'),
+                                    'attribute' => 'pattern',
                                     'query_type' => 'or',
 
                                 ), $wargs );

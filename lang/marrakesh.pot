@@ -364,15 +364,31 @@ msgstr ""
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:263, woocommerce/archive-product.php:419
+#: woocommerce/archive-product.php:249, woocommerce/archive-product.php:448
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:274, woocommerce/archive-product.php:430
+#: woocommerce/archive-product.php:259, woocommerce/archive-product.php:459
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:387
+#: woocommerce/archive-product.php:270
+msgid "Forma"
+msgstr ""
+
+#: woocommerce/archive-product.php:281
+msgid "Alkalmazás"
+msgstr ""
+
+#: woocommerce/archive-product.php:292
+msgid "Felhasználás"
+msgstr ""
+
+#: woocommerce/archive-product.php:303
+msgid "Mintázat"
+msgstr ""
+
+#: woocommerce/archive-product.php:416
 msgid "Színek, stílus és készlet"
 msgstr ""
 

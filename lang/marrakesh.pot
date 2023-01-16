@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Marrakesh Global Theme
+# Copyright (C) 2023 Marrakesh Global Theme
 # This file is distributed under the same license as the Marrakesh Global Theme package.
 msgid ""
 msgstr ""
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Letöltés"
 msgstr ""
 
-#: templates/footer.php:7, woocommerce/archive-product.php:100
+#: templates/footer.php:7, woocommerce/archive-product.php:100, woocommerce/global/breadcrumb.php:26
 msgid "Termékek"
 msgstr ""
 
@@ -353,42 +353,46 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
-#: woocommerce/archive-product.php:193
+#: woocommerce/archive-product.php:196
 msgid "Bekapcsolt szűrők"
 msgstr ""
 
-#: woocommerce/archive-product.php:197, woocommerce/archive-product.php:211
+#: woocommerce/archive-product.php:200, woocommerce/archive-product.php:214
 msgstr ""
 
-#: woocommerce/archive-product.php:244
+#: woocommerce/archive-product.php:247
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:249, woocommerce/archive-product.php:448
+#: woocommerce/archive-product.php:252, woocommerce/archive-product.php:462
 msgid "Színek"
 msgstr ""
 
-#: woocommerce/archive-product.php:259, woocommerce/archive-product.php:459
+#: woocommerce/archive-product.php:262, woocommerce/archive-product.php:473
 msgid "Stílus"
 msgstr ""
 
-#: woocommerce/archive-product.php:270
+#: woocommerce/archive-product.php:273, woocommerce/archive-product.php:483
 msgid "Forma"
 msgstr ""
 
-#: woocommerce/archive-product.php:281
+#: woocommerce/archive-product.php:284, woocommerce/archive-product.php:493
 msgid "Alkalmazás"
 msgstr ""
 
-#: woocommerce/archive-product.php:292
+#: woocommerce/archive-product.php:295, woocommerce/archive-product.php:503
 msgid "Felhasználás"
 msgstr ""
 
-#: woocommerce/archive-product.php:303
+#: woocommerce/archive-product.php:306, woocommerce/archive-product.php:513
 msgid "Mintázat"
 msgstr ""
 
-#: woocommerce/archive-product.php:416
+#: woocommerce/archive-product.php:317, woocommerce/archive-product.php:523
+msgid "Méret"
+msgstr ""
+
+#: woocommerce/archive-product.php:430
 msgid "Színek, stílus és készlet"
 msgstr ""
 
@@ -490,10 +494,6 @@ msgstr ""
 
 #: woocommerce/wishlist-view.php:73
 msgid "A listád még üres. Mentsd el csillaggal a kedvenc termékeidet, hogy megtaláld őket egy helyen."
-msgstr ""
-
-#: woocommerce/global/breadcrumb.php:26
-msgid "Kollekció"
 msgstr ""
 
 #: woocommerce/loop/pagination.php:40

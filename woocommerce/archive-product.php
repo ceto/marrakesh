@@ -157,15 +157,18 @@ defined( 'ABSPATH' ) || exit;
                     }
                 ?>
                 <aside class="stock-filter">
-                    <div class="switch switch--browsemode small">
+                    <?php if (!$disableswitch ) : ?>
+                    <a href="<?= $switchedbrowseurl; ?>" class="button hollow small accent browsemodelink"><?= !$subcatdisplay ? 'Váltás kollekció nézetre' : 'Lapok szűrése és keresés' ?></a>
+                    <?php endif; ?>
+                    <!-- <div class="switch switch--browsemode small">
                         <input class="switch-input" id="switchbrowse" type="checkbox" name="switchbrowse"
                             <?= !$subcatdisplay ? 'checked' : '' ?> <?= $disableswitch ? 'disabled' : '' ?> value="<?= $switchedbrowseurl; ?>">
                         <label class="switch-paddle" for="switchbrowse">
                             <span class="show-for-sr">Böngésző mód</span>
-                            <span class="switch-active" aria-hidden="true">Böngésző mód</span>
-                            <span class="switch-inactive" aria-hidden="true">Böngésző mód</span>
+                            <span class="switch-active" aria-hidden="true">Kollekció nézet</span>
+                            <span class="switch-inactive" aria-hidden="true">Lapok szűrése</span>
                         </label>
-                    </div>
+                    </div> -->
                 </aside>
             </section>
         </div>
@@ -302,6 +305,17 @@ defined( 'ABSPATH' ) || exit;
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Mintázat', 'marrakesh'),
                                     'attribute' => 'pattern',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_meret')) {
+                                // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Méret', 'marrakesh'),
+                                    'attribute' => 'meret',
                                     'query_type' => 'or',
 
                                 ), $wargs );
@@ -498,6 +512,16 @@ defined( 'ABSPATH' ) || exit;
                                 the_widget( 'WC_Widget_Layered_Nav', array(
                                     'title' => __('Mintázat', 'marrakesh'),
                                     'attribute' => 'pattern',
+                                    'query_type' => 'or',
+
+                                ), $wargs );
+                            }
+                        ?>
+                        <?php
+                            if (!is_tax('pa_meret')) {
+                                the_widget( 'WC_Widget_Layered_Nav', array(
+                                    'title' => __('Méret', 'marrakesh'),
+                                    'attribute' => 'meret',
                                     'query_type' => 'or',
 
                                 ), $wargs );

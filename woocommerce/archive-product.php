@@ -445,12 +445,12 @@ defined( 'ABSPATH' ) || exit;
             <div class="grid-container">
                 <aside id="filtermodal__wcfilters" class="filtermodal__wcfilters grid-x grid-margin-x small-up-2 medium-up-3 aalign-center">
                     <?php
-                        $wargs = array(
-                            'before_widget' => '<section class="cell widget widget--sidebar %1$s"><ul class="accordion" data-accordion data-allow-all-closed="true">',
-                            'after_widget'  => '</div></li></ul></section>',
-                            'before_title'  => '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">',
-                            'after_title'   => '</a><div class="accordion-content" data-tab-content>'
-                        );
+                        // $wargs = array(
+                        //     'before_widget' => '<section class="cell widget widget--sidebar %1$s"><ul class="accordion" data-accordion data-allow-all-closed="true">',
+                        //     'after_widget'  => '</div></li></ul></section>',
+                        //     'before_title'  => '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">',
+                        //     'after_title'   => '</a><div class="accordion-content" data-tab-content>'
+                        // );
 
                         // $wargs['before_title'] = '<li class="accordion-item is-active" data-accordion-item><a href="#" class="accordion-title widget__title">';
                     ?>

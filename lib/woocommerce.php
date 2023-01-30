@@ -26,7 +26,7 @@ function marrakesh_remove_woocommerce_styles_scripts() {
 function marrakesh_loop_shop_per_page( $cols ) {
   // $cols contains the current number of products per page based on the value stored on Options -> Reading
   // Return the number of products you wanna show per page. recommended value 84
-  $cols = 14;
+  $cols = 84;
   return $cols;
 }
 add_filter( 'loop_shop_per_page', 'marrakesh_loop_shop_per_page', 20 );

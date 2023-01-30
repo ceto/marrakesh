@@ -448,3 +448,24 @@ $("#switchbrowse").on("change", function(e) {
     // e.preventDefault();
     window.location = $(this).val();
 });
+
+
+$('.faccordion-toggler').on('click', function (e) {
+    e.preventDefault();
+    $(this).parent().toggleClass('is-active');
+    if ( $(this).parent().hasClass('is-active') ) {
+        $(this).text('- mutass kevesebbet');
+    } else {
+        $(this).text('+ mutass többet');
+    }
+});
+
+$('.faccordion').each(function(i,elem){
+    $this = $(elem);
+
+    console.log($this.find('.woocommerce-widget-layered-nav-list').children().length);
+
+    if ($this.find('.woocommerce-widget-layered-nav-list').children().length <=6) {
+        $this.find('.faccordion-toggler').remove();
+    }
+});

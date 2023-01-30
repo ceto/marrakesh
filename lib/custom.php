@@ -474,3 +474,5 @@ function marrakesh_get_current_url() {
 
     return $url;
 }
+
+

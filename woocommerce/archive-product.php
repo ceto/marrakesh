@@ -322,8 +322,8 @@ defined( 'ABSPATH' ) || exit;
                             if (!is_tax('pa_felulet')) {
                                 // $wargs['before_title'] = '<li class="accordion-item" data-accordion-item><a href="#" class="accordion-title widget__title">';
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Felulet', 'marrakesh'),
-                                    'attribute' => 'space',
+                                    'title' => __('Felület', 'marrakesh'),
+                                    'attribute' => 'felulet',
                                     'query_type' => 'or',
 
                                 ), $wargs );
@@ -515,8 +515,8 @@ defined( 'ABSPATH' ) || exit;
                         <?php
                             if (!is_tax('pa_felulet')) {
                                 the_widget( 'WC_Widget_Layered_Nav', array(
-                                    'title' => __('Felulet', 'marrakesh'),
-                                    'attribute' => 'space',
+                                    'title' => __('Felület', 'marrakesh'),
+                                    'attribute' => 'felulet',
                                     'query_type' => 'or',
 
                                 ), $wargs );

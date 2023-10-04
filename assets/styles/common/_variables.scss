@@ -1,3 +1,46 @@
-// Grid settings
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
+$fontbody: "Alegreya Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$fontheading: $fontbody;
+
+$fw-black: 900;
+$fw-bold: 700;
+$fw-semibold: 600;
+$fw-medium: 500;
+$fw-normal: 400;
+$fw-light: 300;
+
+
+// Colors
+$cl-black: #0a0a0a;
+$cl-dark: #1D2F59;
+$cl-primary: #df542a;
+$cl-secondary: #0066ff;
+$cl-tertiary: #cc4b37;
+$cl-gray: #bababa;
+$cl-gray-light: #e6e6e6;
+$cl-gray-xlight: #fafafa;
+$cl-white: #fefefe;
+
+$cl-body-font-color: $cl-dark;
+$cl-body-background: $cl-white;
+
+// Layout / Grid
+$layout-col-count: 12;
+$layout-col-width: 109.48px;
+$layout-gutter-width: 34px;
+$layout-content: ($layout-col-count * $layout-col-width) + (($layout-col-count - 1) * $layout-gutter-width);
+$layout-gutter-pct: percentage($layout-gutter-width / $layout-content);
+
+$global-width: rem-calc($layout-content);
+
+// Breakpoints
+$bp-medium: 414px;
+$bp-tablet: 768px;
+$bp-large: 1024px;
+$bp-xlarge: 1280px;
+$bp-xxlarge: 1440px;
+$bp-xxxlarge: 1920px;
+
+$bp-bigdesktop: 1560px;
+
+$globalheaderheight: 8rem;
+$globalheaderheight-small: 9rem;

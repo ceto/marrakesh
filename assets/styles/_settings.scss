@@ -70,21 +70,21 @@ $global-font-size: 100%;
 $global-width: rem-calc(1600);
 $global-lineheight: 1.5;
 $foundation-palette: (
-    secondary: #0066ff,
+    secondary: $cl-secondary,
     // #1779ba,
-        primary: #df542a,
+        primary: $cl-primary,
     //#FF9900,
         success: #3adb76,
     warning: #ffae00,
-    alert: #cc4b37
+    alert: $cl-tertiary
 );
 
-$light-gray: #e6e6e6;
-$xlight-gray: #fafafa;
-$medium-gray: #bababa; //#cacaca;
+$light-gray: $cl-gray-light;
+$xlight-gray: $cl-gray-xlight;
+$medium-gray: $cl-gray;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
-$white: #fefefe;
+$black: $cl-black;
+$white: $cl-white;
 $body-background: $white;
 $body-font-color: $black;
 
@@ -92,11 +92,10 @@ $button-palette: (
     primary: $body-font-color,
     secondary: $dark-gray,
     inverse: $white,
-    accent: #df542a
+    accent: $cl-primary
 );
 
-$body-font-family: "Alegreya Sans", "Helvetica Neue", Helvetica, Roboto, Arial,
-    sans-serif;
+$body-font-family: $fontbody;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;

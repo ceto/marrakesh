@@ -1,0 +1,320 @@
+
+.pagewrap {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    margin:0 auto;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    width: 100%;
+
+
+    @include breakpoint($bp-medium) {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    @include breakpoint($bp-xlarge) {
+        padding-left: 7.5%;
+        padding-right: 7.5%;
+    }
+
+
+    @include breakpoint(120em) {
+        padding-left: calc(50% - #{rem-calc($layout-content,22)/2});
+        padding-right: calc(50% - #{rem-calc($layout-content,22)/2});
+
+    }
+
+    & > & {
+
+        margin-left:-3.03191489362%;
+        margin-right:-3.03191489362%;
+        width:106.0638297872%;
+        @include breakpoint($bp-medium) {
+            margin-left: -5.5556%;
+            margin-right: -5.5556%;
+            width:111.111%;
+        }
+        @include breakpoint($bp-tablet) {
+
+        }
+
+        @include breakpoint($bp-xlarge) {
+            margin-left:auto;
+            margin-right: auto;
+            width:100%;
+        }
+        @include breakpoint(95em) {
+            padding-left: 7.5%;
+            padding-right: 7.5%;
+
+        }
+    }
+
+    &.valigncenter {
+        display: flex;
+        align-items: center;
+    }
+
+    &.nohpad {
+        padding-left: 0;
+        padding-right: 0;
+        @include breakpoint(95em) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    &.novpad {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &.short {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    &.xshort {
+        padding-top: .9375rem;
+        padding-bottom: .9375rem;
+    }
+    &.tall {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    &.semibigheight {
+        min-height: #{$globalheaderheight * 3};
+    }
+
+    &.bigheight {
+        min-height: #{$globalheaderheight * 3.75};
+    }
+
+    &.heroheight {
+        @include breakpoint($bp-tablet) {
+            min-height: Max(42vw, calc(100vh - #{$globalheaderheight} - 15rem ));
+        }
+    }
+
+    &.fullheight {
+        @include breakpoint($bp-xxxlarge) {
+            min-height: calc(100vh - #{$globalheaderheight});
+        }
+    }
+
+    &.confheroheight {
+        @include breakpoint($bp-xxlarge) {
+            min-height: calc(100vh - #{$globalheaderheight} - 5.25rem);
+        }
+    }
+
+
+
+    &.notop {
+        padding-top: 0;
+    }
+    &.nobottom {
+        padding-bottom: 0;
+    }
+
+
+    &.accent {
+        background-color: $cl-primary;
+        color: $cl-white;
+    }
+
+    &.bodybg {
+        background-color: $cl-body-background;
+        color: $cl-body-font-color;
+    }
+
+    &.dark {
+        background-color: $cl-dark;
+        color: $cl-white;
+    }
+    &.darkgradient {
+        background-color: $cl-dark;
+        background-image: linear-gradient(180deg, scale-color($cl-dark, $lightness: -5%),  scale-color($cl-dark, $lightness: 5%));
+        color: $cl-white;
+    }
+
+    &.confherograd {
+        background-color: $cl-primary;
+        color: $cl-white;
+        @include breakpoint($bp-large) {
+            background-image: linear-gradient(0deg, transparent 25%, rgba(#000,.09) 38%, rgba(#000,.12) 38%,  $cl-primary 85%);
+        }
+    }
+    &.tdark {
+        background-color: $cl-dark;
+        color: $cl-white;
+    }
+    &.sdark {
+        background-color: $cl-dark;
+        color: $cl-white;
+    }
+
+    &.xdark {
+        background-color: $cl-dark;
+        color: $cl-white;
+    }
+
+    &.black {
+        background-color: $cl-black;
+        color: $cl-white;
+    }
+    &.xlight {
+        background-color: $cl-gray-xlight;
+        color: $cl-body-font-color;
+    }
+    &.light {
+        background-color: $cl-gray-light;
+        color: $cl-body-font-color;
+    }
+    &.white {
+        background-color: $white;
+        color: $cl-body-font-color;
+    }
+
+    &.felezett {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: rem-calc($layout-gutter-width);
+        @include breakpoint($bp-tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+    }
+
+    &.leftlinea {
+        border-left: 1px solid $cl-dark;
+        .accent & {
+            border-color: rgba(#fff, .5);
+        }
+        @include breakpoint($bp-xlarge down) {
+            border:none;
+        }
+
+
+    }
+
+    > .vr {
+        position: absolute;
+        display: block;
+        width:1.5px;
+        top:0;
+        bottom:0;
+        padding-top:inherit;
+        padding-bottom:inherit;
+        @include breakpoint($bp-large down) {
+            display: none;
+        }
+
+        img {
+            height:100%;
+            opacity: .5;
+        }
+
+        &.light {
+            img {
+                // filter:invert(1);
+                filter: brightness(100)
+            }
+        }
+    }
+}
+
+.pagewrap.withhalfbg {
+    padding-bottom: 33%;
+    @include breakpoint($bp-large) {
+        padding-bottom: 4rem;
+        // padding-right: 7.5%;
+    }
+}
+.pagewrap.withbg {
+    padding-bottom: 33%;
+    @include breakpoint($bp-large) {
+        padding-bottom: 4rem;
+        // padding-right: 7.5%;
+    }
+}
+
+.pagewrap__bg {
+
+    position: absolute;
+    z-index: -1;
+    right:0;
+    bottom:0;
+    height: 93%;
+    width: calc(15vw + 12rem);
+
+    @include breakpoint($bp-tablet) {
+
+        right: auto;
+        left:0;
+    }
+
+    @include breakpoint($bp-large) {
+        width: 56%;
+    }
+
+
+
+    > img {
+
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        // filter: grayscale(1);
+        // opacity: .2;
+        // object-position: center;
+
+    }
+
+
+}
+
+.narrowwrap {
+    width: 100%;
+    max-width: #{rem-calc($layout-content,22)*0.666};
+    margin-left:auto;
+    margin-right:auto;
+    &.left {
+        margin-left: 0;;
+    }
+    &.right {
+        margin-right: 0;
+    }
+}
+
+
+
+.xnarrowwrap, .halfwrap {
+    width: 100%;
+    max-width:  #{rem-calc($layout-content,22)*0.5};
+    margin-left:auto;
+    margin-right:auto;
+
+    &.left {
+        margin-left: 0;
+    }
+    &.right {
+        margin-right: 0;
+    }
+}
+
+.box {
+    background-color: #fff;
+    color: $cl-body-font-color;
+    padding:2rem;
+}
+
+.stripedwrapscontainer {
+    > .pagewrap {
+        &:nth-child(2n+1) {
+            background-color: $cl-gray-xlight;
+        }
+    }
+}

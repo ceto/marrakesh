@@ -56,11 +56,12 @@
                         </a>
                     </div>
                     <nav class="banner__nav show-for-medium">
+                        <?php //get_template_part('templates/mainmenu'); ?>
                         <?php
-                        if (has_nav_menu('primary_navigation')) :
-                    wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'menu menu--main', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
-                    endif;
-                    ?>
+                            if (has_nav_menu('primary_navigation')) {
+                                wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'menu menu--main', 'items_wrap' => '<ul class="%2$s">%3$s</ul>']);
+                            }
+                        ?>
                     </nav>
                 </div>
                 <div class="cell shrink">

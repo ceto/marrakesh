@@ -1,10 +1,11 @@
 .mega {
 
     @extend .pagewrap;
-    @extend .pagewrap.bodybg;
+    @extend .pagewrap.xlight;
     // @extend .pagewrap.short;
 
-    border-top: 1px solid $cl-gray-xlight;
+
+    border-top: 1px solid $cl-gray-light;
     padding-top: 2rem;
     display: flex;
     flex-wrap: nowrap;

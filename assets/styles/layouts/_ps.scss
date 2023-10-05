@@ -1,13 +1,13 @@
 html {
-    @media screen and (min-width: 110em) {
-        font-size: 105.625%;
-        //font-size: 112.5%;
-    }
+    // @media screen and (min-width: 110em) {
+    //     font-size: 105.625%;
+    //     //font-size: 112.5%;
+    // }
 
-    @media screen and (min-width: 128em) {
-        //font-size: 112.5%;
-        font-size: 112.5%;
-    }
+    // @media screen and (min-width: 128em) {
+    //     //font-size: 112.5%;
+    //     font-size: 18px;
+    // }
 }
 
 body {
@@ -16,10 +16,12 @@ body {
 
 .grid-container {
     max-width: 96%;
+
+
     & & {
         max-width: $global-width;
     }
-    @media screen and (min-width: 110em) {
+    @media screen and (min-width: 120em) {
         max-width: $global-width;
     }
 }

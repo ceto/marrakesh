@@ -83,7 +83,7 @@
     // justify-content: center;
     font-size: 1.125rem;
     line-height: 1;
-    text-transform: uppercase;
+
 
 
 
@@ -91,6 +91,7 @@
     > li {
 
         > a {
+            text-transform: uppercase;
             white-space: nowrap;
             position: relative;
             text-decoration: none;
@@ -399,6 +400,47 @@
         &:hover,
         &:focus {
             color: $primary-color;
+        }
+    }
+}
+
+
+.attrlistmenu {
+    list-style: none;
+    display: flex;
+    flex-wrap:nowrap;
+    flex-direction: column;
+    gap:.25em;
+    margin:0;
+    padding: 0;
+    font-size: 0.9375rem;
+
+    &.wrap {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    li {
+
+    }
+
+
+
+    a {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+
+        padding: 0 0;
+        color: inherit;
+        //font-variant: small-caps;
+        text-transform: none;
+        font-weight: $global-weight-bold;
+
+        //color:$dark-gray;
+        &:hover,
+        &:focus {
+
         }
     }
 }

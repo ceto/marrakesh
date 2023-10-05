@@ -25,8 +25,8 @@ $cl-body-background: $cl-white;
 
 // Layout / Grid
 $layout-col-count: 12;
-$layout-col-width: 109.48px;
-$layout-gutter-width: 34px;
+$layout-col-width: 110px;
+$layout-gutter-width: 30px;
 $layout-content: ($layout-col-count * $layout-col-width) + (($layout-col-count - 1) * $layout-gutter-width);
 $layout-gutter-pct: percentage($layout-gutter-width / $layout-content);
 

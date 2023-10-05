@@ -281,6 +281,50 @@ msgstr ""
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
+#: templates/mainmenu.php:18
+msgid "Készletről azonnal"
+msgstr ""
+
+#: templates/mainmenu.php:19
+msgid "Hamarosan érkezik"
+msgstr ""
+
+#: templates/mainmenu.php:20
+msgid "Kollekciók"
+msgstr ""
+
+#: templates/mainmenu.php:21
+msgid "Mutasd mindet"
+msgstr ""
+
+#: templates/mainmenu.php:29
+msgid "Szinek"
+msgstr ""
+
+#: templates/mainmenu.php:40, woocommerce/archive-product.php:281, woocommerce/archive-product.php:538
+msgid "Méret"
+msgstr ""
+
+#: templates/mainmenu.php:51, woocommerce/archive-product.php:303, woocommerce/archive-product.php:488
+msgid "Stílus"
+msgstr ""
+
+#: templates/mainmenu.php:62, woocommerce/archive-product.php:292, woocommerce/archive-product.php:498
+msgid "Forma"
+msgstr ""
+
+#: templates/mainmenu.php:73, woocommerce/archive-product.php:314, woocommerce/archive-product.php:508
+msgid "Alkalmazás"
+msgstr ""
+
+#: templates/mainmenu.php:84, woocommerce/archive-product.php:325, woocommerce/archive-product.php:518
+msgid "Felület"
+msgstr ""
+
+#: templates/mainmenu.php:95, woocommerce/archive-product.php:270, woocommerce/archive-product.php:528
+msgid "Mintázat"
+msgstr ""
+
 #: templates/megasearch.php:7
 msgid "Nem találod kedvenc lapodat? Használd a keresőnket!"
 msgstr ""
@@ -370,30 +414,6 @@ msgstr ""
 
 #: woocommerce/archive-product.php:260, woocommerce/archive-product.php:477
 msgid "Színek"
-msgstr ""
-
-#: woocommerce/archive-product.php:270, woocommerce/archive-product.php:528
-msgid "Mintázat"
-msgstr ""
-
-#: woocommerce/archive-product.php:281, woocommerce/archive-product.php:538
-msgid "Méret"
-msgstr ""
-
-#: woocommerce/archive-product.php:292, woocommerce/archive-product.php:498
-msgid "Forma"
-msgstr ""
-
-#: woocommerce/archive-product.php:303, woocommerce/archive-product.php:488
-msgid "Stílus"
-msgstr ""
-
-#: woocommerce/archive-product.php:314, woocommerce/archive-product.php:508
-msgid "Alkalmazás"
-msgstr ""
-
-#: woocommerce/archive-product.php:325, woocommerce/archive-product.php:518
-msgid "Felület"
 msgstr ""
 
 #: woocommerce/archive-product.php:438

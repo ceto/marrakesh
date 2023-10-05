@@ -15,7 +15,6 @@ use Roots\Sage\Wrapper;
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
     <?php endif; ?>
-
     <?php
         do_action('get_header');
         get_template_part('templates/header');

@@ -1,111 +1,110 @@
 <?php
-
-global $wpdb;
-
-$attributes_query = $wpdb->prepare(
-    "SELECT DISTINCT tt.taxonomy, tt.term_id, t.name
-    FROM {$wpdb->prefix}term_relationships AS tr
-    JOIN {$wpdb->prefix}term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-    JOIN {$wpdb->prefix}terms AS t ON tt.term_id = t.term_id
-    WHERE tr.object_id IN (
-        SELECT p.ID
-        FROM {$wpdb->prefix}posts AS p
-        JOIN {$wpdb->prefix}term_relationships AS tr ON p.ID = tr.object_id
-        JOIN {$wpdb->prefix}term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-        JOIN {$wpdb->prefix}terms AS t ON tt.term_id = t.term_id
-        WHERE p.post_type = 'product'
-        AND p.post_status = 'publish'
-        AND tt.taxonomy = 'product_cat'
-        AND t.slug = 'cementlap'
-    )
-    AND tt.taxonomy LIKE %s",
-    'pa_style'
-);
-
-$results = $wpdb->get_results($attributes_query);
-var_dump($results);
+    $pcats = array(
+        '39' => 'Cementlap',
+        '40' => 'Terazzo',
+        '421' => 'Falicsmepe',
+        '710' => 'Kerámia padlólap',
+        '828' => 'Márvány'
+    );
 ?>
-<hr class="fulldivider">
-
 <ul id="menu-main-menu" class="mainmenu">
-    <li class="menu-item menu-item-has-children menu-products">
-        <a href="<?php the_permalink(get_field('productslistingpage', 'option')); ?>"><?php _e('Products','gls'); ?></a>
+    <?php foreach ($pcats as $pcatid => $pcatname) :?>
+    <li class="menu-item menu-item-has-children menu-pcat-<?= $pcatid ?>">
+        <a href="<?= get_term_link($pcatid); ?>"><?= $pcatname; ?></a>
         <nav class="mega">
             <div class="mega__menu">
-                <h3><?php _e('Products','gls'); ?></h3>
-                <?php
-                    if (has_nav_menu('product_navigation')) :
-                        wp_nav_menu([
-                            'theme_location' => 'product_navigation',
-                            'menu_class' => 'sub-menu',
-                            // 'depth' => 1,
-                            'items_wrap' => '<ul class="%2$s">%3$s</ul>'
-                        ]);
-                    endif;
-                ?>
-            </div>
-            <div class="mega__content">
-            </div>
-        </nav>
-    </li>
-    <li class="menu-item menu-item-has-children menu-services">
-        <a href="<?php the_permalink(get_field('serviceslistingpage', 'option')); ?>"><?php _e('Services','gls'); ?></a>
-        <nav class="mega">
-            <div class="mega__menu">
-                <h3><?php _e('Services','gls'); ?></h3>
-                <?php
-                    if (has_nav_menu('service_navigation')) :
-                        wp_nav_menu([
-                            'theme_location' => 'service_navigation',
-                            'menu_class' => 'sub-menu',
-                            // 'depth' => 1,
-                            'items_wrap' => '<ul class="%2$s">%3$s</ul>'
-                        ]);
-                    endif;
-                ?>
-            </div>
-            <div class="mega__content">
-            </div>
-        </nav>
-    </li>
-    <li class="menu-item menu-item-has-children menu-events">
-        <a href="<?php the_permalink(get_field('eventslistingpage', 'option')); ?>"><?php _e('Events','gls'); ?></a>
-        <nav class="mega">
-            <div class="mega__menu">
-                <h3><?php _e('Events','gls'); ?></h3>
+                <h3><?= $pcatname; ?></h3>
                 <ul class="sub-menu">
-                    <li><a href="<?php the_permalink(get_field('eventslistingpage', 'option')); ?>" ><?= __('All Events') ?></a></li>
+                    <li><a href="<?= add_query_arg(array('browse'=>'1','filter_availability'=>'in_stock'), get_term_link( $pcatid )); ?>"><?php _e('Készletről azonnal', 'marrakesh'); ?></a></li>
+                    <li><a href="<?= add_query_arg(array('browse'=>'1','filter_cs'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Hamarosan érkezik', 'marrakesh'); ?></a></li>
+                    <li><a href="<?= get_term_link($pcatid); ?>"><?php _e('Kollekciók', 'marrakesh'); ?></a></li>
+                    <li><a href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a></li>
                 </ul>
             </div>
             <div class="mega__content wide">
-            </div>
-        </nav>
-    </li>
-    <li class="menu-item menu-academicuse">
-        <a href="<?php the_permalink(get_field('academicusepage', 'option')); ?>"><?php _e('Academic Use','gls'); ?></a>
-    </li>
-    <li class="menu-item menu-item-has-children menu-about-us">
-        <a href="<?php the_permalink(get_field('aboutuspage', 'option')); ?>"><?php _e('About Us','gls'); ?></a>
-        <nav class="mega">
-            <div class="mega__menu">
-                <h3><?php _e('About Us','gls'); ?></h3>
-                <?php
-                    if (has_nav_menu('aboutus_navigation')) :
-                        wp_nav_menu([
-                            'theme_location' => 'aboutus_navigation',
-                            'menu_class' => 'sub-menu',
-                            // 'depth' => 1,
-                            'items_wrap' => '<ul class="%2$s">%3$s</ul>'
-                        ]);
-                    endif;
-                ?>
-            </div>
-            <div class="mega__content">
-            </div>
-        </nav>
+                <ul class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="color"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Szinek', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_color'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                    <!-- <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="meret"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Méret', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_meret'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?> -->
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="style"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Stílus', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_style'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="shape"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Forma', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_shape'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="suit"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Alkalmazás', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_suit'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="felulet"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Felület', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_felulet'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                    <?php $terms = marrakesh_get_atts_for_product_category($pcatid, $attr="pattern"); ?>
+                    <?php if ($terms) : ?>
+                    <section class="cell widget widget--sidebar">
+                        <h3 class="widget__title"><?= __('Mintázat', 'marrakesh'); ?></h3>
+                        <ul class="woocommerce-widget-layered-nav-list">
+                            <?php foreach ($terms as $term) : ?>
+                                <li><a href="<?= add_query_arg(array('browse'=>'1','filter_pattern'=>$term->slug), get_term_link( $pcatid )); ?>"><?= $term->name; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                    <?php endif; ?>
+                </ul>
 
+
+            </div>
+        </nav>
     </li>
-    <li class="menu-item menu-blog">
-        <a href="<?php the_permalink(get_field('blogpage', 'option')); ?>"><?php _e('Blog','gls'); ?></a>
-    </li>
+    <?php endforeach; ?>
 </ul>

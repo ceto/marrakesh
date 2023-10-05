@@ -38,19 +38,21 @@
         font-family: $fontheading;
         font-weight: $fw-bold;
 
-        a {
-            text-decoration: none;
-            padding: .5em 0;
-            display: inline-block;
-            &:hover, &:focus {
-                color: $cl-secondary;
-                .whitehead & {
-                    color: $cl-primary;
+        > li {
+            display: block;
+            margin: 0;
+            padding: 0;
+            > a {
+                text-transform: none;
+                display: block;
+                color: inherit;
+                font-weight: $global-weight-bold;
+                padding: 0.5em 0.75em;
+                &:hover,
+                &:focus {
+                    background-color: $light-gray;
                 }
             }
-            // &[aria-current="page"] {
-            //     color: $cl-secondary;
-            // }
         }
 
     }

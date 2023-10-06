@@ -48,10 +48,11 @@
                 display: block;
                 color: inherit;
                 font-weight: $global-weight-bold;
-                padding: 0.5em 0.75em;
+                padding: 0.25em 0;
                 &:hover,
                 &:focus {
-                    background-color: $light-gray;
+                    // background-color: $light-gray;
+                    color:$cl-primary;
                 }
             }
         }

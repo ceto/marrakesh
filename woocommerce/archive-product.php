@@ -138,6 +138,8 @@ defined( 'ABSPATH' ) || exit;
     <?php $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); ?>
     <?php $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); ?>
 
+    <?php $onsale_filter = isset( $_GET['filter_onsale'] ) ? wc_clean( wp_unslash( $_GET['filter_onsale'] ) ) : array(); ?>
+
 
     <?php if (is_product_category() ) : ?>
     <div class="ps ps--thin ps--light ps--bordered">
@@ -189,7 +191,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
     <?php
     $_chosen_attributes = WC_Query::get_layered_nav_chosen_attributes();
-    if ( (count( $_chosen_attributes ) > 0) || $availability_filter )  : ?>
+    if ( (count( $_chosen_attributes ) > 0) || $availability_filter || $csavailability_filter || $onsale_filter)  : ?>
     <div class="ps--xlight">
         <div class="grid-container">
             <section class="pratopstatus">
@@ -208,7 +210,7 @@ defined( 'ABSPATH' ) || exit;
                         );
                 ?>
                 <?php endif; ?>
-                <?php if ($availability_filter || $csavailability_filter ) : ?>
+                <?php if ($availability_filter || $csavailability_filter || $onsale_filter ) : ?>
                 <?php
                         the_widget( 'WC_Widget_Status_Filter', array(
                             'title' => __('', 'marrakesh')

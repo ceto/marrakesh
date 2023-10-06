@@ -120,6 +120,7 @@ add_action( 'pre_get_posts', function ( $query ) {
 
         $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $comingsoon_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $onsale_filter = isset( $_GET['filter_onsale'] ) ? wc_clean( wp_unslash( $_GET['filter_onsale'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $meta_query = array();
         // $meta_query[] = array('relation' => 'or');
 
@@ -152,13 +153,10 @@ add_action( 'pre_get_posts', function ( $query ) {
                 'compare' => '>',
             );
         };
-        // if ($comingsoon_filter === '1') {
-        //     $meta_query[]  = array(
-        //         'key' => '_csstock',
-        //         'value' => '0',
-        //         'compare' => '>',
-        //     );
-        // };
+        if ($onsale_filter === '1') {
+            $product_ids_on_sale = wc_get_product_ids_on_sale();
+            $query->set( 'post__in', $product_ids_on_sale );
+        };
         $query->set('meta_query', $meta_query );
     }
 }, PHP_INT_MAX );
@@ -697,6 +695,7 @@ class WC_Widget_Status_Filter extends WC_Widget {
 
         $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+        $onsale_filter = isset( $_GET['filter_onsale'] ) ? wc_clean( wp_unslash( $_GET['filter_onsale'] ) ) : array(); // WPCS: input var ok, CSRF ok.
 
 
         $this->widget_start( $args, $instance );
@@ -713,6 +712,14 @@ class WC_Widget_Status_Filter extends WC_Widget {
         $class       = $csavailability_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
         $link        = apply_filters( 'woocommerce_availability_filter_link', ! $csavailability_filter ? add_query_arg( 'filter_cs', '1' ) : remove_query_arg( 'filter_cs' ) );
         $rating_html = __('Hamarosan raktáron', 'marrakesh');
+        $count_html  = ''; ////////// ADD COUNT LATER
+
+        printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
+
+
+        $class       = $onsale_filter ? 'wc-availability-in-stock chosen' : 'wc-availability-in-stock';
+        $link        = apply_filters( 'woocommerce_availability_filter_link', ! $onsale_filter ? add_query_arg( 'filter_onsale', '1' ) : remove_query_arg( 'filter_onsale' ) );
+        $rating_html = __('Akciós termékek', 'marrakesh');
         $count_html  = ''; ////////// ADD COUNT LATER
 
         printf( '<li class="%s"><a href="%s">%s</a> %s</li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html ); // WPCS: XSS ok.
@@ -851,3 +858,20 @@ function marrakesh_wc_layered_nav_link_hack( $link, $term, $taxonomy ) {
     }
 }
 add_filter( 'woocommerce_layered_nav_link', 'marrakesh_wc_layered_nav_link_hack', 10, 4 );
+
+
+// function marrakesh_product_onslae_query( $q ) {
+//     if ( is_admin() ) return;
+
+//     // Isset & NOT empty
+//     if ( isset( $_GET['filter_onsale'] ) ) {
+//         // Equal to 1
+//         if ( $_GET['filter_onsale'] == 1 ) {
+//             //  Function that returns an array containing the IDs of the products that are on sale.
+//             $product_ids_on_sale = wc_get_product_ids_on_sale();
+
+//             $q->set( 'post__in', $product_ids_on_sale );
+//         }
+//     }
+// }
+// add_action( 'woocommerce_product_query', 'marrakesh_product_onslae_query', 10, 1 );

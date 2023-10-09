@@ -3,8 +3,7 @@
         '39' => 'Cementlap',
         '40' => 'Terazzo',
         '421' => 'Falicsempe',
-        '710' => 'Kerámia padlólap',
-        '828' => 'Márvány'
+        '710' => 'Kerámia padlólap'
     );
 ?>
 <ul id="menu-main-menu" class="mainmenu">

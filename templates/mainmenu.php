@@ -1,7 +1,7 @@
 <?php
     $pcats = array(
         '39' => 'Cementlap',
-        '40' => 'Terazzo',
+        '40' => 'Terrazzo',
         '421' => 'Falicsempe',
         '710' => 'Kerámia padlólap'
     );

@@ -479,10 +479,11 @@ function marrakesh_get_current_url() {
 function marrakesh_get_atts_for_product_category($pcat, $attr="%") {
     global $wpdb;
     $attributes_query = $wpdb->prepare(
-        "SELECT DISTINCT tt.taxonomy, tt.term_id, t.name, t.slug
+        "SELECT DISTINCT tt.taxonomy, tt.term_id, t.name, t.slug, tm.meta_value
         FROM {$wpdb->prefix}term_relationships AS tr
         JOIN {$wpdb->prefix}term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
         JOIN {$wpdb->prefix}terms AS t ON tt.term_id = t.term_id
+        JOIN {$wpdb->prefix}termmeta AS tm ON tt.term_id = tm.term_id
         WHERE tr.object_id IN (
             SELECT p.ID
             FROM {$wpdb->prefix}posts AS p
@@ -495,7 +496,8 @@ function marrakesh_get_atts_for_product_category($pcat, $attr="%") {
             AND t.term_id = %d
         )
         AND tt.taxonomy LIKE %s
-        ORDER BY tt.taxonomy, t.name",
+        AND tm.meta_key = 'order'
+        ORDER BY tt.taxonomy, ABS(tm.meta_value), t.name",
         array($pcat, 'pa_'.$attr)
     );
     $results = $wpdb->get_results($attributes_query);

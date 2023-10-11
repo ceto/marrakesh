@@ -205,7 +205,7 @@ msgstr ""
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:722, templates/mainmenu.php:20
+#: lib/woocommerce.php:722, templates/mainmenu.php:19
 msgid "Akciós termékek"
 msgstr ""
 
@@ -285,43 +285,43 @@ msgstr ""
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
-#: templates/mainmenu.php:18
+#: templates/mainmenu.php:17
 msgid "Készletről azonnal"
 msgstr ""
 
-#: templates/mainmenu.php:19
+#: templates/mainmenu.php:18
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: templates/mainmenu.php:21
+#: templates/mainmenu.php:20
 msgid "Kollekciók"
 msgstr ""
 
-#: templates/mainmenu.php:23, templates/mainmenu.php:26
+#: templates/mainmenu.php:22, templates/mainmenu.php:25
 msgid "Mutasd mindet"
 msgstr ""
 
-#: templates/mainmenu.php:34, woocommerce/archive-product.php:305, woocommerce/archive-product.php:490
+#: templates/mainmenu.php:33, woocommerce/archive-product.php:305, woocommerce/archive-product.php:490
 msgid "Stílus"
 msgstr ""
 
-#: templates/mainmenu.php:45, woocommerce/archive-product.php:316, woocommerce/archive-product.php:510
+#: templates/mainmenu.php:44, woocommerce/archive-product.php:316, woocommerce/archive-product.php:510
 msgid "Alkalmazás"
 msgstr ""
 
-#: templates/mainmenu.php:58, woocommerce/archive-product.php:262, woocommerce/archive-product.php:479
+#: templates/mainmenu.php:57, woocommerce/archive-product.php:262, woocommerce/archive-product.php:479
 msgid "Színek"
 msgstr ""
 
-#: templates/mainmenu.php:81, woocommerce/archive-product.php:327, woocommerce/archive-product.php:520
+#: templates/mainmenu.php:80, woocommerce/archive-product.php:327, woocommerce/archive-product.php:520
 msgid "Felület"
 msgstr ""
 
-#: templates/mainmenu.php:92, woocommerce/archive-product.php:272, woocommerce/archive-product.php:530
+#: templates/mainmenu.php:91, woocommerce/archive-product.php:272, woocommerce/archive-product.php:530
 msgid "Mintázat"
 msgstr ""
 
-#: templates/mainmenu.php:105, woocommerce/archive-product.php:294, woocommerce/archive-product.php:500
+#: templates/mainmenu.php:104, woocommerce/archive-product.php:294, woocommerce/archive-product.php:500
 msgid "Forma"
 msgstr ""
 

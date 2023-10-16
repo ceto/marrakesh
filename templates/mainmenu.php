@@ -17,12 +17,19 @@
                     <li><a href="<?= add_query_arg(array('browse'=>'1','filter_availability'=>'in_stock'), get_term_link( $pcatid )); ?>"><?php _e('Készletről azonnal', 'marrakesh'); ?></a></li>
                     <li><a href="<?= add_query_arg(array('browse'=>'1','filter_cs'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Hamarosan érkezik', 'marrakesh'); ?></a></li>
                     <li><a href="<?= add_query_arg(array('browse'=>'1','filter_onsale'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Akciós termékek', 'marrakesh'); ?></a></li>
-                    <li><a href="<?= get_term_link($pcatid); ?>"><?php _e('Kollekciók', 'marrakesh'); ?></a></li>
-
-                    <!-- <li><a href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a></li> -->
+                    <?php
+                        $dtype = get_term_meta( intval($pcatid), 'display_type' );
+                        if ( $dtype[ 0 ] === 'subcategories' ) : ?>
+                        <li><a href="<?= get_term_link($pcatid); ?>"><?php _e('Kollekciók', 'marrakesh'); ?></a></li>
+                    <?php endif; ?>
                 </ul>
                 <br>
-                <a class="button accent small" href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a>
+                <?php
+                    if ( $dtype[ 0 ] === 'subcategories' ) : ?>
+                    <a class="button accent small" href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a>
+                <?php else: ?>
+                <a class="button accent small" href="<?= get_term_link( $pcatid ); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a>
+                <?php endif; ?>
             </div>
             <div class="mega__content wide">
                 <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">

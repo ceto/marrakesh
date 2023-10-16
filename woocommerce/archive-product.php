@@ -158,19 +158,19 @@ defined( 'ABSPATH' ) || exit;
                         $disableswitch=true;
                     }
                 ?>
-                <aside class="stock-filter">
-                    <?php if (!$disableswitch ) : ?>
-                    <a href="<?= $switchedbrowseurl; ?>" class="button hollow small accent browsemodelink"><?= !$subcatdisplay ? 'Váltás kollekció nézetre' : 'Lapok szűrése és keresés' ?></a>
+                <aside class="brblock__controls">
+                    <?php if (!$subcatdisplay ) : ?>
+                    <section class="pratop__ordering">
+                        <select name="order" id="order">
+                            <option value=""><?php _e('Rendezés: Alapértelmezett','marrakesh'); ?></option>
+                            <option disabled value=""><?php _e('Ár szerint növekvő','marrakesh'); ?></option>
+                            <option disabled value=""><?php _e('Ár szerint csökkenő','marrakesh'); ?></option>
+                        </select>
+                    </section>
                     <?php endif; ?>
-                    <!-- <div class="switch switch--browsemode small">
-                        <input class="switch-input" id="switchbrowse" type="checkbox" name="switchbrowse"
-                            <?= !$subcatdisplay ? 'checked' : '' ?> <?= $disableswitch ? 'disabled' : '' ?> value="<?= $switchedbrowseurl; ?>">
-                        <label class="switch-paddle" for="switchbrowse">
-                            <span class="show-for-sr">Böngésző mód</span>
-                            <span class="switch-active" aria-hidden="true">Kollekció nézet</span>
-                            <span class="switch-inactive" aria-hidden="true">Lapok szűrése</span>
-                        </label>
-                    </div> -->
+                    <?php if (!$disableswitch ) : ?>
+                        <a href="<?= $switchedbrowseurl; ?>" class="button hollow small accent browsemodelink"><?= !$subcatdisplay ? 'Váltás kollekció nézetre' : 'Lapok szűrése és keresés' ?></a>
+                    <?php endif; ?>
                 </aside>
             </section>
         </div>
@@ -189,45 +189,47 @@ defined( 'ABSPATH' ) || exit;
      */
     do_action( 'woocommerce_before_main_content' );
 ?>
-    <?php
-    $_chosen_attributes = WC_Query::get_layered_nav_chosen_attributes();
-    if ( (count( $_chosen_attributes ) > 0) || $availability_filter || $csavailability_filter || $onsale_filter)  : ?>
+    <?php $_chosen_attributes = WC_Query::get_layered_nav_chosen_attributes(); ?>
+    <?php if ( (count( $_chosen_attributes ) > 0) || $availability_filter || $csavailability_filter || $onsale_filter) : ?>
     <div class="ps--xlight">
         <div class="grid-container">
-            <section class="pratopstatus">
-                <h3 class="pratopstatus__title"><?= __('Bekapcsolt szűrők', 'marrakesh'); ?></h3>
-                <?php if ( count($_chosen_attributes) > 0) : ?>
-                <?php
-                        the_widget( 'WC_Widget_Layered_Nav_Filters', array(
-                            'title' => __('', 'marrakesh')
-                            ),
-                            array(
-                                'before_widget' => '<section class="pratopstatus__filters %1$s">',
-                                'after_widget'  => '</section>',
-                                'before_title'  => '<h3>',
-                                'after_title'   => '</h3>'
-                            )
-                        );
-                ?>
-                <?php endif; ?>
-                <?php if ($availability_filter || $csavailability_filter || $onsale_filter ) : ?>
-                <?php
-                        the_widget( 'WC_Widget_Status_Filter', array(
-                            'title' => __('', 'marrakesh')
-                            ),
-                            array(
-                                'before_widget' => '<section class="pratopstatus__filters %1$s">',
-                                'after_widget'  => '</section>',
-                                'before_title'  => '<h3>',
-                                'after_title'   => '</h3>'
-                            )
-                        );
-                ?>
-                <?php endif; ?>
-            </section>
+            <div class="pratop">
+                <section class="pratop__status">
+                    <h3 class="pratopstatus__title"><?= __('Bekapcsolt szűrők', 'marrakesh'); ?></h3>
+                    <?php if ( count($_chosen_attributes) > 0) : ?>
+                    <?php
+                            the_widget( 'WC_Widget_Layered_Nav_Filters', array(
+                                'title' => __('', 'marrakesh')
+                                ),
+                                array(
+                                    'before_widget' => '<section class="pratopstatus__filters %1$s">',
+                                    'after_widget'  => '</section>',
+                                    'before_title'  => '<h3>',
+                                    'after_title'   => '</h3>'
+                                )
+                            );
+                    ?>
+                    <?php endif; ?>
+                    <?php if ($availability_filter || $csavailability_filter || $onsale_filter ) : ?>
+                    <?php
+                            the_widget( 'WC_Widget_Status_Filter', array(
+                                'title' => __('', 'marrakesh')
+                                ),
+                                array(
+                                    'before_widget' => '<section class="pratopstatus__filters %1$s">',
+                                    'after_widget'  => '</section>',
+                                    'before_title'  => '<h3>',
+                                    'after_title'   => '</h3>'
+                                )
+                            );
+                    ?>
+                    <?php endif; ?>
+                </section>
+            </div>
         </div>
     </div>
     <?php endif; ?>
+
 
 
     <div class="grid-container ps ps--narrow">

@@ -293,35 +293,35 @@ msgstr ""
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: templates/mainmenu.php:20
+#: templates/mainmenu.php:23
 msgid "Kollekciók"
 msgstr ""
 
-#: templates/mainmenu.php:22, templates/mainmenu.php:25
+#: templates/mainmenu.php:31, templates/mainmenu.php:29
 msgid "Mutasd mindet"
 msgstr ""
 
-#: templates/mainmenu.php:33, woocommerce/archive-product.php:305, woocommerce/archive-product.php:490
+#: templates/mainmenu.php:40, woocommerce/archive-product.php:307, woocommerce/archive-product.php:492
 msgid "Stílus"
 msgstr ""
 
-#: templates/mainmenu.php:44, woocommerce/archive-product.php:316, woocommerce/archive-product.php:510
+#: templates/mainmenu.php:51, woocommerce/archive-product.php:318, woocommerce/archive-product.php:512
 msgid "Alkalmazás"
 msgstr ""
 
-#: templates/mainmenu.php:57, woocommerce/archive-product.php:262, woocommerce/archive-product.php:479
+#: templates/mainmenu.php:64, woocommerce/archive-product.php:264, woocommerce/archive-product.php:481
 msgid "Színek"
 msgstr ""
 
-#: templates/mainmenu.php:80, woocommerce/archive-product.php:327, woocommerce/archive-product.php:520
+#: templates/mainmenu.php:87, woocommerce/archive-product.php:329, woocommerce/archive-product.php:522
 msgid "Felület"
 msgstr ""
 
-#: templates/mainmenu.php:91, woocommerce/archive-product.php:272, woocommerce/archive-product.php:530
+#: templates/mainmenu.php:98, woocommerce/archive-product.php:274, woocommerce/archive-product.php:532
 msgid "Mintázat"
 msgstr ""
 
-#: templates/mainmenu.php:104, woocommerce/archive-product.php:294, woocommerce/archive-product.php:500
+#: templates/mainmenu.php:111, woocommerce/archive-product.php:296, woocommerce/archive-product.php:502
 msgid "Forma"
 msgstr ""
 
@@ -397,6 +397,18 @@ msgstr ""
 msgid "Teljes kínálat"
 msgstr ""
 
+#: woocommerce/archive-product.php:165
+msgid "Rendezés: Alapértelmezett"
+msgstr ""
+
+#: woocommerce/archive-product.php:166
+msgid "Ár szerint növekvő"
+msgstr ""
+
+#: woocommerce/archive-product.php:167
+msgid "Ár szerint csökkenő"
+msgstr ""
+
 #: woocommerce/archive-product.php:198
 msgid "Bekapcsolt szűrők"
 msgstr ""
@@ -404,19 +416,19 @@ msgstr ""
 #: woocommerce/archive-product.php:202, woocommerce/archive-product.php:216
 msgstr ""
 
-#: woocommerce/archive-product.php:249
+#: woocommerce/archive-product.php:251
 msgid "mutass többet"
 msgstr ""
 
-#: woocommerce/archive-product.php:256
+#: woocommerce/archive-product.php:258
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:283, woocommerce/archive-product.php:540
+#: woocommerce/archive-product.php:285, woocommerce/archive-product.php:542
 msgid "Méret"
 msgstr ""
 
-#: woocommerce/archive-product.php:440
+#: woocommerce/archive-product.php:442
 msgid "Színek, stílus és készlet"
 msgstr ""
 

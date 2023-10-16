@@ -148,10 +148,31 @@ select.taxchooser {
         }
     }
 }
-.pratopstatus {
+.brblock__controls {
+    display: flex;
+    gap: .25rem;
+    flex-flow: row-reverse;
+
+    .browsemodelink:is(:nth-child(2)) {
+        @include breakpoint($bp-tablet down) {
+            display: none;
+
+        }
+    }
+}
+
+
+.pratop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+}
+.pratop__status {
     position: relative;
     display: flex;
     align-items: center;
+    flex-grow: 1;
     // justify-content: space-between;
     // flex-direction: row-reverse;
     padding: 0.875rem 0 0.25rem;
@@ -161,6 +182,17 @@ select.taxchooser {
         &:first-child() {
             justify-self: right;
         }
+    }
+}
+
+.pratop__ordering {
+    padding: 0 0;
+    select {
+        font-size: .875rem;
+        height: 2.125em;
+        margin:0;
+        // padding:.25em;
+        line-height: 1;
     }
 }
 

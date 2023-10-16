@@ -18,10 +18,10 @@
                     <li><a href="<?= add_query_arg(array('browse'=>'1','filter_cs'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Hamarosan érkezik', 'marrakesh'); ?></a></li>
                     <li><a href="<?= add_query_arg(array('browse'=>'1','filter_onsale'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Akciós termékek', 'marrakesh'); ?></a></li>
                     <?php
-                        $dtype = get_term_meta( intval($pcatid), 'display_type' );
-                        if ( $dtype[ 0 ] === 'subcategories' ) : ?>
+                        //$dtype = get_term_meta( intval($pcatid), 'display_type' );
+                        //if ( $dtype[ 0 ] === 'subcategories' ) : ?>
                         <li><a href="<?= get_term_link($pcatid); ?>"><?php _e('Kollekciók', 'marrakesh'); ?></a></li>
-                    <?php endif; ?>
+                    <?php //endif; ?>
                 </ul>
                 <br>
                 <?php

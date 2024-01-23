@@ -22,8 +22,8 @@
 
 
     @include breakpoint(120em) {
-        padding-left: calc(50% - #{rem-calc($layout-content)/2} + 1.25rem);
-        padding-right: calc(50% - #{rem-calc($layout-content)/2} + 1.25rem);
+        padding-left: calc(50% - #{rem-calc($layout-content)*0.5} + 1.25rem);
+        padding-right: calc(50% - #{rem-calc($layout-content)*0.5} + 1.25rem);
 
     }
 

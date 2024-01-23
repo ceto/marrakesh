@@ -125,7 +125,7 @@
                 content:'';
                 bottom:0;
                 width:150%;
-                height:#{$globalheaderheight/2.5};
+                height:#{$globalheaderheight*0.4};
                 left:-25%;
                 // transform: perspective(#{$globalheaderheight*8}) rotateX(88deg);
                 // transform-origin: bottom center;

@@ -28,7 +28,7 @@ $layout-col-count: 12;
 $layout-col-width: 110px;
 $layout-gutter-width: 30px;
 $layout-content: ($layout-col-count * $layout-col-width) + (($layout-col-count - 1) * $layout-gutter-width);
-$layout-gutter-pct: percentage($layout-gutter-width / $layout-content);
+$layout-gutter-pct: percentage(math.div($layout-gutter-width, $layout-content));
 
 $global-width: rem-calc($layout-content);
 

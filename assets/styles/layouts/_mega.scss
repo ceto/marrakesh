@@ -1,8 +1,6 @@
 .mega {
 
-    @extend .pagewrap;
-    @extend .pagewrap.xlight;
-    // @extend .pagewrap.short;
+    @extend .pagewrap, .xlight;
 
 
     border-top: 1px solid $cl-gray-light;
@@ -21,7 +19,7 @@
     z-index: -1;
 
     transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
-    transform: translateY(-#{$globalheaderheight/2});
+    transform: translateY(-#{$globalheaderheight*0.5});
 
 
     a:focus + &, &:focus-within, &:hover, a:hover + &, &.parentishovered {

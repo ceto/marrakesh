@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Marrakesh Global Theme
+# Copyright (C) 2024 Marrakesh Global Theme
 # This file is distributed under the same license as the Marrakesh Global Theme package.
 msgid ""
 msgstr ""

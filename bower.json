@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation-sites": "^6.5.0",
-    "motion-ui": "^2.0.3",
+    "foundation-sites": "6.8.1",
+    "motion-ui": "2.0.5",
     "photoswipe": "^4.1.2",
     "isotope-layout": "^3.0.6",
     "imagesloaded": "^4.1.4",

@@ -5,7 +5,8 @@
                 "scripts/main.js",
                 "scripts/_contact.js",
                 "scripts/_wcwl.js",
-                "scripts/allphotoswipe.js"
+                "scripts/allphotoswipe.js",
+                "scripts/_prasort.js"
             ],
             "main": true
         },

@@ -402,11 +402,11 @@ msgid "Rendezés: Alapértelmezett"
 msgstr ""
 
 #: woocommerce/archive-product.php:166
-msgid "Ár szerint növekvő"
+msgid "Rendezés: Ár növekvő"
 msgstr ""
 
 #: woocommerce/archive-product.php:167
-msgid "Ár szerint csökkenő"
+msgid "Rendezés: Ár csökkenő"
 msgstr ""
 
 #: woocommerce/archive-product.php:198

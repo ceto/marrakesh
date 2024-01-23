@@ -161,10 +161,10 @@ defined( 'ABSPATH' ) || exit;
                 <aside class="brblock__controls">
                     <?php if (!$subcatdisplay ) : ?>
                     <section class="pratop__ordering">
-                        <select name="order" id="order">
-                            <option value=""><?php _e('Rendezés: Alapértelmezett','marrakesh'); ?></option>
-                            <option disabled value=""><?php _e('Ár szerint növekvő','marrakesh'); ?></option>
-                            <option disabled value=""><?php _e('Ár szerint csökkenő','marrakesh'); ?></option>
+                        <select name="orderby" id="prasort" class="prasort">
+                            <option value="none" <?= !str_contains($currentpageurl, 'orderby')?'selected':''; ?>><?php _e('Rendezés: Alapértelmezett','marrakesh'); ?></option>
+                            <option value="price" <?= str_contains($currentpageurl, 'orderby=price')?'selected':''; ?>><?php _e('Rendezés: Ár növekvő','marrakesh'); ?></option>
+                            <option value="price-desc" <?= str_contains($currentpageurl, 'orderby=price-desc')?'selected':''; ?>><?php _e('Rendezés: Ár csökkenő','marrakesh'); ?></option>
                         </select>
                     </section>
                     <?php endif; ?>

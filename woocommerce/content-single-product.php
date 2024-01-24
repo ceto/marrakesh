@@ -325,7 +325,6 @@ if ( post_password_required() ) {
                     <?php get_template_part('templates/calculator'); ?>
                     <?php else : ?>
                     <?php do_action( 'woocommerce_single_product_summary' ); ?>
-
                     <?php endif; ?>
 
                     <div class="singleproduct__meta meta">

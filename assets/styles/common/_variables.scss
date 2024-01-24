@@ -33,10 +33,10 @@ $layout-gutter-pct: percentage(math.div($layout-gutter-width, $layout-content));
 $global-width: rem-calc($layout-content);
 
 // Breakpoints
-$bp-medium: 414px;
+$bp-medium: 640px;
 $bp-tablet: 768px;
 $bp-large: 1024px;
-$bp-xlarge: 1280px;
+$bp-xlarge: 1200px;
 $bp-xxlarge: 1440px;
 $bp-xxxlarge: 1920px;
 

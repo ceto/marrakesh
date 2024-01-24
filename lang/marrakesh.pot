@@ -153,11 +153,11 @@ msgstr ""
 msgid "Hiba történt a küldéskor. Kérlek vedd fel velünk a kapcsolatot emailben vagy telefonon."
 msgstr ""
 
-#: lib/custom.php:356
+#: lib/custom.php:369
 msgid "Thumbnail (16x9)"
 msgstr ""
 
-#: lib/custom.php:357
+#: lib/custom.php:370
 msgid "Thumbnail (1x1)"
 msgstr ""
 
@@ -165,55 +165,55 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:512, lib/woocommerce.php:521, lib/woocommerce.php:533
+#: lib/woocommerce.php:530, lib/woocommerce.php:539, lib/woocommerce.php:551
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:510, lib/woocommerce.php:519, lib/woocommerce.php:654, templates/calculator.php:23, woocommerce/content-single-product.php:265
+#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/content-single-product.php:265
 msgid "doboz"
 msgstr ""
 
-#: lib/woocommerce.php:531
+#: lib/woocommerce.php:549
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:561
+#: lib/woocommerce.php:579
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:562, lib/woocommerce.php:611
+#: lib/woocommerce.php:580, lib/woocommerce.php:629
 msgid "10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:567, lib/woocommerce.php:630
+#: lib/woocommerce.php:585, lib/woocommerce.php:648
 msgid "Várható szállítás"
 msgstr ""
 
-#: lib/woocommerce.php:559, lib/woocommerce.php:714
+#: lib/woocommerce.php:577, lib/woocommerce.php:732
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:599
+#: lib/woocommerce.php:617
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:657
+#: lib/woocommerce.php:675
 msgid "db."
 msgstr ""
 
-#: lib/woocommerce.php:707
+#: lib/woocommerce.php:725
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:722, templates/mainmenu.php:19
+#: lib/woocommerce.php:740, templates/mainmenu.php:19
 msgid "Akciós termékek"
 msgstr ""
 
-#: lib/woocommerce.php:772, templates/requestmodal.php:33
+#: lib/woocommerce.php:790, templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: lib/woocommerce.php:774
+#: lib/woocommerce.php:792
 msgid "pl.: Céges számlaigény, adószám stb..."
 msgstr ""
 
@@ -402,11 +402,11 @@ msgid "Rendezés: Alapértelmezett"
 msgstr ""
 
 #: woocommerce/archive-product.php:166
-msgid "Rendezés: Ár növekvő"
+msgid "Rendezés: Egységár növekvő"
 msgstr ""
 
 #: woocommerce/archive-product.php:167
-msgid "Rendezés: Ár csökkenő"
+msgid "Rendezés: Egységár csökkenő"
 msgstr ""
 
 #: woocommerce/archive-product.php:198
@@ -432,7 +432,7 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product.php:117
+#: woocommerce/content-single-product-classic.php:94, woocommerce/content-single-product.php:117
 msgid "Vásárlás és rendelés"
 msgstr ""
 
@@ -504,19 +504,19 @@ msgstr ""
 msgid "Termékcsoport"
 msgstr ""
 
-#: woocommerce/content-single-product.php:403
+#: woocommerce/content-single-product.php:402
 msgid "Kapcsolódó termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:406
+#: woocommerce/content-single-product.php:405
 msgid "Ehhez ajánljuk"
 msgstr ""
 
-#: woocommerce/content-single-product.php:409
+#: woocommerce/content-single-product.php:408
 msgid "Hasonló termékek"
 msgstr ""
 
-#: woocommerce/content-single-product.php:412
+#: woocommerce/content-single-product.php:411
 msgid "Színvariációk"
 msgstr ""
 
@@ -526,6 +526,10 @@ msgstr ""
 
 #: woocommerce/share.php:58
 msgid "Személyes listád az alábbi url-en érhető el. Másold és oszd meg!"
+msgstr ""
+
+#: woocommerce/tmpl-single-product-classic.php:3
+msgid "Classic Product Layout"
 msgstr ""
 
 #: woocommerce/wishlist-view.php:73

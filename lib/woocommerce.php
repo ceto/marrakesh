@@ -1,4 +1,22 @@
 <?php
+//* Enqueue scripts and styles
+
+function marrakesh_remove_woocommerce_js() {
+    wp_deregister_script( 'sourcebuster-js' );
+    wp_dequeue_script( 'sourcebuster-js' );
+
+}
+add_action( 'wp_enqueue_scripts', 'marrakesh_remove_woocommerce_js');
+
+function marrakesh_deregister_woocommerce_block_styles() {
+    wp_deregister_style( 'wc-blocks-style' );
+    wp_dequeue_style( 'wc-blocks-style' );
+
+    wp_deregister_style( 'wc-block-editor' );
+    wp_dequeue_style( 'wc-block-editor' );
+}
+add_action( 'enqueue_block_assets', 'marrakesh_deregister_woocommerce_block_styles' );
+
 // Remove each style one by one
 add_filter( 'woocommerce_enqueue_styles', 'marrakesh_dequeue_styles' );
 function marrakesh_dequeue_styles( $enqueue_styles ) {

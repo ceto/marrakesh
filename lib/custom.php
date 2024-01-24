@@ -1,5 +1,18 @@
 <?php
 
+// Disable Gutenberg editor.
+add_filter('use_block_editor_for_post_type', '__return_false', 10);
+
+// Don't load Gutenberg-related stylesheets.
+add_action( 'wp_enqueue_scripts', 'sc_remove_block_css', 100 );
+function sc_remove_block_css() {
+    wp_dequeue_style( 'wp-block-library' ); // Wordpress core
+    wp_dequeue_style( 'wp-block-library-theme' ); // Wordpress core
+    wp_dequeue_style( 'wc-blocks-style' );
+}
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles' );
+
 add_filter('acf/settings/remove_wp_meta_box', '__return_false');
 
 

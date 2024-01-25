@@ -245,11 +245,11 @@
 }
 .singleproduct__attributes {
     @include clearfix();
-    line-height: $header-lineheight;
-    font-size: 0.875em;
-    margin: 1.5em 0 0;
-    border-top: 1px solid $medium-gray;
-    padding-top: 0.5em;
+    line-height: 1.4;
+    // font-size: 0.9375em;
+    // margin: 1.5em 0 0;
+    // border-top: 1px solid $medium-gray;
+    // padding-top: 0.5em;
     //max-width: 30rem;
     dt {
         //float:left;
@@ -296,10 +296,7 @@
 
 .singleproduct__catattributes {
     @extend .singleproduct__attributes;
-    border-top: none;
-    font-size: 1rem;
-    padding-top: 1.5em;
-    margin-top: 0;
+
     //max-width: 100%;
     dt {
         clear: left;

@@ -11,7 +11,7 @@ $fw-light: 300;
 
 // Colors
 $cl-black: #0a0a0a;
-$cl-dark: #1D2F59;
+$cl-dark: $cl-black;
 $cl-primary: #df542a;
 $cl-secondary: #0066ff;
 $cl-tertiary: #cc4b37;
@@ -20,7 +20,7 @@ $cl-gray-light: #e6e6e6;
 $cl-gray-xlight: #fafafa;
 $cl-white: #fefefe;
 
-$cl-body-font-color: $cl-dark;
+$cl-body-font-color: $cl-black;
 $cl-body-background: $cl-white;
 
 // Layout / Grid

@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post, $datafromprod, $sitepress;
+global $product, $product_id, $colors, $styles, $cats, $post, $datafromprod, $attributes, $sitepress;
 $attributes = $product->get_attributes();
 
 
@@ -111,8 +111,6 @@ if ( post_password_required() ) {
                                 <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                             </div>
 
-
-
                             <div class="singleproduct__headeractions" data-magellan>
                                 <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
                                 <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
@@ -195,128 +193,10 @@ if ( post_password_required() ) {
 
                     <div class="tabs-content" data-tabs-content="productinfotabs">
                         <div class="tabs-panel is-active" id="prodinfopanel">
-                            <div class="singleproduct__details">
-                                <?php if ($catdescr=term_description(end($cats))) : ?>
-                                    <?= $catdescr; ?>
-                                <?php endif; ?>
-                                <?php the_content(); ?>
-                                <?php
-                                    if (get_field('showsimulator', $product_id)==true) {
-                                        get_template_part('templates/simulatorcta');
-                                    }
-                                ?>
-                                <?php
-
-                                    $datapostobject = get_post( $datafromprod['_linfopage'] );
-                                    setup_postdata( $GLOBALS['post'] =& $datapostobject );
-                                    get_template_part('templates/accordioncage');
-                                    get_template_part('templates/dlcage');
-                                    wp_reset_postdata();
-                                ?>
-                                <p>
-                                    <?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
-                                </p>
-
-
-                            </div>
+                            <?php wc_get_template_part( 'product-details' ); ?>
                         </div>
                         <div class="tabs-panel" id="datapanel">
-                            <div class="acallout asingleproduct__callout">
-
-                                <?php
-                                    /**
-                                     * Hook: woocommerce_before_single_product_summary.
-                                     *
-                                     * @hooked woocommerce_show_product_sale_flash - 10
-                                     * @hooked woocommerce_show_product_images - 20
-                                     */
-                                    do_action( 'woocommerce_before_single_product_summary' );
-                                ?>
-
-
-                                <!-- <h3 class=""><?= __('Termék adatlap', 'marrakesh'); ?></h3> -->
-                                <dl class="singleproduct__catattributes">
-                                    <dt><?= __('Azonosító', 'marrakesh'); ?></dt>
-                                    <dd><?php the_title(); ?></dd>
-                                    <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
-                                    <dd><?php wc_get_template_part( 'loop/price'); ?></dd>
-                                    <?php if ($datafromprod['_tileweight']) : ?>
-                                    <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
-                                    <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
-                                    <?php endif; ?>
-                                    <?php if ($datafromprod['_tilewidth']) : ?>
-                                    <dt><?= __('Lapméret','marrakesh'); ?></dt>
-                                    <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
-                                    </dd>
-                                    <?php endif; ?>
-                                    <?php if ($datafromprod['_tilethickness']) : ?>
-                                    <dt><?= __('Vastagság','marrakesh'); ?></dt>
-                                    <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
-                                    <?php endif; ?>
-                                    <?php if ($datafromprod['_isboxed']=='yes') : ?>
-                                    <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
-                                    <dd><?= __('dobozban','marrakesh'); ?></dd>
-                                    <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
-                                    <dd><?= $product->get_price_html() ?></dd>
-                                    <dt><?= __('Lapok a dobozban','marrakesh'); ?></dt>
-                                    <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?>
-                                    </dd>
-                                    <dt><?= __('Doboz terítve','marrakesh'); ?></dt>
-                                    <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?>
-                                    </dd>
-                                    <?php else: ?>
-                                    <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
-                                    <dd><?= __('darab','marrakesh'); ?></dd>
-                                    <?php endif; ?>
-                                </dl>
-                                <dl class="singleproduct__attributes">
-                                    <dt><?php _e('Termékcsoport', 'marrakesh');?></dt>
-                                    <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-                                    </dd>
-                                    <?php foreach ( $attributes as $attribute ) : ?>
-                                    <dt><?php echo wc_attribute_label( $attribute->get_name() ); ?></dt>
-                                    <dd><?php
-                                            $values = array();
-
-                                            if ( $attribute->is_taxonomy() ) {
-                                                $attribute_taxonomy = $attribute->get_taxonomy_object();
-                                                $attribute_values = wc_get_product_terms( $product->get_id(), $attribute->get_name(), array( 'fields' => 'all' ) );
-
-                                                foreach ( $attribute_values as $attribute_value ) {
-                                                    $value_name = esc_html( $attribute_value->name );
-
-                                                    if ( $attribute_taxonomy->attribute_public ) {
-                                                        $values[] = '<a href="' . esc_url( get_term_link( $attribute_value->term_id, $attribute->get_name() ) ) . '" rel="tag">' . $value_name . '</a>';
-                                                    } else {
-                                                        $values[] = $value_name;
-                                                    }
-                                                }
-                                            } else {
-                                                $values = $attribute->get_options();
-
-                                                foreach ( $values as &$value ) {
-                                                    $value = make_clickable( esc_html( $value ) );
-                                                }
-                                            }
-
-                                            echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
-                                        ?></dd>
-                                    <?php endforeach; ?>
-                                    <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
-                                    <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
-                                    <dd class="product_weight">
-                                        <?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
-                                    <?php endif; ?>
-
-                                    <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
-                                    <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
-                                    <dd class="product_dimensions">
-                                        <?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?>
-                                    </dd>
-                                    <?php endif; ?>
-                                </dl>
-                            </div>
-
+                            <?php wc_get_template_part( 'product-attributes' ); ?>
                         </div>
                     </div>
                 </div>
@@ -341,161 +221,10 @@ if ( post_password_required() ) {
         </div>
     </div>
 
+    <?php wc_get_template_part( 'related-products' ); ?>;
 
 
-    <div class="ps ps--narrow aps--xlight ps--bordered">
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-                <div class="cell">
-                    <?php
-                    $upsells = wc_products_array_orderby( array_filter( array_map( 'wc_get_product', $product->get_upsell_ids() ), 'wc_products_array_filter_visible' ), 'rand', 'desc');
-                    $upsellproducts = $upsells;
-                    ?>
-                    <?php
-                        $samecatproducts = wc_get_products(array(
-                            'post_status' => 'publish',
-                            'posts_per_page' => -1,
-                            'exclude' => array($product_id),
-                            'tax_query'      => array(
-                                'relation' => 'AND',
-                                array(
-                                    'taxonomy'     => 'product_cat',
-                                    'field'        => 'id',
-                                    'terms'        => end($cats),
-                                    'operator'     => 'IN'
 
-                                )
-                            )
-                        ) );
-                        $exclarr=array($product_id);
-                        foreach ($samecatproducts as $tempprod) {
-                            $exclarr[]= $tempprod->get_id();
-                        }
-                        $relproducts = wc_get_products(array(
-                            'post_status' => 'publish',
-                            'posts_per_page' => 10,
-                            'post__not_in' => $exclarr,
-                            'tax_query'      => array(
-                                'relation' => 'AND',
-                                array(
-                                    'taxonomy'     => 'pa_color',
-                                    'field'        => 'id',
-                                    'terms'        => $colors,
-                                    'operator'     => 'IN'
-                                ),
-                                array(
-                                    'taxonomy'     => 'pa_style',
-                                    'field'        => 'id',
-                                    'terms'        => $styles,
-                                    'operator'     => 'IN'
-                                ),
-                                array(
-                                    'taxonomy'     => 'product_cat',
-                                    'field'        => 'id',
-                                    'terms'        => $cats[0],
-                                    'operator'     => 'IN'
-
-                                ),
-                            )
-                        ) );
-                    ?>
-                    <h3><?php _e( 'Kapcsolódó termékek', 'marrakesh' ); ?></h3>
-                    <ul class="tabs tabs--singleproduct" data-active-collapse="true" data-tabs id="producttabs">
-                        <?php if ( $upsellproducts  ) : ?><li class="tabs-title is-active"><a
-                                href="#upsellpanel" aria-selected="true"><?php _e( 'Ehhez ajánljuk', 'marrakesh' ) ?></a>
-                        </li><?php endif;  ?>
-                        <?php if ( $relproducts ) : ?><li class="tabs-title <?= !$upsellproducts?'is-active':''; ?>"><a href="#similarpanel"
-                            <?= !$upsellproducts?'aria-selected="true"':''; ?>><?php _e( 'Hasonló termékek', 'marrakesh' ); ?></a></li>
-                        <?php endif;  ?>
-                        <?php if ( $samecatproducts  ) : ?><li class="tabs-title <?= (!$upsellproducts && empty($relproducts))?'is-active':''; ?>"><a
-                                href="#colvarpanel"><?php _e( 'Színvariációk', 'marrakesh' ); ?></a></li>
-                        <?php endif;  ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="tabs-content" data-tabs-content="producttabs">
-
-            <?php if ( $upsellproducts ) : ?>
-            <div class="tabs-panel is-active" id="upsellpanel">
-                <section class="up-sells upsells products">
-                    <ul class="prodswipe prodswipe--upsells">
-                        <?php foreach ( $upsellproducts as $upsell ) : ?>
-                        <?php
-                            $post_object = get_post( $upsell->get_id() );
-                            setup_postdata( $GLOBALS['post'] =& $post_object );
-                            wc_get_template_part( 'content-widget-product' );
-                        ?>
-                        <?php endforeach;  wp_reset_postdata(); ?>
-                    </ul>
-                </section>
-                <nav class="scroller" data-target="prodswipe--upsells">
-                    <a href="#" class="js-scrollleft">‹</a>
-                    <a href="#" class="js-scrollright">›</a>
-                </nav>
-            </div>
-            <?php endif; ?>
-
-            <?php if ( $relproducts ) : ?>
-            <div class="tabs-panel <?= !$upsellproducts?'is-active':''; ?>" id="similarpanel">
-                <section class="related products">
-                    <ul class="prodswipe prodswipe--similar">
-                        <?php foreach ( $relproducts as $related_product ) : ?>
-                        <?php
-                            $post_object = get_post( $related_product->get_id() );
-                            setup_postdata( $GLOBALS['post'] =& $post_object );
-                            wc_get_template_part( 'content-widget-product' ); ?>
-                        <?php endforeach; wp_reset_postdata(); ?>
-                    </ul>
-                </section>
-                <nav class="scroller" data-target="prodswipe--similar">
-                    <a href="#" class="js-scrollleft">‹</a>
-                    <a href="#" class="js-scrollright">›</a>
-                </nav>
-            </div>
-            <?php endif;  ?>
-
-            <?php if ( $samecatproducts ) : ?>
-            <div class="tabs-panel <?= (!$upsellproducts && empty($relproducts))?'is-active':''; ?>" id="colvarpanel">
-                <section class="related products">
-                    <ul class="prodswipe prodswipe--related">
-                        <?php foreach ( $samecatproducts as $related_product ) : ?>
-                        <?php
-                            $post_object = get_post( $related_product->get_id() );
-                            setup_postdata( $GLOBALS['post'] =& $post_object );
-                            wc_get_template_part( 'content-widget-product' );
-                        ?>
-                        <?php endforeach; wp_reset_postdata(); ?>
-                    </ul>
-                </section>
-                <nav class="scroller" data-target="prodswipe--related">
-                    <a href="#" class="js-scrollleft">‹</a>
-                    <a href="#" class="js-scrollright">›</a>
-                </nav>
-            </div>
-            <?php endif;  ?>
-
-        </div>
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-                <div class="cell">
-                    <?php
-                        /**
-                         * Hook: woocommerce_after_single_product_summary.
-                         *
-                         * @hooked woocommerce_output_product_data_tabs - 10
-                         * @hooked woocommerce_upsell_display - 15
-                         * @hooked woocommerce_output_related_products - 20
-                         */
-                        do_action( 'woocommerce_after_single_product_summary' );
-                    ?>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
 
     <?php do_action( 'woocommerce_after_single_product' ); ?>
     <?php get_template_part('templates/photoswipedom'); ?>

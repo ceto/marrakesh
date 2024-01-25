@@ -16,6 +16,13 @@
     @media screen and (min-width: 110em) {
         padding-left:calc(50vw - #{$global-width*0.5} );
     }
+
+    &.sima {
+
+        @media screen and (min-width: 110em) {
+            padding:1rem 0 1rem 2%;
+        }
+    }
 }
 .thumbswipe--noleftpad {
     padding:1rem 0 1rem 0;

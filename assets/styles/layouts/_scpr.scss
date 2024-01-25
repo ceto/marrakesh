@@ -1,0 +1,63 @@
+.scprhead {
+    @extend .pagewrap, .short;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .9375rem 2rem;
+    @include breakpoint($bp-tablet) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.scprhead__fig {
+    img {
+        max-height: 42rem;
+        object-fit: cover;
+    }
+}
+
+// .scprhead__thumbs {
+//     @include breakpoint($bp-tablet) {
+//         order: 3;
+//     }
+// }
+
+.scprhead__content {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap:.9375rem;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint($bp-tablet) {
+        padding-bottom: calc(min(16.666vw, 4.5rem) + 2rem);
+        margin-bottom: calc(-2rem - min(16.666vw, 4.5rem) );
+    }
+}
+
+.scprhead__content__one, .scprhead__content__two {
+    max-width: 28rem;
+    width: 100%;
+}
+
+
+.scprconto {
+    @extend .pagewrap, .xlight;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .9375rem 2rem;
+    @include breakpoint($bp-tablet) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.scprconto__one, .scprconto__two {
+}
+
+
+.scprconto__two {
+    > .wrap {
+        max-width: 28rem;
+        margin: auto;
+    }
+}

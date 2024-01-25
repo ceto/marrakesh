@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-global $product, $post, $datafromprod, $sitepress;
+global $product, $product_id, $colors, $styles, $cats, $post, $datafromprod, $attributes, $sitepress;
 $attributes = $product->get_attributes();
 
 
@@ -48,10 +48,50 @@ if ( post_password_required() ) {
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class('singleproduct', $product ); ?>>
 
     <header class="scprhead">
-        <figure class="scprhead__fig">
-            <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'full' ); ?>
-        </figure>
-
+        <div class="scprhead__media">
+            <figure class="scprhead__fig">
+                <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'full' ); ?>
+            </figure>
+            <div class="scprhead__thumbs">
+                <div class="psgallery thumbswipe sima">
+                        <?php if (get_field('singleimg', $product_id, false)) : ?>
+                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                            itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src( get_field('singleimg', $product_id, false),'full'); echo $targimg[0];?>"
+                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'medium' ); ?>
+                            </a>
+                        </figure>
+                        <?php endif; ?>
+                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                            itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src(get_post_thumbnail_id( $product_id),'full'); echo $targimg[0];?>"
+                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo woocommerce_get_product_thumbnail('medium'); ?>
+                            </a>
+                        </figure>
+                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                            itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src(get_field('wallimg', $product_id, false),'full'); echo $targimg[0];?>"
+                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'medium' ); ?>
+                            </a>
+                        </figure>
+                        <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
+                        <?php if ( $attachment_ids && $product->get_image_id() ) : ?>
+                        <?php foreach ( $attachment_ids as $attachment_id ) : ?>
+                        <figure class="thumbswipe__item psgallery__item" itemprop="associatedMedia" itemscope
+                            itemtype="http://schema.org/ImageObject">
+                            <a href="<?php $targimg = wp_get_attachment_image_src($attachment_id,'full'); echo $targimg[0];?>"
+                                data-size="<?= $targimg['1'].'x'.$targimg['2']; ?>">
+                                <?php echo wp_get_attachment_image( $attachment_id, 'medium' ); ?>
+                            </a>
+                        </figure>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                </div>
+            </div>
+        </div>
         <div class="scprhead__content">
             <div class="scprhead__content__one">
                 <figure class="singleproduct__prodthumb">
@@ -61,8 +101,6 @@ if ( post_password_required() ) {
                     <?php echo woocommerce_get_product_thumbnail('medium'); ?>
                     <?php endif; ?>
                 </figure>
-
-
                 <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
                 <?php if ( $product->is_on_sale() ) : ?>
                 <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
@@ -71,8 +109,6 @@ if ( post_password_required() ) {
                     <div class="singleproduct__shortdesc"><?php the_excerpt(); ?></div>
                 <?php endif; ?>
 
-
-
                 <p class="singleproduct__price">
                     <?php wc_get_template_part( 'loop/price'); ?>
                 </p>
@@ -80,17 +116,35 @@ if ( post_password_required() ) {
                 <div class="singleproduct__status">
                     <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                 </div>
-            </div>
 
+                <?php wc_get_template_part( 'product-attributes' ); ?>
+            </div>
             <div class="scprhead__content__two">
-                <?php if ($datafromprod['_isboxed']=='yes') : ?>
-                <?php get_template_part('templates/calculator'); ?>
-                <?php else : ?>
-                <?php do_action( 'woocommerce_single_product_summary' ); ?>
-                <?php endif; ?>
+                <div class="singleproduct__headeractions" data-magellan>
+                    <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
+                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+                </div>
             </div>
         </div>
     </header>
+
+    <div class="scprconto">
+        <div class="scprconto__one">
+            <?php wc_get_template_part( 'product-details' ); ?>
+        </div>
+        <div class="scprconto__two">
+            <div class="wrap">
+                <?php if ($datafromprod['_isboxed']=='yes') : ?>
+                    <?php get_template_part('templates/calculator'); ?>
+                    <?php else : ?>
+                    <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php wc_get_template_part( 'related-products' ); ?>;
+
 
     <?php do_action( 'woocommerce_after_single_product' ); ?>
     <?php get_template_part('templates/photoswipedom'); ?>

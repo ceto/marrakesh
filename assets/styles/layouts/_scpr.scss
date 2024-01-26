@@ -3,15 +3,31 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: .9375rem 2rem;
+    overflow: visible;
     @include breakpoint($bp-tablet) {
         grid-template-columns: 1fr 1fr;
+        margin-bottom: calc(min(16.666vw, 4.5rem) + 2rem)
     }
 }
 
+.scprhead__media {
+    position: relative;
+
+}
 .scprhead__fig {
     img {
         max-height: 42rem;
         object-fit: cover;
+    }
+}
+
+.scprhead__thumbs {
+    @include breakpoint($bp-tablet) {
+        position: absolute;
+        left:0;
+        // top:100%;
+        width: 100%;
+        height: calc(min(16.666vw, 4.5rem) + 2rem);
     }
 }
 
@@ -29,15 +45,15 @@
     justify-content: center;
     align-items: center;
 
-    @include breakpoint($bp-tablet) {
-        padding-bottom: calc(min(16.666vw, 4.5rem) + 2rem);
-        margin-bottom: calc(-2rem - min(16.666vw, 4.5rem) );
-    }
+
 }
 
 .scprhead__content__one, .scprhead__content__two {
     max-width: 28rem;
     width: 100%;
+}
+
+.scprhead__content__two {
 }
 
 

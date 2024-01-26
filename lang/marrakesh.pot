@@ -169,7 +169,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:30
+#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:28
 msgid "doboz"
 msgstr ""
 
@@ -177,23 +177,23 @@ msgstr ""
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:579
+#: lib/woocommerce.php:577
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:580, lib/woocommerce.php:629
+#: lib/woocommerce.php:578, lib/woocommerce.php:631
 msgid "10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:585, lib/woocommerce.php:648
+#: lib/woocommerce.php:586, lib/woocommerce.php:584, lib/woocommerce.php:648
 msgid "Várható szállítás"
 msgstr ""
 
-#: lib/woocommerce.php:577, lib/woocommerce.php:732
+#: lib/woocommerce.php:575, lib/woocommerce.php:732
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:617
+#: lib/woocommerce.php:619
 msgid "Érkezik"
 msgstr ""
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük."
 msgstr ""
 
-#: templates/calculator.php:22, woocommerce/product-attributes.php:33, woocommerce/product-attributes.php:22
+#: templates/calculator.php:22, woocommerce/product-attributes.php:33, woocommerce/product-attributes.php:22, woocommerce/product-attributes.php:24
 msgid "Kiszerelés"
 msgstr ""
 
@@ -432,7 +432,7 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product-classic.php:124, woocommerce/content-single-product.php:115
+#: woocommerce/content-single-product-classic.php:128, woocommerce/content-single-product.php:115
 msgid "Vásárlás és rendelés"
 msgstr ""
 
@@ -452,16 +452,8 @@ msgstr ""
 msgid "Bruttó ár"
 msgstr ""
 
-#: woocommerce/product-attributes.php:9
-msgid "Súly (1db lap)"
-msgstr ""
-
 #: woocommerce/product-attributes.php:13
 msgid "Lapméret"
-msgstr ""
-
-#: woocommerce/product-attributes.php:18
-msgid "Vastagság"
 msgstr ""
 
 #: woocommerce/product-attributes.php:34
@@ -472,20 +464,16 @@ msgstr ""
 msgid "dobozban"
 msgstr ""
 
-#: woocommerce/product-attributes.php:24
-msgid "Doboz ár (bruttó)"
-msgstr ""
-
-#: woocommerce/product-attributes.php:26
-msgid "Lapok a dobozban"
-msgstr ""
-
-#: woocommerce/product-attributes.php:27
+#: woocommerce/product-attributes.php:25
 msgid "lap/doboz"
 msgstr ""
 
-#: woocommerce/product-attributes.php:29
-msgid "Doboz terítve"
+#: woocommerce/product-attributes.php:27
+msgid "Mennyiség/kiszerelés"
+msgstr ""
+
+#: woocommerce/product-attributes.php:30
+msgid "Doboz ár (bruttó)"
 msgstr ""
 
 #: woocommerce/product-attributes.php:38
@@ -496,11 +484,11 @@ msgstr ""
 msgid "Tudnivalók"
 msgstr ""
 
-#: woocommerce/product-details.php:22
+#: woocommerce/product-details.php:24
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:22
+#: woocommerce/product-details.php:24
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 

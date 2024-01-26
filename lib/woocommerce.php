@@ -523,8 +523,8 @@ function marrakesh_save_wc_custom_fields( $post_id ) {
 /****** Price unit Display Tricks */
 add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
 function marrakesh_price_html( $price, $product ){
-    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
-    if (get_post_meta($origproductid, '_isboxed', true )=='yes') {
+    $productid = $product->get_id();
+    if (get_post_meta($productid, '_isboxed', true )=='yes') {
         $price.='/'.__('doboz','marrakesh');
     }
     else {$price.='/'.__('db','marrakesh');}
@@ -543,8 +543,8 @@ function marrakesh_united_cartitem_price( $price, $cart_item) {
 
 /****** Stock Quantity unit Display Tricks */
 function marrakesh_add_stock_quantity_unit( $stock_quantity, $product ) {
-    $origproductid = apply_filters( 'wpml_object_id', $product->get_id(), 'product', TRUE, 'hu' );
-    if ( get_post_meta($origproductid, '_isboxed', true ) && ($sizeperbox = get_post_meta($origproductid, '_sizeperbox', true ) ) ) {
+    $productid = $product->get_id();
+    if ( get_post_meta($productid, '_isboxed', true ) && ($sizeperbox = get_post_meta($productid, '_sizeperbox', true ) ) ) {
         $stock_quantity=number_format($stock_quantity*$sizeperbox,1);
         $stock_quantity.=__('m<sup>2</sup>','marrakesh');
     } else {
@@ -562,10 +562,8 @@ add_filter( 'woocommerce_format_stock_quantity', 'marrakesh_add_stock_quantity_u
 
 // define the woocommerce_get_availability_text callback
 function marrakesh_change_get_availability_text( $availability, $instance ) {
-    $originstanceid = apply_filters( 'wpml_object_id', $instance->get_id(), 'product', TRUE, 'hu' );
-    // var_dump($instance);
-    $csstock = get_post_meta($originstanceid, '_csstock', true );
-    $csdate = get_post_meta($originstanceid, '_csarrival', true );
+    $csstock = get_post_meta($instance, '_csstock', true );
+    $csdate = get_post_meta($instance, '_csarrival', true );
 
     if ( ! $instance->is_in_stock() ) {
         $availability = __( 'Out of stock', 'woocommerce' );
@@ -582,7 +580,11 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
                 if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
                     $tooltip = wp_strip_all_tags(term_description( $theshipclass ), true);
                 }
-                $availability.=' <span data-tooltip title="'.__('Várható szállítás','marrakesh').': '.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+                if (is_singular('product')) {
+                    $availability.=': <span class="ninfo">'.__('Várható szállítás','marrakesh').': '.$tooltip.'</span>';
+                } else {
+                    $availability.=' <span data-tooltip title="'.__('Várható szállítás','marrakesh').': '.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
+                }
             }
 
         } else {
@@ -628,11 +630,9 @@ function marrakesh_cart_item_backorder_notification( $html, $product_id ){
 
     $availability = __( '10-12 hét', 'marrakesh' );
 
-    $originproductid = apply_filters( 'wpml_object_id', $product_id, 'product', TRUE, 'hu' );
-
-    $csstock = get_post_meta($originproductid, '_csstock', true );
-    $csdate = get_post_meta($originproductid, '_csarrival', true );
-    $product= get_product($originproductid);
+    $csstock = get_post_meta($product_id, '_csstock', true );
+    $csdate = get_post_meta($product_id, '_csarrival', true );
+    $product= get_product($product_id);
 
 
     if ( $csstock && $csdate ) {
@@ -663,9 +663,9 @@ add_filter( 'woocommerce_after_cart_item_name', 'marrakesh_cart_item_fromstock_n
 
 function marrakesh_add_meta_on_checkout_order_review_item( $quantity , $cart_item , $cart_item_key  ) {
 
-    $origproductid = apply_filters( 'wpml_object_id', $cart_item['product_id'], 'product', TRUE, 'hu' );
-    $datafromprodisboxed = get_post_meta($origproductid, '_isboxed', true );
-    $datafromprodsizeperbox = get_post_meta($origproductid, '_sizeperbox', true );
+    $productid = $cart_item['product_id'];
+    $datafromprodisboxed = get_post_meta($productid, '_isboxed', true );
+    $datafromprodsizeperbox = get_post_meta($productid, '_sizeperbox', true );
     if ($datafromprodisboxed=='yes') {
         echo '<br><strong class="product-quantity">'
         .$cart_item[ 'quantity' ]*$datafromprodsizeperbox.'&nbsp;m<sup>2</sup>'

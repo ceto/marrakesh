@@ -1,9 +1,11 @@
 <?php global $product_id, $cats, $datafromprod; ?>
 <div class="singleproduct__details">
     <h3><?= __('Tudnivalók', 'marrakesh'); ?></h3>
-    <?php /* if ($catdescr=term_description(end($cats))) : ?>
-        <?= $catdescr; ?>
-    <?php endif; */?>
+    <?php if (!get_page_template_slug($product_id)) : ?>
+        <?php if ($catdescr=term_description(end($cats))) : ?>
+            <?= $catdescr; ?>
+        <?php endif; ?>
+    <?php endif; ?>
     <?php the_content(); ?>
     <?php
         if (get_field('showsimulator', $product_id)==true) {

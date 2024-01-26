@@ -5,30 +5,30 @@
         <dd><?php the_title(); ?></dd>
         <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>
         <dd><?php wc_get_template_part( 'loop/price'); ?></dd> -->
-        <?php if ($datafromprod['_tileweight']) : ?>
+        <?php /* if ($datafromprod['_tileweight']) : ?>
         <dt><?= __('Súly (1db lap)','marrakesh'); ?></dt>
         <dd><?= $datafromprod['_tileweight']; ?>&nbsp;kg</dd>
-        <?php endif; ?>
+        <?php endif; */?>
         <?php if ($datafromprod['_tilewidth']) : ?>
         <dt><?= __('Lapméret','marrakesh'); ?></dt>
         <dd><?= $datafromprod['_tilewidth']; ?>&nbsp;&times;&nbsp;<?= $datafromprod['_tileheight']; ?>&nbsp;cm
         </dd>
         <?php endif; ?>
-        <?php if ($datafromprod['_tilethickness']) : ?>
+        <?php /* if ($datafromprod['_tilethickness']) : ?>
         <dt><?= __('Vastagság','marrakesh'); ?></dt>
         <dd><?= $datafromprod['_tilethickness']; ?>&nbsp;cm</dd>
-        <?php endif; ?>
+        <?php endif; */?>
         <?php if ($datafromprod['_isboxed']=='yes') : ?>
+        <!-- <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
+        <dd><?= __('dobozban','marrakesh'); ?></dd> -->
         <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
-        <dd><?= __('dobozban','marrakesh'); ?></dd>
-        <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
-        <dd><?= $product->get_price_html() ?></dd>
-        <dt><?= __('Lapok a dobozban','marrakesh'); ?></dt>
         <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?>
         </dd>
-        <dt><?= __('Doboz terítve','marrakesh'); ?></dt>
+        <dt><?= __('Mennyiség/kiszerelés','marrakesh'); ?></dt>
         <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?>
         </dd>
+        <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
+        <dd><?= $product->get_price_html() ?></dd>
         <?php else: ?>
         <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
         <dd><?= __('darab','marrakesh'); ?></dd>
@@ -67,13 +67,13 @@
                 echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
             ?></dd>
         <?php endforeach; ?>
-        <?php if ( /*$display_dimensions &&*/ $product->has_weight() ) : ?>
+        <?php if ( FALSE && /*$display_dimensions &&*/ $product->has_weight() ) : ?>
         <dt><?php _e( 'Weight', 'woocommerce' ) ?></dt>
         <dd class="product_weight">
             <?php echo esc_html( wc_format_weight( $product->get_weight() ) ); ?></dd>
         <?php endif; ?>
 
-        <?php if ( /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
+        <?php if ( FALSE && /*$display_dimensions &&*/ $product->has_dimensions() ) : ?>
         <dt><?php _e( 'Dimensions', 'woocommerce' ) ?></dt>
         <dd class="product_dimensions">
             <?php echo esc_html( wc_format_dimensions( $product->get_dimensions( false ) ) ); ?>

@@ -106,7 +106,7 @@ select.taxchooser {
     &.widget_status_filter ul {
         flex-direction: row;
         li {
-            &:not(:last-child()) {
+            &:not(:last-child) {
                 margin-right: 0.75em;
             }
         }
@@ -179,7 +179,7 @@ select.taxchooser {
 
     .button {
         margin: 0;
-        &:first-child() {
+        &:first-child {
             justify-self: right;
         }
     }

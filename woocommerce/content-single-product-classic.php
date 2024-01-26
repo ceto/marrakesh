@@ -105,19 +105,23 @@ if ( post_password_required() ) {
                 <?php if ( $product->is_on_sale() ) : ?>
                 <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
                 <?php endif;?>
-                <?php if (has_excerpt() ) :?>
-                    <div class="singleproduct__shortdesc"><?php the_excerpt(); ?></div>
-                <?php endif; ?>
+                <div class="singleproduct__shortdesc">
+                    <?php if (has_excerpt() ) :?>
+                        <?php the_excerpt(); ?>
+                    <?php endif; ?>
+                    <?php if ($catdescr=term_description(end($cats))) : ?>
+                        <?= $catdescr; ?>
+                    <?php endif; ?>
+                    <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                </div>
 
                 <p class="singleproduct__price">
                     <?php wc_get_template_part( 'loop/price'); ?>
                 </p>
-
-                <div class="singleproduct__status">
-                    <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
-                </div>
-
+                <br>
                 <?php wc_get_template_part( 'product-attributes' ); ?>
+
+
             </div>
             <div class="scprhead__content__two">
                 <div class="singleproduct__headeractions" data-magellan>

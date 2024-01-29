@@ -1,8 +1,9 @@
 .thumbswipe {
     list-style: none;
     margin:0;
-    padding:1rem 0 1rem 2%;
+    padding:1rem 0 1rem 0;
     display: flex;
+    gap:.625rem;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -20,7 +21,7 @@
     &.sima {
 
         @media screen and (min-width: 110em) {
-            padding:1rem 0 1rem 2%;
+            padding:1rem 0 1rem 0;
         }
     }
 }
@@ -38,15 +39,15 @@
 
 .thumbswipe__item {
     flex: 0 0 auto;
-    margin-left: .625rem;
+    // margin-left: .625rem;
     //margin-right: map-get( $grid-margin-gutters, small );
     //width: 3.5rem;
     @include breakpoint(medium) {
-        margin-left: .9375rem;
+        // margin-left: .9375rem;
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
     @media screen and (min-width: 110em) {
-        margin-left: .4688rem;
+        // margin-left: .4688rem;
         //margin-right: map-get( $grid-margin-gutters, medium );
     }
 
@@ -66,7 +67,6 @@
 
 .thumbswipe--nopadding {
     padding:1rem 0 1rem 0;
-    margin-left: -.625rem;
     @media screen and (min-width: 110em) {
         padding-left:0;
     }

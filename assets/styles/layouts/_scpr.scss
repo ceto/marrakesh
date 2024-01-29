@@ -3,8 +3,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: .9375rem 2rem;
-    overflow: visible;
     @include breakpoint($bp-tablet) {
+        overflow: visible;
         grid-template-columns: 1fr 1fr;
         margin-bottom: calc(min(16.666vw, 4.5rem) + 2rem)
     }
@@ -12,7 +12,10 @@
 
 .scprhead__media {
     position: relative;
-
+    margin-bottom: calc(min(16.666vw, 4.5rem) + 2rem);
+    @include breakpoint($bp-tablet) {
+        margin-bottom: 0;
+    }
 }
 .scprhead__fig {
     img {
@@ -22,13 +25,10 @@
 }
 
 .scprhead__thumbs {
-    @include breakpoint($bp-tablet) {
         position: absolute;
         left:0;
-        // top:100%;
         width: 100%;
         height: calc(min(16.666vw, 4.5rem) + 2rem);
-    }
 }
 
 // .scprhead__thumbs {

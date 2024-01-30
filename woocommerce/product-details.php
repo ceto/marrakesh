@@ -1,7 +1,7 @@
 <?php global $product_id, $cats, $datafromprod; ?>
 <div class="singleproduct__details">
     <h3><?= __('Tudnivalók', 'marrakesh'); ?></h3>
-    <?php if (!get_page_template_slug($product_id)) : ?>
+    <?php if (get_page_template_slug($product_id)) : ?>
         <?php if ($catdescr=term_description(end($cats))) : ?>
             <?= $catdescr; ?>
         <?php endif; ?>

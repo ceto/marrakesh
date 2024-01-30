@@ -432,15 +432,15 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product-classic.php:128, woocommerce/content-single-product.php:115
+#: woocommerce/content-single-product-old.php:100, woocommerce/content-single-product.php:144
 msgid "Vásárlás és rendelés"
 msgstr ""
 
-#: woocommerce/content-single-product.php:176
+#: woocommerce/content-single-product-old.php:161
 msgid "Termék információ"
 msgstr ""
 
-#: woocommerce/content-single-product.php:181
+#: woocommerce/content-single-product-old.php:166
 msgid "Méretek, kiszerelés"
 msgstr ""
 
@@ -516,8 +516,8 @@ msgstr ""
 msgid "Személyes listád az alábbi url-en érhető el. Másold és oszd meg!"
 msgstr ""
 
-#: woocommerce/tmpl-single-product-classic.php:3
-msgid "Classic Product Layout"
+#: woocommerce/tmpl-single-product-old.php:3
+msgid "Old Product Layout"
 msgstr ""
 
 #: woocommerce/wishlist-view.php:73

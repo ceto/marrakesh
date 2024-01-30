@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Classic Product Layout
+ * Template Name: Old Product Layout
  * Template Post Type: product
  */
 ?>
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <?php while ( have_posts() ) : the_post(); ?>
 
-        <?php wc_get_template_part( 'content', 'single-product-classic' ); ?>
+        <?php wc_get_template_part( 'content', 'single-product-old' ); ?>
 
     <?php endwhile; // end of the loop. ?>
 

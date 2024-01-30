@@ -169,7 +169,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:28
+#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:27
 msgid "doboz"
 msgstr ""
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük."
 msgstr ""
 
-#: templates/calculator.php:22, woocommerce/product-attributes.php:33, woocommerce/product-attributes.php:22, woocommerce/product-attributes.php:24
+#: templates/calculator.php:22, woocommerce/product-attributes.php:32, woocommerce/product-attributes.php:21, woocommerce/product-attributes.php:23
 msgid "Kiszerelés"
 msgstr ""
 
@@ -432,7 +432,7 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product-old.php:100, woocommerce/content-single-product.php:144
+#: woocommerce/content-single-product-old.php:100, woocommerce/content-single-product.php:142
 msgid "Vásárlás és rendelés"
 msgstr ""
 
@@ -444,51 +444,51 @@ msgstr ""
 msgid "Méretek, kiszerelés"
 msgstr ""
 
-#: woocommerce/product-attributes.php:4
+#: woocommerce/product-attributes.php:3
 msgid "Azonosító"
 msgstr ""
 
-#: woocommerce/product-attributes.php:6
+#: woocommerce/product-attributes.php:5
 msgid "Bruttó ár"
 msgstr ""
 
-#: woocommerce/product-attributes.php:13
+#: woocommerce/product-attributes.php:12
 msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/product-attributes.php:34
+#: woocommerce/product-attributes.php:33
 msgid "darab"
 msgstr ""
 
-#: woocommerce/product-attributes.php:23
+#: woocommerce/product-attributes.php:22
 msgid "dobozban"
 msgstr ""
 
-#: woocommerce/product-attributes.php:25
+#: woocommerce/product-attributes.php:24
 msgid "lap/doboz"
 msgstr ""
 
-#: woocommerce/product-attributes.php:27
+#: woocommerce/product-attributes.php:26
 msgid "Mennyiség/kiszerelés"
 msgstr ""
 
-#: woocommerce/product-attributes.php:30
+#: woocommerce/product-attributes.php:29
 msgid "Doboz ár (bruttó)"
-msgstr ""
-
-#: woocommerce/product-attributes.php:38
-msgid "Termékcsoport"
 msgstr ""
 
 #: woocommerce/product-details.php:3
 msgid "Tudnivalók"
 msgstr ""
 
-#: woocommerce/product-details.php:24
+#: woocommerce/product-details.php:5
+msgid "Termékcsoport"
+msgstr ""
+
+#: woocommerce/product-details.php:65
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:24
+#: woocommerce/product-details.php:65
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 
@@ -530,4 +530,8 @@ msgstr ""
 
 #: woocommerce/loop/pagination.php:41
 msgid "Következő"
+msgstr ""
+
+#: woocommerce/loop/price.php:29, woocommerce/loop/price.php:27
+msgid "Ár"
 msgstr ""

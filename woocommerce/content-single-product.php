@@ -65,6 +65,13 @@ if ( post_password_required() ) {
 
     <header class="scprhead">
         <div class="scprhead__media">
+            <figure class="scprhead__prodthumb">
+                    <?php if (get_field('singleimg', $product_id, false)) : ?>
+                    <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
+                    <?php else : ?>
+                    <?php echo woocommerce_get_product_thumbnail('medium'); ?>
+                    <?php endif; ?>
+            </figure>
             <figure class="scprhead__fig">
                 <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'full' ); ?>
             </figure>
@@ -110,13 +117,6 @@ if ( post_password_required() ) {
         </div>
         <div class="scprhead__content">
             <div class="scprhead__content__one">
-                <figure class="singleproduct__prodthumb">
-                    <?php if (get_field('singleimg', $product_id, false)) : ?>
-                    <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
-                    <?php else : ?>
-                    <?php echo woocommerce_get_product_thumbnail('medium'); ?>
-                    <?php endif; ?>
-                </figure>
                 <h1 class="singleproduct__title entry-title"><?php the_title(); ?></h1>
                 <?php if ( $product->is_on_sale() ) : ?>
                 <?php echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product ); ?>
@@ -128,16 +128,14 @@ if ( post_password_required() ) {
                     <?php if ($catdescr=term_description(end($cats))) : ?>
                         <?= $catdescr; ?>
                     <?php endif; ?>
-                    <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
+                    <?php wc_get_template_part( 'product-attributes' ); ?>
+
                 </div>
 
+                <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
                 <p class="singleproduct__price">
                     <?php wc_get_template_part( 'loop/price'); ?>
                 </p>
-                <br>
-                <?php wc_get_template_part( 'product-attributes' ); ?>
-
-
             </div>
             <div class="scprhead__content__two">
                 <div class="singleproduct__headeractions" data-magellan>

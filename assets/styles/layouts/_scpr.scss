@@ -17,6 +17,19 @@
         margin-bottom: 0;
     }
 }
+
+.scprhead__prodthumb {
+    position: absolute;
+    right: 2.5%;
+    top: 2.5%;
+    width: 4.5rem;
+    min-height: 4.333rem;
+    margin: 0;
+    background-color: $light-gray;
+    border: 3px solid #fff;
+    box-shadow: 0 0 3px 0 rgba(#000, 0.5);
+}
+
 .scprhead__fig {
     img {
         max-height: 42rem;

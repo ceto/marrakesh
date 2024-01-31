@@ -89,15 +89,6 @@
     }
 }
 
-.singleproduct__prodthumb {
-    width: 4.5em;
-    min-height: 4.333em;
-    float: right;
-    margin: 0 0 .75em 1em;
-    background-color: $light-gray;
-    border: 3px solid #fff;
-    box-shadow: 0 0 3px 0 rgba(#000, 0.5);
-}
 
 .singleproduct__title {
     font-size: 1.875em;
@@ -116,7 +107,7 @@
 
 .singleproduct__shortdesc {
     font-size: 1em;
-    line-height: 1.2;
+    line-height: 1.4;
     p {
         line-height: inherit;
         margin-bottom: .75em;

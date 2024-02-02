@@ -581,7 +581,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
                     $tooltip = wp_strip_all_tags(term_description( $theshipclass ), true);
                 }
                 if (is_singular('product')) {
-                    $availability.=': <span class="ninfo">'.__('Várható szállítás','marrakesh').': '.$tooltip.'</span>';
+                    $availability='<span class="ninfo">'.__('Várható szállítás','marrakesh').': '.$tooltip.'</span>';
                 } else {
                     $availability.=' <span data-tooltip title="'.__('Várható szállítás','marrakesh').': '.$tooltip.'" ><svg class="icon"><use xlink:href="#icon-info"></use></svg></span>';
                 }

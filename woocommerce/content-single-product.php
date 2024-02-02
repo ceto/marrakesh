@@ -65,13 +65,6 @@ if ( post_password_required() ) {
 
     <header class="scprhead">
         <div class="scprhead__media">
-            <figure class="scprhead__prodthumb">
-                    <?php if (get_field('singleimg', $product_id, false)) : ?>
-                    <?php echo wp_get_attachment_image( get_field('singleimg', $product_id, false), 'tiny' ); ?>
-                    <?php else : ?>
-                    <?php echo woocommerce_get_product_thumbnail('medium'); ?>
-                    <?php endif; ?>
-            </figure>
             <figure class="scprhead__fig">
                 <?php echo wp_get_attachment_image( get_field('wallimg', $product_id, false), 'full' ); ?>
             </figure>
@@ -125,17 +118,16 @@ if ( post_password_required() ) {
                     <?php if (has_excerpt() ) :?>
                         <?php the_excerpt(); ?>
                     <?php endif; ?>
+                    <p class="singleproduct__price">
+                        <?php wc_get_template_part( 'loop/price'); ?>
+                    </p>
                     <?php if ($catdescr=term_description(end($cats))) : ?>
                         <?= $catdescr; ?>
                     <?php endif; ?>
                     <?php wc_get_template_part( 'product-attributes' ); ?>
 
                 </div>
-
                 <?php echo wc_get_stock_html( $product ); // WPCS: XSS ok. ?>
-                <p class="singleproduct__price">
-                    <?php wc_get_template_part( 'loop/price'); ?>
-                </p>
             </div>
             <div class="scprhead__content__two">
                 <div class="singleproduct__headeractions" data-magellan>

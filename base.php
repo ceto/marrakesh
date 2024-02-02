@@ -28,9 +28,6 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/footer');
       get_template_part('templates/mobilemodal');
     ?>
-    <div style="height: 0; width: 0; position: absolute; visibility: hidden; overflow: hidden;">
-    <?php echo file_get_contents( get_stylesheet_directory().'/dist/images/svg-icons.svg'); ?>
-    </div>
     <?php wp_footer(); ?>
   </body>
 </html>

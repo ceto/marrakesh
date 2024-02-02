@@ -89,6 +89,10 @@ msgstr ""
 msgid "Help/FAQ Template"
 msgstr ""
 
+#: tmpl-iconreference.php:3
+msgid "Icon Reference Page"
+msgstr ""
+
 #: tmpl-listdesign.php:3
 msgid "Design Lister Page"
 msgstr ""
@@ -153,11 +157,11 @@ msgstr ""
 msgid "Hiba történt a küldéskor. Kérlek vedd fel velünk a kapcsolatot emailben vagy telefonon."
 msgstr ""
 
-#: lib/custom.php:369
+#: lib/custom.php:374
 msgid "Thumbnail (16x9)"
 msgstr ""
 
-#: lib/custom.php:370
+#: lib/custom.php:375
 msgid "Thumbnail (1x1)"
 msgstr ""
 
@@ -258,7 +262,7 @@ msgid "Kérdésem van a termékkel kapcsolatban."
 msgstr ""
 
 #: templates/dlcage.php:3
-msgid "Csatolt dokumentum(ok)"
+msgid "Letölthető anyag(ok)"
 msgstr ""
 
 #: templates/dlcage.php:19
@@ -432,7 +436,7 @@ msgstr ""
 msgid "Színek, stílus és készlet"
 msgstr ""
 
-#: woocommerce/content-single-product-old.php:100, woocommerce/content-single-product.php:142
+#: woocommerce/content-single-product-old.php:100, woocommerce/content-single-product.php:134
 msgid "Vásárlás és rendelés"
 msgstr ""
 
@@ -476,20 +480,16 @@ msgstr ""
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/product-details.php:3
-msgid "Tudnivalók"
-msgstr ""
-
-#: woocommerce/product-details.php:5
-msgid "Termékcsoport"
-msgstr ""
-
-#: woocommerce/product-details.php:65
+#: woocommerce/product-details.php:18
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:65
+#: woocommerce/product-details.php:18
 msgid "Info &amp; Segítség oldalon."
+msgstr ""
+
+#: woocommerce/product-details.php:21
+msgid "Termékcsoport"
 msgstr ""
 
 #: woocommerce/related-products.php:58

@@ -1,5 +1,5 @@
 <?php global $product, $product_id, $cats, $datafromprod, $attributes; ?>
-<dl class="singleproduct__attributes">
+<dl class="singleproduct__catattributes">
     <!-- <dt><?= __('Azonosító', 'marrakesh'); ?></dt>
     <dd><?php the_title(); ?></dd>
     <dt><?= __('Bruttó ár', 'marrakesh'); ?></dt>

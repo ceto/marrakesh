@@ -133,7 +133,7 @@ var cssTasks = function(filename) {
       .pipe(function() {
             return postcss([
                 inlineSvg({
-                    paths: [path.source + 'icons/']
+                    paths: [path.source + 'iconcollection/']
                 })
             ]);
         })
@@ -233,7 +233,7 @@ gulp.task('generatepot', function() {
 
 // ### SVG icons inject
 gulp.task('svgicons', function() {
-    var svgs = gulp.src(path.source + 'icons/*.svg')
+    var svgs = gulp.src(path.source + 'iconcollection/*.svg')
         .pipe(rename({ prefix: 'icon-' }))
         .pipe(svgmin())
         .pipe(svgstore({ inlineSvg: true }));

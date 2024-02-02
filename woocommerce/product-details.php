@@ -1,6 +1,22 @@
 <?php global $product, $product_id, $cats, $datafromprod, $attributes; ?>
 <div class="singleproduct__details">
-    <h3><?= __('Tudnivalók', 'marrakesh'); ?></h3>
+    <?php the_content(); ?>
+    <?php
+        if (get_field('showsimulator', $product_id)==true) {
+            get_template_part('templates/simulatorcta');
+        }
+    ?>
+    <?php
+
+        $datapostobject = get_post( $datafromprod['_linfopage'] );
+        setup_postdata( $GLOBALS['post'] =& $datapostobject );
+        get_template_part('templates/accordioncage');
+        get_template_part('templates/dlcage');
+        wp_reset_postdata();
+    ?>
+    <!-- <p>
+        <?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
+    </p> -->
     <dl class="singleproduct__attributes">
         <dt><?php _e('Termékcsoport', 'marrakesh');?></dt>
         <dd><?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( '', '', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
@@ -47,23 +63,6 @@
         </dd>
         <?php endif; ?>
     </dl>
-    <?php the_content(); ?>
-    <?php
-        if (get_field('showsimulator', $product_id)==true) {
-            get_template_part('templates/simulatorcta');
-        }
-    ?>
-    <?php
-
-        $datapostobject = get_post( $datafromprod['_linfopage'] );
-        setup_postdata( $GLOBALS['post'] =& $datapostobject );
-        get_template_part('templates/accordioncage');
-        get_template_part('templates/dlcage');
-        wp_reset_postdata();
-    ?>
-    <p>
-        <?= __('További információk és részletes termék ismertetők az','marrakesh'); ?> <a href="<?php the_permalink(get_field('pageforinfohelp', 'option')) ?>"><?= __('Info &amp; Segítség oldalon.','marrakesh'); ?></a>
-    </p>
 
 
 </div>

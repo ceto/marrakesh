@@ -91,7 +91,7 @@
 
 
 .singleproduct__title {
-    font-size: 1.875em;
+    font-size: 1.875rem;
     font-weight: $global-weight-thin;
     text-transform: uppercase;
     margin: 0 0 0;
@@ -100,17 +100,17 @@
     //width: max-content;
     max-width: 100%;
     .singleproduct__callout & {
-        font-size: 2.75em;
+        font-size: 2.75rem;
         width: 100%;
     }
 }
 
 .singleproduct__shortdesc {
-    font-size: 1em;
+    font-size: 1rem;
     line-height: 1.4;
     p {
         line-height: inherit;
-        margin-bottom: .75em;
+        margin-bottom: .75rem;
         &:last-child {
             margin-bottom: 0;
         }
@@ -128,7 +128,6 @@
     font-size: 1.75em;
     line-height: 1;
     color: $dark-gray;
-    // margin: 0.5em 0 0.25em;
     del {
         font-size: 75%;
         font-weight: $fw-normal;
@@ -139,9 +138,9 @@
     }
 
     .price__label {
+        display: none;
         font-size: 1rem;
         font-weight: $fw-normal;
-        display: block;
         color: $body-font-color;
         &:after {
             content: ': ';
@@ -251,6 +250,7 @@
 .singleproduct__attributes {
     @include clearfix();
     line-height: 1.4;
+    margin:0 0 .75rem 0;
     // font-size: 0.9375em;
     // margin: 1.5em 0 0;
     // border-top: 1px solid $medium-gray;
@@ -301,7 +301,6 @@
 
 .singleproduct__catattributes {
     @extend .singleproduct__attributes;
-
     //max-width: 100%;
     dt {
         clear: left;

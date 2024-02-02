@@ -38,6 +38,11 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
+function svginsert($icon = '', $class='', $params='') {
+    $iconaddr=($icon=='')?'cross':$icon;
+    return '<svg'.(($class!=='')?' class="'.$class.'" ':' ').$params.'><use xlink:href="'.get_stylesheet_directory_uri().'/dist/images/svg-icons.svg#icon-'.$iconaddr.'"></use></svg>';
+}
+
 function marrakesh_foundation_pagination() {
 global $wp_query;
 $big = 999999999; // need an unlikely integer

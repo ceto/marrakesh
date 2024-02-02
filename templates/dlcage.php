@@ -1,6 +1,6 @@
 <?php if ( have_rows('downloads') ): ?>
 <div class="dlbox">
-    <h3 class="dlbox__title"><?php _e('Csatolt dokumentum(ok)', 'marrakesh'); ?></h3>
+    <h3 class="dlbox__title"><?php _e('Letölthető anyag(ok)', 'marrakesh'); ?></h3>
     <ul class="dlcage">
         <?php while( have_rows('downloads') ): the_row();
                     $file = get_sub_field('attachment');

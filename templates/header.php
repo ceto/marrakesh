@@ -67,16 +67,16 @@
                 <div class="cell shrink">
                     <div class="banner__actions">
                         <a class="banner__actions__search js_searchstarter" href="#">
-                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>
+                            <?= svginsert('search', 'icon'); ?>
                         </a>
                         <?php if ( defined( 'YITH_WCWL' ) ) : ?>
                             <a class="banner__actions__wishlist" href="<?= YITH_WCWL()->get_wishlist_url(); ?>">
-                                <svg class="icon"><use xlink:href="#icon-heart-outline"></use></svg>
+                                <?= svginsert('heart-outline', 'icon'); ?>
                                 <span class="badge"><?= YITH_WCWL()->count_all_products(); ?></span>
                             </a>
                         <?php endif; ?>
                         <a class="banner__actions__cart" href="<?= get_permalink( wc_get_page_id( 'cart' ) ) ?>">
-                            <svg class="icon"><use xlink:href="#icon-cart"></use></svg>
+                            <?= svginsert('cart', 'icon'); ?>
                             <?= marrakesh_cartcount(); ?>
                         </a>
 

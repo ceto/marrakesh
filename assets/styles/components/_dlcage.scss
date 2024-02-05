@@ -24,6 +24,10 @@
     &:not(:last-child) {
         margin-bottom: 0.25em;
     }
+    display: flex;
+    align-items: center;
+    gap: .25em;
+
 }
 
 .dlcage__item__label {
@@ -34,7 +38,7 @@
         font-size: 0.875em;
         transform: translateY(0.125em);
     }
-    display: none;
+    // display: none;
 }
 
 .dlcage__item__fileinfo {
@@ -69,10 +73,18 @@
 }
 
 .dlcage__item__action {
+    display: inline-block;
     font-weight: $global-weight-bold;
-    font-size: 0.875em;
+    font-size: 0.75em;
+    padding:.25em .5em;
+    background-color: $cl-gray-light;
+    border:1px solid darken($cl-gray-light,5%);
+    margin-left:auto;
     &:hover,
     &:focus {
         color: $primary-color;
+    }
+
+    .icon {
     }
 }

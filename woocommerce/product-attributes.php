@@ -21,10 +21,7 @@
     <!-- <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
     <dd><?= __('dobozban','marrakesh'); ?></dd> -->
     <dt><?= __('Kiszerelés','marrakesh'); ?></dt>
-    <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap/doboz','marrakesh'); ?>
-    </dd>
-    <dt><?= __('Mennyiség/kiszerelés','marrakesh'); ?></dt>
-    <dd><?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>/<?= __('doboz','marrakesh'); ?>
+    <dd><?= $datafromprod['_tilesperbox']; ?>&nbsp;<?= __('lap','marrakesh'); ?>&nbsp;/&nbsp;<?= $datafromprod['_sizeperbox']; ?>&nbsp;m<sup>2</sup>&nbsp;/&nbsp;<?= __('doboz','marrakesh'); ?>
     </dd>
     <dt><?= __('Doboz ár (bruttó)','marrakesh'); ?></dt>
     <dd><?= $product->get_price_html() ?></dd>

@@ -173,7 +173,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:27
+#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:24
 msgid "doboz"
 msgstr ""
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "Számolj 10-15% ráhagyással (vágási hullladék, pótlap stb.) A rendelt mennyiséget egész dobozra kerekítjük."
 msgstr ""
 
-#: templates/calculator.php:22, woocommerce/product-attributes.php:32, woocommerce/product-attributes.php:21, woocommerce/product-attributes.php:23
+#: templates/calculator.php:22, woocommerce/product-attributes.php:29, woocommerce/product-attributes.php:21, woocommerce/product-attributes.php:23
 msgid "Kiszerelés"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Letölthető anyag(ok)"
 msgstr ""
 
-#: templates/dlcage.php:19
+#: templates/dlcage.php:14
 msgid "Letöltés"
 msgstr ""
 
@@ -460,7 +460,7 @@ msgstr ""
 msgid "Lapméret"
 msgstr ""
 
-#: woocommerce/product-attributes.php:33
+#: woocommerce/product-attributes.php:30
 msgid "darab"
 msgstr ""
 
@@ -469,14 +469,10 @@ msgid "dobozban"
 msgstr ""
 
 #: woocommerce/product-attributes.php:24
-msgid "lap/doboz"
+msgid "lap"
 msgstr ""
 
 #: woocommerce/product-attributes.php:26
-msgid "Mennyiség/kiszerelés"
-msgstr ""
-
-#: woocommerce/product-attributes.php:29
 msgid "Doboz ár (bruttó)"
 msgstr ""
 

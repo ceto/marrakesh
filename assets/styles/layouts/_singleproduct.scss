@@ -221,6 +221,14 @@
     .button {
         margin-bottom: 0;;
     }
+
+    .scprhead__content & {
+        flex-wrap: wrap;
+        > * {
+            flex-basis: 100%;
+            flex-grow: 1;
+        }
+    }
 }
 
 .singleproduct__images {

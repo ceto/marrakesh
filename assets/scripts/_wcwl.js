@@ -48,6 +48,7 @@ $('.yith-wcwl-add-button .button').on( 'click', function( ev ) {
             t.blur();
             t.attr('data-action', switchaction);
             t.attr('data-tip-text', switchtext);
+            t.html('<span>'+ switchtext + '</span>');
             t.data().zfPlugin.template.text( t.attr('data-tip-text'));
             if ($('body').hasClass('wishlist')) {
                 t.closest('.prodcard').remove();

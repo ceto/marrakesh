@@ -132,7 +132,7 @@ if ( post_password_required() ) {
             <div class="scprhead__content__two">
                 <div class="singleproduct__headeractions" data-magellan>
                     <a href="#buycallout" class="button accent expanded"><?= __('Vásárlás és rendelés', 'marrakesh'); ?></a>
-                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist tpye="fullbutton"]'); ?>
                 </div>
             </div>
         </div>

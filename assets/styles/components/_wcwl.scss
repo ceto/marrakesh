@@ -26,12 +26,28 @@
 
         .singleproduct__callout__actions & {
             width:3.25rem;
+
         }
 
         span {
             display: none;
         }
 
+    }
+
+    .scprhead__content & {
+
+        .button {
+            width:100%;
+            height: auto;
+            padding: .75em 1em;
+            background-size: auto 50%;
+            background-position: calc(50% + 7.25em) center;
+        }
+
+        span {
+            display: block;
+        }
     }
 
 

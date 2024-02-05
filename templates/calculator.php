@@ -57,7 +57,7 @@
         </section>
         <div class="singleproduct__callout__actions">
             <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button large accent expanded"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
-            <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+            <?php //echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
         </div>
 
     </form>

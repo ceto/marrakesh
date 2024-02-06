@@ -25,7 +25,7 @@
                 </ul>
                 <br>
                 <?php
-                    if ( $dtype[ 0 ] === 'subcategories' ) : ?>
+                    if ( true || ($dtype[ 0 ] === 'subcategories') ) : ?>
                     <a class="button accent small" href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a>
                 <?php else: ?>
                 <a class="button accent small" href="<?= get_term_link( $pcatid ); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a>

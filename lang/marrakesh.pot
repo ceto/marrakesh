@@ -213,7 +213,7 @@ msgstr ""
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:773, templates/mainmenu.php:19
+#: lib/woocommerce.php:773, templates/mainmenu.php:19, templates/mobilemodal.php:36
 msgid "Akciós termékek"
 msgstr ""
 
@@ -293,19 +293,19 @@ msgstr ""
 msgid "Bemutatóterem: 1088 Budapest, Bródy Sándor u. 34."
 msgstr ""
 
-#: templates/mainmenu.php:17
+#: templates/mainmenu.php:17, templates/mobilemodal.php:34
 msgid "Készletről azonnal"
 msgstr ""
 
-#: templates/mainmenu.php:18
+#: templates/mainmenu.php:18, templates/mobilemodal.php:35
 msgid "Hamarosan érkezik"
 msgstr ""
 
-#: templates/mainmenu.php:23
+#: templates/mainmenu.php:23, templates/mobilemodal.php:40
 msgid "Kollekciók"
 msgstr ""
 
-#: templates/mainmenu.php:31, templates/mainmenu.php:29
+#: templates/mainmenu.php:31, templates/mainmenu.php:29, templates/mobilemodal.php:45, templates/mobilemodal.php:43
 msgid "Mutasd mindet"
 msgstr ""
 

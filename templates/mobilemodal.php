@@ -1,3 +1,11 @@
+<?php
+    $pcats = array(
+        '39' => 'Cementlap',
+        '40' => 'Terrazzo',
+        '421' => 'Falicsempe',
+        '710' => 'Kerámia padlólap'
+    );
+?>
 <div class="reveal mobilemodal" id="mobilemodal" data-reveal data-animation-in="scale-in-down fast"
     data-animation-out="scale-out-up fast">
 
@@ -17,13 +25,37 @@
                 <img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                 <?php } ?>
             </a>
-            <?php
-                if (has_nav_menu('primary_navigation')) :
-                wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'menu accordion-menu menu--mobilemain', 'items_wrap' => '<ul class="%2$s" data-accordion-menu>%3$s</ul>']);
-                endif;
-            ?>
+
+            <ul class="menu accordion-menu menu--mobilemain" data-accordion-menu>
+                <?php foreach ($pcats as $pcatid => $pcatname) :?>
+                <li class="menu-item menu-item-has-children menu-pcat-<?= $pcatid ?>">
+                    <a href="<?= get_term_link($pcatid); ?>"><?= $pcatname; ?></a>
+                    <ul class="sub-menu">
+                        <li><a href="<?= add_query_arg(array('browse'=>'1','filter_availability'=>'in_stock'), get_term_link( $pcatid )); ?>"><?php _e('Készletről azonnal', 'marrakesh'); ?></a></li>
+                        <li><a href="<?= add_query_arg(array('browse'=>'1','filter_cs'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Hamarosan érkezik', 'marrakesh'); ?></a></li>
+                        <li><a href="<?= add_query_arg(array('browse'=>'1','filter_onsale'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Akciós termékek', 'marrakesh'); ?></a></li>
+                        <?php
+                            //$dtype = get_term_meta( intval($pcatid), 'display_type' );
+                            //if ( $dtype[ 0 ] === 'subcategories' ) : ?>
+                            <li><a href="<?= get_term_link($pcatid); ?>"><?php _e('Kollekciók', 'marrakesh'); ?></a></li>
+                        <?php //endif; ?>
+                        <?php if ( true || ($dtype[ 0 ] === 'subcategories') ) : ?>
+                            <li><a class="button hollow tiny" href="<?= add_query_arg(array('browse'=>'1'), get_term_link( $pcatid )); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a></li>
+                        <?php else: ?>
+                            <li><a class="button hollow tiny" href="<?= get_term_link( $pcatid ); ?>"><?php _e('Mutasd mindet', 'marrakesh'); ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+
+
+
+
+
+
         </nav>
-        <!-- <a href="#" target="_blank" class="mobilemodal__designer button alert small hollow">Tervezőprogram</a> -->
+
     </div>
     <nav class="mobilemodal__secondarynav">
         <?php

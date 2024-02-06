@@ -3,9 +3,9 @@ $('.prasort').on('change', function (e) {
     $this = $(this);
 
     if ($this.val() !== 'none') {
-        urlParams.set('orderby', $this.val());
+        urlParams.set('rorderby', $this.val());
     } else {
-        urlParams.delete('orderby');
+        urlParams.delete('rorderby');
     }
     window.location.search = urlParams;
 });

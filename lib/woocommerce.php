@@ -134,13 +134,38 @@ add_filter( 'woocommerce_shortcode_products_query', function( $query_args, $atts
 add_action( 'pre_get_posts', function ( $query ) {
     if (   !is_admin() && $query->is_main_query() && is_woocommerce() && ($query->is_post_type_archive('product') || $query->is_tax()) ) {
         // $query->set( 'meta_key', '_stock' );
-        $query->set( 'orderby',  array('title' => 'ASC') );
+
+
+
+        $rorderby = isset( $_GET['rorderby'] ) ? wc_clean( wp_unslash( $_GET['rorderby'] ) ) : array(); // WPCS: input var ok, CSRF ok.
 
         $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $comingsoon_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $onsale_filter = isset( $_GET['filter_onsale'] ) ? wc_clean( wp_unslash( $_GET['filter_onsale'] ) ) : array(); // WPCS: input var ok, CSRF ok.
         $meta_query = array();
         // $meta_query[] = array('relation' => 'or');
+
+        $meta_query['dunitprice'] = array(
+            'key' => '_dunitprice',
+            'type' => 'NUMERIC',
+            'compare' => 'EXISTS',
+        );
+        // echo '<pre>';
+        // var_dump($query);
+        // echo '</pre>';
+        switch ($rorderby) {
+            case 'price':
+                $query->set('orderby', array('dunitprice' => 'ASC', 'title' => 'ASC') );
+                break;
+            case 'price-desc':
+                $query->set('orderby', array('dunitprice' => 'DESC', 'title' => 'ASC') );
+                break;
+
+            default:
+                $query->set( 'orderby',  array('title' => 'ASC') );
+                break;
+        }
+
 
         if ($availability_filter === 'in_stock') {
             if ($comingsoon_filter === '1') {
@@ -520,6 +545,17 @@ function marrakesh_save_wc_custom_fields( $post_id ) {
     $product->save();
 }
 
+
+add_action( 'save_post', function( $post_id ) {
+    if (get_post_type($post_id) == 'product') {
+        if ( ($sizetocount = get_post_meta($post_id, '_sizeperbox', true))  && ($pricetocount = get_post_meta($post_id, '_regular_price', true)) ) {
+            update_post_meta( $post_id, '_dunitprice', $pricetocount/$sizetocount );
+        } else {
+            update_post_meta( $post_id, '_dunitprice', get_post_meta($post_id, '_regular_price', true) );
+        }
+    }
+});
+
 /****** Price unit Display Tricks */
 add_filter( 'woocommerce_get_price_html', 'marrakesh_price_html', 100, 2 );
 function marrakesh_price_html( $price, $product ){
@@ -751,9 +787,12 @@ function marrakesh_laynavlink($link, $term, $taxonomy ) {
     $availability_filter = isset( $_GET['filter_availability'] ) ? wc_clean( wp_unslash( $_GET['filter_availability'] ) ) : array(); // WPCS: input var ok, CSRF ok.
     $csavailability_filter = isset( $_GET['filter_cs'] ) ? wc_clean( wp_unslash( $_GET['filter_cs'] ) ) : array(); // WPCS: input var ok, CSRF ok.
 
+    $rorderby = isset( $_GET['rorderby'] ) ? wc_clean( wp_unslash( $_GET['rorderby'] ) ) : array(); // WPCS: input var ok, CSRF ok.
+
     return add_query_arg(array(
         'filter_availability' => $availability_filter,
-        'filter_cs' => $csavailability_filter
+        'filter_cs' => $csavailability_filter,
+        'rorderby' => $rorderby
         ),$link);
 }
 add_filter( 'woocommerce_layered_nav_link', 'marrakesh_laynavlink', 10, 3 );

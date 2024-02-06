@@ -1,5 +1,11 @@
 <?php global $product, $product_id, $cats, $datafromprod, $attributes; ?>
 <div class="singleproduct__details">
+    <?php
+
+        $datapostobject = get_post( $datafromprod['_linfopage'] );
+        setup_postdata( $GLOBALS['post'] =& $datapostobject );
+        get_template_part('templates/accordioncage');
+    ?>
     <?php the_content(); ?>
     <?php
         if (get_field('showsimulator', $product_id)==true) {
@@ -7,10 +13,6 @@
         }
     ?>
     <?php
-
-        $datapostobject = get_post( $datafromprod['_linfopage'] );
-        setup_postdata( $GLOBALS['post'] =& $datapostobject );
-        get_template_part('templates/accordioncage');
         get_template_part('templates/dlcage');
         wp_reset_postdata();
     ?>

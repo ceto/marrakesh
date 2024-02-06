@@ -173,7 +173,7 @@ msgstr ""
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:672, templates/calculator.php:23, woocommerce/product-attributes.php:24
+#: lib/woocommerce.php:528, lib/woocommerce.php:537, lib/woocommerce.php:668, templates/calculator.php:23, woocommerce/product-attributes.php:24
 msgid "doboz"
 msgstr ""
 
@@ -185,39 +185,39 @@ msgstr ""
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:578, lib/woocommerce.php:631
+#: lib/woocommerce.php:578, lib/woocommerce.php:627
 msgid "10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:586, lib/woocommerce.php:584, lib/woocommerce.php:648
+#: lib/woocommerce.php:583, lib/woocommerce.php:644
 msgid "Várható szállítás"
 msgstr ""
 
-#: lib/woocommerce.php:575, lib/woocommerce.php:732
-msgid "Hamarosan raktáron"
-msgstr ""
-
-#: lib/woocommerce.php:619
+#: lib/woocommerce.php:615
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:675
+#: lib/woocommerce.php:671
 msgid "db."
 msgstr ""
 
-#: lib/woocommerce.php:725
+#: lib/woocommerce.php:721
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:740, templates/mainmenu.php:19
+#: lib/woocommerce.php:728
+msgid "Hamarosan raktáron"
+msgstr ""
+
+#: lib/woocommerce.php:736, templates/mainmenu.php:19
 msgid "Akciós termékek"
 msgstr ""
 
-#: lib/woocommerce.php:790, templates/requestmodal.php:33
+#: lib/woocommerce.php:786, templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: lib/woocommerce.php:792
+#: lib/woocommerce.php:788
 msgid "pl.: Céges számlaigény, adószám stb..."
 msgstr ""
 
@@ -476,15 +476,15 @@ msgstr ""
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/product-details.php:18
+#: woocommerce/product-details.php:20
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:18
+#: woocommerce/product-details.php:20
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 
-#: woocommerce/product-details.php:21
+#: woocommerce/product-details.php:23
 msgid "Termékcsoport"
 msgstr ""
 

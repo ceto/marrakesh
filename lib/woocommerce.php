@@ -562,8 +562,8 @@ add_filter( 'woocommerce_format_stock_quantity', 'marrakesh_add_stock_quantity_u
 
 // define the woocommerce_get_availability_text callback
 function marrakesh_change_get_availability_text( $availability, $instance ) {
-    $csstock = get_post_meta($instance, '_csstock', true );
-    $csdate = get_post_meta($instance, '_csarrival', true );
+    $csstock = get_post_meta($instance->get_id(), '_csstock', true );
+    $csdate = get_post_meta($instance->get_id(), '_csarrival', true );
 
     if ( ! $instance->is_in_stock() ) {
         $availability = __( 'Out of stock', 'woocommerce' );
@@ -572,7 +572,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
         if ( $instance->backorders_require_notification() ) {
 
             if ( $csstock && $csdate ) {
-                $availability = __( 'Hamarosan raktáron', 'marrakesh' );
+                $availability = ''; //__( 'Hamarosan raktáron', 'marrakesh' );
             } else {
                 $availability = __( 'Rendelhető', 'marrakesh' );
                 $tooltip=__( '10-12 hét', 'marrakesh' );
@@ -580,11 +580,7 @@ function marrakesh_change_get_availability_text( $availability, $instance ) {
                 if ($theshipclass = get_term_by('slug', $shipclassslug, 'product_shipping_class' )) {
                     $tooltip = wp_strip_all_tags(term_description( $theshipclass ), true);
                 }
-                if (is_singular('product')) {
-                    $availability='<span class="ninfo">'.__('Várható szállítás','marrakesh').': '.$tooltip.'</span>';
-                } else {
-                    $availability.=' <span data-tooltip title="'.__('Várható szállítás','marrakesh').': '.$tooltip.'" >'.svginsert('info','icon').'</span>';
-                }
+                $availability='<span class="ninfo">'.__('Várható szállítás','marrakesh').': '.$tooltip.'</span>';
             }
 
         } else {

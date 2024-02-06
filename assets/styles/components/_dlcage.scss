@@ -41,9 +41,10 @@
     // display: none;
 }
 
+
 .dlcage__item__fileinfo {
-    font-size: 0.875em;
-    font-weight: $global-weight-bold;
+    font-size: 0.9375em;
+    // font-weight: $global-weight-bold;
     //opacity: .75;
     font-family: $header-font-family;
     &:before {
@@ -58,7 +59,7 @@
     white-space: nowrap;
 }
 .dlcage__item__title {
-    // font-weight: $global-weight-bold;
+    font-weight: $global-weight-bold;
     // font-style: italic;
     a {
         color: inherit;

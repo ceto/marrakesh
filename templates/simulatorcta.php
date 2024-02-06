@@ -2,6 +2,6 @@
     <a href="<?php the_field('simulator', 'option'); ?>" targt="_blank" class="btn">
         <small><?= __('Egyedi színeket szeretnél?', 'marrakesh') ?></small><br>
         <?= __('Tervező program indítása', 'marrakesh'); ?>
-        <svg class="icon"><use xlink:href="#icon-designer"></use></svg>
+        <?= svginsert('designer', 'icon'); ?>
     </a>
 </div>

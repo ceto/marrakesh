@@ -145,11 +145,12 @@ add_action( 'pre_get_posts', function ( $query ) {
         $meta_query = array();
         // $meta_query[] = array('relation' => 'or');
 
-        $meta_query['dunitprice'] = array(
-            'key' => '_dunitprice',
-            'type' => 'NUMERIC',
-            'compare' => 'EXISTS',
-        );
+        // $meta_query['dunitprice'] = array(
+        //         'key' => '_dunitprice',
+        //         'type' => 'NUMERIC',
+        //         'compare' => 'EXISTS',
+        // );
+
         // echo '<pre>';
         // var_dump($query);
         // echo '</pre>';

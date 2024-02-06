@@ -173,55 +173,55 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/woocommerce.php:566, lib/woocommerce.php:575, lib/woocommerce.php:587
+#: lib/woocommerce.php:567, lib/woocommerce.php:576, lib/woocommerce.php:588
 msgid "db"
 msgstr ""
 
-#: lib/woocommerce.php:564, lib/woocommerce.php:573, lib/woocommerce.php:704, templates/calculator.php:23, woocommerce/product-attributes.php:24
+#: lib/woocommerce.php:565, lib/woocommerce.php:574, lib/woocommerce.php:705, templates/calculator.php:23, woocommerce/product-attributes.php:24
 msgid "doboz"
 msgstr ""
 
-#: lib/woocommerce.php:585
+#: lib/woocommerce.php:586
 msgid "m<sup>2</sup>"
 msgstr ""
 
-#: lib/woocommerce.php:613
+#: lib/woocommerce.php:614
 msgid "Rendelhető"
 msgstr ""
 
-#: lib/woocommerce.php:614, lib/woocommerce.php:663
+#: lib/woocommerce.php:615, lib/woocommerce.php:664
 msgid "10-12 hét"
 msgstr ""
 
-#: lib/woocommerce.php:619, lib/woocommerce.php:680
+#: lib/woocommerce.php:620, lib/woocommerce.php:681
 msgid "Várható szállítás"
 msgstr ""
 
-#: lib/woocommerce.php:651
+#: lib/woocommerce.php:652
 msgid "Érkezik"
 msgstr ""
 
-#: lib/woocommerce.php:707
+#: lib/woocommerce.php:708
 msgid "db."
 msgstr ""
 
-#: lib/woocommerce.php:757
+#: lib/woocommerce.php:758
 msgid "Azonnal vihető"
 msgstr ""
 
-#: lib/woocommerce.php:764
+#: lib/woocommerce.php:765
 msgid "Hamarosan raktáron"
 msgstr ""
 
-#: lib/woocommerce.php:772, templates/mainmenu.php:19
+#: lib/woocommerce.php:773, templates/mainmenu.php:19
 msgid "Akciós termékek"
 msgstr ""
 
-#: lib/woocommerce.php:825, templates/requestmodal.php:33
+#: lib/woocommerce.php:826, templates/requestmodal.php:33
 msgid "Név"
 msgstr ""
 
-#: lib/woocommerce.php:827
+#: lib/woocommerce.php:828
 msgid "pl.: Céges számlaigény, adószám stb..."
 msgstr ""
 

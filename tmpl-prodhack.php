@@ -8,11 +8,11 @@
 <?php get_template_part('templates/page-header'); ?>
 <?php endwhile; ?>
 <?php
-    $page = 1;
+    $page = 12;
     $productsquery = new WP_Query(array(
         // 'post_status' => 'any',
         'post_type' => array('product'),
-        'posts_per_page' => 400,
+        'posts_per_page' => 300,
         'paged' => $page
     ));
     $products = $productsquery->get_posts();

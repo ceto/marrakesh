@@ -8,7 +8,7 @@
 <?php get_template_part('templates/page-header'); ?>
 <?php endwhile; ?>
 <?php
-    $page = 12;
+    $page = 1;
     $productsquery = new WP_Query(array(
         // 'post_status' => 'any',
         'post_type' => array('product'),

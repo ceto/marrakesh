@@ -5,11 +5,10 @@
         $datapostobject = get_post( $datafromprod['_linfopage'] );
         setup_postdata( $GLOBALS['post'] =& $datapostobject );
         get_template_part('templates/accordioncage');
+        the_content(); //linfopage content
         wp_reset_postdata();
     ?>
-    <?php //if (get_the_content()!=='') :?>
     <?php the_content(); ?>
-    <?php //endif; ?>
     <?php
         if (get_field('showsimulator', $product_id)==true) {
             get_template_part('templates/simulatorcta');

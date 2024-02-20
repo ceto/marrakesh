@@ -58,7 +58,7 @@
                                 <?php else : ?>
                                 <img src="//placehold.it/768x768/cecece/333333/?text=<?= $child->name;?>" class="refcatcard__thumb" alt="<?= $child->name;?>">
                                 <?php endif; ?>
-                                <h3 class="refcatcard__name"><?= $child->name;?> (<?= $child->count;?>)<svg class="icon"><use xlink:href="#icon-gallery"></use></svg></h3>
+                                <h3 class="refcatcard__name"><?= $child->name;?> (<?= $child->count;?>)<?= svginsert('gallery', 'icon'); ?> </h3>
                             </a>
                         </div>
                     </li>

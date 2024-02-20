@@ -55,9 +55,7 @@
 
             <?php the_post_thumbnail('medium_large'); ?>
             <?php if( $video=get_field('video') ): ?>
-            <svg class="icon">
-                <use xlink:href="#icon-play-color"></use>
-            </svg>
+            <?= svginsert('play-color', 'icon'); ?>
             <?php endif; ?>
             </a>
         </figure>
@@ -72,9 +70,7 @@
             <a target="_blank" href="<?= $attachment['url'] ?>"><?php the_title(); ?></a>
         </h2>
         <?php elseif ( get_field('layout') == 'reference' ) : ?>
-        <p class="referencecard__label"><svg class="icon">
-                <use xlink:href="#icon-external-link"></use>
-            </svg></p>
+        <p class="referencecard__label"><?= svginsert('external-link', 'icon'); ?></p>
         <h2 class="referencecard__title">
             <a target="_blank" href="<?= $url ?>"><?php the_title(); ?></a>
         </h2>

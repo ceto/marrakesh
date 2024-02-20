@@ -66,7 +66,7 @@
                                 <h3 class="refcatcard__name">
                                 <?= $child->name; ?>
                                 <?php //printf( __( '%s minták', 'marrakesh' ), $child->name); ?>
-                                <svg class="icon"><use xlink:href="#icon-gallery"></use></svg>
+                                <?= svginsert('gallery', 'icon'); ?>
                                 </h3>
                             </a>
                         </div>

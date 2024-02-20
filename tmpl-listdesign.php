@@ -70,7 +70,7 @@
                                 <h3 class="refcatcard__name">
                                 <?= $child->name; ?>
                                 <?php //printf( __( '%s minták', 'marrakesh' ), $child->name); ?>
-                                <svg class="icon"><use xlink:href="#icon-gallery"></use></svg>
+                                <?= svginsert('gallery', 'icon'); ?>
                                 </h3>
                             </a>
                         </div>
@@ -92,9 +92,7 @@
                         <ul class="menu amenu--portfolio menu--local align-center">
                             <li class="menu-all">
                                 <a href="<?php the_permalink() ?>">
-                                    <svg class="icon">
-                                        <use xlink:href="#icon-caret-left"></use>
-                                    </svg> <?= __('Vissza a stílus választóhoz','marrakesh') ?>
+                                    <?= svginsert('caret-left', 'icon'); ?>  <?= __('Vissza a stílus választóhoz','marrakesh') ?>
                                 </a>
                             </li>
                         </ul>
@@ -105,7 +103,7 @@
     </div>
 </div>
 <div class="touchhint">
-    <svg class="icon"><use xlink:href="#icon-swipehorizontal"></use></svg>
+    <?= svginsert('swipehorizontal', 'icon'); ?>
     <span><?= __('Swipe for details', 'marrakesh'); ?></span>
 </div>
 <?php

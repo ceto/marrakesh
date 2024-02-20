@@ -42,9 +42,7 @@
                         <ul class="menu amenu--portfolio ajs-activate-filter menu--local align-center">
                             <li class="menu-all">
                                 <a href="<?php the_permalink(get_field('pageforgallery', 'option')) ?>">
-                                    <svg class="icon">
-                                        <use xlink:href="#icon-caret-left"></use>
-                                    </svg> <?= __('Vissza a galériákhoz','marrakesh') ?>
+                                    <?= svginsert('caret-left', 'icon'); ?> <?= __('Vissza a galériákhoz','marrakesh') ?>
                                 </a>
                             </li>
                             <?php foreach( $refcats as $refcat ): ?>

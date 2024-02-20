@@ -106,9 +106,7 @@ defined( 'ABSPATH' ) || exit;
                             if ($termdecr!=='') :
                         ?>
                             <span class="page-title__tip" data-tooltip tabindex="1" title='<?= $termdecr; ?>'>
-                                <svg class="icon">
-                                    <use xlink:href="#icon-info-outline"></use>
-                                </svg>
+                                <?= svginsert('info-outline', 'icon'); ?>
                             </span>
                             <?php endif; ?>
                         </h1>
@@ -438,7 +436,7 @@ defined( 'ABSPATH' ) || exit;
                 <div class="grid-container">
                     <button class="filtertoggler button small expanded hollow"
                         data-toggle="prarchive__filtermodal">
-                        <svg class="icon"><use xlink:href="#icon-filter"></use></svg>
+                        <?= svginsert('filter', 'icon'); ?>
                         <?php _e('Színek, stílus és készlet','marrakesh'); //woocommerce_result_count() ?></button>
                 </div>
             </div>

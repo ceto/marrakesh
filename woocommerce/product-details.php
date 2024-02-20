@@ -5,6 +5,7 @@
         $datapostobject = get_post( $datafromprod['_linfopage'] );
         setup_postdata( $GLOBALS['post'] =& $datapostobject );
         get_template_part('templates/accordioncage');
+        wp_reset_postdata();
     ?>
     <?php the_content(); ?>
     <?php

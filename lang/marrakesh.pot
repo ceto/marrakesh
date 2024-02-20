@@ -480,15 +480,15 @@ msgstr ""
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/product-details.php:20
+#: woocommerce/product-details.php:23
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:20
+#: woocommerce/product-details.php:23
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 
-#: woocommerce/product-details.php:23
+#: woocommerce/product-details.php:26
 msgid "Termékcsoport"
 msgstr ""
 

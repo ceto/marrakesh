@@ -7,11 +7,9 @@
         get_template_part('templates/accordioncage');
         wp_reset_postdata();
     ?>
-    <?php if (get_the_content()!=='') :?>
-    <div class="bodycopy">
-        <?php the_content(); ?>
-    </div>
-    <?php endif; ?>
+    <?php //if (get_the_content()!=='') :?>
+    <?php the_content(); ?>
+    <?php //endif; ?>
     <?php
         if (get_field('showsimulator', $product_id)==true) {
             get_template_part('templates/simulatorcta');

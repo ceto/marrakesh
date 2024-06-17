@@ -309,27 +309,27 @@ msgstr ""
 msgid "Mutasd mindet"
 msgstr ""
 
-#: templates/mainmenu.php:40, woocommerce/archive-product.php:305, woocommerce/archive-product.php:490
+#: templates/mainmenu.php:40, woocommerce/archive-product.php:305, woocommerce/archive-product.php:462
 msgid "Stílus"
 msgstr ""
 
-#: templates/mainmenu.php:51, woocommerce/archive-product.php:316, woocommerce/archive-product.php:510
+#: templates/mainmenu.php:51, woocommerce/archive-product.php:316, woocommerce/archive-product.php:482
 msgid "Alkalmazás"
 msgstr ""
 
-#: templates/mainmenu.php:64, woocommerce/archive-product.php:262, woocommerce/archive-product.php:479
+#: templates/mainmenu.php:64, woocommerce/archive-product.php:262, woocommerce/archive-product.php:451
 msgid "Színek"
 msgstr ""
 
-#: templates/mainmenu.php:87, woocommerce/archive-product.php:327, woocommerce/archive-product.php:520
+#: templates/mainmenu.php:87, woocommerce/archive-product.php:327, woocommerce/archive-product.php:492
 msgid "Felület"
 msgstr ""
 
-#: templates/mainmenu.php:98, woocommerce/archive-product.php:272, woocommerce/archive-product.php:530
+#: templates/mainmenu.php:98, woocommerce/archive-product.php:272, woocommerce/archive-product.php:502
 msgid "Mintázat"
 msgstr ""
 
-#: templates/mainmenu.php:111, woocommerce/archive-product.php:294, woocommerce/archive-product.php:500
+#: templates/mainmenu.php:111, woocommerce/archive-product.php:294, woocommerce/archive-product.php:472
 msgid "Forma"
 msgstr ""
 
@@ -432,11 +432,11 @@ msgstr ""
 msgid "Raktárkészlet"
 msgstr ""
 
-#: woocommerce/archive-product.php:283, woocommerce/archive-product.php:540
+#: woocommerce/archive-product.php:283, woocommerce/archive-product.php:512
 msgid "Méret"
 msgstr ""
 
-#: woocommerce/archive-product.php:440
+#: woocommerce/archive-product.php:438
 msgid "Színek, stílus és készlet"
 msgstr ""
 
@@ -480,15 +480,15 @@ msgstr ""
 msgid "Doboz ár (bruttó)"
 msgstr ""
 
-#: woocommerce/product-details.php:23
+#: woocommerce/product-details.php:22
 msgid "További információk és részletes termék ismertetők az"
 msgstr ""
 
-#: woocommerce/product-details.php:23
+#: woocommerce/product-details.php:22
 msgid "Info &amp; Segítség oldalon."
 msgstr ""
 
-#: woocommerce/product-details.php:26
+#: woocommerce/product-details.php:25
 msgid "Termékcsoport"
 msgstr ""
 

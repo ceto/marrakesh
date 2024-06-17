@@ -1,6 +1,6 @@
 <?php
 /**
- * Show messages
+ * Show success messages
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/notices/success.php.
  *
@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 8.5.0
+ * @version 8.6.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

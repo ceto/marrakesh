@@ -570,7 +570,7 @@ function marrakesh_price_html( $price, $product ){
 
 add_filter( 'woocommerce_cart_item_price', 'marrakesh_united_cartitem_price', 10, 2 );
 function marrakesh_united_cartitem_price( $price, $cart_item) {
-    if (get_post_meta($cart_item[data]->get_id(), '_isboxed', true )=='yes') {
+    if (get_post_meta($cart_item['data']->get_id(), '_isboxed', true )=='yes') {
         $price.='/'.__('doboz','marrakesh');
     }
     else {$price.='/'.__('db','marrakesh');}
@@ -665,7 +665,7 @@ function marrakesh_cart_item_backorder_notification( $html, $product_id ){
 
     $csstock = get_post_meta($product_id, '_csstock', true );
     $csdate = get_post_meta($product_id, '_csarrival', true );
-    $product= get_product($product_id);
+    $product= wc_get_product($product_id);
 
 
     if ( $csstock && $csdate ) {
@@ -685,7 +685,7 @@ add_filter( 'woocommerce_cart_item_backorder_notification', 'marrakesh_cart_item
 
 // Add from stock text on cart page
 function marrakesh_cart_item_fromstock_notification( $cart_item, $cart_item_key ){
-    $instance = get_product($cart_item['product_id']);
+    $instance = wc_get_product($cart_item['product_id']);
     if (!$instance->is_on_backorder( $cart_item['quantity'] ) ) {
         echo '<p class="backorder_notification">'.__( 'Raktárról azonnal', 'woocommerce' ). '</p>';
     }
@@ -871,7 +871,8 @@ function marrakesh_product_title($title) {
     } elseif ( is_tax('product_cat') ) {
             $category = get_queried_object();
             $title = mb_strtoupper($category->name);
-            $root = get_term( end( get_ancestors( $category->term_id, 'product_cat' ) ), 'product_cat');
+            $ancs = get_ancestors( $category->term_id, 'product_cat', 'taxonomy' );
+            $root = get_term( end( $ancs ), 'product_cat');
             if ( !is_wp_error( $root ) ) {
                 $title .= ' - '.$root->name;
             } else {
@@ -886,26 +887,47 @@ add_filter( 'pre_get_document_title', 'marrakesh_product_title', 20 );
 
 
 
-function marrakesh_override_prod_category_display( $value = null, $object_id, $meta_key, $single ){
-    $browse=false;
-    if ( $_GET[ 'browse' ] ) {
-        $browse=true;
-    }
-    $term = get_term( $object_id, 'product_cat' );
-    if( is_object( $term ) && $meta_key === 'display_type' && $browse ) {
-        $display_type = 'products';
-    } else {   //  else return nothing, this meta is not "display_type"
+function marrakesh_override_prod_category_display( $value, $object_id, $meta_key, $single ){
+    if ( isset($_GET[ 'browse' ]) ) {
+        if ($meta_key === 'display_type') {
+            $term = get_term( $object_id, 'product_cat' );
+            if ( is_object( $term ) ) {
+                $display_type = 'products';
+                return ( $single === true ) ? $display_type : array( $display_type );
+            } else {
+                return;
+            }
+        } else {   //  else return nothing, this meta is not "display_type"
+            return;
+        }
+    } else {
         return;
     }
-
-    return ( $single === true ) ? $display_type : array( $display_type );
 }
-//	Attach function with wordpress filter
 add_filter( 'get_term_metadata', 'marrakesh_override_prod_category_display', 10, 4 );
 
 
+
+
+// function marrakesh_override_prod_category_display_bak( $value = null, $object_id, $meta_key, $single ){
+//     $browse=false;
+//     if ( isset($_GET[ 'browse' ]) ) {
+//         $browse=true;
+//     }
+//     $term = get_term( $object_id, 'product_cat' );
+//     if( is_object( $term ) && $meta_key === 'display_type' && $browse ) {
+//         $display_type = 'products';
+//     } else {   //  else return nothing, this meta is not "display_type"
+//         return;
+//     }
+
+//     return ( $single === true ) ? $display_type : array( $display_type );
+// }
+// add_filter( 'get_term_metadata', 'marrakesh_override_prod_category_display_bak', 10, 4 );
+
+
 function marrakesh_wc_layered_nav_link_hack( $link, $term, $taxonomy ) {
-    if( $_GET[ 'browse' ] ) {
+    if( isset($_GET[ 'browse' ]) ) {
         return add_query_arg( 'browse', '1', $link);
     } else {
         return $link;

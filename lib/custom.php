@@ -170,7 +170,7 @@ class TabWalker extends Walker_Nav_Menu {
     }
 
     // @codingStandardsIgnoreStart
-    public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+    public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output) {
       $element->is_subitem = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
       if ($element->is_subitem) {

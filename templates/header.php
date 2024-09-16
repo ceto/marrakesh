@@ -45,7 +45,7 @@
                             case 'en_US' : ?>
                             <img class="brand__fulllogo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo-en.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                             <?php break; ?>
-                            <?php case 'de_DE' : ?>
+                            <?php case 'de_AT' : ?>
                             <img class="brand__fulllogo" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo-de.svg" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>">
                             <?php break; ?>
                             <?php case 'sk_SK' : ?>
